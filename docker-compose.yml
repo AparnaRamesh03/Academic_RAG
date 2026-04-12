@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: qdrant
+    restart: unless-stopped
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    networks:
+      - rag_network
+  # fastapi-brain:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   container_name: fastapi-brain
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8000:8000"
+  #   volumes:
+  #     - ./backend:/app
+  #   environment:
+  #     # Use host.docker.internal to reach Ollama running natively on macOS
+  #     - OLLAMA_BASE_URL=http://host.docker.internal:11434
+  #   depends_on:
+  #     - qdrant
+  #   networks:
+  #     - rag_network
+
+volumes:
+  qdrant_data:
+
+
+networks:
+  rag_network:
+    driver: bridge

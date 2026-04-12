@@ -1,0 +1,9 @@
+watchdog==4.0.0
+llama_cloud>=1.0
+python-dotenv==1.0.1
+httpx
+ollama
+easyocr
+langchain-text-splitters
+langchain-core
+"qdrant-client[fastembed]"

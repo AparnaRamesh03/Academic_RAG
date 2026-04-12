@@ -1,0 +1,11 @@
+langgraph
+fastapi
+uvicorn
+pydantic
+langchain-ollama
+langchain-core
+qdrant-client
+fastembed
+python-dotenv
+ollama
+

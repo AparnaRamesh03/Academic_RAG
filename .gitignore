@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+env/
+.env
+
+# MacOS
+.DS_Store
+
+# Data & Docker Volumes
+qdrant_data/
+n8n_data/
+ingest_folder/
+*.pdf
+
+# Evaluation Data (Optional to ignore, but good so large CSVs aren't pushed excessively)
+# evaluation/*.csv
+
+# Frontend
+web_app/node_modules/

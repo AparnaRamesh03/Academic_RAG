@@ -1,0 +1,5 @@
+ragas
+datasets
+pandas
+requests
+langchain-ollama

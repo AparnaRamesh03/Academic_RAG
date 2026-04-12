@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic RAG | AI Research Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Inter and Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar: Citations & Sources -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i data-lucide="library"></i>
+                <h2>Citations</h2>
+            </div>
+            <div id="citations-list" class="citations-list">
+                <div class="empty-state">
+                    <p>Ask a question to see source citations here.</p>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span id="system-status">Brain Online</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content: Chat -->
+        <main class="chat-wrapper">
+            <header class="chat-header">
+                <div class="logo">
+                    <div class="logo-icon">AR</div>
+                    <div class="logo-text">
+                        <h1>Academic RAG</h1>
+                        <p>Stateful Agentic Research System</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button id="clear-chat" title="Clear Chat">
+                        <i data-lucide="trash-2"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div id="chat-messages" class="chat-messages">
+                <!-- Welcome Message -->
+                <div class="message assistant">
+                    <div class="message-content">
+                        Hello! I'm your Academic RAG assistant. I have access to your indexed research papers in Qdrant. 
+                        How can I help with your literature review or data analysis today?
+                    </div>
+                </div>
+            </div>
+
+            <footer class="chat-input-area">
+                <form id="chat-form">
+                    <div class="input-glow-wrapper">
+                        <input type="text" id="user-input" placeholder="Ask about your research papers..." autocomplete="off">
+                        <button type="submit" id="send-btn">
+                            <i data-lucide="send"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="input-hint">Powered by LangGraph + Qwen 2.5 (14B)</div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

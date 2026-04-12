@@ -1,0 +1,6 @@
+user_input,retrieved_contexts,response,reference,faithfulness,answer_relevancy,answer_correctness,context_precision,context_recall,e2e_latency_seconds
+What are the four main subject areas of the current Norwegian national English curriculum?,"['[RELEVANT] . Out of all these dimensions, the four main subject areas of the curriculum *Language learning*, *Oral communication*, *Written communication* and *Culture, society and literature* suggest that the English *language* seems to be the most essential dimension of English in the Norwegian ELT context, that students learn to communicate in English, that they learn to *use* the language']","The four main subject areas of the current Norwegian national English curriculum are:
+- Language learning
+- Oral communication
+- Written communication
+- Culture, society and literature [Source: 1137-4949-1-PB.pdf, Page: 2].","The four main areas are Language learning, Oral communication, Written communication, and Culture, society and literature.",0.8,1.0000000000000002,0.8848760717594876,0.9999999999,1.0,59.82

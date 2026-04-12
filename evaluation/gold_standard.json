@@ -1,0 +1,42 @@
+[
+    {
+        "question": "What are the four main subject areas of the current Norwegian national English curriculum?",
+        "ground_truth": "The four main areas are Language learning, Oral communication, Written communication, and Culture, society and literature."
+    },
+    {
+        "question": "How does Kachru’s concentric circles model distinguish between the \"Inner,\" \"Outer,\" and \"Expanding\" circles?",
+        "ground_truth": "The Inner circle represents native speakers (L1); the Outer circle includes countries where English is an official second language (L2) due to colonialism; and the Expanding circle includes countries where English is a foreign language used for international communication."
+    },
+    {
+        "question": "Why is Norway's status as an \"Expanding Circle\" country considered increasingly \"fuzzy\"?",
+        "ground_truth": "The status is fuzzy because of the massive increase in English domain use, such as its use as a lingua franca in large companies and its prevalence in higher education lectures and materials."
+    },
+    {
+        "question": "What were the specific social associations students in the study attributed to Standard Southern British English (SSBE)?",
+        "ground_truth": "SSBE was associated with high prestige, education, formality, intelligence, and being a \"correct\" school standard."
+    },
+    {
+        "question": "What did the study find regarding the \"American English\" accent aim among Norwegian 17-year-olds?",
+        "ground_truth": "Approximately 40 percent of participants aimed for an American accent, which was viewed as more informal, relaxed, and less academic than British English."
+    },
+    {
+        "question": "According to the author, what is the core difference between variationist sociolinguistics and social constructionism?",
+        "ground_truth": "Variationist sociolinguistics claims that how you speak depends on who you are, whereas social constructionism argues that who you are depends on how you speak (identity construction)."
+    },
+    {
+        "question": "What is the author’s primary prediction for the development of English language teaching in Norway by 2030?",
+        "ground_truth": "The author predicts an increased influence from social constructionist perspectives in combination with the existing focus on communicative competence."
+    },
+    {
+        "question": "How did participants in the study describe the concept of a \"neutral\" English accent?",
+        "ground_truth": "Students desired a geographically and culturally neutral accent that would reflect their proficiency without \"cultural baggage\" or the \"fake\" feeling of imitating a specific native identity."
+    },
+    {
+        "question": "What does the \"stylistic practice approach\" argue regarding linguistic forms?",
+        "ground_truth": "It argues that linguistic forms are resources used by speakers to negotiate meaning and position themselves within a community."
+    },
+    {
+        "question": "What role did the British Council play in the historical development of Norwegian ELT?",
+        "ground_truth": "Between 1946 and 1960, the Council influenced teaching practices, language policy, and exams, specifically focusing on improving pronunciation and intonation."
+    }
+]
