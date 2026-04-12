@@ -42,7 +42,7 @@ def retrieve_and_split(state: GraphState):
             ),
         ],
         query=models.FusionQuery(fusion=models.Fusion.RRF),
-        limit=15, # Get Top 5 chunks total
+        limit=5, # Get Top 5 chunks total
         with_payload=True,
     )
     
@@ -55,7 +55,7 @@ def retrieve_and_split(state: GraphState):
         doc = {"text": point.payload.get("text", ""), "metadata": point.payload, "score": point.score}
         print(f"  -> Doc {idx+1} Score: {point.score:.5f}")
         
-        if point.score > 0.4:
+        if point.score > 0.1:
             candidate_docs.append(doc)
         else:
             weak_signal_docs.append(doc)
