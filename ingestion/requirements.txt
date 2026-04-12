@@ -6,4 +6,9 @@ ollama
 easyocr
 langchain-text-splitters
 langchain-core
-"qdrant-client[fastembed]"
+qdrant-client[fastembed]
+FlagEmbedding==1.3.5
+transformers==4.50.1
+torch
+sentencepiece
+Pillow
