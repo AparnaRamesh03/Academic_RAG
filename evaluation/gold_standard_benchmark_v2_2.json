@@ -1,0 +1,286 @@
+[
+  {
+    "question": "According to Figure 2 in the ResNet paper, what role does the identity shortcut play in the residual block?",
+    "ground_truth": "The identity shortcut carries the input directly forward and adds it to the learned residual branch, so the block outputs F(x) + x.",
+    "source_file": [
+      "ImgRecog.pdf"
+    ],
+    "category": "figure_table_diagram_grounded",
+    "difficulty": "medium"
+  },
+  {
+    "question": "According to Figure 1 in the TabNet paper, how does sparse feature selection work during prediction?",
+    "ground_truth": "The figure shows that TabNet uses multiple decision blocks that each focus on a selected subset of input features, so different steps attend to the most relevant features for the prediction.",
+    "source_file": [
+      "TabNet.pdf"
+    ],
+    "category": "figure_table_diagram_grounded",
+    "difficulty": "medium"
+  },
+  {
+    "question": "According to Figure 2 in the TabNet paper, how does unsupervised pre-training connect to supervised fine-tuning?",
+    "ground_truth": "The figure shows an encoder-decoder setup used during unsupervised pre-training to reconstruct masked or missing features, and then the pretrained encoder is reused for supervised fine-tuning and decision making.",
+    "source_file": [
+      "TabNet.pdf"
+    ],
+    "category": "figure_table_diagram_grounded",
+    "difficulty": "medium"
+  },
+  {
+    "question": "According to Figure 1 in the Transformer paper, how are shifted outputs used on the decoder side?",
+    "ground_truth": "The outputs are shifted right before entering the decoder so prediction at position i depends only on known earlier outputs, together with masking in decoder self-attention.",
+    "source_file": [
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "figure_table_diagram_grounded",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Why does the English paper predict increased influence from social constructionist perspectives in Norwegian ELT by 2030?",
+    "ground_truth": "The paper predicts stronger social constructionist influence because English is increasingly used internationally by second- and later-language users, including Norwegians, and this shifts attention toward language use, speaker agency, and communicative practice rather than only fixed native norms.",
+    "source_file": [
+      "English.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard"
+  },
+  {
+    "question": "How does the English paper connect the global status of English with local curriculum and student language practices in Norway?",
+    "ground_truth": "The paper links the global spread of English to local Norwegian ELT by arguing that changing worldwide uses of English influence curriculum priorities, beliefs about language, and how Norwegian learners position themselves and use English in practice.",
+    "source_file": [
+      "English.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Why does the Transformer paper claim its model is both more parallelizable and effective at modeling long-range dependencies?",
+    "ground_truth": "It claims this because attention removes the sequential recurrence bottleneck, allowing more parallel computation, while self-attention can directly connect distant positions in a sequence without depending on a long chain of recurrent steps.",
+    "source_file": [
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard"
+  },
+  {
+    "question": "How does BERT address the limitations of earlier unidirectional language-model pre-training approaches?",
+    "ground_truth": "BERT addresses them by using masked language modeling to learn deep bidirectional representations and next sentence prediction to model sentence relationships, which helps on both sentence-level and token-level tasks that need context from both directions.",
+    "source_file": [
+      "BERT.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Why does the RAG survey argue that Advanced RAG and Modular RAG emerged after Naive RAG?",
+    "ground_truth": "The survey says they emerged because Naive RAG has weaknesses in retrieval precision and recall, generation quality, and augmentation coherence, so later paradigms introduced targeted improvements to fix those shortcomings.",
+    "source_file": [
+      "RAGSurvey.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Why does the ResNet paper claim that deeper plain networks can have higher training error even though a constructed identity solution should exist?",
+    "ground_truth": "The paper argues that although an identity-based constructed solution should in principle let the deeper model do at least as well as the shallower one, existing optimization methods fail to find such good solutions in plain deep networks, revealing an optimization difficulty rather than simple overfitting.",
+    "source_file": [
+      "ImgRecog.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Why does TabNet argue that deep learning is still worth exploring for tabular data even though tree-based methods dominate?",
+    "ground_truth": "TabNet argues this because end-to-end gradient-based learning can reduce feature engineering, support multimodal and streaming settings, enable representation learning and semi-supervised learning, and still compete with or outperform tabular baselines when designed appropriately.",
+    "source_file": [
+      "TabNet.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard"
+  },
+  {
+    "question": "How does the RAG survey describe the relationship among retrieval, generation, and augmentation in a complete RAG framework?",
+    "ground_truth": "The survey presents retrieval, generation, and augmentation as the three core, interdependent components of a RAG system: retrieval supplies relevant external knowledge, generation produces the answer from the query plus context, and augmentation concerns how retrieved knowledge is integrated effectively.",
+    "source_file": [
+      "RAGSurvey.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Why can making a neural network deeper actually make optimization worse even when overfitting is not the main issue?",
+    "ground_truth": "Because deeper plain networks can suffer from the degradation problem: optimization becomes harder, training error can increase with depth, and the solver may fail to find good solutions even though deeper models should in principle be able to represent at least the shallower solution.",
+    "source_file": [
+      "ImgRecog.pdf"
+    ],
+    "category": "paraphrase_hard_retrieval",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Which basic retrieve-read framework splits documents, stores vectorized chunks, fetches top-k relevant context, and then answers with an LLM?",
+    "ground_truth": "That is Naive RAG, the basic retrieve-read pipeline of indexing, retrieval, and generation.",
+    "source_file": [
+      "RAGSurvey.pdf"
+    ],
+    "category": "paraphrase_hard_retrieval",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Which shift in English teaching moved away from abstract grammar translation toward listening, speaking, and pronunciation?",
+    "ground_truth": "That shift was the Reform movement and its direct-method orientation.",
+    "source_file": [
+      "English.pdf"
+    ],
+    "category": "paraphrase_hard_retrieval",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What BERT pre-training setup lets a token use both left and right context instead of only earlier tokens?",
+    "ground_truth": "BERT's masked language model objective enables bidirectional context because masked tokens are predicted using both left and right context.",
+    "source_file": [
+      "BERT.pdf"
+    ],
+    "category": "paraphrase_hard_retrieval",
+    "difficulty": "medium"
+  },
+  {
+    "question": "In the Transformer paper, what design choice removes recurrence while still allowing the model to learn dependencies across positions?",
+    "ground_truth": "The design choice is to rely entirely on attention, especially self-attention, instead of recurrence.",
+    "source_file": [
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "paraphrase_hard_retrieval",
+    "difficulty": "medium"
+  },
+  {
+    "question": "In TabNet, what mechanism makes it possible for different rows of tabular data to focus on different input features during reasoning?",
+    "ground_truth": "TabNet uses instance-wise sequential attention with sparse feature masks, so different examples can attend to different subsets of features at each decision step.",
+    "source_file": [
+      "TabNet.pdf"
+    ],
+    "category": "paraphrase_hard_retrieval",
+    "difficulty": "hard"
+  },
+  {
+    "question": "How do the Transformer and BERT papers use attention differently in their main contributions?",
+    "ground_truth": "The Transformer paper introduces an attention-only encoder-decoder architecture for sequence transduction, while the BERT paper uses Transformer attention inside a bidirectional pretrained language model for general-purpose language representation learning and fine-tuning.",
+    "source_file": [
+      "AttentionIsAllYouNeed.pdf",
+      "BERT.pdf"
+    ],
+    "category": "cross_paper_comparison",
+    "difficulty": "hard"
+  },
+  {
+    "question": "How do ResNet and TabNet each try to improve optimization or learning efficiency in different data settings?",
+    "ground_truth": "ResNet improves optimization in very deep vision networks by learning residual functions with shortcut connections, while TabNet improves efficiency in tabular learning by using sparse sequential attention to focus model capacity on salient features.",
+    "source_file": [
+      "ImgRecog.pdf",
+      "TabNet.pdf"
+    ],
+    "category": "cross_paper_comparison",
+    "difficulty": "hard"
+  },
+  {
+    "question": "How does the RAG survey's description of Naive RAG compare with the simple retrieve-read baseline you want to evaluate in this project?",
+    "ground_truth": "They are essentially the same basic idea: index documents into chunks and vectors, retrieve the top relevant chunks for a query, and generate an answer from the question plus the retrieved context without extra correction modules.",
+    "source_file": [
+      "RAGSurvey.pdf"
+    ],
+    "category": "cross_paper_comparison",
+    "difficulty": "medium"
+  },
+  {
+    "question": "How do BERT and TabNet each use pre-training before downstream task-specific learning?",
+    "ground_truth": "BERT uses language-model style pre-training with MLM and NSP before fine-tuning on NLP tasks, while TabNet uses unsupervised pre-training to reconstruct or predict masked tabular features before supervised fine-tuning.",
+    "source_file": [
+      "BERT.pdf",
+      "TabNet.pdf"
+    ],
+    "category": "cross_paper_comparison",
+    "difficulty": "hard"
+  },
+  {
+    "question": "How do the English paper and the RAG survey each connect broad theory to practical application?",
+    "ground_truth": "The English paper connects theories of language and English's global status to curriculum and teaching practice in Norway, while the RAG survey connects high-level RAG paradigms and component design to practical system building, benchmarks, and evaluation.",
+    "source_file": [
+      "English.pdf",
+      "RAGSurvey.pdf"
+    ],
+    "category": "cross_paper_comparison",
+    "difficulty": "hard"
+  },
+  {
+    "question": "How do the Transformer and ResNet papers each argue that architectural design can overcome training bottlenecks in deep learning?",
+    "ground_truth": "The Transformer argues that attention-based design removes sequential bottlenecks and improves parallelization, while ResNet argues that residual shortcuts ease optimization in very deep networks and reduce degradation.",
+    "source_file": [
+      "AttentionIsAllYouNeed.pdf",
+      "ImgRecog.pdf"
+    ],
+    "category": "cross_paper_comparison",
+    "difficulty": "hard"
+  },
+  {
+    "question": "In which paper does attention refer to sequential feature selection over tabular columns rather than sequence transduction over token positions?",
+    "ground_truth": "That usage appears in TabNet, where attention selects tabular features at each decision step rather than modeling token-to-token dependencies in a sequence.",
+    "source_file": [
+      "TabNet.pdf",
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "distractor_edge_case",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Which paper introduces masked language modeling and next sentence prediction, and how is that different from the paper that proposes the Transformer for translation?",
+    "ground_truth": "BERT introduces masked language modeling and next sentence prediction for bidirectional pre-training, whereas the Transformer paper introduces an attention-only architecture for sequence transduction and machine translation.",
+    "source_file": [
+      "BERT.pdf",
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "distractor_edge_case",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Which paper discusses Naive, Advanced, and Modular RAG rather than introducing a new encoder architecture?",
+    "ground_truth": "The RAG survey discusses Naive, Advanced, and Modular RAG; it is a taxonomy and survey paper rather than a paper proposing a new encoder architecture.",
+    "source_file": [
+      "RAGSurvey.pdf",
+      "AttentionIsAllYouNeed.pdf",
+      "BERT.pdf"
+    ],
+    "category": "distractor_edge_case",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Which paper is about language beliefs and English teaching in Norway rather than neural representation learning?",
+    "ground_truth": "That is What is English?, which focuses on language beliefs, English teaching, and the status of English in Norway.",
+    "source_file": [
+      "English.pdf",
+      "BERT.pdf",
+      "AttentionIsAllYouNeed.pdf",
+      "TabNet.pdf",
+      "ImgRecog.pdf"
+    ],
+    "category": "distractor_edge_case",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Which paper argues that tree-based methods still dominate tabular applications, and what alternative does it propose?",
+    "ground_truth": "TabNet makes that argument, and it proposes a deep tabular architecture with sequential attention and instance-wise feature selection as the alternative.",
+    "source_file": [
+      "TabNet.pdf"
+    ],
+    "category": "distractor_edge_case",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Which paper uses residual shortcuts to combat degradation, and how is that different from the paper that uses external retrieved documents to improve answer generation?",
+    "ground_truth": "ResNet uses residual shortcuts to combat degradation in deep neural networks, whereas the RAG survey discusses systems that use retrieved external documents to improve grounded answer generation.",
+    "source_file": [
+      "ImgRecog.pdf",
+      "RAGSurvey.pdf"
+    ],
+    "category": "distractor_edge_case",
+    "difficulty": "hard"
+  }
+]
