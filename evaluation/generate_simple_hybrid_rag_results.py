@@ -5,9 +5,9 @@ from pathlib import Path
 import requests
 
 BENCHMARK_PATH = Path("./gold_standard_dev_24.json")
-OUTPUT_PATH = Path("./results_simple_dev_24.json")
+OUTPUT_PATH = Path("./crag_vericite/results_crag_vericite_dev_24.json")
 API_URL = "http://localhost:8000/ask"
-ARCHITECTURE_NAME = "simple_hybrid_rag"
+ARCHITECTURE_NAME = "crag_vericite"
 
 
 def load_json(path: Path):

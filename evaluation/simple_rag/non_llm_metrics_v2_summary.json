@@ -1,0 +1,215 @@
+{
+  "overall": {
+    "exact_match": 0.016666666666666666,
+    "token_f1": 0.43653394343245105,
+    "rouge_l_f1": 0.3587612165930963,
+    "source_hit": 1.0,
+    "source_precision": 0.8527777777777777,
+    "source_recall": 0.958888888888889,
+    "source_mrr": 1.0,
+    "architecture": "simple_hybrid_rag",
+    "total_rows": 60,
+    "successful_rows": 60,
+    "failed_rows": 0,
+    "failure_rate": 0.0,
+    "avg_latency_sec": 9.784721666666666
+  },
+  "recommended_view": {
+    "direct_fact_lookup_primary_view": {
+      "count": 10,
+      "primary_metrics": [
+        "exact_match",
+        "token_f1"
+      ],
+      "exact_match": 0.1,
+      "token_f1": 0.6921890645586297,
+      "source_hit": 1.0,
+      "source_precision": 0.7666666666666666,
+      "source_recall": 1.0,
+      "source_mrr": 1.0,
+      "avg_latency_sec": 5.71156
+    },
+    "explanation_synthesis_primary_view": {
+      "count": 50,
+      "primary_metrics": [
+        "rouge_l_f1",
+        "token_f1"
+      ],
+      "rouge_l_f1": 0.29772716215150474,
+      "token_f1": 0.3854029192072153,
+      "source_hit": 1.0,
+      "source_precision": 0.87,
+      "source_recall": 0.9506666666666667,
+      "source_mrr": 1.0,
+      "avg_latency_sec": 10.599353999999998
+    },
+    "retrieval_grounding_view": {
+      "count": 60,
+      "primary_metrics": [
+        "source_hit",
+        "source_precision",
+        "source_recall",
+        "source_mrr"
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.8527777777777777,
+      "source_recall": 0.958888888888889,
+      "source_mrr": 1.0
+    }
+  },
+  "by_category_rows": [
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.30719190277507574,
+      "rouge_l_f1": 0.23180889524190196,
+      "source_hit": 1.0,
+      "source_precision": 0.8055555555555555,
+      "source_recall": 0.8333333333333334,
+      "source_mrr": 1.0,
+      "category": "cross_paper_comparison",
+      "count": 6,
+      "avg_latency_sec": 11.962116666666667,
+      "recommended_primary_metric_1": "rouge_l_f1",
+      "recommended_primary_metric_2": "token_f1"
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.42644913516526384,
+      "rouge_l_f1": 0.3595023936339818,
+      "source_hit": 1.0,
+      "source_precision": 0.9375,
+      "source_recall": 1.0,
+      "source_mrr": 1.0,
+      "category": "definition_explanation",
+      "count": 8,
+      "avg_latency_sec": 11.5969,
+      "recommended_primary_metric_1": "rouge_l_f1",
+      "recommended_primary_metric_2": "token_f1"
+    },
+    {
+      "exact_match": 0.1,
+      "token_f1": 0.6921890645586297,
+      "rouge_l_f1": 0.6639314888010539,
+      "source_hit": 1.0,
+      "source_precision": 0.7666666666666666,
+      "source_recall": 1.0,
+      "source_mrr": 1.0,
+      "category": "direct_fact_lookup",
+      "count": 10,
+      "avg_latency_sec": 5.71156,
+      "recommended_primary_metric_1": "exact_match",
+      "recommended_primary_metric_2": "token_f1"
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.4395174205002244,
+      "rouge_l_f1": 0.34565543811423916,
+      "source_hit": 1.0,
+      "source_precision": 0.9166666666666666,
+      "source_recall": 0.7555555555555555,
+      "source_mrr": 1.0,
+      "category": "distractor_edge_case",
+      "count": 6,
+      "avg_latency_sec": 12.049149999999997,
+      "recommended_primary_metric_1": "rouge_l_f1",
+      "recommended_primary_metric_2": "token_f1"
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.47890100874255803,
+      "rouge_l_f1": 0.41808183172619795,
+      "source_hit": 1.0,
+      "source_precision": 0.8125,
+      "source_recall": 1.0,
+      "source_mrr": 1.0,
+      "category": "figure_table_diagram_grounded",
+      "count": 8,
+      "avg_latency_sec": 7.0196375,
+      "recommended_primary_metric_1": "rouge_l_f1",
+      "recommended_primary_metric_2": "token_f1"
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.3558161981923592,
+      "rouge_l_f1": 0.24866618637258472,
+      "source_hit": 1.0,
+      "source_precision": 0.875,
+      "source_recall": 1.0,
+      "source_mrr": 1.0,
+      "category": "intra_paper_comparison",
+      "count": 8,
+      "avg_latency_sec": 11.6357125,
+      "recommended_primary_metric_1": "rouge_l_f1",
+      "recommended_primary_metric_2": "token_f1"
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.3347199895378069,
+      "rouge_l_f1": 0.2405949367206396,
+      "source_hit": 1.0,
+      "source_precision": 0.8541666666666666,
+      "source_recall": 1.0,
+      "source_mrr": 1.0,
+      "category": "multi_chunk_synthesis",
+      "count": 8,
+      "avg_latency_sec": 9.384475,
+      "recommended_primary_metric_1": "rouge_l_f1",
+      "recommended_primary_metric_2": "token_f1"
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.33713322793417655,
+      "rouge_l_f1": 0.21446821996852597,
+      "source_hit": 1.0,
+      "source_precision": 0.8888888888888888,
+      "source_recall": 1.0,
+      "source_mrr": 1.0,
+      "category": "paraphrase_hard_retrieval",
+      "count": 6,
+      "avg_latency_sec": 11.467716666666668,
+      "recommended_primary_metric_1": "rouge_l_f1",
+      "recommended_primary_metric_2": "token_f1"
+    }
+  ],
+  "by_difficulty_rows": [
+    {
+      "exact_match": 0.07692307692307693,
+      "token_f1": 0.6750660691965039,
+      "rouge_l_f1": 0.6490559681864029,
+      "source_hit": 1.0,
+      "source_precision": 0.8205128205128205,
+      "source_recall": 0.9384615384615385,
+      "source_mrr": 1.0,
+      "difficulty": "easy",
+      "count": 13,
+      "avg_latency_sec": 7.263746153846153
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.35495846826128796,
+      "rouge_l_f1": 0.2570022600658749,
+      "source_hit": 1.0,
+      "source_precision": 0.8333333333333334,
+      "source_recall": 0.9444444444444444,
+      "source_mrr": 1.0,
+      "difficulty": "hard",
+      "count": 18,
+      "avg_latency_sec": 10.672983333333333
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.3802388026789423,
+      "rouge_l_f1": 0.2917898182060962,
+      "source_hit": 1.0,
+      "source_precision": 0.8793103448275862,
+      "source_recall": 0.9770114942528735,
+      "source_mrr": 1.0,
+      "difficulty": "medium",
+      "count": 29,
+      "avg_latency_sec": 10.363479310344827
+    }
+  ],
+  "detail_csv": "non_llm_metrics_v2_detailed.csv",
+  "category_csv": "non_llm_metrics_v2_by_category.csv",
+  "difficulty_csv": "non_llm_metrics_v2_by_difficulty.csv"
+}

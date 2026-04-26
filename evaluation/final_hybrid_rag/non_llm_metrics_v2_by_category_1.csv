@@ -1,0 +1,6 @@
+exact_match,token_f1,rouge_l_f1,source_hit,source_precision,source_recall,source_mrr,category,count,avg_latency_sec,recommended_primary_metric_1,recommended_primary_metric_2
+0.0,0.31508522569540837,0.2297053035490657,1.0,0.8333333333333334,1.0,1.0,definition_explanation,3,33.64456666666666,rouge_l_f1,token_f1
+0.0,0.5040771864301276,0.48839091192032363,1.0,1.0,1.0,1.0,direct_fact_lookup,3,19.282866666666667,exact_match,token_f1
+0.0,0.4633011099176512,0.3898317221625492,1.0,1.0,1.0,1.0,figure_table_diagram_grounded,3,31.003800000000002,rouge_l_f1,token_f1
+0.0,0.31805922721568,0.2877627859603346,1.0,1.0,1.0,1.0,intra_paper_comparison,3,49.202133333333336,rouge_l_f1,token_f1
+0.0,0.4631578947368421,0.35789473684210527,1.0,1.0,1.0,1.0,multi_chunk_synthesis,1,34.0878,rouge_l_f1,token_f1

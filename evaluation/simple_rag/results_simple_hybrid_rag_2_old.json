@@ -1,0 +1,712 @@
+[
+  {
+    "question": "According to Figure 2 in the ResNet paper, what role does the identity shortcut play in the residual block?",
+    "ground_truth": "The identity shortcut carries the input directly forward and adds it to the learned residual branch, so the block outputs F(x) + x.",
+    "source_file": [
+      "ImgRecog.pdf"
+    ],
+    "category": "figure_table_diagram_grounded",
+    "difficulty": "medium",
+    "architecture": "simple_hybrid_rag",
+    "answer": "The identity shortcut in Figure 2 plays a role in performing identity mapping, where its output is added to the output of the stacked layers, effectively introducing neither extra parameter nor computational complexity.",
+    "contexts": [
+      "[RETRIEVED] We adopt residual learning to every few stacked layers. A building block is shown in Fig. 2. Formally, in this paper we consider a building block defined as: \n \nHere $\\mathbf{x}$ and $\\mathbf{y}$ are the input and output vectors of the layers considered. The function $\\mathcal{F}(\\mathbf{x}, \\{W_i\\})$ represents the residual mapping to be learned. For the example in Fig. 2 that has two layers, $\\mathcal{F} = W_2\\sigma(W_1\\mathbf{x})$ in which $\\sigma$ denotes \n2This hypothesis, however, is still an open question. See [28]. \nReLU [29] and the biases are omitted for simplifying notations. The operation $\\mathcal{F} + \\mathbf{x}$ is performed by a shortcut connection and element-wise addition. We adopt the second nonlinearity after the addition (i.e., $\\sigma(\\mathbf{y})$, see Fig. 2). \nThe shortcut connections in Eqn.(1) introduce neither extra parameter nor computation complexity. This is not only attractive in practice but also important in our comparisons between plain and residual networks. We can fairly compare plain/residual networks that simultaneously have the same number of parameters, depth, width, and computational cost (except for the negligible element-wise addition).",
+      "[RETRIEVED] **Deeper Bottleneck Architectures.** Next we describe our deeper nets for ImageNet. Because of concerns on the training time that we can afford, we modify the building block as a *bottleneck* design4. For each residual function $\\mathcal{F}$, we use a stack of 3 layers instead of 2 (Fig. 5). The three layers are 1×1, 3×3, and 1×1 convolutions, where the 1×1 layers are responsible for reducing and then increasing (restoring) dimensions, leaving the 3×3 layer a bottleneck with smaller input/output dimensions. Fig. 5 shows an example, where both designs have similar time complexity. \nThe parameter-free identity shortcuts are particularly important for the bottleneck architectures. If the identity shortcut in Fig. 5 (right) is replaced with projection, one can show that the time complexity and model size are doubled, as the shortcut is connected to the two high-dimensional ends. So identity shortcuts lead to more efficient models for the bottleneck designs. \n**50-layer ResNet:** We replace each 2-layer block in the",
+      "[RETRIEVED] Figure 5: Extracted Figure 5\n\nPage 4\n\n**Visual Description (AI-generated):** Key labels: VGG-19, 34-layer plain, 34-layer residual, image, output, convolution, feature maps, shortcut connections, identity mapping, Eqn.(2), projection shortcut, stride of 2, scale augmentation, color augmentation, batch normalization, resize, cropping, flip, per-pixel mean subtraction\nDiagram flow: The figure illustrates a transformation from a plain network to a residual network, incorporating shortcut connections and identity mapping.\nRetrieval summary: The image shows a visual representation of a transformative process from a 34-layer plain network to a 34-layer residual network, featuring shortcut connections with identity mappings or projection shortcuts as options for maintaining feature maps when dimensions increase. The network is part of a practice in [21, 41] and implements scale augmentation and color augmentation during training on the ImageNet dataset. Batch normalization is applied after each convolution and before activation.",
+      "[RETRIEVED] **Shortcut Connections.** Practices and theories that lead to shortcut connections [2, 34, 49] have been studied for a long time. An early practice of training multi-layer perceptrons (MLPs) is to add a linear layer connected from the network input to the output [34, 49]. In [44, 24], a few intermediate layers are directly connected to auxiliary classifiers for addressing vanishing/exploding gradients. The papers of [39, 38, 31, 47] propose methods for centering layer responses, gradients, and propagated errors, implemented by shortcut connections. In [44], an \"inception\" layer is composed of a shortcut branch and a few deeper branches. \nConcurrent with our work, \"highway networks\" [42, 43] present shortcut connections with gating functions [15]. These gates are data-dependent and have parameters, in contrast to our identity shortcuts that are parameter-free. When a gated shortcut is \"closed\" (approaching zero), the layers in highway networks represent *non-residual* functions. On the contrary, our formulation always learns residual functions; our identity shortcuts are never closed, and all information is always passed through, with additional residual functions to be learned. In addition, high-",
+      "[RETRIEVED] **Residual Network.** Based on the above plain network, we insert shortcut connections (Fig. 3, right) which turn the network into its counterpart residual version. The identity shortcuts (Eqn.(1)) can be directly used when the input and output are of the same dimensions (solid line shortcuts in Fig. 3). When the dimensions increase (dotted line shortcuts in Fig. 3), we consider two options: (A) The shortcut still performs identity mapping, with extra zero entries padded for increasing dimensions. This option introduces no extra parameter; (B) The projection shortcut in Eqn.(2) is used to match dimensions (done by 1×1 convolutions). For both options, when the shortcuts go across feature maps of two sizes, they are performed with a stride of 2.",
+      "[RETRIEVED] The dimensions of $\\mathbf{x}$ and $\\mathcal{F}$ must be equal in Eqn.(1). If this is not the case (e.g., when changing the input/output channels), we can perform a linear projection $W_s$ by the shortcut connections to match the dimensions: \n \nWe can also use a square matrix $W_s$ in Eqn.(1). But we will show by experiments that the identity mapping is sufficient for addressing the degradation problem and is economical, and thus $W_s$ is only used when matching dimensions. \nThe form of the residual function $\\mathcal{F}$ is flexible. Experiments in this paper involve a function $\\mathcal{F}$ that has two or three layers (Fig. 5), while more layers are possible. But if $\\mathcal{F}$ has only a single layer, Eqn.(1) is similar to a linear layer: $\\mathbf{y} = W_1\\mathbf{x} + \\mathbf{x}$, for which we have not observed advantages. \nWe also note that although the above notations are about fully-connected layers for simplicity, they are applicable to convolutional layers. The function $\\mathcal{F}(\\mathbf{x}, \\{W_i\\})$ can represent multiple convolutional layers. The element-wise addition is performed on two feature maps, channel by channel.",
+      "[RETRIEVED] The formulation of $\\mathcal{F}(\\mathbf{x}) + \\mathbf{x}$ can be realized by feedforward neural networks with \"shortcut connections\" (Fig. 2). Shortcut connections [2, 34, 49] are those skipping one or more layers. In our case, the shortcut connections simply perform *identity mapping*, and their outputs are added to the outputs of the stacked layers (Fig. 2). Identity shortcut connections add neither extra parameter nor computational complexity. The entire network can still be trained end-to-end by SGD with backpropagation, and can be easily implemented using common libraries (e.g., Caffe [19]) without modifying the solvers. \nWe present comprehensive experiments on ImageNet [36] to show the degradation problem and evaluate our method. We show that: 1) Our extremely deep residual nets are easy to optimize, but the counterpart \"plain\" nets (that simply stack layers) exhibit higher training error when the depth increases; 2) Our deep residual nets can easily enjoy accuracy gains from greatly increased depth, producing results substantially better than previous networks.",
+      "[RETRIEVED] **Identity *vs.* Projection Shortcuts.** We have shown that parameter-free, identity shortcuts help with training. Next we investigate projection shortcuts (Eqn.(2)). In Table 3 we compare three options: (A) zero-padding shortcuts are used for increasing dimensions, and all shortcuts are parameter-free (the same as Table 2 and Fig. 4 right); (B) projection shortcuts are used for increasing dimensions, and other shortcuts are identity; and (C) all shortcuts are projections. \nTable 3 shows that all three options are considerably better than the plain counterpart. B is slightly better than A. We argue that this is because the zero-padded dimensions in A indeed have no residual learning. C is marginally better than B, and we attribute this to the extra parameters introduced by many (thirteen) projection shortcuts. But the small differences among A/B/C indicate that projection shortcuts are not essential for addressing the degradation problem. So we do not use option C in the rest of this paper, to reduce memory/time complexity and model sizes. Identity shortcuts are particularly important for not increasing the complexity of the bottleneck architectures that are introduced below."
+    ],
+    "citations": [
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 3,
+        "section_header": "3. Deep Residual Learning > 3.2. Identity Mapping by Shortcuts",
+        "excerpt": "We adopt residual learning to every few stacked layers. A building block is shown in Fig. 2. Formally, in this paper we consider a building block defined as: \n \nHere $\\mathbf{x}$ and $\\mathbf{y}$ are the input and output vectors of the layers considered. The function $\\mathcal{F}(\\mathbf{x}, \\{W_i\\})$ represents the residual mapping to be learned. For the example in Fig. 2 that has two layers, $\\mathcal{F} = W_2\\sigma(W_1\\mathbf{x})$ in which $\\sigma$ denotes \n2This hypothesis, however, is still an open question. See [28]. \nReLU [29] and the biases are omitted for simplifying notations. The operation $\\mathcal{F} + \\mathbf{x}$ is performed by a shortcut connection and element-wise addition. We adopt the second nonlinearity after the addition (i.e., $\\sigma(\\mathbf{y})$, see Fig. 2). \nThe shortcut connections in Eqn.(1) introduce neither extra parameter nor computation complexity. This is not only attractive in practice but also important in our comparisons between plain and residual networks. We can fairly compare plain/residual networks that simultaneously have the same number of parameters, depth, width, and computational cost (except for the negligible element-wise addition).",
+        "content_type": "text"
+      },
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 6,
+        "section_header": "4. Experiments > 4.1. ImageNet Classification",
+        "excerpt": "**Deeper Bottleneck Architectures.** Next we describe our deeper nets for ImageNet. Because of concerns on the training time that we can afford, we modify the building block as a *bottleneck* design4. For each residual function $\\mathcal{F}$, we use a stack of 3 layers instead of 2 (Fig. 5). The three layers are 1×1, 3×3, and 1×1 convolutions, where the 1×1 layers are responsible for reducing and then increasing (restoring) dimensions, leaving the 3×3 layer a bottleneck with smaller input/output dimensions. Fig. 5 shows an example, where both designs have similar time complexity. \nThe parameter-free identity shortcuts are particularly important for the bottleneck architectures. If the identity shortcut in Fig. 5 (right) is replaced with projection, one can show that the time complexity and model size are doubled, as the shortcut is connected to the two high-dimensional ends. So identity shortcuts lead to more efficient models for the bottleneck designs. \n**50-layer ResNet:** We replace each 2-layer block in the",
+        "content_type": "text"
+      },
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 4,
+        "section_header": "Figure 5: Extracted Figure 5",
+        "excerpt": "Figure 5: Extracted Figure 5\n\nPage 4\n\n**Visual Description (AI-generated):** Key labels: VGG-19, 34-layer plain, 34-layer residual, image, output, convolution, feature maps, shortcut connections, identity mapping, Eqn.(2), projection shortcut, stride of 2, scale augmentation, color augmentation, batch normalization, resize, cropping, flip, per-pixel mean subtraction\nDiagram flow: The figure illustrates a transformation from a plain network to a residual network, incorporating shortcut connections and identity mapping.\nRetrieval summary: The image shows a visual representation of a transformative process from a 34-layer plain network to a 34-layer residual network, featuring shortcut connections with identity mappings or projection shortcuts as options for maintaining feature maps when dimensions increase. The network is part of a practice in [21, 41] and implements scale augmentation and color augmentation during training on the ImageNet dataset. Batch normalization is applied after each convolution and before activation.",
+        "content_type": "figure_description"
+      },
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 2,
+        "section_header": "2. Related Work",
+        "excerpt": "**Shortcut Connections.** Practices and theories that lead to shortcut connections [2, 34, 49] have been studied for a long time. An early practice of training multi-layer perceptrons (MLPs) is to add a linear layer connected from the network input to the output [34, 49]. In [44, 24], a few intermediate layers are directly connected to auxiliary classifiers for addressing vanishing/exploding gradients. The papers of [39, 38, 31, 47] propose methods for centering layer responses, gradients, and propagated errors, implemented by shortcut connections. In [44], an \"inception\" layer is composed of a shortcut branch and a few deeper branches. \nConcurrent with our work, \"highway networks\" [42, 43] present shortcut connections with gating functions [15]. These gates are data-dependent and have parameters, in contrast to our identity shortcuts that are parameter-free. When a gated shortcut is \"closed\" (approaching zero), the layers in highway networks represent *non-residual* functions. On the contrary, our formulation always learns residual functions; our identity shortcuts are never closed, and all information is always passed through, with additional residual functions to be learned. In addition, high-",
+        "content_type": "text"
+      },
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 4,
+        "section_header": "3. Deep Residual Learning > 3.3. Network Architectures",
+        "excerpt": "**Residual Network.** Based on the above plain network, we insert shortcut connections (Fig. 3, right) which turn the network into its counterpart residual version. The identity shortcuts (Eqn.(1)) can be directly used when the input and output are of the same dimensions (solid line shortcuts in Fig. 3). When the dimensions increase (dotted line shortcuts in Fig. 3), we consider two options: (A) The shortcut still performs identity mapping, with extra zero entries padded for increasing dimensions. This option introduces no extra parameter; (B) The projection shortcut in Eqn.(2) is used to match dimensions (done by 1×1 convolutions). For both options, when the shortcuts go across feature maps of two sizes, they are performed with a stride of 2.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 3,
+        "section_header": "3. Deep Residual Learning > 3.2. Identity Mapping by Shortcuts",
+        "excerpt": "The dimensions of $\\mathbf{x}$ and $\\mathcal{F}$ must be equal in Eqn.(1). If this is not the case (e.g., when changing the input/output channels), we can perform a linear projection $W_s$ by the shortcut connections to match the dimensions: \n \nWe can also use a square matrix $W_s$ in Eqn.(1). But we will show by experiments that the identity mapping is sufficient for addressing the degradation problem and is economical, and thus $W_s$ is only used when matching dimensions. \nThe form of the residual function $\\mathcal{F}$ is flexible. Experiments in this paper involve a function $\\mathcal{F}$ that has two or three layers (Fig. 5), while more layers are possible. But if $\\mathcal{F}$ has only a single layer, Eqn.(1) is similar to a linear layer: $\\mathbf{y} = W_1\\mathbf{x} + \\mathbf{x}$, for which we have not observed advantages. \nWe also note that although the above notations are about fully-connected layers for simplicity, they are applicable to convolutional layers. The function $\\mathcal{F}(\\mathbf{x}, \\{W_i\\})$ can represent multiple convolutional layers. The element-wise addition is performed on two feature maps, channel by channel.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 2,
+        "section_header": "Deep Residual Learning for Image Recognition > 1. Introduction",
+        "excerpt": "The formulation of $\\mathcal{F}(\\mathbf{x}) + \\mathbf{x}$ can be realized by feedforward neural networks with \"shortcut connections\" (Fig. 2). Shortcut connections [2, 34, 49] are those skipping one or more layers. In our case, the shortcut connections simply perform *identity mapping*, and their outputs are added to the outputs of the stacked layers (Fig. 2). Identity shortcut connections add neither extra parameter nor computational complexity. The entire network can still be trained end-to-end by SGD with backpropagation, and can be easily implemented using common libraries (e.g., Caffe [19]) without modifying the solvers. \nWe present comprehensive experiments on ImageNet [36] to show the degradation problem and evaluate our method. We show that: 1) Our extremely deep residual nets are easy to optimize, but the counterpart \"plain\" nets (that simply stack layers) exhibit higher training error when the depth increases; 2) Our deep residual nets can easily enjoy accuracy gains from greatly increased depth, producing results substantially better than previous networks.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 6,
+        "section_header": "4. Experiments > 4.1. ImageNet Classification",
+        "excerpt": "**Identity *vs.* Projection Shortcuts.** We have shown that parameter-free, identity shortcuts help with training. Next we investigate projection shortcuts (Eqn.(2)). In Table 3 we compare three options: (A) zero-padding shortcuts are used for increasing dimensions, and all shortcuts are parameter-free (the same as Table 2 and Fig. 4 right); (B) projection shortcuts are used for increasing dimensions, and other shortcuts are identity; and (C) all shortcuts are projections. \nTable 3 shows that all three options are considerably better than the plain counterpart. B is slightly better than A. We argue that this is because the zero-padded dimensions in A indeed have no residual learning. C is marginally better than B, and we attribute this to the extra parameters introduced by many (thirteen) projection shortcuts. But the small differences among A/B/C indicate that projection shortcuts are not essential for addressing the degradation problem. So we do not use option C in the rest of this paper, to reduce memory/time complexity and model sizes. Identity shortcuts are particularly important for not increasing the complexity of the bottleneck architectures that are introduced below.",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 1.5988,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "According to Figure 1 in the TabNet paper, how does sparse feature selection work during prediction?",
+    "ground_truth": "The figure shows that TabNet uses multiple decision blocks that each focus on a selected subset of input features, so different steps attend to the most relevant features for the prediction.",
+    "source_file": [
+      "TabNet.pdf"
+    ],
+    "category": "figure_table_diagram_grounded",
+    "difficulty": "medium",
+    "architecture": "simple_hybrid_rag",
+    "answer": "TabNet's sparse feature selection works by processing a subset of input features, such as professional occupation and investments, through multiple decision blocks to predict income levels, enabling interpretability and better learning by focusing on the most salient features.",
+    "contexts": [
+      "[RETRIEVED] Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).\n\nPage 2\n\n**Visual Description (AI-generated):** Key labels: Age, Education, Occupation, Gender, Relationship\nDiagram flow: Sparse feature selection process for income prediction\nRetrieval summary: This image illustrates a figure from a research paper that demonstrates how TabNet's sparse feature selection method is applied to the Adult Census Income dataset. The method focuses on processing a subset of input features, such as professional occupation and investments, through multiple decision blocks in order to predict income levels.",
+      "[RETRIEVED] Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).\n\nPage 2\n\n**Visual Description (AI-generated):** Key labels: [Age, Education, Occupation, Gender, Relationship]\nDiagram flow: TabNet's sparse feature selection process for income prediction.\nRetrieval summary: Sparse feature selection enables interpretability and better learning as the capacity is used for the most salient features. TabNet employs multiple decision blocks that focus on processing a subset of input features for reasoning, with examples shown for professional occupation and investments.",
+      "[RETRIEVED] Predicted output (whether the income level >$50k) \nFigure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017). Sparse feature selection enables interpretability and better learning as the capacity is used for the most salient features. TabNet employs multiple decision blocks that focus on processing a subset of input features for reasoning. Two decision blocks shown as examples process features that are related to professional occupation and investments, respectively, in order to predict the income level.",
+      "[RETRIEVED] Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).\n\nPage 2\n\n**Visual Description (AI-generated):** Key labels: [TabNet encoder, TabNet decoder]\nDiagram flow: Sparse feature selection is used for income prediction in TabNet.\nRetrieval summary: The image demonstrates how TabNet selects and processes input features related to professional occupation and investments through multiple decision blocks to predict if an income level is over $50k. This example illustrates the sparse feature selection process of TabNet, showcasing its ability to interpret and learn with limited capacity while preserving explanatory reasoning.",
+      "[RETRIEVED] Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).\n\nPage 2\n\n**Visual Description (AI-generated):** Key labels: age, education, occupation, gender, relationship\nDiagram flow: Unsupervised pre-training followed by supervised fine-tuning with feature selection for income prediction.\nRetrieval summary: TabNet's sparse feature selection allows interpretability and better learning in income prediction tasks. Utilizes decision blocks to process input features related to occupation and investments.",
+      "[RETRIEVED] Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).\n\nPage 2\n\n**Visual Description (AI-generated):** Key labels: [Age, Education, Occupation, Gender, Relationship]\nDiagram flow: Sparse feature selection for income prediction using TabNet.\nRetrieval summary: TabNet's sparse feature selection exemplified for Adult Census Income prediction, focusing on professional occupation and investment-related data to predict if income is over $50k.",
+      "[RETRIEVED] Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).\n\nPage 2\n\n**Visual Description (AI-generated):** Key labels: [Input Textures, age, workclass, education, marital status, occupation, relationship, race, sex, capital gain capital loss , hours-per:week, native country]\nDiagram flow: Unsupervised pre-training, Supervised fine-tuning\nRetrieval summary: TabNet's sparse feature selection is used for adult census income prediction. It focuses on processing a subset of input features like professional occupation and investments to predict if the income level is over $50k.",
+      "[RETRIEVED] **Feature selection:** We employ a learnable mask $\\mathbf{M[i]} \\in \\mathbb{R}^{B \\times D}$ for soft selection of the salient features. Through sparse selection of the most salient features, the learning capacity of a decision step is not wasted on irrelevant ones, and thus the model becomes more parameter efficient. The masking is multiplicative, $\\mathbf{M[i]} \\cdot \\mathbf{f}$. We use an attentive transformer (see Fig. 4) to obtain the masks using the processed features from the preceding step, $\\mathbf{a[i - 1]}$: $\\mathbf{M[i]} = \\text{sparsemax}(\\mathbf{P[i - 1]} \\cdot h_i(\\mathbf{a[i - 1]}))$. Sparsemax normalization (Martins and Astudillo 2016) encourages sparsity by mapping the Euclidean projection onto the probabilistic simplex, which is observed to be superior in performance and aligned with the goal of sparse feature selection for explainability. Note that $\\sum_{j=1}^{D} \\mathbf{M[i]}_{b,j} = 1$. $h_i$ is a trainable function, shown in Fig. 4 using a FC layer, followed by BN. $\\mathbf{P[i]}$ is the prior scale term, denoting how much a particular feature has been used previously: $\\mathbf{P[i]} = \\prod_{j=1}^{i} (\\gamma - \\mathbf{M[j]})$, where $\\gamma$ is a relaxation parameter – when $\\gamma = 1$, a feature is enforced"
+    ],
+    "citations": [
+      {
+        "source_file": "TabNet.pdf",
+        "page_number": 2,
+        "section_header": "Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).",
+        "excerpt": "Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).\n\nPage 2\n\n**Visual Description (AI-generated):** Key labels: Age, Education, Occupation, Gender, Relationship\nDiagram flow: Sparse feature selection process for income prediction\nRetrieval summary: This image illustrates a figure from a research paper that demonstrates how TabNet's sparse feature selection method is applied to the Adult Census Income dataset. The method focuses on processing a subset of input features, such as professional occupation and investments, through multiple decision blocks in order to predict income levels.",
+        "content_type": "figure_description"
+      },
+      {
+        "source_file": "TabNet.pdf",
+        "page_number": 2,
+        "section_header": "Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).",
+        "excerpt": "Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).\n\nPage 2\n\n**Visual Description (AI-generated):** Key labels: [Age, Education, Occupation, Gender, Relationship]\nDiagram flow: TabNet's sparse feature selection process for income prediction.\nRetrieval summary: Sparse feature selection enables interpretability and better learning as the capacity is used for the most salient features. TabNet employs multiple decision blocks that focus on processing a subset of input features for reasoning, with examples shown for professional occupation and investments.",
+        "content_type": "figure_description"
+      },
+      {
+        "source_file": "TabNet.pdf",
+        "page_number": 2,
+        "section_header": "TabNet: Attentive Interpretable Tabular Learning > Related Work",
+        "excerpt": "Predicted output (whether the income level >$50k) \nFigure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017). Sparse feature selection enables interpretability and better learning as the capacity is used for the most salient features. TabNet employs multiple decision blocks that focus on processing a subset of input features for reasoning. Two decision blocks shown as examples process features that are related to professional occupation and investments, respectively, in order to predict the income level.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "TabNet.pdf",
+        "page_number": 2,
+        "section_header": "Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).",
+        "excerpt": "Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).\n\nPage 2\n\n**Visual Description (AI-generated):** Key labels: [TabNet encoder, TabNet decoder]\nDiagram flow: Sparse feature selection is used for income prediction in TabNet.\nRetrieval summary: The image demonstrates how TabNet selects and processes input features related to professional occupation and investments through multiple decision blocks to predict if an income level is over $50k. This example illustrates the sparse feature selection process of TabNet, showcasing its ability to interpret and learn with limited capacity while preserving explanatory reasoning.",
+        "content_type": "figure_description"
+      },
+      {
+        "source_file": "TabNet.pdf",
+        "page_number": 2,
+        "section_header": "Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).",
+        "excerpt": "Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).\n\nPage 2\n\n**Visual Description (AI-generated):** Key labels: age, education, occupation, gender, relationship\nDiagram flow: Unsupervised pre-training followed by supervised fine-tuning with feature selection for income prediction.\nRetrieval summary: TabNet's sparse feature selection allows interpretability and better learning in income prediction tasks. Utilizes decision blocks to process input features related to occupation and investments.",
+        "content_type": "figure_description"
+      },
+      {
+        "source_file": "TabNet.pdf",
+        "page_number": 2,
+        "section_header": "Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).",
+        "excerpt": "Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).\n\nPage 2\n\n**Visual Description (AI-generated):** Key labels: [Age, Education, Occupation, Gender, Relationship]\nDiagram flow: Sparse feature selection for income prediction using TabNet.\nRetrieval summary: TabNet's sparse feature selection exemplified for Adult Census Income prediction, focusing on professional occupation and investment-related data to predict if income is over $50k.",
+        "content_type": "figure_description"
+      },
+      {
+        "source_file": "TabNet.pdf",
+        "page_number": 2,
+        "section_header": "Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).",
+        "excerpt": "Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff 2017).\n\nPage 2\n\n**Visual Description (AI-generated):** Key labels: [Input Textures, age, workclass, education, marital status, occupation, relationship, race, sex, capital gain capital loss , hours-per:week, native country]\nDiagram flow: Unsupervised pre-training, Supervised fine-tuning\nRetrieval summary: TabNet's sparse feature selection is used for adult census income prediction. It focuses on processing a subset of input features like professional occupation and investments to predict if the income level is over $50k.",
+        "content_type": "figure_description"
+      },
+      {
+        "source_file": "TabNet.pdf",
+        "page_number": 3,
+        "section_header": "TabNet for Tabular Learning",
+        "excerpt": "**Feature selection:** We employ a learnable mask $\\mathbf{M[i]} \\in \\mathbb{R}^{B \\times D}$ for soft selection of the salient features. Through sparse selection of the most salient features, the learning capacity of a decision step is not wasted on irrelevant ones, and thus the model becomes more parameter efficient. The masking is multiplicative, $\\mathbf{M[i]} \\cdot \\mathbf{f}$. We use an attentive transformer (see Fig. 4) to obtain the masks using the processed features from the preceding step, $\\mathbf{a[i - 1]}$: $\\mathbf{M[i]} = \\text{sparsemax}(\\mathbf{P[i - 1]} \\cdot h_i(\\mathbf{a[i - 1]}))$. Sparsemax normalization (Martins and Astudillo 2016) encourages sparsity by mapping the Euclidean projection onto the probabilistic simplex, which is observed to be superior in performance and aligned with the goal of sparse feature selection for explainability. Note that $\\sum_{j=1}^{D} \\mathbf{M[i]}_{b,j} = 1$. $h_i$ is a trainable function, shown in Fig. 4 using a FC layer, followed by BN. $\\mathbf{P[i]}$ is the prior scale term, denoting how much a particular feature has been used previously: $\\mathbf{P[i]} = \\prod_{j=1}^{i} (\\gamma - \\mathbf{M[j]})$, where $\\gamma$ is a relaxation parameter – when $\\gamma = 1$, a feature is enforced",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 0.549,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "According to Figure 2 in the TabNet paper, how does unsupervised pre-training connect to supervised fine-tuning?",
+    "ground_truth": "The figure shows an encoder-decoder setup used during unsupervised pre-training to reconstruct masked or missing features, and then the pretrained encoder is reused for supervised fine-tuning and decision making.",
+    "source_file": [
+      "TabNet.pdf"
+    ],
+    "category": "figure_table_diagram_grounded",
+    "difficulty": "medium",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1761,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99695, Requested 1909. Please try again in 23m5.856s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "According to Figure 1 in the Transformer paper, how are shifted outputs used on the decoder side?",
+    "ground_truth": "The outputs are shifted right before entering the decoder so prediction at position i depends only on known earlier outputs, together with masking in decoder self-attention.",
+    "source_file": [
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "figure_table_diagram_grounded",
+    "difficulty": "medium",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1405,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99695, Requested 1983. Please try again in 24m9.792s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "Why does the English paper predict increased influence from social constructionist perspectives in Norwegian ELT by 2030?",
+    "ground_truth": "The paper predicts stronger social constructionist influence because English is increasingly used internationally by second- and later-language users, including Norwegians, and this shifts attention toward language use, speaker agency, and communicative practice rather than only fixed native norms.",
+    "source_file": [
+      "English.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1385,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99695, Requested 2181. Please try again in 27m0.863999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "How does the English paper connect the global status of English with local curriculum and student language practices in Norway?",
+    "ground_truth": "The paper links the global spread of English to local Norwegian ELT by arguing that changing worldwide uses of English influence curriculum priorities, beliefs about language, and how Norwegian learners position themselves and use English in practice.",
+    "source_file": [
+      "English.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1351,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99695, Requested 2030. Please try again in 24m50.4s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "Why does the Transformer paper claim its model is both more parallelizable and effective at modeling long-range dependencies?",
+    "ground_truth": "It claims this because attention removes the sequential recurrence bottleneck, allowing more parallel computation, while self-attention can directly connect distant positions in a sequence without depending on a long chain of recurrent steps.",
+    "source_file": [
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1516,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99695, Requested 2174. Please try again in 26m54.815999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "How does BERT address the limitations of earlier unidirectional language-model pre-training approaches?",
+    "ground_truth": "BERT addresses them by using masked language modeling to learn deep bidirectional representations and next sentence prediction to model sentence relationships, which helps on both sentence-level and token-level tasks that need context from both directions.",
+    "source_file": [
+      "BERT.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1498,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99694, Requested 2468. Please try again in 31m7.968s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "Why does the RAG survey argue that Advanced RAG and Modular RAG emerged after Naive RAG?",
+    "ground_truth": "The survey says they emerged because Naive RAG has weaknesses in retrieval precision and recall, generation quality, and augmentation coherence, so later paradigms introduced targeted improvements to fix those shortcomings.",
+    "source_file": [
+      "RAGSurvey.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1593,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99694, Requested 2316. Please try again in 28m56.639999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "Why does the ResNet paper claim that deeper plain networks can have higher training error even though a constructed identity solution should exist?",
+    "ground_truth": "The paper argues that although an identity-based constructed solution should in principle let the deeper model do at least as well as the shallower one, existing optimization methods fail to find such good solutions in plain deep networks, revealing an optimization difficulty rather than simple overfitting.",
+    "source_file": [
+      "ImgRecog.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1648,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99694, Requested 2845. Please try again in 36m33.696s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "Why does TabNet argue that deep learning is still worth exploring for tabular data even though tree-based methods dominate?",
+    "ground_truth": "TabNet argues this because end-to-end gradient-based learning can reduce feature engineering, support multimodal and streaming settings, enable representation learning and semi-supervised learning, and still compete with or outperform tabular baselines when designed appropriately.",
+    "source_file": [
+      "TabNet.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1491,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99694, Requested 2090. Please try again in 25m41.376s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "How does the RAG survey describe the relationship among retrieval, generation, and augmentation in a complete RAG framework?",
+    "ground_truth": "The survey presents retrieval, generation, and augmentation as the three core, interdependent components of a RAG system: retrieval supplies relevant external knowledge, generation produces the answer from the query plus context, and augmentation concerns how retrieved knowledge is integrated effectively.",
+    "source_file": [
+      "RAGSurvey.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1363,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99694, Requested 2374. Please try again in 29m46.752s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "Why can making a neural network deeper actually make optimization worse even when overfitting is not the main issue?",
+    "ground_truth": "Because deeper plain networks can suffer from the degradation problem: optimization becomes harder, training error can increase with depth, and the solver may fail to find good solutions even though deeper models should in principle be able to represent at least the shallower solution.",
+    "source_file": [
+      "ImgRecog.pdf"
+    ],
+    "category": "paraphrase_hard_retrieval",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1368,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99694, Requested 2374. Please try again in 29m46.752s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "Which basic retrieve-read framework splits documents, stores vectorized chunks, fetches top-k relevant context, and then answers with an LLM?",
+    "ground_truth": "That is Naive RAG, the basic retrieve-read pipeline of indexing, retrieval, and generation.",
+    "source_file": [
+      "RAGSurvey.pdf"
+    ],
+    "category": "paraphrase_hard_retrieval",
+    "difficulty": "medium",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1451,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99693, Requested 2386. Please try again in 29m56.255999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "Which shift in English teaching moved away from abstract grammar translation toward listening, speaking, and pronunciation?",
+    "ground_truth": "That shift was the Reform movement and its direct-method orientation.",
+    "source_file": [
+      "English.pdf"
+    ],
+    "category": "paraphrase_hard_retrieval",
+    "difficulty": "medium",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1276,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99693, Requested 2133. Please try again in 26m17.663999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "What BERT pre-training setup lets a token use both left and right context instead of only earlier tokens?",
+    "ground_truth": "BERT's masked language model objective enables bidirectional context because masked tokens are predicted using both left and right context.",
+    "source_file": [
+      "BERT.pdf"
+    ],
+    "category": "paraphrase_hard_retrieval",
+    "difficulty": "medium",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1251,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99693, Requested 2160. Please try again in 26m40.992s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "In the Transformer paper, what design choice removes recurrence while still allowing the model to learn dependencies across positions?",
+    "ground_truth": "The design choice is to rely entirely on attention, especially self-attention, instead of recurrence.",
+    "source_file": [
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "paraphrase_hard_retrieval",
+    "difficulty": "medium",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1289,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99693, Requested 2287. Please try again in 28m30.72s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "In TabNet, what mechanism makes it possible for different rows of tabular data to focus on different input features during reasoning?",
+    "ground_truth": "TabNet uses instance-wise sequential attention with sparse feature masks, so different examples can attend to different subsets of features at each decision step.",
+    "source_file": [
+      "TabNet.pdf"
+    ],
+    "category": "paraphrase_hard_retrieval",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1284,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99693, Requested 2100. Please try again in 25m49.152s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "How do the Transformer and BERT papers use attention differently in their main contributions?",
+    "ground_truth": "The Transformer paper introduces an attention-only encoder-decoder architecture for sequence transduction, while the BERT paper uses Transformer attention inside a bidirectional pretrained language model for general-purpose language representation learning and fine-tuning.",
+    "source_file": [
+      "AttentionIsAllYouNeed.pdf",
+      "BERT.pdf"
+    ],
+    "category": "cross_paper_comparison",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1365,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99693, Requested 2299. Please try again in 28m41.088s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "How do ResNet and TabNet each try to improve optimization or learning efficiency in different data settings?",
+    "ground_truth": "ResNet improves optimization in very deep vision networks by learning residual functions with shortcut connections, while TabNet improves efficiency in tabular learning by using sparse sequential attention to focus model capacity on salient features.",
+    "source_file": [
+      "ImgRecog.pdf",
+      "TabNet.pdf"
+    ],
+    "category": "cross_paper_comparison",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1341,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99693, Requested 2378. Please try again in 29m49.343999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "How does the RAG survey's description of Naive RAG compare with the simple retrieve-read baseline you want to evaluate in this project?",
+    "ground_truth": "They are essentially the same basic idea: index documents into chunks and vectors, retrieve the top relevant chunks for a query, and generate an answer from the question plus the retrieved context without extra correction modules.",
+    "source_file": [
+      "RAGSurvey.pdf"
+    ],
+    "category": "cross_paper_comparison",
+    "difficulty": "medium",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1525,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99692, Requested 2397. Please try again in 30m4.896s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "How do BERT and TabNet each use pre-training before downstream task-specific learning?",
+    "ground_truth": "BERT uses language-model style pre-training with MLM and NSP before fine-tuning on NLP tasks, while TabNet uses unsupervised pre-training to reconstruct or predict masked tabular features before supervised fine-tuning.",
+    "source_file": [
+      "BERT.pdf",
+      "TabNet.pdf"
+    ],
+    "category": "cross_paper_comparison",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1333,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99692, Requested 2219. Please try again in 27m31.103999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "How do the English paper and the RAG survey each connect broad theory to practical application?",
+    "ground_truth": "The English paper connects theories of language and English's global status to curriculum and teaching practice in Norway, while the RAG survey connects high-level RAG paradigms and component design to practical system building, benchmarks, and evaluation.",
+    "source_file": [
+      "English.pdf",
+      "RAGSurvey.pdf"
+    ],
+    "category": "cross_paper_comparison",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1501,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99692, Requested 2443. Please try again in 30m44.64s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "How do the Transformer and ResNet papers each argue that architectural design can overcome training bottlenecks in deep learning?",
+    "ground_truth": "The Transformer argues that attention-based design removes sequential bottlenecks and improves parallelization, while ResNet argues that residual shortcuts ease optimization in very deep networks and reduce degradation.",
+    "source_file": [
+      "AttentionIsAllYouNeed.pdf",
+      "ImgRecog.pdf"
+    ],
+    "category": "cross_paper_comparison",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1509,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99692, Requested 2214. Please try again in 27m26.784s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "In which paper does attention refer to sequential feature selection over tabular columns rather than sequence transduction over token positions?",
+    "ground_truth": "That usage appears in TabNet, where attention selects tabular features at each decision step rather than modeling token-to-token dependencies in a sequence.",
+    "source_file": [
+      "TabNet.pdf",
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "distractor_edge_case",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1409,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99692, Requested 2289. Please try again in 28m31.584s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "Which paper introduces masked language modeling and next sentence prediction, and how is that different from the paper that proposes the Transformer for translation?",
+    "ground_truth": "BERT introduces masked language modeling and next sentence prediction for bidirectional pre-training, whereas the Transformer paper introduces an attention-only architecture for sequence transduction and machine translation.",
+    "source_file": [
+      "BERT.pdf",
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "distractor_edge_case",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1494,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99692, Requested 2505. Please try again in 31m38.208s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "Which paper discusses Naive, Advanced, and Modular RAG rather than introducing a new encoder architecture?",
+    "ground_truth": "The RAG survey discusses Naive, Advanced, and Modular RAG; it is a taxonomy and survey paper rather than a paper proposing a new encoder architecture.",
+    "source_file": [
+      "RAGSurvey.pdf",
+      "AttentionIsAllYouNeed.pdf",
+      "BERT.pdf"
+    ],
+    "category": "distractor_edge_case",
+    "difficulty": "medium",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1625,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99691, Requested 2268. Please try again in 28m12.576s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "Which paper is about language beliefs and English teaching in Norway rather than neural representation learning?",
+    "ground_truth": "That is What is English?, which focuses on language beliefs, English teaching, and the status of English in Norway.",
+    "source_file": [
+      "English.pdf",
+      "BERT.pdf",
+      "AttentionIsAllYouNeed.pdf",
+      "TabNet.pdf",
+      "ImgRecog.pdf"
+    ],
+    "category": "distractor_edge_case",
+    "difficulty": "easy",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1406,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99691, Requested 2274. Please try again in 28m17.76s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "Which paper argues that tree-based methods still dominate tabular applications, and what alternative does it propose?",
+    "ground_truth": "TabNet makes that argument, and it proposes a deep tabular architecture with sequential attention and instance-wise feature selection as the alternative.",
+    "source_file": [
+      "TabNet.pdf"
+    ],
+    "category": "distractor_edge_case",
+    "difficulty": "medium",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1355,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99691, Requested 2485. Please try again in 31m20.064s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  },
+  {
+    "question": "Which paper uses residual shortcuts to combat degradation, and how is that different from the paper that uses external retrieved documents to improve answer generation?",
+    "ground_truth": "ResNet uses residual shortcuts to combat degradation in deep neural networks, whereas the RAG survey discusses systems that use retrieved external documents to improve grounded answer generation.",
+    "source_file": [
+      "ImgRecog.pdf",
+      "RAGSurvey.pdf"
+    ],
+    "category": "distractor_edge_case",
+    "difficulty": "hard",
+    "architecture": "simple_hybrid_rag",
+    "answer": "",
+    "contexts": [],
+    "citations": [],
+    "latency_sec": 0.1416,
+    "status": "error",
+    "error": {
+      "status_code": 500,
+      "detail": "{\"detail\":{\"message\":\"Brain processing failed.\",\"architecture\":\"simple_hybrid_rag\",\"error\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01knzm28fsfcrbc9xtzrh22k8a` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99691, Requested 2497. Please try again in 31m30.432s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}\"}}"
+    }
+  }
+]
