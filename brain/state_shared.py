@@ -24,7 +24,7 @@ class GraphState(TypedDict, total=False):
     auditor_feedback: str
     claim_verification: List[Dict[str, Any]]
 
-    # Phase 2+: supervisor/autonomy fields
+    # Supervisor/autonomy fields
     step_count: int
     action_history: List[str]
     last_action: str
@@ -32,3 +32,18 @@ class GraphState(TypedDict, total=False):
     stop_reason: str
     confidence: float
     latency_so_far: float
+
+    # Proper multi-agent communication fields
+    active_agent: str
+    next_action_recommendation: str
+    agent_notes: Dict[str, Any]
+    agent_decisions: Dict[str, Any]
+    agent_status: Dict[str, Any]
+    agent_trace: List[Dict[str, Any]]
+
+    # Role-specific reasoning fields
+    retrieval_strategy: str
+    rewrite_type: str
+    evidence_gap_reason: str
+    answer_strategy: str
+    verification_outcome: str
