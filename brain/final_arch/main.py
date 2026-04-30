@@ -1,6 +1,7 @@
 from pathlib import Path
 import sys
 import os
+from typing import Any, Dict, List
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -40,6 +41,49 @@ app.add_middleware(
 )
 
 
+def _build_initial_state(query: str) -> Dict[str, Any]:
+    return {
+        "original_query": query,
+        "search_query": query,
+        "retrieved_docs": [],
+        "candidate_docs": [],
+        "weak_signal_docs": [],
+        "graded_docs": [],
+        "generation": "",
+        "crag_retries": 0,
+        "verify_retries": 0,
+        "citations_pass": True,
+        "auditor_feedback": "",
+        "claim_verification": [],
+    }
+
+
+def _serialize_doc(doc: Dict[str, Any]) -> Dict[str, Any]:
+    metadata = doc.get("metadata", {}) or {}
+    return {
+        "text": doc.get("text", ""),
+        "score": doc.get("score"),
+        "rerank_score": doc.get("rerank_score"),
+        "metadata": {
+            "source_file": metadata.get("source_file"),
+            "page_number": metadata.get("page_number"),
+            "section_header": metadata.get("section_header"),
+            "content_type": metadata.get("content_type"),
+            "chunk_index": metadata.get("chunk_index"),
+            "has_table": metadata.get("has_table"),
+            "has_image_description": metadata.get("has_image_description"),
+            "continued_from_previous_page": metadata.get("continued_from_previous_page"),
+            "previous_page_number": metadata.get("previous_page_number"),
+            "figure_number": metadata.get("figure_number"),
+            "figure_caption": metadata.get("figure_caption"),
+        },
+    }
+
+
+def _serialize_docs(docs: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    return [_serialize_doc(doc) for doc in docs]
+
+
 @app.get("/")
 def root():
     return {
@@ -50,6 +94,7 @@ def root():
         "collection": COLLECTION_NAME,
         "endpoints": {
             "ask": "POST /ask",
+            "ask_debug": "POST /ask_debug",
             "health": "GET /health",
             "dependencies_health": "GET /health/dependencies",
         },
@@ -98,21 +143,7 @@ def ask_question(request: QueryRequest):
     if not request.query.strip():
         raise HTTPException(status_code=400, detail="Query cannot be empty.")
 
-    initial_state = {
-        "original_query": request.query,
-        "search_query": request.query,
-
-        "retrieved_docs": [],
-        "candidate_docs": [],
-        "weak_signal_docs": [],
-        "graded_docs": [],
-
-        "generation": "",
-        "crag_retries": 0,
-        "verify_retries": 0,
-        "citations_pass": True,
-        "auditor_feedback": "",
-    }
+    initial_state = _build_initial_state(request.query)
 
     try:
         result = app_graph.invoke(initial_state)
@@ -134,6 +165,52 @@ def ask_question(request: QueryRequest):
             status_code=500,
             detail={
                 "message": "Brain processing failed.",
+                "architecture": ARCHITECTURE_NAME,
+                "error": str(e),
+            },
+        )
+
+
+@app.post("/ask_debug")
+def ask_question_debug(request: QueryRequest):
+    if not request.query.strip():
+        raise HTTPException(status_code=400, detail="Query cannot be empty.")
+
+    initial_state = _build_initial_state(request.query)
+
+    try:
+        result = app_graph.invoke(initial_state)
+        final_docs = result.get("graded_docs", [])
+
+        contexts = build_contexts_from_docs(final_docs, prefix="[FINAL]")
+        citations = build_citations_from_docs(final_docs)
+
+        return {
+            "architecture": ARCHITECTURE_NAME,
+            "query": request.query,
+            "original_query": result.get("original_query", request.query),
+            "final_search_query": result.get("search_query", request.query),
+            "answer": result.get("generation", "Error: No answer generated."),
+            "context_used": contexts,
+            "citations": [c.model_dump() for c in citations],
+            "retrieved_docs": _serialize_docs(result.get("retrieved_docs", [])),
+            "candidate_docs": _serialize_docs(result.get("candidate_docs", [])),
+            "weak_signal_docs": _serialize_docs(result.get("weak_signal_docs", [])),
+            "graded_docs": _serialize_docs(final_docs),
+            "crag_retries": result.get("crag_retries", 0),
+            "verify_retries": result.get("verify_retries", 0),
+            "citations_pass": result.get("citations_pass", False),
+            "auditor_feedback": result.get("auditor_feedback", ""),
+            "claim_verification": result.get("claim_verification", []),
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "message": "Brain debug processing failed.",
                 "architecture": ARCHITECTURE_NAME,
                 "error": str(e),
             },

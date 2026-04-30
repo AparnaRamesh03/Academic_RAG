@@ -370,6 +370,17 @@ def _make_special_chunk(
         },
     }
 
+def _extract_figure_header_parts(fig_header: str) -> tuple[int | None, str]:
+    """
+    Parse:
+        'Figure 3: Caption text'
+    into:
+        (3, 'Caption text')
+    """
+    match = re.match(r"Figure\s+(\d+)\s*:\s*(.+)", fig_header, flags=re.IGNORECASE)
+    if match:
+        return int(match.group(1)), match.group(2).strip()
+    return None, fig_header.strip()
 
 def chunk_markdown(markdown_text: str, source_file: str) -> list[dict]:
     """
@@ -531,6 +542,8 @@ def chunk_markdown(markdown_text: str, source_file: str) -> list[dict]:
             header_match = re.match(r"### (Figure \d+:[^\n]*)", block)
             fig_header = header_match.group(1).strip() if header_match else "Figure"
 
+            figure_number, figure_caption = _extract_figure_header_parts(fig_header)
+
             clean_block = re.sub(r"^###\s+", "", block).strip()
             clean_block = _normalize_whitespace(clean_block)
 
@@ -555,6 +568,8 @@ def chunk_markdown(markdown_text: str, source_file: str) -> list[dict]:
                     "has_image_description": True,
                     "continued_from_previous_page": False,
                     "previous_page_number": None,
+                    "figure_number": figure_number,
+                    "figure_caption": figure_caption,
                 },
             })
             chunk_index += 1

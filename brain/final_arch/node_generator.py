@@ -73,10 +73,11 @@ Auditor feedback from the previous answer:
 {auditor_feedback}
 
 Important retry instruction:
-- Rewrite the answer to directly answer the question and remove unsupported, overly broad, vague, or incomplete claims.
-- Stay strictly grounded in the retrieved evidence.
-- Include the key detail needed by the question if it is supported.
-- Prefer a short, exact, evidence-backed answer over a broader answer.
+- Rewrite the answer to directly answer the user question.
+- Remove unsupported or weakly grounded claims.
+- Remove broad background statements unless they are necessary for the answer.
+- Prefer exact, question-specific claims over general explanation.
+- Keep only what is clearly supported by the retrieved evidence.
 """
 
     prompt = f"""You are an expert academic question-answering assistant.

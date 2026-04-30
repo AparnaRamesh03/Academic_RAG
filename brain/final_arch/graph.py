@@ -15,7 +15,13 @@ from node_context_selector import select_best_context
 from node_grader import grade_documents
 from node_generator import generate
 from node_auditor import audit_answer
-from config import MAX_REWRITE_ROUNDS, MAX_AUDIT_RETRIES
+from reranker_shared import rerank_retrieved_docs
+from config import (
+    MAX_REWRITE_ROUNDS,
+    MAX_AUDIT_RETRIES,
+    RERANK_INPUT_TOP_K,
+    RERANK_OUTPUT_TOP_K,
+)
 
 
 def route_after_retrieval_eval(state: GraphState):
@@ -38,20 +44,41 @@ def route_after_audit(state: GraphState):
     return "end"
 
 
+def rerank_original_node(state: GraphState):
+    return rerank_retrieved_docs(
+        state,
+        input_top_k=RERANK_INPUT_TOP_K,
+        output_top_k=RERANK_OUTPUT_TOP_K,
+    )
+
+
+def rerank_rewritten_node(state: GraphState):
+    return rerank_retrieved_docs(
+        state,
+        input_top_k=RERANK_INPUT_TOP_K,
+        output_top_k=RERANK_OUTPUT_TOP_K,
+    )
+
+
 def build_graph():
     workflow = StateGraph(GraphState)
 
     workflow.add_node("retrieve_original", retrieve_and_store)
+    workflow.add_node("rerank_original", rerank_original_node)
     workflow.add_node("evaluate_retrieval", evaluate_retrieval)
+
     workflow.add_node("rewrite_query", rewrite_query)
     workflow.add_node("retrieve_rewritten", retrieve_and_store)
+    workflow.add_node("rerank_rewritten", rerank_rewritten_node)
+
     workflow.add_node("select_best_context", select_best_context)
     workflow.add_node("grade_documents", grade_documents)
     workflow.add_node("generate", generate)
     workflow.add_node("audit_answer", audit_answer)
 
     workflow.add_edge(START, "retrieve_original")
-    workflow.add_edge("retrieve_original", "evaluate_retrieval")
+    workflow.add_edge("retrieve_original", "rerank_original")
+    workflow.add_edge("rerank_original", "evaluate_retrieval")
 
     workflow.add_conditional_edges(
         "evaluate_retrieval",
@@ -63,7 +90,9 @@ def build_graph():
     )
 
     workflow.add_edge("rewrite_query", "retrieve_rewritten")
-    workflow.add_edge("retrieve_rewritten", "select_best_context")
+    workflow.add_edge("retrieve_rewritten", "rerank_rewritten")
+    workflow.add_edge("rerank_rewritten", "select_best_context")
+
     workflow.add_edge("select_best_context", "grade_documents")
     workflow.add_edge("grade_documents", "generate")
     workflow.add_edge("generate", "audit_answer")

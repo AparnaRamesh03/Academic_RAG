@@ -21,3 +21,6 @@ class GraphState(TypedDict):
     verify_retries: int
     citations_pass: bool
     auditor_feedback: str
+
+    # NEW: claim-level verification details
+    claim_verification: List[Dict[str, Any]]

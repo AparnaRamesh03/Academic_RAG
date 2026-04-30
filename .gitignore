@@ -16,6 +16,6 @@ ingest_folder/
 
 # Evaluation Data (Optional to ignore, but good so large CSVs aren't pushed excessively)
 # evaluation/*.csv
-
+evaluation/temp.txt
 # Frontend
 web_app/node_modules/

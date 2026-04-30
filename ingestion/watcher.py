@@ -20,10 +20,20 @@ load_dotenv()
 WATCH_DIRECTORY = os.path.abspath(
     os.path.join(os.path.dirname(__file__), "../ingest_folder")
 )
-VISION_MODEL = "llava"
+def _env_bool(name: str, default: bool) -> bool:
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() in {"1", "true", "yes", "on"}
 
-# --- TOGGLE: Set to False to skip image/diagram detection and description ---
-ENABLE_IMAGE_DESCRIPTION = False
+
+VISION_MODEL = os.getenv("VISION_MODEL", "llava")
+
+# Turn ON by default for multimodal grounding, but keep it configurable
+ENABLE_IMAGE_DESCRIPTION = _env_bool("ENABLE_IMAGE_DESCRIPTION", True)
+
+# Filter out tiny artifacts
+MIN_FIGURE_DIMENSION = int(os.getenv("MIN_FIGURE_DIMENSION", "150"))
 
 PROCESSING_FILES = set()
 
@@ -387,11 +397,10 @@ async def parse_pdf_agentic(file_path: str):
                             img_file.write(response.content)
 
                         # Filter out likely artifacts
-                        MIN_DIMENSION = 150
                         with _PILImage.open(local_image_path) as img:
                             w, h = img.size
 
-                        if w < MIN_DIMENSION or h < MIN_DIMENSION:
+                        if w < MIN_FIGURE_DIMENSION or h < MIN_FIGURE_DIMENSION:
                             print(
                                 f"    [~] Skipping '{image_filename}' — too small "
                                 f"({w}x{h}px), likely an artifact."
@@ -500,6 +509,10 @@ if __name__ == "__main__":
     observer.start()
 
     print(f"[*] Watcher started. Monitoring '{WATCH_DIRECTORY}' for PDF files.")
+    print(f"[*] Image description enabled: {ENABLE_IMAGE_DESCRIPTION}")
+    if ENABLE_IMAGE_DESCRIPTION:
+        print(f"[*] Vision model: {VISION_MODEL}")
+        print(f"[*] Minimum figure dimension: {MIN_FIGURE_DIMENSION}px")
     try:
         while True:
             time.sleep(1)
