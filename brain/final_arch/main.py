@@ -112,6 +112,23 @@ def ask_question(request: QueryRequest):
         "verify_retries": 0,
         "citations_pass": True,
         "auditor_feedback": "",
+
+        # RL Expanded State
+        "step_count": 0,
+        "action_history": [],
+        "current_phase": "start",
+        "retrieval_rounds": 0,
+        "used_rewrite": False,
+        "used_grade": False,
+        "used_audit": False,
+        "top_retrieval_scores": [],
+        "num_distinct_sources": 0,
+        "question_category": "unknown",
+        "question_difficulty": "unknown",
+        "latency_so_far": 0.0,
+        "done": False,
+        "stop_reason": "",
+        "current_action": ""
     }
 
     try:
