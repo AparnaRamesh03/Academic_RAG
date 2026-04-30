@@ -1,7 +1,8 @@
 from typing import List, Dict, Any, TypedDict
 
 
-class GraphState(TypedDict):
+class GraphState(TypedDict, total=False):
+    # Core query fields
     original_query: str
     search_query: str
 
@@ -21,6 +22,13 @@ class GraphState(TypedDict):
     verify_retries: int
     citations_pass: bool
     auditor_feedback: str
-
-    # NEW: claim-level verification details
     claim_verification: List[Dict[str, Any]]
+
+    # Phase 2+: supervisor/autonomy fields
+    step_count: int
+    action_history: List[str]
+    last_action: str
+    done: bool
+    stop_reason: str
+    confidence: float
+    latency_so_far: float
