@@ -68,6 +68,8 @@ def _build_initial_state(query: str) -> Dict[str, Any]:
         "agent_status": {},
         "agent_trace": [],
         "verification_outcome": "",
+        "mixed_domain_evidence": False,
+        "evidence_source_distribution": {},
     }
 
 
@@ -225,6 +227,8 @@ def ask_question_debug(request: QueryRequest):
             "agent_status": result.get("agent_status", {}),
             "agent_trace": result.get("agent_trace", []),
             "verification_outcome": result.get("verification_outcome", ""),
+            "mixed_domain_evidence": result.get("mixed_domain_evidence", False),
+            "evidence_source_distribution": result.get("evidence_source_distribution", {}),
         }
 
     except HTTPException:

@@ -19,7 +19,7 @@ from state_shared import GraphState
 from config import MAX_AUDIT_RETRIES, MAX_REWRITE_ROUNDS
 from claim_verifier import verify_claims
 from agent_protocol import extract_json_block, build_agent_update
-from query_targeting import is_comparison_query
+from query_targeting import is_comparison_query, is_underspecified_superlative_query
 
 llm = build_groq_llm(temperature=0.0)
 
@@ -58,6 +58,11 @@ def _answer_has_honest_limitation_language(answer: str) -> bool:
         "does not conclusively determine",
         "direct comparison cannot",
         "limiting a direct comparison",
+        "cannot be grounded",
+        "depends on the task or domain",
+        "can only be answered partially",
+        "does not provide enough grounded support",
+        "only be answered partially",
     ]
     return any(p in text for p in patterns)
 
@@ -72,8 +77,41 @@ def _is_meta_limitation_claim(claim_text: str) -> bool:
         "does not conclusively determine",
         "limiting a direct comparison",
         "cannot be fully made",
+        "cannot be grounded",
+        "depends on the task or domain",
+        "can only be answered partially",
+        "does not provide enough grounded support",
+        "only be answered partially",
+        "fairest grounded conclusion",
     ]
     return any(m in text for m in markers)
+
+
+def _has_unscoped_winner_language(answer: str) -> bool:
+    text = answer.lower()
+
+    # Negated / scoped forms should NOT count as winner claims.
+    safe_patterns = [
+        "does not justify a single best architecture",
+        "does not support a single best architecture",
+        "no single best architecture",
+        "cannot be grounded",
+        "depends on the task or domain",
+        "not declare a single global winner",
+        "cannot support a single global winner",
+    ]
+    if any(p in text for p in safe_patterns):
+        return False
+
+    risky_patterns = [
+        "is the best",
+        "best overall",
+        "wins overall",
+        "solves the efficiency problem better than",
+        "better than",
+        "best architecture",
+    ]
+    return any(p in text for p in risky_patterns)
 
 
 def verification_agent(state: GraphState):
@@ -83,6 +121,8 @@ def verification_agent(state: GraphState):
     verify_retries = int(state.get("verify_retries", 0))
     crag_retries = int(state.get("crag_retries", 0))
     comparison_query = is_comparison_query(query)
+    underspecified_superlative = is_underspecified_superlative_query(query)
+    mixed_domain_evidence = bool(state.get("mixed_domain_evidence", False))
 
     print("\n[Multi-Agent] Verification agent reasoning...")
     print(f"  -> Groq model: {GROQ_MODEL}")
@@ -150,8 +190,12 @@ def verification_agent(state: GraphState):
         and all(_is_meta_limitation_claim(c.get("claim_text", "")) for c in unsupported_claims)
     )
 
-    # Deterministic guardrail: grounded but incomplete answers should not be treated like hallucinations.
-    if honest_limitation and supported_claims and (unsupported_meta_only or (comparison_query and len(unsupported_claims) <= 1)):
+    # Guardrail 1: grounded but incomplete answers should be accepted when honest.
+    if honest_limitation and supported_claims and (
+        unsupported_meta_only
+        or (comparison_query and len(unsupported_claims) <= 1)
+        or (mixed_domain_evidence and underspecified_superlative)
+    ):
         return build_agent_update(
             state,
             agent_name="verification_agent",
@@ -159,15 +203,58 @@ def verification_agent(state: GraphState):
             decision_payload={
                 "decision": "PARTIAL_PASS",
                 "verification_outcome": "grounded_incomplete",
-                "rationale": "The answer is grounded and honest about missing evidence.",
+                "rationale": "The answer is grounded and honest about missing evidence or scope limits.",
             },
-            note="The answer is grounded and honest about missing evidence.",
+            note="The answer is grounded and honest about missing evidence or scope limits.",
             status="degraded",
             extra_updates={
                 "citations_pass": True,
                 "auditor_feedback": overall_feedback,
                 "claim_verification": claim_details,
                 "verification_outcome": "grounded_incomplete",
+            },
+        )
+
+    # Guardrail 2: mixed-domain superlative questions must not end with an unsupported winner claim.
+    if mixed_domain_evidence and underspecified_superlative and _has_unscoped_winner_language(answer):
+        if verify_retries < MAX_AUDIT_RETRIES:
+            return build_agent_update(
+                state,
+                agent_name="verification_agent",
+                next_action="answer_agent",
+                decision_payload={
+                    "decision": "REGENERATE",
+                    "verification_outcome": "needs_revision",
+                    "rationale": "The answer makes an ungrounded winner claim across mixed domains and should be rewritten as a scoped comparison.",
+                },
+                note="The answer makes an ungrounded winner claim across mixed domains and should be rewritten as a scoped comparison.",
+                status="degraded",
+                extra_updates={
+                    "citations_pass": False,
+                    "auditor_feedback": "Do not claim a single best architecture overall. Rewrite as a scoped answer by domain/task.",
+                    "claim_verification": claim_details,
+                    "verification_outcome": "needs_revision",
+                    "verify_retries": verify_retries + 1,
+                },
+            )
+
+        return build_agent_update(
+            state,
+            agent_name="verification_agent",
+            next_action="finish",
+            decision_payload={
+                "decision": "STOP",
+                "verification_outcome": "unsupported",
+                "rationale": "The answer still makes an unsupported winner claim across mixed domains.",
+            },
+            note="The answer still makes an unsupported winner claim across mixed domains.",
+            status="degraded",
+            extra_updates={
+                "citations_pass": False,
+                "auditor_feedback": overall_feedback,
+                "claim_verification": claim_details,
+                "verification_outcome": "unsupported",
+                "verify_retries": verify_retries + 1,
             },
         )
 
@@ -200,18 +287,8 @@ Extra signal:
 - verify_retries = {verify_retries}
 - rewrite_retries = {crag_retries}
 - comparison_query = {comparison_query}
-
-Decision meanings:
-- PASS: all important claims are supported
-- PARTIAL_PASS: answer is grounded and honest, explicitly states missing evidence or limitations, and should be accepted as a cautious partial answer
-- REGENERATE: current evidence is mostly enough, but the wording/claim structure should be improved
-- REQUEST_REWRITE: retrieval coverage is missing and another retrieval-focused rewrite may help
-- STOP: repeated retries are unlikely to improve the result
-
-Important:
-- PARTIAL_PASS is allowed when the answer is honest about what the evidence does and does not support.
-- Do NOT treat an honest limitation statement as hallucination.
-- Prefer PARTIAL_PASS over STOP when the answer is grounded but incomplete.
+- underspecified_superlative = {underspecified_superlative}
+- mixed_domain_evidence = {mixed_domain_evidence}
 
 Return ONLY valid JSON:
 {{
@@ -241,7 +318,7 @@ Return ONLY valid JSON:
         next_decision = "PARTIAL_PASS"
         verification_outcome = "grounded_incomplete"
         rationale = (
-            "The answer is grounded and explicitly states the missing evidence, "
+            "The answer is grounded and explicitly states the missing evidence or scope limits, "
             "so it should be accepted as an honest partial answer."
         )
 

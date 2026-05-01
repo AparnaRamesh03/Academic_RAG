@@ -47,3 +47,6 @@ class GraphState(TypedDict, total=False):
     evidence_gap_reason: str
     answer_strategy: str
     verification_outcome: str
+
+    mixed_domain_evidence: bool
+    evidence_source_distribution: Dict[str, Any]

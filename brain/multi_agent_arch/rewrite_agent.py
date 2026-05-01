@@ -1,140 +1,150 @@
 from __future__ import annotations
 
-from collections import Counter, defaultdict
-from typing import Any, Dict, List
+from pathlib import Path
+import sys
+from typing import Dict, List
+
+from langchain_core.messages import HumanMessage
+
+CURRENT_DIR = Path(__file__).resolve().parent
+BRAIN_DIR = CURRENT_DIR.parent
+
+for path in [str(CURRENT_DIR), str(BRAIN_DIR)]:
+    if path not in sys.path:
+        sys.path.append(path)
+
+from llm_config import build_groq_llm, GROQ_MODEL
+from state_shared import GraphState
+from agent_protocol import extract_json_block, build_agent_update
+from query_targeting import (
+    infer_target_entities,
+    infer_target_sources,
+    is_comparison_query,
+    enforce_target_entities,
+)
+
+llm = build_groq_llm(temperature=0.0)
 
 
-SOURCE_ALIASES: Dict[str, List[str]] = {
-    "AttentionIsAllYouNeed.pdf": [
-        "attention is all you need",
-        "transformer",
-        "vaswani",
-    ],
-    "BERT.pdf": [
-        "bert",
-        "bidirectional encoder representations from transformers",
-    ],
-    "ImgRecog.pdf": [
-        "resnet",
-        "residual network",
-        "deep residual learning",
-    ],
-    "RAGSurvey.pdf": [
-        "naive rag",
-        "advanced rag",
-        "modular rag",
-        "rag survey",
-        "survey",
-    ],
-    "TabNet.pdf": [
-        "tabnet",
-    ],
-}
+def _summarize_weak_docs(docs: List[Dict]) -> str:
+    if not docs:
+        return "No weak or partial evidence available."
 
-DISPLAY_NAMES: Dict[str, str] = {
-    "AttentionIsAllYouNeed.pdf": "Transformer",
-    "BERT.pdf": "BERT",
-    "ImgRecog.pdf": "ResNet",
-    "RAGSurvey.pdf": "RAG Survey",
-    "TabNet.pdf": "TabNet",
-}
+    blocks = []
+    for idx, doc in enumerate(docs[:3], start=1):
+        meta = doc.get("metadata", {}) or {}
+        blocks.append(
+            f"[{idx}] "
+            f"source={meta.get('source_file', 'Unknown')} | "
+            f"section={meta.get('section_header', 'Unknown')} | "
+            f"text={str(doc.get('text', ''))[:220]}"
+        )
+    return "\n".join(blocks)
 
 
-def is_comparison_query(query: str) -> bool:
-    q = (query or "").lower()
-    markers = [
-        "compare",
-        "comparison",
-        "versus",
-        " vs ",
-        "difference",
-        "differences",
-        "both",
-        "each",
-        "in contrast",
-        "whereas",
-    ]
-    return any(m in q for m in markers)
+def rewrite_agent(state: GraphState):
+    original_query = state["original_query"]
+    current_search_query = state.get("search_query", original_query)
+    weak_docs = state.get("weak_signal_docs", []) or []
+    retries = int(state.get("crag_retries", 0))
 
+    weak_context = _summarize_weak_docs(weak_docs)
+    target_sources = infer_target_sources(original_query)
+    target_entities = infer_target_entities(original_query)
+    comparison_query = is_comparison_query(original_query)
 
-def is_underspecified_superlative_query(query: str) -> bool:
-    q = (query or "").lower()
-    markers = [
-        "which architecture",
-        "which model",
-        "best",
-        "most efficient",
-        "most effective",
-        "solves the efficiency problem best",
-    ]
-    return any(m in q for m in markers)
+    prompt = f"""You are the Rewrite Agent in a multi-agent academic QA system.
 
+Your job is to improve retrieval when the current query appears weak or incomplete.
 
-def infer_target_sources(query: str) -> List[str]:
-    q = (query or "").lower()
-    matched = []
+Original user question:
+{original_query}
 
-    for source_file, aliases in SOURCE_ALIASES.items():
-        if any(alias in q for alias in aliases):
-            matched.append(source_file)
+Current search query:
+{current_search_query}
 
-    return matched
+Weak / partial evidence:
+{weak_context}
 
+Rewrite attempts so far:
+{retries}
 
-def infer_target_entities(query: str) -> List[str]:
-    return [DISPLAY_NAMES[s] for s in infer_target_sources(query)]
+Target entities explicitly inferred from the question:
+{target_entities if target_entities else "none"}
 
+Target source files inferred from the question:
+{target_sources if target_sources else "none"}
 
-def enforce_target_entities(rewritten_query: str, target_entities: List[str]) -> str:
-    result = " ".join((rewritten_query or "").split())
+Choose a rewrite type:
+- comparison_entity_focused
+- entity_focused
+- keyword_dense
+- figure_table_focused
+- synthesis_focused
+- none
 
-    for entity in target_entities:
-        if entity.lower() not in result.lower():
-            result = f"{result} {entity}".strip()
+Return ONLY valid JSON:
+{{
+  "decision": "REWRITE or KEEP_CURRENT",
+  "rewrite_type": "one label from above",
+  "rewritten_query": "short retrieval query",
+  "rationale": "short explanation"
+}}
 
-    return " ".join(result.split())
+Rules:
+- Preserve user intent exactly.
+- Make the query more retrieval-friendly.
+- Keep the rewritten query short and keyword-rich.
+- If the question is a comparison, preserve the compared entities explicitly.
+- If explicit paper/model names appear in the original query, keep them in the rewritten query.
+- Do not answer the question.
+"""
 
+    print("\n[Multi-Agent] Rewrite agent reasoning...")
+    print(f"  -> Groq model: {GROQ_MODEL}")
 
-def source_distribution(docs: List[Dict[str, Any]], top_n: int = 6) -> Dict[str, int]:
-    counts = Counter()
+    response = llm.invoke([HumanMessage(content=prompt)])
+    parsed = extract_json_block(response.content, default={})
 
-    for doc in docs[:top_n]:
-        source_file = ((doc.get("metadata") or {}).get("source_file")) or "Unknown"
-        counts[source_file] += 1
+    decision = str(parsed.get("decision", "KEEP_CURRENT")).strip().upper()
+    rewrite_type = str(parsed.get("rewrite_type", "none")).strip()
+    rewritten_query = " ".join(str(parsed.get("rewritten_query", current_search_query)).split())
+    rationale = str(parsed.get("rationale", "No rationale provided.")).strip()
 
-    return dict(counts.most_common())
+    if not rewritten_query:
+        rewritten_query = current_search_query
 
+    if comparison_query and target_entities:
+        rewritten_query = enforce_target_entities(rewritten_query, target_entities)
+        if decision != "REWRITE":
+            decision = "REWRITE"
+        if rewrite_type == "none":
+            rewrite_type = "comparison_entity_focused"
 
-def source_distribution_text(docs: List[Dict[str, Any]], top_n: int = 6) -> str:
-    dist = source_distribution(docs, top_n=top_n)
-    if not dist:
-        return "No source distribution available."
-    return ", ".join([f"{k}: {v}" for k, v in dist.items()])
+    new_query = rewritten_query if decision == "REWRITE" else current_search_query
 
-
-def pick_balanced_docs(
-    docs: List[Dict[str, Any]],
-    target_sources: List[str],
-    *,
-    per_source: int = 2,
-    max_total: int = 6,
-) -> List[Dict[str, Any]]:
-    grouped = defaultdict(list)
-
-    for doc in docs:
-        source_file = ((doc.get("metadata") or {}).get("source_file")) or "Unknown"
-        grouped[source_file].append(doc)
-
-    selected: List[Dict[str, Any]] = []
-
-    for source in target_sources:
-        selected.extend(grouped.get(source, [])[:per_source])
-
-    if len(selected) < max_total:
-        for doc in docs:
-            if doc not in selected:
-                selected.append(doc)
-            if len(selected) >= max_total:
-                break
-
-    return selected[:max_total]
+    return build_agent_update(
+        state,
+        agent_name="rewrite_agent",
+        next_action="retriever_agent",
+        decision_payload={
+            "decision": decision,
+            "rewrite_type": rewrite_type,
+            "rewritten_query": new_query,
+            "target_entities": target_entities,
+            "target_sources": target_sources,
+            "rationale": rationale,
+        },
+        note=rationale,
+        extra_updates={
+            "search_query": new_query,
+            "crag_retries": retries + 1,
+            "retrieved_docs": [],
+            "candidate_docs": [],
+            "graded_docs": [],
+            "weak_signal_docs": [],
+            "generation": "",
+            "citations_pass": False,
+            "rewrite_type": rewrite_type,
+        },
+    )
