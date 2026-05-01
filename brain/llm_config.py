@@ -5,8 +5,7 @@ from langchain_groq import ChatGroq
 load_dotenv()
 
 # Shared Groq configuration for all LLM-backed nodes.
-# Note: this is Groq provider, not xAI Grok.
-GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
 
 
 def build_groq_llm(temperature: float = 0.0) -> ChatGroq:
@@ -16,4 +15,5 @@ def build_groq_llm(temperature: float = 0.0) -> ChatGroq:
     return ChatGroq(
         model=GROQ_MODEL,
         temperature=temperature,
+        groq_api_key=os.getenv("GROQ_API_KEY")
     )

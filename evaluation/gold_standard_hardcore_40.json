@@ -248,5 +248,170 @@
     "category": "distractor_edge_case",
     "difficulty": "easy",
     "original_question_id": 58
+  },
+  {
+    "question": "in that paper about translation, what is the exact dimensionality of the key and value vectors when the model uses 8 parallel heads?",
+    "ground_truth": "The dimensionality of the key (d_k) and value (d_v) vectors is 64 when the model uses 8 parallel heads.",
+    "source_file": [
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "adversarial_hard_retrieval",
+    "difficulty": "hard",
+    "original_question_id": 25
+  },
+  {
+    "question": "why is standard deep neural nets bad for spreadsheet data?",
+    "ground_truth": "Spreadsheet data refers to tabular data. The TabNet paper argues standard deep networks lack appropriate inductive bias for tabular decision boundaries, are often overparameterized, and fail to match the performance of tree-based methods.",
+    "source_file": [
+      "TabNet.pdf"
+    ],
+    "category": "adversarial_hard_retrieval",
+    "difficulty": "hard",
+    "original_question_id": 26
+  },
+  {
+    "question": "what does the norwegian paper say about kachrus circle?",
+    "ground_truth": "The paper discusses how Norways position as an Expanding Circle country (in Kachrus model) is becoming increasingly fuzzy due to the widespread use and high proficiency of English in Norway beyond just a foreign language.",
+    "source_file": [
+      "English.pdf"
+    ],
+    "category": "adversarial_hard_retrieval",
+    "difficulty": "hard",
+    "original_question_id": 27
+  },
+  {
+    "question": "how many parameters does the large bi-directional model have compared to the base one?",
+    "ground_truth": "BERT-Large has 340 million parameters, while BERT-Base has 110 million parameters.",
+    "source_file": [
+      "BERT.pdf"
+    ],
+    "category": "adversarial_hard_retrieval",
+    "difficulty": "medium",
+    "original_question_id": 28
+  },
+  {
+    "question": "Does 'attention' refer to sequential feature selection or sequence transduction in these papers?",
+    "ground_truth": "It refers to both depending on the paper. In TabNet, attention is used for sequential feature selection from tabular data. In Attention Is All You Need, self-attention is used for sequence transduction across token positions.",
+    "source_file": [
+      "TabNet.pdf",
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "high_noise_conflicting",
+    "difficulty": "hard",
+    "original_question_id": 29
+  },
+  {
+    "question": "Compare how the papers define 'residual' or 'shortcut' connections.",
+    "ground_truth": "The ResNet paper defines residual/shortcut connections as skipping layers to solve the degradation problem in very deep networks. The Transformer paper also uses residual connections around each of its sub-layers (attention and feed-forward networks).",
+    "source_file": [
+      "ImgRecog.pdf",
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "high_noise_conflicting",
+    "difficulty": "hard",
+    "original_question_id": 30
+  },
+  {
+    "question": "Which papers discuss 'pre-training' and how do their approaches differ?",
+    "ground_truth": "BERT discusses pre-training via masked language modeling and next sentence prediction on text. TabNet discusses unsupervised pre-training for tabular data using masked feature reconstruction.",
+    "source_file": [
+      "BERT.pdf",
+      "TabNet.pdf"
+    ],
+    "category": "high_noise_conflicting",
+    "difficulty": "hard",
+    "original_question_id": 31
+  },
+  {
+    "question": "Do any of the papers explicitly mention 'classification' tasks? If so, what datasets are used?",
+    "ground_truth": "Yes. ResNet uses ImageNet and CIFAR-10 for image classification. BERT uses the GLUE benchmark for text classification. TabNet uses various datasets (like Forest Covertype) for tabular classification.",
+    "source_file": [
+      "ImgRecog.pdf",
+      "BERT.pdf",
+      "TabNet.pdf"
+    ],
+    "category": "high_noise_conflicting",
+    "difficulty": "hard",
+    "original_question_id": 32
+  },
+  {
+    "question": "According to the ResNet paper, did the authors use the Adam optimizer to train the 152-layer network?",
+    "ground_truth": "No, the ResNet paper explicitly states they used Stochastic Gradient Descent (SGD) with a momentum of 0.9, not the Adam optimizer.",
+    "source_file": [
+      "ImgRecog.pdf"
+    ],
+    "category": "hallucination_trap",
+    "difficulty": "medium",
+    "original_question_id": 33
+  },
+  {
+    "question": "In the Transformer paper, what activation function is used inside the feed-forward network? Is it GELU?",
+    "ground_truth": "No, the Transformer paper uses the ReLU activation function inside the position-wise feed-forward networks (max(0, xW1 + b1)W2 + b2). It does not use GELU.",
+    "source_file": [
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "hallucination_trap",
+    "difficulty": "medium",
+    "original_question_id": 34
+  },
+  {
+    "question": "According to the provided RAG survey, what specific vector database did they say is the absolute best?",
+    "ground_truth": "The RAG survey does not declare any specific vector database as the absolute best; it surveys the general paradigms (Naive, Advanced, Modular) and components of RAG systems.",
+    "source_file": [
+      "RAGSurvey.pdf"
+    ],
+    "category": "hallucination_trap",
+    "difficulty": "easy",
+    "original_question_id": 35
+  },
+  {
+    "question": "What does the English paper say about using Duolingo for language learning in Norway?",
+    "ground_truth": "The provided English paper does not mention Duolingo. It focuses on the national curriculum, Grammar Translation, the Reform movement, and broader language beliefs in Norway.",
+    "source_file": [
+      "English.pdf"
+    ],
+    "category": "hallucination_trap",
+    "difficulty": "easy",
+    "original_question_id": 36
+  },
+  {
+    "question": "According to the original Llama 3 technical report, what is the vocabulary size used by the model?",
+    "ground_truth": "Llama 3 uses a vocabulary size of 128K tokens. (Note: This relies on external web search, as it is not in the local database).",
+    "source_file": [
+      "external_web_search"
+    ],
+    "category": "out_of_domain",
+    "difficulty": "hard",
+    "original_question_id": 37
+  },
+  {
+    "question": "What are the core architectural differences between YOLOv9 and previous YOLO versions for object detection?",
+    "ground_truth": "YOLOv9 introduces Programmable Gradient Information (PGI) and the Generalized Efficient Layer Aggregation Network (GELAN) to improve parameter utilization and mitigate information loss during downsampling.",
+    "source_file": [
+      "external_web_search"
+    ],
+    "category": "out_of_domain",
+    "difficulty": "hard",
+    "original_question_id": 38
+  },
+  {
+    "question": "Based on recent literature outside of the provided database, what is Direct Preference Optimization (DPO) and how does it compare to RLHF?",
+    "ground_truth": "Direct Preference Optimization (DPO) is a stable, computationally lightweight alternative to RLHF that optimizes a language model directly on human preference data without needing an explicit reward model or reinforcement learning loops.",
+    "source_file": [
+      "external_web_search"
+    ],
+    "category": "out_of_domain",
+    "difficulty": "hard",
+    "original_question_id": 39
+  },
+  {
+    "question": "Who are the authors of the FlashAttention-2 paper and what is its main speedup claim over the original FlashAttention?",
+    "ground_truth": "The lead author is Tri Dao. FlashAttention-2 claims around a 2x speedup over original FlashAttention by reducing non-matmul FLOPs and parallelizing over sequence length in addition to batch and head dimensions.",
+    "source_file": [
+      "external_web_search"
+    ],
+    "category": "out_of_domain",
+    "difficulty": "hard",
+    "original_question_id": 40
   }
 ]

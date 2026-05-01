@@ -250,3 +250,12 @@
     "original_question_id": 58
   }
 ]
+
+
+
+crag rewrite:
+“Why are old national categories no longer enough for describing English use in Norway?”
+“What lets the tabular model focus on only some columns each time?”
+“Why does making a vision model deeper sometimes hurt learning instead of helping?”
+“How does the survey describe the simplest RAG pipeline without naming it directly?”
+“What makes BERT’s training objective different from older one-direction language model pretraining?”
