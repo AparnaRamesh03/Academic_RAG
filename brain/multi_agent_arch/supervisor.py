@@ -9,8 +9,27 @@ for path in [str(CURRENT_DIR), str(BRAIN_DIR)]:
         sys.path.append(path)
 
 from state_shared import GraphState
-from config import MAX_STEPS, MAX_AUDIT_RETRIES, MIN_CONFIDENCE_TO_STOP, MAX_REWRITE_ROUNDS
+from config import (
+    MAX_STEPS,
+    MAX_AUDIT_RETRIES,
+    MIN_CONFIDENCE_TO_STOP,
+    MAX_REWRITE_ROUNDS,
+    RL_ENABLED,
+    RL_EPSILON,
+    RL_ALPHA,
+    RL_POLICY_PATH,
+)
 from agent_protocol import normalize_next_action, append_agent_trace
+from rl_policy import RLPolicy
+from rl_state_features import extract_state_key
+
+# ── Module-level policy singleton ─────────────────────────────────────────────
+# Loaded once at import time; persists across requests within the same process.
+_policy = RLPolicy(
+    policy_path=RL_POLICY_PATH,
+    epsilon=RL_EPSILON,
+    alpha=RL_ALPHA,
+) if RL_ENABLED else None
 
 VALID_NEXT_AGENTS = {
     "retriever_agent",
@@ -48,7 +67,27 @@ def _update_supervisor_status(
 def detect_agent_loop(state: GraphState) -> bool:
     history = list(state.get("action_history", []) or [])
 
+    # Structural loop: same 3-step sequence repeated back-to-back.
     if len(history) >= 6 and history[-6:-3] == history[-3:]:
+        return True
+
+    # Semantic loop: stuck on the same evidence gap after exhausting the rewrite budget.
+    # If we've called evidence_agent at least twice and still have the same gap reason
+    # with no rewrites left, further iterations won't make progress.
+    crag_retries = int(state.get("crag_retries", 0))
+    evidence_gap_reason = str(state.get("evidence_gap_reason", "") or "")
+    evidence_calls = history.count("evidence_agent")
+
+    stuck_gap_reasons = {
+        "missing_target_source_coverage",
+        "underspecified_mixed_domain_retrieval",
+    }
+
+    if (
+        evidence_calls >= 2
+        and crag_retries >= MAX_REWRITE_ROUNDS
+        and evidence_gap_reason in stuck_gap_reasons
+    ):
         return True
 
     return False
@@ -58,25 +97,45 @@ def estimate_confidence(state: GraphState) -> float:
     claim_verification = state.get("claim_verification", []) or []
     graded_docs = state.get("graded_docs", []) or []
     citations_pass = bool(state.get("citations_pass", False))
+    crag_retries = int(state.get("crag_retries", 0))
+    verify_retries = int(state.get("verify_retries", 0))
 
+    # Best signal: claim-level verification ratio.
     if claim_verification:
         total = len(claim_verification)
         supported = sum(1 for c in claim_verification if bool(c.get("supported", False)))
-        return supported / total if total else 0.0
+        base = supported / total if total else 0.0
 
-    if citations_pass and graded_docs:
-        return 0.75
+    # Second signal: citations passed + graded docs exist — use rerank scores to
+    # interpolate between 0.55 and 0.82 instead of a flat 0.75 bucket.
+    elif citations_pass and graded_docs:
+        scores = [
+            float(doc.get("rerank_score") or doc.get("score") or 0.0)
+            for doc in graded_docs
+            if isinstance(doc.get("rerank_score") or doc.get("score"), (int, float))
+        ]
+        if scores:
+            mean_score = sum(scores) / len(scores)
+            # Clamp mean_score contribution to [0, 0.27] so total stays ≤ 0.82.
+            base = 0.55 + min(0.27, max(0.0, mean_score) * 0.27)
+        else:
+            base = 0.65
 
-    if graded_docs:
-        return 0.55
+    elif graded_docs:
+        base = 0.45
 
-    if state.get("candidate_docs"):
-        return 0.35
+    elif state.get("candidate_docs"):
+        base = 0.30
 
-    if state.get("retrieved_docs"):
-        return 0.20
+    elif state.get("retrieved_docs"):
+        base = 0.15
 
-    return 0.0
+    else:
+        base = 0.0
+
+    # Penalise for effort: each rewrite and audit retry reduces confidence slightly.
+    penalty = 0.05 * crag_retries + 0.05 * verify_retries
+    return round(max(0.0, min(1.0, base - penalty)), 4)
 
 
 def build_stop_reason(state: GraphState) -> str:
@@ -116,7 +175,14 @@ def supervisor_step(state: GraphState):
     elif step_count >= MAX_STEPS:
         done = True
         stop_reason = "max_steps_reached"
-    elif state.get("citations_pass", False) and confidence >= MIN_CONFIDENCE_TO_STOP:
+    elif (
+        state.get("citations_pass", False)
+        and confidence >= MIN_CONFIDENCE_TO_STOP
+        and bool(str(state.get("generation", "") or "").strip())
+    ):
+        # Only stop when an answer has actually been generated — evidence_agent
+        # also sets citations_pass=True (meaning "good evidence found, proceed"),
+        # and we must not confuse that with a fully verified answer.
         done = True
         stop_reason = "grounded_answer_ready"
     elif state.get("generation") and state.get("verify_retries", 0) > MAX_AUDIT_RETRIES:
@@ -126,17 +192,45 @@ def supervisor_step(state: GraphState):
     status_note = "Evaluating next agent."
     status_value = "ok" if not done else "degraded"
 
-    return {
+    # ── RL routing decision ───────────────────────────────────────────────────
+    # Make the decision *before* returning so we can write it into state AND
+    # record the transition for end-of-episode learning.
+    rl_next_action: str | None = None
+    rl_transitions = list(state.get("rl_transitions", []) or [])
+
+    if not done and _policy is not None:
+        import os
+        is_training = os.getenv("RL_TRAINING_MODE") == "1"
+        state_key = extract_state_key({**state, "confidence": confidence})
+        rl_next_action = _policy.act(state_key, explore=is_training)
+        if rl_next_action is not None and rl_next_action in VALID_NEXT_AGENTS:
+            print(f"[RL] Override: {rl_next_action}  (key={state_key})")
+    else:
+        state_key = None
+        rl_next_action = None
+
+    supervisor_update = _update_supervisor_status(
+        state,
+        status=status_value,
+        next_action="finish" if done else "finish",
+        note=status_note if not done else stop_reason,
+    )
+
+    result = {
         "confidence": confidence,
         "done": done,
         "stop_reason": stop_reason,
-        **_update_supervisor_status(
-            state,
-            status=status_value,
-            next_action="finish" if done else "finish",
-            note=status_note if not done else stop_reason,
-        ),
+        "rl_transitions": rl_transitions,
+        # Pending key consumed by _run_agent to record the (state, action) transition.
+        "rl_pending_state_key": str(state_key) if state_key is not None else "",
+        **supervisor_update,
     }
+
+    # Let RL override the routing recommendation when it has a preference.
+    if rl_next_action is not None and rl_next_action in VALID_NEXT_AGENTS:
+        result["next_action_recommendation"] = rl_next_action
+
+    return result
 
 
 def choose_next_agent(state: GraphState) -> str:

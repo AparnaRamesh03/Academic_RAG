@@ -43,7 +43,7 @@ def main() -> None:
         api_base_url=API_BASE_URL,
         expected_architecture=ARCHITECTURE_NAME,
     )
-    print(f"[✓] Backend health check passed: {health_payload}")
+    print(f"[OK] Backend health check passed: {health_payload}")
 
     # 2. Load benchmark
     benchmark = load_json(str(BENCHMARK_PATH))
@@ -112,7 +112,7 @@ def main() -> None:
 
     # 4. Save
     save_json(results, str(OUTPUT_PATH))
-    print(f"[✓] Saved results to: {OUTPUT_PATH}")
+    print(f"[OK] Saved results to: {OUTPUT_PATH}")
 
 
 if __name__ == "__main__":

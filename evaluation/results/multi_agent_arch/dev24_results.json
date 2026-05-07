@@ -1,0 +1,969 @@
+[
+  {
+    "question": "Why is Norway’s status as an Expanding Circle country described as increasingly fuzzy?",
+    "ground_truth": "It is described as fuzzy because English has expanded strongly in Norway beyond a typical foreign-language role, including broad use in education, business, and international communication.",
+    "source_file": [
+      "English.pdf"
+    ],
+    "category": "direct_fact_lookup",
+    "difficulty": "easy",
+    "original_question_id": 3,
+    "architecture": "multi_agent_arch",
+    "answer": "Norway's status as an Expanding Circle country is described as increasingly fuzzy because English is becoming increasingly dominant in various domains of Norwegian society, including education, media, and technology. This is evident in the widespread use of English in teaching, materials, and research in higher education, as well as the dominance of English-language content in digital media. As a result, young people's online engagement and interactions are often in English, making it a prerequisite in everyday life.",
+    "context_used": [
+      "[FINAL] The Tripod survey has been adapted for the Nordic context (Klette et al., 2017), and has been used to measure student experiences of instruction in several studies within the Nordic context. We highlight three methodological trends revealed by this research. First, research shows that average student responses to the Tripod survey tend to be positive (Kane & Staiger, 2012; Buchholtz et al., 2020), which is viewed as supporting the claim that students have overall positive impressions of the quality of the instruction they receive (Mahan & Norheim, 2021; Olsen, 2023; Sigurjónsson, 2022). In Norway, in a recent report on life skills education for Year 8 students, most students reported that they often or always experienced personal support and inclusion from their teachers in the classroom (Brevik et al., 2023b). Two years later, when the same student cohort reached Year 10, the",
+      "[FINAL] English is present in Norwegian society in various domains and for speakers of all ages, especially for young adults, adolescents and children (Rindal, 2025). In higher education, English is increasingly used in teaching, materials and research, to the extent that there is concern that Norwegian is losing ground in this domain (Diku, 2021; Røyneland et al., 2018). In various digital media, English is the dominant language, including on the most popular streaming platforms, games and social media (Norwegian Media Authority, 2022). New technology is adopted quickly, often before Norwegian versions have been produced, and English-language entertainment content dominates the market. Importantly, when internet content is largely in English, young people's online engagement and interactions with others about their interests and hobbies will inevitably occur in English. For the younger generations, English is a prerequisite in everyday life, and Norwegians are, in fact, among the most proficient speakers of English as an additional language (L2) in Europe and the world (Education First, 2024)."
+    ],
+    "citations": [
+      {
+        "source_file": "English.pdf",
+        "page_number": 4,
+        "section_header": "A review of Tripod studies in the Nordic context",
+        "excerpt": "The Tripod survey has been adapted for the Nordic context (Klette et al., 2017), and has been used to measure student experiences of instruction in several studies within the Nordic context. We highlight three methodological trends revealed by this research. First, research shows that average student responses to the Tripod survey tend to be positive (Kane & Staiger, 2012; Buchholtz et al., 2020), which is viewed as supporting the claim that students have overall positive impressions of the quality of the instruction they receive (Mahan & Norheim, 2021; Olsen, 2023; Sigurjónsson, 2022). In Norway, in a recent report on life skills education for Year 8 students, most students reported that they often or always experienced personal support and inclusion from their teachers in the classroom (Brevik et al., 2023b). Two years later, when the same student cohort reached Year 10, the",
+        "content_type": "text"
+      },
+      {
+        "source_file": "English.pdf",
+        "page_number": 5,
+        "section_header": "Context",
+        "excerpt": "English is present in Norwegian society in various domains and for speakers of all ages, especially for young adults, adolescents and children (Rindal, 2025). In higher education, English is increasingly used in teaching, materials and research, to the extent that there is concern that Norwegian is losing ground in this domain (Diku, 2021; Røyneland et al., 2018). In various digital media, English is the dominant language, including on the most popular streaming platforms, games and social media (Norwegian Media Authority, 2022). New technology is adopted quickly, often before Norwegian versions have been produced, and English-language entertainment content dominates the market. Importantly, when internet content is largely in English, young people's online engagement and interactions with others about their interests and hobbies will inevitably occur in English. For the younger generations, English is a prerequisite in everyday life, and Norwegians are, in fact, among the most proficient speakers of English as an additional language (L2) in Europe and the world (Education First, 2024).",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 44.97301999999945,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "Which two pre-training tasks are used in BERT?",
+    "ground_truth": "BERT uses masked language modeling and next sentence prediction.",
+    "source_file": [
+      "BERT.pdf"
+    ],
+    "category": "direct_fact_lookup",
+    "difficulty": "easy",
+    "original_question_id": 7,
+    "architecture": "multi_agent_arch",
+    "answer": "The two pre-training tasks used in BERT are Masked LM and another unsupervised task, which is not explicitly described in the provided evidence.",
+    "context_used": [
+      "[FINAL] We introduce BERT and its detailed implementation in this section. There are two steps in our framework: *pre-training* and *fine-tuning*. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For fine-tuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. \nA distinctive feature of BERT is its unified architecture across different tasks. There is minimal difference between the pre-trained architecture and the final downstream architecture.",
+      "[FINAL] Unlike Peters et al. (2018a) and Radford et al. (2018), we do not use traditional left-to-right or right-to-left language models to pre-train BERT. Instead, we pre-train BERT using two unsupervised tasks, described in this section. This step is presented in the left part of Figure 1. \n**Task #1: Masked LM** Intuitively, it is reasonable to believe that a deep bidirectional model is strictly more powerful than either a left-to-right model or the shallow concatenation of a left-to-right and a right-to-left model. Unfortunately, standard conditional language models can only be trained left-to-right or right-to-left, since bidirectional conditioning would allow each word to indirectly “see itself”, and the model could trivially predict the target word in a multi-layered context. \nformer is often referred to as a “Transformer encoder” while the left-context-only version is referred to as a “Transformer decoder” since it can be used for text generation."
+    ],
+    "citations": [
+      {
+        "source_file": "BERT.pdf",
+        "page_number": 3,
+        "section_header": "3 BERT",
+        "excerpt": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: *pre-training* and *fine-tuning*. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For fine-tuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. \nA distinctive feature of BERT is its unified architecture across different tasks. There is minimal difference between the pre-trained architecture and the final downstream architecture.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "BERT.pdf",
+        "page_number": 4,
+        "section_header": "3.1 Pre-training BERT",
+        "excerpt": "Unlike Peters et al. (2018a) and Radford et al. (2018), we do not use traditional left-to-right or right-to-left language models to pre-train BERT. Instead, we pre-train BERT using two unsupervised tasks, described in this section. This step is presented in the left part of Figure 1. \n**Task #1: Masked LM** Intuitively, it is reasonable to believe that a deep bidirectional model is strictly more powerful than either a left-to-right model or the shallow concatenation of a left-to-right and a right-to-left model. Unfortunately, standard conditional language models can only be trained left-to-right or right-to-left, since bidirectional conditioning would allow each word to indirectly “see itself”, and the model could trivially predict the target word in a multi-layered context. \nformer is often referred to as a “Transformer encoder” while the left-context-only version is referred to as a “Transformer decoder” since it can be used for text generation.",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 33.86730890000035,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "How deep is the deepest residual network reported in the ResNet paper, and how does it compare to VGG in depth?",
+    "ground_truth": "The deepest residual network reported is 152 layers, which is about 8 times deeper than VGG nets mentioned in the paper.",
+    "source_file": [
+      "ImgRecog.pdf"
+    ],
+    "category": "direct_fact_lookup",
+    "difficulty": "easy",
+    "original_question_id": 9,
+    "architecture": "multi_agent_arch",
+    "answer": "The deepest residual network reported in the ResNet paper is 152 layers. This is significantly deeper than VGG nets, which are 8 times shallower.",
+    "context_used": [
+      "[FINAL] Similar phenomena are also shown on the CIFAR-10 set [20], suggesting that the optimization difficulties and the effects of our method are not just akin to a particular dataset. We present successfully trained models on this dataset with over 100 layers, and explore models with over 1000 layers. \nOn the ImageNet classification dataset [36], we obtain excellent results by extremely deep residual nets. Our 152-layer residual net is the deepest network ever presented on ImageNet, while still having lower complexity than VGG nets [41]. Our ensemble has 3.57% top-5 error on the",
+      "[FINAL] Deeper neural networks are more difficult to train. We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. We explicitly reformulate the layers as learning residual functions with reference to the layer inputs, instead of learning unreferenced functions. We provide comprehensive empirical evidence showing that these residual networks are easier to optimize, and can gain accuracy from considerably increased depth. On the ImageNet dataset we evaluate residual nets with a depth of up to 152 layers—8× deeper than VGG nets [41] but still having lower complexity. An ensemble of these residual nets achieves 3.57% error on the ImageNet test set. This result won the 1st place on the ILSVRC 2015 classification task. We also present analysis on CIFAR-10 with 100 and 1000 layers. \nThe depth of representations is of central importance for many visual recognition tasks. Solely due to our extremely deep representations, we obtain a 28% relative improvement on the COCO object detection dataset. Deep residual nets are foundations of our submissions to ILSVRC & COCO 2015 competitions1, where we also won the 1st places on the tasks of ImageNet detection, ImageNet localization, COCO detection, and COCO segmentation.",
+      "[FINAL] We compare n = {3, 5, 7, 9}, leading to 20, 32, 44, and 56-layer networks. Fig. 6 (left) shows the behaviors of the plain nets. The deep plain nets suffer from increased depth, and exhibit higher training error when going deeper. This phenomenon is similar to that on ImageNet (Fig. 4, left) and on MNIST (see [42]), suggesting that such an optimization difficulty is a fundamental problem. \nFig. 6 (middle) shows the behaviors of ResNets. Also similar to the ImageNet cases (Fig. 4, right), our ResNets manage to overcome the optimization difficulty and demonstrate accuracy gains when the depth increases. \nWe further explore n = 18 that leads to a 110-layer ResNet. In this case, we find that the initial learning rate of 0.1 is slightly too large to start converging5. So we use 0.01 to warm up the training until the training error is below 80% (about 400 iterations), and then go back to 0.1 and continue training. The rest of the learning schedule is as done previously. This 110-layer network converges well (Fig. 6, middle). It has fewer parameters than other deep and thin \n5With an initial learning rate of 0.1, it starts converging (3% over VGG-16. This gain is solely because of the improved features learned by ResNet.",
+      "[FINAL] **Table 3.** Error rates (%, 10-crop testing) on ImageNet validation. VGG-16 is based on our test. ResNet-50/101/152 are of option B that only uses projections for increasing dimensions. \n**Table 4.** Error rates (%) of single-model results on the ImageNet validation set (except † reported on the test set). \n**Table 5.** Error rates (%) of ensembles. The top-5 error is on the test set of ImageNet and reported by the test server. \nResNet reduces the top-1 error by 3.5% (Table 2), resulting from the successfully reduced training error (Fig. 4 right vs. left). This comparison verifies the effectiveness of residual learning on extremely deep systems. \nLast, we also note that the 18-layer plain/residual nets are comparably accurate (Table 2), but the 18-layer ResNet converges faster (Fig. 4 right vs. left). When the net is \"not overly deep\" (18 layers here), the current SGD solver is still able to find good solutions to the plain net. In this case, the ResNet eases the optimization by providing faster convergence at the early stage.",
+      "[FINAL] 34-layer net with this 3-layer bottleneck block, resulting in a 50-layer ResNet (Table 1). We use option B for increasing dimensions. This model has 3.8 billion FLOPs. \n**101-layer and 152-layer ResNets:** We construct 101-layer and 152-layer ResNets by using more 3-layer blocks (Table 1). Remarkably, although the depth is significantly increased, the 152-layer ResNet (11.3 billion FLOPs) still has lower complexity than VGG-16/19 nets (15.3/19.6 billion FLOPs). \nThe 50/101/152-layer ResNets are more accurate than the 34-layer ones by considerable margins (Table 3 and 4). We do not observe the degradation problem and thus enjoy significant accuracy gains from considerably increased depth. The benefits of depth are witnessed for all evaluation metrics (Table 3 and 4).",
+      "[FINAL] | method | top-5 err. (test) |\n| --------------------------- | ----------------- |\n| VGG \\[41] (ILSVRC'14) | 7.32 |\n| GoogLeNet \\[44] (ILSVRC'14) | 6.66 |\n| VGG \\[41] (v5) | 6.8 |\n| PReLU-net \\[13] | 4.94 |\n| BN-inception \\[16] | 4.82 |\n| ResNet (ILSVRC'15) | 3.57 |"
+    ],
+    "citations": [
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 2,
+        "section_header": "Deep Residual Learning for Image Recognition > 1. Introduction",
+        "excerpt": "Similar phenomena are also shown on the CIFAR-10 set [20], suggesting that the optimization difficulties and the effects of our method are not just akin to a particular dataset. We present successfully trained models on this dataset with over 100 layers, and explore models with over 1000 layers. \nOn the ImageNet classification dataset [36], we obtain excellent results by extremely deep residual nets. Our 152-layer residual net is the deepest network ever presented on ImageNet, while still having lower complexity than VGG nets [41]. Our ensemble has 3.57% top-5 error on the",
+        "content_type": "text"
+      },
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 1,
+        "section_header": "Deep Residual Learning for Image Recognition > Abstract",
+        "excerpt": "Deeper neural networks are more difficult to train. We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. We explicitly reformulate the layers as learning residual functions with reference to the layer inputs, instead of learning unreferenced functions. We provide comprehensive empirical evidence showing that these residual networks are easier to optimize, and can gain accuracy from considerably increased depth. On the ImageNet dataset we evaluate residual nets with a depth of up to 152 layers—8× deeper than VGG nets [41] but still having lower complexity. An ensemble of these residual nets achieves 3.57% error on the ImageNet test set. This result won the 1st place on the ILSVRC 2015 classification task. We also present analysis on CIFAR-10 with 100 and 1000 layers. \nThe depth of representations is of central importance for many visual recognition tasks. Solely due to our extremely deep representations, we obtain a 28% relative improvement on the COCO object detection dataset. Deep residual nets are foundations of our submissions to ILSVRC & COCO 2015 competitions1, where we also won the 1st places on the tasks of ImageNet detection, ImageNet localization, COCO detection, and COCO segmentation.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 7,
+        "section_header": "filters | 32×32",
+        "excerpt": "We compare n = {3, 5, 7, 9}, leading to 20, 32, 44, and 56-layer networks. Fig. 6 (left) shows the behaviors of the plain nets. The deep plain nets suffer from increased depth, and exhibit higher training error when going deeper. This phenomenon is similar to that on ImageNet (Fig. 4, left) and on MNIST (see [42]), suggesting that such an optimization difficulty is a fundamental problem. \nFig. 6 (middle) shows the behaviors of ResNets. Also similar to the ImageNet cases (Fig. 4, right), our ResNets manage to overcome the optimization difficulty and demonstrate accuracy gains when the depth increases. \nWe further explore n = 18 that leads to a 110-layer ResNet. In this case, we find that the initial learning rate of 0.1 is slightly too large to start converging5. So we use 0.01 to warm up the training until the training error is below 80% (about 400 iterations), and then go back to 0.1 and continue training. The rest of the learning schedule is as done previously. This 110-layer network converges well (Fig. 6, middle). It has fewer parameters than other deep and thin \n5With an initial learning rate of 0.1, it starts converging (3% over VGG-16. This gain is solely because of the improved features learned by ResNet.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 6,
+        "section_header": "Table 2. Top-1 error (%, 10-crop testing) on ImageNet validation > Residual Networks",
+        "excerpt": "**Table 3.** Error rates (%, 10-crop testing) on ImageNet validation. VGG-16 is based on our test. ResNet-50/101/152 are of option B that only uses projections for increasing dimensions. \n**Table 4.** Error rates (%) of single-model results on the ImageNet validation set (except † reported on the test set). \n**Table 5.** Error rates (%) of ensembles. The top-5 error is on the test set of ImageNet and reported by the test server. \nResNet reduces the top-1 error by 3.5% (Table 2), resulting from the successfully reduced training error (Fig. 4 right vs. left). This comparison verifies the effectiveness of residual learning on extremely deep systems. \nLast, we also note that the 18-layer plain/residual nets are comparably accurate (Table 2), but the 18-layer ResNet converges faster (Fig. 4 right vs. left). When the net is \"not overly deep\" (18 layers here), the current SGD solver is still able to find good solutions to the plain net. In this case, the ResNet eases the optimization by providing faster convergence at the early stage.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 7,
+        "section_header": "Table 2. Top-1 error (%, 10-crop testing) on ImageNet validation > Residual Networks",
+        "excerpt": "34-layer net with this 3-layer bottleneck block, resulting in a 50-layer ResNet (Table 1). We use option B for increasing dimensions. This model has 3.8 billion FLOPs. \n**101-layer and 152-layer ResNets:** We construct 101-layer and 152-layer ResNets by using more 3-layer blocks (Table 1). Remarkably, although the depth is significantly increased, the 152-layer ResNet (11.3 billion FLOPs) still has lower complexity than VGG-16/19 nets (15.3/19.6 billion FLOPs). \nThe 50/101/152-layer ResNets are more accurate than the 34-layer ones by considerable margins (Table 3 and 4). We do not observe the degradation problem and thus enjoy significant accuracy gains from considerably increased depth. The benefits of depth are witnessed for all evaluation metrics (Table 3 and 4).",
+        "content_type": "text"
+      },
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 6,
+        "section_header": "Table 2. Top-1 error (%, 10-crop testing) on ImageNet validation > Residual Networks",
+        "excerpt": "| method | top-5 err. (test) |\n| --------------------------- | ----------------- |\n| VGG \\[41] (ILSVRC'14) | 7.32 |\n| GoogLeNet \\[44] (ILSVRC'14) | 6.66 |\n| VGG \\[41] (v5) | 6.8 |\n| PReLU-net \\[13] | 4.94 |\n| BN-inception \\[16] | 4.82 |\n| ResNet (ILSVRC'15) | 3.57 |",
+        "content_type": "table"
+      }
+    ],
+    "latency_sec": 63.040492999999515,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "What is Naive RAG according to the survey?",
+    "ground_truth": "Naive RAG is the basic retrieve-read framework with three stages: indexing documents into chunks and vectors, retrieving the top relevant chunks for a query, and generating an answer from the query plus the retrieved context.",
+    "source_file": [
+      "RAGSurvey.pdf"
+    ],
+    "category": "definition_explanation",
+    "difficulty": "medium",
+    "original_question_id": 13,
+    "architecture": "multi_agent_arch",
+    "answer": "Naive RAG mainly consists of three parts: indexing, retrieval, and generation. It represents the earliest methodology in the RAG research paradigm, gaining prominence shortly after its introduction.",
+    "context_used": [
+      "[FINAL] Comparison of three RAG paradigms showing Naive RAG, Advanced RAG, and Modular RAG architectures with their respective components and data flow \n**Fig. 3.** Comparison between the three paradigms of RAG. (Left) Naive RAG mainly consists of three parts: indexing, retrieval and generation. (Middle) Advanced RAG proposes multiple optimization strategies around pre-retrieval and post-retrieval, with a process similar to the Naive RAG, still following a chain-like structure. (Right) Modular RAG inherits and develops from the previous paradigm, showcasing greater flexibility overall. This is evident in the introduction of multiple specific functional modules and the replacement of existing modules. The overall process is not limited to sequential retrieval and generation; it includes methods such as iterative and adaptive retrieval.",
+      "[FINAL] The Naive RAG research paradigm represents the earliest methodology, which gained prominence shortly after the"
+    ],
+    "citations": [
+      {
+        "source_file": "RAGSurvey.pdf",
+        "page_number": 4,
+        "section_header": "II. OVERVIEW OF RAG > A. Naive RAG",
+        "excerpt": "Comparison of three RAG paradigms showing Naive RAG, Advanced RAG, and Modular RAG architectures with their respective components and data flow \n**Fig. 3.** Comparison between the three paradigms of RAG. (Left) Naive RAG mainly consists of three parts: indexing, retrieval and generation. (Middle) Advanced RAG proposes multiple optimization strategies around pre-retrieval and post-retrieval, with a process similar to the Naive RAG, still following a chain-like structure. (Right) Modular RAG inherits and develops from the previous paradigm, showcasing greater flexibility overall. This is evident in the introduction of multiple specific functional modules and the replacement of existing modules. The overall process is not limited to sequential retrieval and generation; it includes methods such as iterative and adaptive retrieval.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "RAGSurvey.pdf",
+        "page_number": 2,
+        "section_header": "II. OVERVIEW OF RAG > A. Naive RAG",
+        "excerpt": "The Naive RAG research paradigm represents the earliest methodology, which gained prominence shortly after the",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 33.1977095000002,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "What is self-attention in the Transformer paper?",
+    "ground_truth": "Self-attention is an attention mechanism that relates different positions within the same sequence so the model can build representations using dependencies across positions.",
+    "source_file": [
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "definition_explanation",
+    "difficulty": "medium",
+    "original_question_id": 16,
+    "architecture": "multi_agent_arch",
+    "answer": "Self-attention is an attention mechanism relating different positions of a single sequence to compute a representation of the sequence. It has been used in various tasks, including reading comprehension, abstractive summarization, textual entailment, and learning task-independent sentence representations.",
+    "context_used": [
+      "[FINAL] The goal of reducing sequential computation also forms the foundation of the Extended Neural GPU [16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12]. In the Transformer this is reduced to a constant number of operations, albeit at the cost of reduced effective resolution due to averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as described in section 3.2. \nSelf-attention, sometimes called intra-attention is an attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence. Self-attention has been used successfully in a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representations [4, 27, 28, 22].",
+      "[FINAL] End-to-end memory networks are based on a recurrent attention mechanism instead of sequence-aligned recurrence and have been shown to perform well on simple-language question answering and language modeling tasks [34]. \nTo the best of our knowledge, however, the Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequence-aligned RNNs or convolution. In the following sections, we will describe the Transformer, motivate self-attention and discuss its advantages over models such as [17, 18] and [9]."
+    ],
+    "citations": [
+      {
+        "source_file": "AttentionIsAllYouNeed.pdf",
+        "page_number": 2,
+        "section_header": "2 Background",
+        "excerpt": "The goal of reducing sequential computation also forms the foundation of the Extended Neural GPU [16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12]. In the Transformer this is reduced to a constant number of operations, albeit at the cost of reduced effective resolution due to averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as described in section 3.2. \nSelf-attention, sometimes called intra-attention is an attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence. Self-attention has been used successfully in a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representations [4, 27, 28, 22].",
+        "content_type": "text"
+      },
+      {
+        "source_file": "AttentionIsAllYouNeed.pdf",
+        "page_number": 2,
+        "section_header": "2 Background",
+        "excerpt": "End-to-end memory networks are based on a recurrent attention mechanism instead of sequence-aligned recurrence and have been shown to perform well on simple-language question answering and language modeling tasks [34]. \nTo the best of our knowledge, however, the Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequence-aligned RNNs or convolution. In the following sections, we will describe the Transformer, motivate self-attention and discuss its advantages over models such as [17, 18] and [9].",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 33.92366260000017,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "Why does TabNet argue that tabular data is difficult for standard deep neural networks?",
+    "ground_truth": "TabNet argues that standard deep networks are often poorly suited to tabular data because they lack the right inductive bias, can be overparameterized for tabular decision boundaries, and are often outperformed by tree-based methods that are efficient, interpretable, and fast.",
+    "source_file": [
+      "TabNet.pdf"
+    ],
+    "category": "definition_explanation",
+    "difficulty": "medium",
+    "original_question_id": 17,
+    "architecture": "multi_agent_arch",
+    "answer": "TabNet argues that tabular data is difficult for standard deep neural networks because previously-proposed DNN architectures are not well-suited for tabular data. They are often vastly overparametrized, lacking the appropriate inductive bias, which causes them to fail to find optimal solutions for tabular decision manifolds.",
+    "context_used": [
+      "[FINAL] Why is deep learning worth exploring for tabular data? One obvious motivation is expected performance improve-We propose a new canonical DNN architecture for tabular data, TabNet. The main contributions are summarized as: \n1. *TabNet inputs raw tabular data without any preprocessing* and is trained using gradient descent-based optimization, enabling flexible integration into end-to-end learning. \n2. *TabNet uses sequential attention to choose which features to reason from at each decision step*, enabling interpretability and better learning as the learning capacity is used for the most salient features (see Fig. 1). This feature selection is *instance-wise*, e.g. it can be different for each input, and unlike other instance-wise feature selection methods like (Chen et al. 2018) or (Yoon, Jordon, and van der Schaar 2019), TabNet employs a *single deep learning architecture for feature selection and reasoning*.",
+      "[FINAL] Despite being the most common data type in real-world AI (as it is comprised of any categorical and numerical features), (Chui et al. 2018), deep learning for tabular data remains under-explored, with variants of ensemble decision trees (DTs) still dominating most applications (Kaggle 2019a). Why? First, because DT-based approaches have certain benefits: (i) they are representationally efficient for decision manifolds with approximately hyperplane boundaries which are common in tabular data; and (ii) they are highly interpretable in their basic form (e.g. by tracking decision nodes) and there are popular post-hoc explainability methods for their ensemble form, e.g. (Lundberg, Erion, and Lee 2018) – this is an important concern in many real-world applications; (iii) they are fast to train. Second, because previously-proposed DNN architectures are not well-suited for tabular data: e.g. stacked convolutional layers or multi-layer perceptrons (MLPs) are vastly overparametrized – the lack of appropriate inductive bias often causes them to fail to find optimal solutions for tabular decision manifolds (Goodfellow, Bengio, and Courville 2016; Shavitt and Segal 2018; Xu et al. 2019)."
+    ],
+    "citations": [
+      {
+        "source_file": "TabNet.pdf",
+        "page_number": 1,
+        "section_header": "TabNet: Attentive Interpretable Tabular Learning > Introduction",
+        "excerpt": "Why is deep learning worth exploring for tabular data? One obvious motivation is expected performance improve-We propose a new canonical DNN architecture for tabular data, TabNet. The main contributions are summarized as: \n1. *TabNet inputs raw tabular data without any preprocessing* and is trained using gradient descent-based optimization, enabling flexible integration into end-to-end learning. \n2. *TabNet uses sequential attention to choose which features to reason from at each decision step*, enabling interpretability and better learning as the learning capacity is used for the most salient features (see Fig. 1). This feature selection is *instance-wise*, e.g. it can be different for each input, and unlike other instance-wise feature selection methods like (Chen et al. 2018) or (Yoon, Jordon, and van der Schaar 2019), TabNet employs a *single deep learning architecture for feature selection and reasoning*.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "TabNet.pdf",
+        "page_number": 1,
+        "section_header": "TabNet: Attentive Interpretable Tabular Learning > Introduction",
+        "excerpt": "Despite being the most common data type in real-world AI (as it is comprised of any categorical and numerical features), (Chui et al. 2018), deep learning for tabular data remains under-explored, with variants of ensemble decision trees (DTs) still dominating most applications (Kaggle 2019a). Why? First, because DT-based approaches have certain benefits: (i) they are representationally efficient for decision manifolds with approximately hyperplane boundaries which are common in tabular data; and (ii) they are highly interpretable in their basic form (e.g. by tracking decision nodes) and there are popular post-hoc explainability methods for their ensemble form, e.g. (Lundberg, Erion, and Lee 2018) – this is an important concern in many real-world applications; (iii) they are fast to train. Second, because previously-proposed DNN architectures are not well-suited for tabular data: e.g. stacked convolutional layers or multi-layer perceptrons (MLPs) are vastly overparametrized – the lack of appropriate inductive bias often causes them to fail to find optimal solutions for tabular decision manifolds (Goodfellow, Bengio, and Courville 2016; Shavitt and Segal 2018; Xu et al. 2019).",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 38.6588243999995,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "How does the grammar translation method differ from the Reform movement in language teaching priorities?",
+    "ground_truth": "Grammar translation emphasized abstract grammar rules, vocabulary, and translation. The Reform movement shifted the focus toward listening, speaking, pronunciation, phonetics, and discovering grammar through more coherent language use.",
+    "source_file": [
+      "English.pdf"
+    ],
+    "category": "intra_paper_comparison",
+    "difficulty": "medium",
+    "original_question_id": 19,
+    "architecture": "multi_agent_arch",
+    "answer": "Based on the provided evidence, the grammar translation method and the Reform movement in language teaching have different priorities.\n\nThe grammar translation method focuses on the explicit teaching of grammar rules and vocabulary, often through translation exercises. This approach prioritizes the development of linguistic knowledge and accuracy in language use.\n\nIn contrast, the Reform movement emphasizes communicative language teaching, where the focus is on developing learners' ability to communicate effectively in real-life situations. This approach prioritizes fluency, authenticity, and learner-centered instruction.\n\nWhile the evidence does not provide a direct comparison between the two approaches, it suggests that the Reform movement prioritizes communicative language teaching, whereas the grammar translation method focuses on linguistic knowledge and accuracy.",
+    "context_used": [
+      "[FINAL] National Research Ethics Committee. (2022, May 26). *Guidelines for Research Ethics in the Social Sciences and the Humanities*. Forskningsetikk.no. https://www.forskningsetikk.no/en/guidelines/social-sciences-and-humanities/guidelines-for-research-ethics-in-the-social-sciences-and-the-humanities/ \nNilsson, M. (2024). Challenges and teaching materials in English for young learners in Sweden. *Educare*, (3), 1–29. https://doi.org/10.24834/educare.2024.3.941 \nNorwegian Directorate of Education and Training. (2024). *Elevundersøkelsen*. https://www.udir.no/tall-og-forskning/brukerundersokelser/elevundersokelsen/mobbetallene-fortsetter-a-oke/ \nNorwegian Media Authority. (2022). *Barn og medier 2022 - en undersøkelse om 9-18-åringers medievaner*. https://www.medietilsynet.no/fakta/rapporter/barn-og-medier/ \nNOU 2019: 3 (2019). *Nye sjanser – bedre læring. Kjønnsforskjeller i skoleprestasjoner og utdanningsløp*. Kunnskapsdepartementet. https://www.regjeringen.no/contentassets/8b06e9565c9e403497cc79b9fdf5e177/no/pdfs/nou201920190003000dddpdfs.pdf \nOlsen, M. E. (2023). *Students' experiences of their English teaching across two school reforms: A study of Tripod survey data from 11 different 8th grade classrooms in Norway* [Unpublished master's thesis]. University of Oslo.",
+      "[FINAL] For one of the teachers in the study (S07), data was collected from a third cohort in the school year 2021/2022. While experiences of the teacher as a good language role model increased slightly from 2015–16 to 2021–22 (Item 41), there is a decrease in the perceived intelligibility of this teacher (Item 40) over time (Figure 7), across the two cohorts. \nAt S07, the percentage of students reporting that their teacher was a good language role model (Eng41) always or often increased from 85% in the 2015–2016 cohort to 95% in the 2021–2022 cohort. In contrast, the percentage of students at S07 reporting that they found their teacher easy to understand when they spoke English (Eng40) decreased from 89% in 2015–2016 to 50% in 2021–2022. Since the teacher is the same but students are different across this time span, it is relevant to assume that either students' expectations or the comprehension level of students have changed from 2015–2016 to 2021–2022.",
+      "[FINAL] Brevik, L. M. (2019). Gamers, surfers, social media users: Unpacking the role of interest in English. *Journal of Computer Assisted Learning*, 35, 595–606. https://doi.org/10.1111/jcal.12362 \nBrevik, L. M., Gudmundsdottir, G. B., Aashamar, P. N., Barreng, R. L. S., Dodou, K., Doetjes, G., Hartvigsen, K. M., Hatlevik, O. E., Mathé, N. E. H., Roe, A., Siljan, H., Stovner, R. B., & Suhr, M. L. (2023a). *Å jobbe utforskende på Vg1 og Vg2. Den enkelte lærers undervisning har mer å si enn fagenes egenart.* (EDUCATE 3). Universitetet i Oslo. \nBrevik, L. M., Gudmundsdottir, G. B., Barreng, R. L. S., Dodou, K., Doetjes, G., Evertsen, I., Goldschmidt-Gjerløw, B., Hartvigsen, K. M., Hatlevik, O. E., Isaksen, A. R., Magnusson, C. G., Mathé, N. E. H., Siljan, H., Stovner, R. B., & Suhr, M. L. (2023b). *Å mestre livet i 8. klasse. Perspektiver på livsmestring i klasserommet i sju fag* (EDUCATE 2). Universitetet i Oslo. https://www.uv.uio.no/ils/forskning/prosjekter/educate/rapporter/educate_rapport-2_2023.pdf \nBrevik, L. M., Vold, E. T., & Myhill, D. (2022). Å forske på språkundervisning – verdien av å sammenligne undervisning i ulike språkfag på tvers av land. *Bedre Skole*, 4, 14–17. https://www.utdanningsnytt.no/files/2023/03/08/BS0422-WEB.pdf",
+      "[FINAL] Phillips, S. F., Ferguson, R. F., & Rowley, J. F. S. (2021). Do they see what I see? Toward a better understanding of the 7Cs framework of teaching effectiveness. *Educational Assessment*, 26(2), 69–87. https://doi.org/10.1080/10627197.2020.1858784 \nPuimège, E., & Peters, E. (2019). Learners' English vocabulary knowledge prior to formal instruction: The role of learner-related and word-related factors. *Language Learning*, 69(4), 943–977. https://doi.org/10.1111/lang.12364 \nRindal, U. (2025). English in Norway. In K. Bolton (Ed.), *The Wiley Blackwell Encyclopedia of World Englishes*. https://doi.org/10.1002/9781119518297.eowe00361 \nRøyneland, U., Lohndal, T., Sandvik, H., Harsvik, W., Sollid, H., Rana, S., & Soldal, H. A. (2018). *Språk i Norge - kultur og infrastruktur*. Språkrådet. https://sprakradet.no/wp-content/uploads/sprak-i-norge-kultur-og-infrastruktur.pdf \nSandsør, A. M. J., & Brevik, L. M. (2024). Gender gaps in English as a second language over time: A shift in favour of boys. *Assessment in Education: Principles, Policy & Practice*, 31(5–6), 301–324. https://doi.org/10.1080/0969594X.2024.2423151",
+      "[FINAL] Kaatari, H., Larsson, T., Wang, Y., Acikara-Eickhoff, S., & Sundqvist, P. (2023). Exploring the effects of target-language extramural activities on students' written production. *Journal of Second Language Writing* 62, Article 101062. https://doi.org/10.1016/j.jslw.2023.101062 \nKane, T., & Staiger, D. (2012). *Gathering Feedback for Teaching Combining High-Quality Observations with Student Surveys and Achievement Gains.* Bill and Melinda Gates Foundation. https://files.eric.ed.gov/fulltext/ED540960.pdf \nKlette, K., Blikstad-Balas, M., & Roe, A. (2017). Linking instruction and student achievement: Research design for a new generation of classroom studies. *Acta Didactica Norge*, 11(3). https://doi.org/10.5617/adno.4729 \nLee, V. E., & Smith, J. B. (1999). Social support and achievement for young adolescents in Chicago: The role of school academic press. *American Educational Research Journal*, 36(4), 907–945. https://doi.org/10.3102/000283120360049 \nLee, T. K., & Wei, L. (2025). Refashioning linguistic expertise: Translanguaging TESOL in social media. *Applied Linguistics.* https://doi.org/10.1093/applin/amaf007 \nLenth, R. (2024). *_emmeans: Estimated Marginal Means, aka Least-Squares Means.* R package version 1.10.1. https://CRAN.R-project.org/package=emmeans.",
+      "[FINAL] [96] BAAI, \"Flagembedding,\" https://github.com/FlagOpen/FlagEmbedding, 2023. \n[97] P. Zhang, S. Xiao, Z. Liu, Z. Dou, and J.-Y. Nie, \"Retrieve anything to augment large language models,\" *arXiv preprint* arXiv:2310.07554, 2023. \n[98] N. F. Liu, K. Lin, J. Hewitt, A. Paranjape, M. Bevilacqua, F. Petroni, and P. Liang, \"Lost in the middle: How language models use long contexts,\" *arXiv preprint* arXiv:2307.03172, 2023. \n[99] Y. Gao, T. Sheng, Y. Xiang, Y. Xiong, H. Wang, and J. Zhang, \"Chat-rec: Towards interactive and explainable llms-augmented recommender system,\" *arXiv preprint* arXiv:2303.14524, 2023. \n[100] N. Anderson, C. Wilson, and S. D. Richardson, \"Lingua: Addressing scenarios for live interpretation and automatic dubbing,\" in *Proceedings of the 15th Biennial Conference of the Association for Machine Translation in the Americas (Volume 2: Users and Providers Track)*, J. Campbell, S. Larocca, J. Marciano, K. Savenkov, and A. Yanishevsky, Eds. Orlando, USA: Association for Machine Translation in the Americas, Sep. 2022, pp. 202–209. [Online]. Available: https://aclanthology.org/2022.amta-upg.14"
+    ],
+    "citations": [
+      {
+        "source_file": "English.pdf",
+        "page_number": 24,
+        "section_header": "References",
+        "excerpt": "National Research Ethics Committee. (2022, May 26). *Guidelines for Research Ethics in the Social Sciences and the Humanities*. Forskningsetikk.no. https://www.forskningsetikk.no/en/guidelines/social-sciences-and-humanities/guidelines-for-research-ethics-in-the-social-sciences-and-the-humanities/ \nNilsson, M. (2024). Challenges and teaching materials in English for young learners in Sweden. *Educare*, (3), 1–29. https://doi.org/10.24834/educare.2024.3.941 \nNorwegian Directorate of Education and Training. (2024). *Elevundersøkelsen*. https://www.udir.no/tall-og-forskning/brukerundersokelser/elevundersokelsen/mobbetallene-fortsetter-a-oke/ \nNorwegian Media Authority. (2022). *Barn og medier 2022 - en undersøkelse om 9-18-åringers medievaner*. https://www.medietilsynet.no/fakta/rapporter/barn-og-medier/ \nNOU 2019: 3 (2019). *Nye sjanser – bedre læring. Kjønnsforskjeller i skoleprestasjoner og utdanningsløp*. Kunnskapsdepartementet. https://www.regjeringen.no/contentassets/8b06e9565c9e403497cc79b9fdf5e177/no/pdfs/nou201920190003000dddpdfs.pdf \nOlsen, M. E. (2023). *Students' experiences of their English teaching across two school reforms: A study of Tripod survey data from 11 different 8th grade classrooms in Norway* [Unpublished master's thesis]. University of Oslo.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "English.pdf",
+        "page_number": 16,
+        "section_header": "Figure 6: Item score distributions for the English items",
+        "excerpt": "For one of the teachers in the study (S07), data was collected from a third cohort in the school year 2021/2022. While experiences of the teacher as a good language role model increased slightly from 2015–16 to 2021–22 (Item 41), there is a decrease in the perceived intelligibility of this teacher (Item 40) over time (Figure 7), across the two cohorts. \nAt S07, the percentage of students reporting that their teacher was a good language role model (Eng41) always or often increased from 85% in the 2015–2016 cohort to 95% in the 2021–2022 cohort. In contrast, the percentage of students at S07 reporting that they found their teacher easy to understand when they spoke English (Eng40) decreased from 89% in 2015–2016 to 50% in 2021–2022. Since the teacher is the same but students are different across this time span, it is relevant to assume that either students' expectations or the comprehension level of students have changed from 2015–2016 to 2021–2022.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "English.pdf",
+        "page_number": 22,
+        "section_header": "References",
+        "excerpt": "Brevik, L. M. (2019). Gamers, surfers, social media users: Unpacking the role of interest in English. *Journal of Computer Assisted Learning*, 35, 595–606. https://doi.org/10.1111/jcal.12362 \nBrevik, L. M., Gudmundsdottir, G. B., Aashamar, P. N., Barreng, R. L. S., Dodou, K., Doetjes, G., Hartvigsen, K. M., Hatlevik, O. E., Mathé, N. E. H., Roe, A., Siljan, H., Stovner, R. B., & Suhr, M. L. (2023a). *Å jobbe utforskende på Vg1 og Vg2. Den enkelte lærers undervisning har mer å si enn fagenes egenart.* (EDUCATE 3). Universitetet i Oslo. \nBrevik, L. M., Gudmundsdottir, G. B., Barreng, R. L. S., Dodou, K., Doetjes, G., Evertsen, I., Goldschmidt-Gjerløw, B., Hartvigsen, K. M., Hatlevik, O. E., Isaksen, A. R., Magnusson, C. G., Mathé, N. E. H., Siljan, H., Stovner, R. B., & Suhr, M. L. (2023b). *Å mestre livet i 8. klasse. Perspektiver på livsmestring i klasserommet i sju fag* (EDUCATE 2). Universitetet i Oslo. https://www.uv.uio.no/ils/forskning/prosjekter/educate/rapporter/educate_rapport-2_2023.pdf \nBrevik, L. M., Vold, E. T., & Myhill, D. (2022). Å forske på språkundervisning – verdien av å sammenligne undervisning i ulike språkfag på tvers av land. *Bedre Skole*, 4, 14–17. https://www.utdanningsnytt.no/files/2023/03/08/BS0422-WEB.pdf",
+        "content_type": "text"
+      },
+      {
+        "source_file": "English.pdf",
+        "page_number": 24,
+        "section_header": "References",
+        "excerpt": "Phillips, S. F., Ferguson, R. F., & Rowley, J. F. S. (2021). Do they see what I see? Toward a better understanding of the 7Cs framework of teaching effectiveness. *Educational Assessment*, 26(2), 69–87. https://doi.org/10.1080/10627197.2020.1858784 \nPuimège, E., & Peters, E. (2019). Learners' English vocabulary knowledge prior to formal instruction: The role of learner-related and word-related factors. *Language Learning*, 69(4), 943–977. https://doi.org/10.1111/lang.12364 \nRindal, U. (2025). English in Norway. In K. Bolton (Ed.), *The Wiley Blackwell Encyclopedia of World Englishes*. https://doi.org/10.1002/9781119518297.eowe00361 \nRøyneland, U., Lohndal, T., Sandvik, H., Harsvik, W., Sollid, H., Rana, S., & Soldal, H. A. (2018). *Språk i Norge - kultur og infrastruktur*. Språkrådet. https://sprakradet.no/wp-content/uploads/sprak-i-norge-kultur-og-infrastruktur.pdf \nSandsør, A. M. J., & Brevik, L. M. (2024). Gender gaps in English as a second language over time: A shift in favour of boys. *Assessment in Education: Principles, Policy & Practice*, 31(5–6), 301–324. https://doi.org/10.1080/0969594X.2024.2423151",
+        "content_type": "text"
+      },
+      {
+        "source_file": "English.pdf",
+        "page_number": 23,
+        "section_header": "References",
+        "excerpt": "Kaatari, H., Larsson, T., Wang, Y., Acikara-Eickhoff, S., & Sundqvist, P. (2023). Exploring the effects of target-language extramural activities on students' written production. *Journal of Second Language Writing* 62, Article 101062. https://doi.org/10.1016/j.jslw.2023.101062 \nKane, T., & Staiger, D. (2012). *Gathering Feedback for Teaching Combining High-Quality Observations with Student Surveys and Achievement Gains.* Bill and Melinda Gates Foundation. https://files.eric.ed.gov/fulltext/ED540960.pdf \nKlette, K., Blikstad-Balas, M., & Roe, A. (2017). Linking instruction and student achievement: Research design for a new generation of classroom studies. *Acta Didactica Norge*, 11(3). https://doi.org/10.5617/adno.4729 \nLee, V. E., & Smith, J. B. (1999). Social support and achievement for young adolescents in Chicago: The role of school academic press. *American Educational Research Journal*, 36(4), 907–945. https://doi.org/10.3102/000283120360049 \nLee, T. K., & Wei, L. (2025). Refashioning linguistic expertise: Translanguaging TESOL in social media. *Applied Linguistics.* https://doi.org/10.1093/applin/amaf007 \nLenth, R. (2024). *_emmeans: Estimated Marginal Means, aka Least-Squares Means.* R package version 1.10.1. https://CRAN.R-project.org/package=emmeans.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "RAGSurvey.pdf",
+        "page_number": 25,
+        "section_header": "References",
+        "excerpt": "[96] BAAI, \"Flagembedding,\" https://github.com/FlagOpen/FlagEmbedding, 2023. \n[97] P. Zhang, S. Xiao, Z. Liu, Z. Dou, and J.-Y. Nie, \"Retrieve anything to augment large language models,\" *arXiv preprint* arXiv:2310.07554, 2023. \n[98] N. F. Liu, K. Lin, J. Hewitt, A. Paranjape, M. Bevilacqua, F. Petroni, and P. Liang, \"Lost in the middle: How language models use long contexts,\" *arXiv preprint* arXiv:2307.03172, 2023. \n[99] Y. Gao, T. Sheng, Y. Xiang, Y. Xiong, H. Wang, and J. Zhang, \"Chat-rec: Towards interactive and explainable llms-augmented recommender system,\" *arXiv preprint* arXiv:2303.14524, 2023. \n[100] N. Anderson, C. Wilson, and S. D. Richardson, \"Lingua: Addressing scenarios for live interpretation and automatic dubbing,\" in *Proceedings of the 15th Biennial Conference of the Association for Machine Translation in the Americas (Volume 2: Users and Providers Track)*, J. Campbell, S. Larocca, J. Marciano, K. Savenkov, and A. Yanishevsky, Eds. Orlando, USA: Association for Machine Translation in the Americas, Sep. 2022, pp. 202–209. [Online]. Available: https://aclanthology.org/2022.amta-upg.14",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 158.90221670000028,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "How does BERT compare feature-based transfer approaches with fine-tuning approaches?",
+    "ground_truth": "Feature-based approaches use pretrained representations as features inside task-specific architectures, while fine-tuning approaches add minimal new parameters and adapt all pretrained parameters directly on the downstream task. BERT is presented as a fine-tuning based model.",
+    "source_file": [
+      "BERT.pdf"
+    ],
+    "category": "intra_paper_comparison",
+    "difficulty": "medium",
+    "original_question_id": 23,
+    "architecture": "multi_agent_arch",
+    "answer": "BERT compares feature-based transfer approaches with fine-tuning approaches by applying it to the CoNLL-2003 Named Entity Recognition (NER) task. The results show that the feature-based approach, where fixed features are extracted from the pre-trained model, has certain advantages, such as major computational benefits and the ability to handle tasks that cannot be easily represented by a Transformer encoder architecture.\n\nIn the feature-based approach, BERTLARGE performs competitively with state-of-the-art methods, with the best performing method concatenating the token representations from the top four hidden layers of the pre-trained Transformer, which is only 0.3 F1 behind fine-tuning the entire model. This demonstrates that BERT is effective for both fine-tuning and feature-based approaches.\n\nIn contrast, fine-tuning approaches, such as BERT and OpenAI GPT, are trained on a large text corpus and use a left-to-right Transformer LM. While BERT and OpenAI GPT are fine-tuning approaches, ELMo is a feature-based approach. The comparison between BERT and OpenAI GPT shows that BERT uses a mixed strategy for masking the target tokens when pre-training with the masked language model (MLM) objective, which reduces the mismatch between pre-training and fine-tuning.\n\nOverall, the comparison between feature-based transfer approaches and fine-tuning approaches shows that both methods have their advantages and disadvantages, and the choice of approach depends on the specific task and requirements.",
+    "context_used": [
+      "[FINAL] All of the BERT results presented so far have used the fine-tuning approach, where a simple classification layer is added to the pre-trained model, and all parameters are jointly fine-tuned on a downstream task. However, the feature-based approach, where fixed features are extracted from the pre-trained model, has certain advantages. First, not all tasks can be easily represented by a Transformer encoder architecture, and therefore require a task-specific model architecture to be added. Second, there are major computational benefits to pre-compute an expensive representation of the training data once and then run many experiments with cheaper models on top of this representation. \nIn this section, we compare the two approaches by applying BERT to the CoNLL-2003 Named Entity Recognition (NER) task (Tjong Kim Sang and De Meulder, 2003). In the input to BERT, we use a case-preserving WordPiece model, and we include the maximal document context provided by the data. Following standard practice, we formulate this as a tagging task but do not use a CRF \nTable 7: CoNLL-2003 Named Entity Recognition results. Hyperparameters were selected using the Dev set. The reported Dev and Test scores are averaged over 5 random restarts using those hyperparameters.",
+      "[FINAL] Here we studies the differences in recent popular representation learning models including ELMo, OpenAI GPT and BERT. The comparisons between the model architectures are shown visually in Figure 3. Note that in addition to the architecture differences, BERT and OpenAI GPT are fine-tuning approaches, while ELMo is a feature-based approach. \nThe most comparable existing pre-training method to BERT is OpenAI GPT, which trains a left-to-right Transformer LM on a large text corpus. In fact, many of the design decisions in BERT were intentionally made to make it as close to GPT as possible so that the two methods could be minimally compared. The core argument of this work is that the bi-directionality and the two pre-training tasks presented in Section 3.1 account for the majority of the empirical improvements, but we do note that there are several other differences between how BERT and GPT were trained: \n* GPT is trained on the BooksCorpus (800M words); BERT is trained on the BooksCorpus (800M words) and Wikipedia (2,500M words). \n* GPT uses a sentence separator (`[SEP]`) and classifier token (`[CLS]`) which are only introduced at fine-tuning time; BERT learns `[SEP]`, `[CLS]` and sentence A/B embeddings during pre-training.",
+      "[FINAL] layer in the output. We use the representation of the first sub-token as the input to the token-level classifier over the NER label set. \nTo ablate the fine-tuning approach, we apply the feature-based approach by extracting the activations from one or more layers *without* fine-tuning any parameters of BERT. These contextual embeddings are used as input to a randomly initialized two-layer 768-dimensional BiLSTM before the classification layer. \nResults are presented in Table 7. BERTLARGE performs competitively with state-of-the-art methods. The best performing method concatenates the token representations from the top four hidden layers of the pre-trained Transformer, which is only 0.3 F1 behind fine-tuning the entire model. This demonstrates that BERT is effective for both fine-tuning and feature-based approaches. \n#L | Hyperparams\n#H | Hyperparams\n#A | LM (ppl) | Dev Set Accuracy\nMNLI-m | Dev Set Accuracy MRPC | Dev Set Accuracy SST-2 |\nTable 6: Ablation over BERT model size. #L = the number of layers; #H = hidden size; #A = number of attention heads. “LM (ppl)” is the masked LM perplexity of held-out training data.",
+      "[FINAL] In Section 3.1, we mention that BERT uses a mixed strategy for masking the target tokens when pre-training with the masked language model (MLM) objective. The following is an ablation study to evaluate the effect of different masking strategies. \nFigure 5: Ablation over number of training steps. This shows the MNLI accuracy after fine-tuning, starting from model parameters that have been pre-trained for $k$ steps. The x-axis is the value of $k$. \nNote that the purpose of the masking strategies is to reduce the mismatch between pre-training and fine-tuning, as the `[MASK]` symbol never appears during the fine-tuning stage. We report the Dev results for both MNLI and NER. For NER, we report both fine-tuning and feature-based approaches, as we expect the mismatch will be amplified for the feature-based approach as the model will not have the chance to adjust the representations. \nMASK | Masking Rates SAME | Masking Rates RND | Dev Set Results MNLI Fine-tune | Dev Set Results NER Fine-tune | Dev Set Results NER Feature-based |\nTable 8: Ablation over different masking strategies.",
+      "[FINAL] Table 8: Ablation over different masking strategies. \nThe results are presented in Table 8. In the table, MASK means that we replace the target token with the `[MASK]` symbol for MLM; SAME means that we keep the target token as is; RND means that we replace the target token with another random token. \nThe numbers in the left part of the table represent the probabilities of the specific strategies used during MLM pre-training (BERT uses 80%, 10%, 10%). The right part of the paper represents the Dev set results. For the feature-based approach, we concatenate the last 4 layers of BERT as the features, which was shown to be the best approach in Section 5.3. \nFrom the table it can be seen that fine-tuning is surprisingly robust to different masking strategies. However, as expected, using only the MASK strategy was problematic when applying the feature-based approach to NER. Interestingly, using only the RND strategy performs much worse than our strategy as well.",
+      "[FINAL] Figure 3: Differences in pre-training model architectures. BERT uses a bidirectional Transformer. OpenAI GPT uses a left-to-right Transformer. ELMo uses the concatenation of independently trained left-to-right and right-to-left LSTMs to generate features for downstream tasks. Among the three, only BERT representations are jointly conditioned on both left and right context in all layers. In addition to the architecture differences, BERT and OpenAI GPT are fine-tuning approaches, while ELMo is a feature-based approach. \nto converge. In Section C.1 we demonstrate that MLM does converge marginally slower than a left-to-right model (which predicts every token), but the empirical improvements of the MLM model far outweigh the increased training cost. \n**Next Sentence Prediction** The next sentence prediction task can be illustrated in the following examples. \n```text\nInput = [CLS] the man went to [MASK] store [SEP]\nhe bought a gallon [MASK] milk [SEP]\nLabel = IsNext\n\nInput = [CLS] the man [MASK] to the store [SEP]\npenguin [MASK] are flight ##less birds [SEP]\nLabel = NotNext\n```"
+    ],
+    "citations": [
+      {
+        "source_file": "BERT.pdf",
+        "page_number": 9,
+        "section_header": "5.3 Feature-based Approach with BERT",
+        "excerpt": "All of the BERT results presented so far have used the fine-tuning approach, where a simple classification layer is added to the pre-trained model, and all parameters are jointly fine-tuned on a downstream task. However, the feature-based approach, where fixed features are extracted from the pre-trained model, has certain advantages. First, not all tasks can be easily represented by a Transformer encoder architecture, and therefore require a task-specific model architecture to be added. Second, there are major computational benefits to pre-compute an expensive representation of the training data once and then run many experiments with cheaper models on top of this representation. \nIn this section, we compare the two approaches by applying BERT to the CoNLL-2003 Named Entity Recognition (NER) task (Tjong Kim Sang and De Meulder, 2003). In the input to BERT, we use a case-preserving WordPiece model, and we include the maximal document context provided by the data. Following standard practice, we formulate this as a tagging task but do not use a CRF \nTable 7: CoNLL-2003 Named Entity Recognition results. Hyperparameters were selected using the Dev set. The reported Dev and Test scores are averaged over 5 random restarts using those hyperparameters.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "BERT.pdf",
+        "page_number": 14,
+        "section_header": "A.4 Comparison of BERT, ELMo, and OpenAI GPT",
+        "excerpt": "Here we studies the differences in recent popular representation learning models including ELMo, OpenAI GPT and BERT. The comparisons between the model architectures are shown visually in Figure 3. Note that in addition to the architecture differences, BERT and OpenAI GPT are fine-tuning approaches, while ELMo is a feature-based approach. \nThe most comparable existing pre-training method to BERT is OpenAI GPT, which trains a left-to-right Transformer LM on a large text corpus. In fact, many of the design decisions in BERT were intentionally made to make it as close to GPT as possible so that the two methods could be minimally compared. The core argument of this work is that the bi-directionality and the two pre-training tasks presented in Section 3.1 account for the majority of the empirical improvements, but we do note that there are several other differences between how BERT and GPT were trained: \n* GPT is trained on the BooksCorpus (800M words); BERT is trained on the BooksCorpus (800M words) and Wikipedia (2,500M words). \n* GPT uses a sentence separator (`[SEP]`) and classifier token (`[CLS]`) which are only introduced at fine-tuning time; BERT learns `[SEP]`, `[CLS]` and sentence A/B embeddings during pre-training.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "BERT.pdf",
+        "page_number": 9,
+        "section_header": "5.3 Feature-based Approach with BERT",
+        "excerpt": "layer in the output. We use the representation of the first sub-token as the input to the token-level classifier over the NER label set. \nTo ablate the fine-tuning approach, we apply the feature-based approach by extracting the activations from one or more layers *without* fine-tuning any parameters of BERT. These contextual embeddings are used as input to a randomly initialized two-layer 768-dimensional BiLSTM before the classification layer. \nResults are presented in Table 7. BERTLARGE performs competitively with state-of-the-art methods. The best performing method concatenates the token representations from the top four hidden layers of the pre-trained Transformer, which is only 0.3 F1 behind fine-tuning the entire model. This demonstrates that BERT is effective for both fine-tuning and feature-based approaches. \n#L | Hyperparams\n#H | Hyperparams\n#A | LM (ppl) | Dev Set Accuracy\nMNLI-m | Dev Set Accuracy MRPC | Dev Set Accuracy SST-2 |\nTable 6: Ablation over BERT model size. #L = the number of layers; #H = hidden size; #A = number of attention heads. “LM (ppl)” is the masked LM perplexity of held-out training data.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "BERT.pdf",
+        "page_number": 16,
+        "section_header": "C Additional Ablation Studies > C.2 Ablation for Different Masking Procedures",
+        "excerpt": "In Section 3.1, we mention that BERT uses a mixed strategy for masking the target tokens when pre-training with the masked language model (MLM) objective. The following is an ablation study to evaluate the effect of different masking strategies. \nFigure 5: Ablation over number of training steps. This shows the MNLI accuracy after fine-tuning, starting from model parameters that have been pre-trained for $k$ steps. The x-axis is the value of $k$. \nNote that the purpose of the masking strategies is to reduce the mismatch between pre-training and fine-tuning, as the `[MASK]` symbol never appears during the fine-tuning stage. We report the Dev results for both MNLI and NER. For NER, we report both fine-tuning and feature-based approaches, as we expect the mismatch will be amplified for the feature-based approach as the model will not have the chance to adjust the representations. \nMASK | Masking Rates SAME | Masking Rates RND | Dev Set Results MNLI Fine-tune | Dev Set Results NER Fine-tune | Dev Set Results NER Feature-based |\nTable 8: Ablation over different masking strategies.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "BERT.pdf",
+        "page_number": 16,
+        "section_header": "C Additional Ablation Studies > C.2 Ablation for Different Masking Procedures",
+        "excerpt": "Table 8: Ablation over different masking strategies. \nThe results are presented in Table 8. In the table, MASK means that we replace the target token with the `[MASK]` symbol for MLM; SAME means that we keep the target token as is; RND means that we replace the target token with another random token. \nThe numbers in the left part of the table represent the probabilities of the specific strategies used during MLM pre-training (BERT uses 80%, 10%, 10%). The right part of the paper represents the Dev set results. For the feature-based approach, we concatenate the last 4 layers of BERT as the features, which was shown to be the best approach in Section 5.3. \nFrom the table it can be seen that fine-tuning is surprisingly robust to different masking strategies. However, as expected, using only the MASK strategy was problematic when applying the feature-based approach to NER. Interestingly, using only the RND strategy performs much worse than our strategy as well.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "BERT.pdf",
+        "page_number": 13,
+        "section_header": "A Additional Details for BERT > A.1 Illustration of the Pre-training Tasks",
+        "excerpt": "Figure 3: Differences in pre-training model architectures. BERT uses a bidirectional Transformer. OpenAI GPT uses a left-to-right Transformer. ELMo uses the concatenation of independently trained left-to-right and right-to-left LSTMs to generate features for downstream tasks. Among the three, only BERT representations are jointly conditioned on both left and right context in all layers. In addition to the architecture differences, BERT and OpenAI GPT are fine-tuning approaches, while ELMo is a feature-based approach. \nto converge. In Section C.1 we demonstrate that MLM does converge marginally slower than a left-to-right model (which predicts every token), but the empirical improvements of the MLM model far outweigh the increased training cost. \n**Next Sentence Prediction** The next sentence prediction task can be illustrated in the following examples. \n```text\nInput = [CLS] the man went to [MASK] store [SEP]\nhe bought a gallon [MASK] milk [SEP]\nLabel = IsNext\n\nInput = [CLS] the man [MASK] to the store [SEP]\npenguin [MASK] are flight ##less birds [SEP]\nLabel = NotNext\n```",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 67.16491480000059,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "How do plain networks differ from residual networks in the ResNet paper’s framing of the optimization problem?",
+    "ground_truth": "Plain networks simply stack layers and become harder to optimize as depth increases, while residual networks reformulate learning as fitting a residual function with shortcut connections, making deeper models easier to optimize.",
+    "source_file": [
+      "ImgRecog.pdf"
+    ],
+    "category": "intra_paper_comparison",
+    "difficulty": "medium",
+    "original_question_id": 26,
+    "architecture": "multi_agent_arch",
+    "answer": "Plain networks differ from residual networks in the ResNet paper's framing of the optimization problem in that residual networks use shortcut connections to introduce neither extra parameters nor computational complexity, allowing for fair comparisons between plain and residual networks with the same number of parameters, depth, width, and computational cost. \n\nIn contrast, plain networks do not use shortcut connections, which can lead to higher training error when the depth of the network increases.",
+    "context_used": [
+      "[FINAL] We adopt residual learning to every few stacked layers. A building block is shown in Fig. 2. Formally, in this paper we consider a building block defined as: \n (1) \nHere and are the input and output vectors of the layers considered. The function represents the residual mapping to be learned. For the example in Fig. 2 that has two layers, in which denotes ReLU [29] and the biases are omitted for simplifying notations. The operation is performed by a shortcut connection and element-wise addition. We adopt the second nonlinearity after the addition (i.e., , see Fig. 2). \nThe shortcut connections in Eqn.(1) introduce neither extra parameter nor computation complexity. This is not only attractive in practice but also important in our comparisons between plain and residual networks. We can fairly compare plain/residual networks that simultaneously have the same number of parameters, depth, width, and computational cost (except for the negligible element-wise addition). \nIf the dimensions of and must be equal in Eqn.(1). If this is not the case (e.g., when changing the input/output channels), we can perform a linear projection by the shortcut connections to match the dimensions: \n (2)",
+      "[FINAL] The formulation of can be realized by feedforward neural networks with **\"shortcut connections\"** (Fig. 2). Shortcut connections [2, 34, 49] are those skipping one or more layers. In our case, the shortcut connections simply perform identity mapping, and their outputs are added to the outputs of the stacked layers (Fig. 2). Identity shortcut connections add neither extra parameter nor computational complexity. The entire network can still be trained end-to-end by SGD with backpropagation, and can be easily implemented using common libraries (e.g., Caffe [19]) without modifying the solvers. \nWe present comprehensive experiments on ImageNet [36] to show the degradation problem and evaluate our method. We show that: 1) Our extremely deep residual nets are easy to optimize, but the counterpart \"plain\" nets (that simply stack layers) exhibit higher training error when the depth increases; 2) Our deep residual nets can easily enjoy accuracy gains from greatly increased depth, producing results substantially better than previous networks."
+    ],
+    "citations": [
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 3,
+        "section_header": "3. Deep Residual Learning > 3.2. Identity Mapping by Shortcuts",
+        "excerpt": "We adopt residual learning to every few stacked layers. A building block is shown in Fig. 2. Formally, in this paper we consider a building block defined as: \n (1) \nHere and are the input and output vectors of the layers considered. The function represents the residual mapping to be learned. For the example in Fig. 2 that has two layers, in which denotes ReLU [29] and the biases are omitted for simplifying notations. The operation is performed by a shortcut connection and element-wise addition. We adopt the second nonlinearity after the addition (i.e., , see Fig. 2). \nThe shortcut connections in Eqn.(1) introduce neither extra parameter nor computation complexity. This is not only attractive in practice but also important in our comparisons between plain and residual networks. We can fairly compare plain/residual networks that simultaneously have the same number of parameters, depth, width, and computational cost (except for the negligible element-wise addition). \nIf the dimensions of and must be equal in Eqn.(1). If this is not the case (e.g., when changing the input/output channels), we can perform a linear projection by the shortcut connections to match the dimensions: \n (2)",
+        "content_type": "text"
+      },
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 2,
+        "section_header": "Deep Residual Learning for Image Recognition > 1. Introduction",
+        "excerpt": "The formulation of can be realized by feedforward neural networks with **\"shortcut connections\"** (Fig. 2). Shortcut connections [2, 34, 49] are those skipping one or more layers. In our case, the shortcut connections simply perform identity mapping, and their outputs are added to the outputs of the stacked layers (Fig. 2). Identity shortcut connections add neither extra parameter nor computational complexity. The entire network can still be trained end-to-end by SGD with backpropagation, and can be easily implemented using common libraries (e.g., Caffe [19]) without modifying the solvers. \nWe present comprehensive experiments on ImageNet [36] to show the degradation problem and evaluate our method. We show that: 1) Our extremely deep residual nets are easy to optimize, but the counterpart \"plain\" nets (that simply stack layers) exhibit higher training error when the depth increases; 2) Our deep residual nets can easily enjoy accuracy gains from greatly increased depth, producing results substantially better than previous networks.",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 42.73713670000052,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "According to Figure 1 in the Transformer paper, what are the major components of the encoder and decoder?",
+    "ground_truth": "The encoder uses input embeddings plus positional encoding, multi-head self-attention, add-and-norm, and feed-forward layers. The decoder uses output embeddings shifted right plus positional encoding, masked multi-head self-attention, attention over encoder outputs, add-and-norm, feed-forward layers, and finally a linear layer with softmax.",
+    "source_file": [
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "figure_table_diagram_grounded",
+    "difficulty": "medium",
+    "original_question_id": 27,
+    "architecture": "multi_agent_arch",
+    "answer": "The major components of the encoder are a stack of N = 6 identical layers, each consisting of two sub-layers: a multi-head self-attention mechanism and a simple, position-wise fully connected feed-forward network. The decoder also consists of a stack of N = 6 identical layers, with an additional third sub-layer performing multi-head attention over the output of the encoder stack.",
+    "context_used": [
+      "[FINAL] **Figure 1: The Transformer - model architecture.** \nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully connected layers for both the encoder and decoder, shown in the left and right halves of Figure 1, respectively.",
+      "[FINAL] **Encoder:** The encoder is composed of a stack of N = 6 identical layers. Each layer has two sub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, position-wise fully connected feed-forward network. We employ a residual connection [11] around each of the two sub-layers, followed by layer normalization [1]. That is, the output of each sub-layer is LayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer itself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding layers, produce outputs of dimension dmodel = 512.",
+      "[FINAL] **Decoder:** The decoder is also composed of a stack of N = 6 identical layers. In addition to the two sub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head attention over the output of the encoder stack. Similar to the encoder, we employ residual connections around each of the sub-layers, followed by layer normalization. We also modify the self-attention sub-layer in the decoder stack to prevent positions from attending to subsequent positions. This masking, combined with fact that the output embeddings are offset by one position, ensures that the predictions for position i can depend only on the known outputs at positions less than i."
+    ],
+    "citations": [
+      {
+        "source_file": "AttentionIsAllYouNeed.pdf",
+        "page_number": 3,
+        "section_header": "3 Model Architecture",
+        "excerpt": "**Figure 1: The Transformer - model architecture.** \nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully connected layers for both the encoder and decoder, shown in the left and right halves of Figure 1, respectively.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "AttentionIsAllYouNeed.pdf",
+        "page_number": 3,
+        "section_header": "3.1 Encoder and Decoder Stacks",
+        "excerpt": "**Encoder:** The encoder is composed of a stack of N = 6 identical layers. Each layer has two sub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, position-wise fully connected feed-forward network. We employ a residual connection [11] around each of the two sub-layers, followed by layer normalization [1]. That is, the output of each sub-layer is LayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer itself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding layers, produce outputs of dimension dmodel = 512.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "AttentionIsAllYouNeed.pdf",
+        "page_number": 3,
+        "section_header": "3.1 Encoder and Decoder Stacks",
+        "excerpt": "**Decoder:** The decoder is also composed of a stack of N = 6 identical layers. In addition to the two sub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head attention over the output of the encoder stack. Similar to the encoder, we employ residual connections around each of the sub-layers, followed by layer normalization. We also modify the self-attention sub-layer in the decoder stack to prevent positions from attending to subsequent positions. This masking, combined with fact that the output embeddings are offset by one position, ensures that the predictions for position i can depend only on the known outputs at positions less than i.",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 43.63953010000023,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "According to Figure 1 in the ResNet paper, what happens to training and test error when moving from a 20-layer plain network to a 56-layer plain network on CIFAR-10?",
+    "ground_truth": "The deeper 56-layer plain network has higher training error and higher test error than the 20-layer plain network.",
+    "source_file": [
+      "ImgRecog.pdf"
+    ],
+    "category": "figure_table_diagram_grounded",
+    "difficulty": "easy",
+    "original_question_id": 30,
+    "architecture": "multi_agent_arch",
+    "answer": "According to Figure 1 in the ResNet paper, when moving from a 20-layer plain network to a 56-layer plain network on CIFAR-10, the training error increases, and as a result, the test error also increases.",
+    "context_used": [
+      "[FINAL] Training and test error curves on CIFAR-10 \nFigure 1. Training error (left) and test error (right) on CIFAR-10 with 20-layer and 56-layer \"plain\" networks. The deeper network has higher training error, and thus test error. Similar phenomena on ImageNet is presented in Fig. 4.",
+      "[FINAL] We compare n = {3, 5, 7, 9}, leading to 20, 32, 44, and 56-layer networks. Fig. 6 (left) shows the behaviors of the plain nets. The deep plain nets suffer from increased depth, and exhibit higher training error when going deeper. This phenomenon is similar to that on ImageNet (Fig. 4, left) and on MNIST (see [42]), suggesting that such an optimization difficulty is a fundamental problem. \nFig. 6 (middle) shows the behaviors of ResNets. Also similar to the ImageNet cases (Fig. 4, right), our ResNets manage to overcome the optimization difficulty and demonstrate accuracy gains when the depth increases. \nWe further explore n = 18 that leads to a 110-layer ResNet. In this case, we find that the initial learning rate of 0.1 is slightly too large to start converging5. So we use 0.01 to warm up the training until the training error is below 80% (about 400 iterations), and then go back to 0.1 and continue training. The rest of the learning schedule is as done previously. This 110-layer network converges well (Fig. 6, middle). It has fewer parameters than other deep and thin \n5With an initial learning rate of 0.1, it starts converging (3% over VGG-16. This gain is solely because of the improved features learned by ResNet."
+    ],
+    "citations": [
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 1,
+        "section_header": "Deep Residual Learning for Image Recognition > Abstract",
+        "excerpt": "Training and test error curves on CIFAR-10 \nFigure 1. Training error (left) and test error (right) on CIFAR-10 with 20-layer and 56-layer \"plain\" networks. The deeper network has higher training error, and thus test error. Similar phenomena on ImageNet is presented in Fig. 4.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 7,
+        "section_header": "filters | 32×32",
+        "excerpt": "We compare n = {3, 5, 7, 9}, leading to 20, 32, 44, and 56-layer networks. Fig. 6 (left) shows the behaviors of the plain nets. The deep plain nets suffer from increased depth, and exhibit higher training error when going deeper. This phenomenon is similar to that on ImageNet (Fig. 4, left) and on MNIST (see [42]), suggesting that such an optimization difficulty is a fundamental problem. \nFig. 6 (middle) shows the behaviors of ResNets. Also similar to the ImageNet cases (Fig. 4, right), our ResNets manage to overcome the optimization difficulty and demonstrate accuracy gains when the depth increases. \nWe further explore n = 18 that leads to a 110-layer ResNet. In this case, we find that the initial learning rate of 0.1 is slightly too large to start converging5. So we use 0.01 to warm up the training until the training error is below 80% (about 400 iterations), and then go back to 0.1 and continue training. The rest of the learning schedule is as done previously. This 110-layer network converges well (Fig. 6, middle). It has fewer parameters than other deep and thin \n5With an initial learning rate of 0.1, it starts converging (3% over VGG-16. This gain is solely because of the improved features learned by ResNet.",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 40.740616000000045,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "According to Figure 2 in the TabNet paper, how does unsupervised pre-training connect to supervised fine-tuning?",
+    "ground_truth": "The figure shows an encoder-decoder setup used during unsupervised pre-training to reconstruct masked or missing features, and then the pretrained encoder is reused for supervised fine-tuning and decision making.",
+    "source_file": [
+      "TabNet.pdf"
+    ],
+    "category": "figure_table_diagram_grounded",
+    "difficulty": "medium",
+    "original_question_id": 33,
+    "architecture": "multi_agent_arch",
+    "answer": "According to Figure 2 in the TabNet paper, unsupervised pre-training connects to supervised fine-tuning by significantly improving performance on the supervised classification task, especially when the unlabeled dataset is much larger than the labeled dataset.",
+    "context_used": [
+      "[FINAL] Table 7: Mean and std. of accuracy (over 15 runs) on Higgs with Tabnet-M model, varying the size of the training dataset for supervised fine-tuning. \nTable 7 shows that unsupervised pre-training significantly improves performance on the supervised classification task, especially in the regime where the unlabeled dataset is much larger than the labeled dataset. As exemplified in Fig. 7 the model convergence is much faster with unsupervised pre-training. Very fast convergence can be useful for continual learning and domain adaptation.",
+      "[FINAL] . For unsupervised pre-training, the decoder model uses $N_d=N_a=128$, $B=8192$, $B_V=256$, $m_B=0.9$, and $N_{steps}=20$. For supervised fine-tuning, we use the batch size $B=B_V$ as the training datasets are small."
+    ],
+    "citations": [
+      {
+        "source_file": "TabNet.pdf",
+        "page_number": 5,
+        "section_header": "Self-supervised learning",
+        "excerpt": "Table 7: Mean and std. of accuracy (over 15 runs) on Higgs with Tabnet-M model, varying the size of the training dataset for supervised fine-tuning. \nTable 7 shows that unsupervised pre-training significantly improves performance on the supervised classification task, especially in the regime where the unlabeled dataset is much larger than the labeled dataset. As exemplified in Fig. 7 the model convergence is much faster with unsupervised pre-training. Very fast convergence can be useful for continual learning and domain adaptation.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "TabNet.pdf",
+        "page_number": 8,
+        "section_header": "Acknowledgements > Self-supervised learning on Forest Cover Type > Experiment hyperparameters",
+        "excerpt": ". For unsupervised pre-training, the decoder model uses $N_d=N_a=128$, $B=8192$, $B_V=256$, $m_B=0.9$, and $N_{steps}=20$. For supervised fine-tuning, we use the batch size $B=B_V$ as the training datasets are small.",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 29.6923826000002,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "How does the English paper connect the global status of English with local curriculum and student language practices in Norway?",
+    "ground_truth": "The paper links the global spread of English to local Norwegian ELT by arguing that changing worldwide uses of English influence curriculum priorities, beliefs about language, and how Norwegian learners position themselves and use English in practice.",
+    "source_file": [
+      "English.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard",
+    "original_question_id": 36,
+    "architecture": "multi_agent_arch",
+    "answer": "",
+    "context_used": [],
+    "citations": [],
+    "latency_sec": 36.826193500000045,
+    "status": "error",
+    "error": {
+      "error_type": "http_error",
+      "message": "Backend returned HTTP 500.",
+      "status_code": 500,
+      "detail": {
+        "message": "Multi-agent brain processing failed.",
+        "architecture": "multi_agent_arch",
+        "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01kqh0crn6ebmseghqv57y0268` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 4864, Requested 1201. Please try again in 650ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      }
+    }
+  },
+  {
+    "question": "Why does the RAG survey argue that Advanced RAG and Modular RAG emerged after Naive RAG?",
+    "ground_truth": "The survey says they emerged because Naive RAG has weaknesses in retrieval precision and recall, generation quality, and augmentation coherence, so later paradigms introduced targeted improvements to fix those shortcomings.",
+    "source_file": [
+      "RAGSurvey.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard",
+    "original_question_id": 39,
+    "architecture": "multi_agent_arch",
+    "answer": "The RAG survey argues that Advanced RAG and Modular RAG emerged after Naive RAG because Advanced RAG proposes multiple optimization strategies around pre-retrieval and post-retrieval, building upon the chain-like structure of Naive RAG, while Modular RAG introduces greater flexibility with multiple specific functional modules and iterative and adaptive retrieval methods, inheriting and developing from the previous paradigm.",
+    "context_used": [
+      "[FINAL] Large Language Models (LLMs) showcase impressive capabilities but encounter challenges like hallucination, outdated knowledge, and non-transparent, untraceable reasoning processes. Retrieval-Augmented Generation (RAG) has emerged as a promising solution by incorporating knowledge from external databases. This enhances the accuracy and credibility of the generation, particularly for knowledge-intensive tasks, and allows for continuous knowledge updates and integration of domain-specific information. RAG synergistically merges LLMs' intrinsic knowledge with the vast, dynamic repositories of external databases. This comprehensive review paper offers a detailed examination of the progression of RAG paradigms, encompassing the Naive RAG, the Advanced RAG, and the Modular RAG. It meticulously scrutinizes the tripartite foundation of RAG frameworks, which includes the retrieval, the generation and the augmentation techniques. The paper highlights the state-of-the-art technologies embedded in each of these critical components, providing a profound understanding of the advancements in RAG systems. Furthermore, this paper introduces up-to-date evaluation framework and benchmark",
+      "[FINAL] Comparison of three RAG paradigms showing Naive RAG, Advanced RAG, and Modular RAG architectures with their respective components and data flow \n**Fig. 3.** Comparison between the three paradigms of RAG. (Left) Naive RAG mainly consists of three parts: indexing, retrieval and generation. (Middle) Advanced RAG proposes multiple optimization strategies around pre-retrieval and post-retrieval, with a process similar to the Naive RAG, still following a chain-like structure. (Right) Modular RAG inherits and develops from the previous paradigm, showcasing greater flexibility overall. This is evident in the introduction of multiple specific functional modules and the replacement of existing modules. The overall process is not limited to sequential retrieval and generation; it includes methods such as iterative and adaptive retrieval."
+    ],
+    "citations": [
+      {
+        "source_file": "RAGSurvey.pdf",
+        "page_number": 1,
+        "section_header": "Retrieval-Augmented Generation for Large Language Models: A Survey > Abstract",
+        "excerpt": "Large Language Models (LLMs) showcase impressive capabilities but encounter challenges like hallucination, outdated knowledge, and non-transparent, untraceable reasoning processes. Retrieval-Augmented Generation (RAG) has emerged as a promising solution by incorporating knowledge from external databases. This enhances the accuracy and credibility of the generation, particularly for knowledge-intensive tasks, and allows for continuous knowledge updates and integration of domain-specific information. RAG synergistically merges LLMs' intrinsic knowledge with the vast, dynamic repositories of external databases. This comprehensive review paper offers a detailed examination of the progression of RAG paradigms, encompassing the Naive RAG, the Advanced RAG, and the Modular RAG. It meticulously scrutinizes the tripartite foundation of RAG frameworks, which includes the retrieval, the generation and the augmentation techniques. The paper highlights the state-of-the-art technologies embedded in each of these critical components, providing a profound understanding of the advancements in RAG systems. Furthermore, this paper introduces up-to-date evaluation framework and benchmark",
+        "content_type": "text"
+      },
+      {
+        "source_file": "RAGSurvey.pdf",
+        "page_number": 4,
+        "section_header": "II. OVERVIEW OF RAG > A. Naive RAG",
+        "excerpt": "Comparison of three RAG paradigms showing Naive RAG, Advanced RAG, and Modular RAG architectures with their respective components and data flow \n**Fig. 3.** Comparison between the three paradigms of RAG. (Left) Naive RAG mainly consists of three parts: indexing, retrieval and generation. (Middle) Advanced RAG proposes multiple optimization strategies around pre-retrieval and post-retrieval, with a process similar to the Naive RAG, still following a chain-like structure. (Right) Modular RAG inherits and develops from the previous paradigm, showcasing greater flexibility overall. This is evident in the introduction of multiple specific functional modules and the replacement of existing modules. The overall process is not limited to sequential retrieval and generation; it includes methods such as iterative and adaptive retrieval.",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 27.14148870000008,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "Why does TabNet argue that deep learning is still worth exploring for tabular data even though tree-based methods dominate?",
+    "ground_truth": "TabNet argues this because end-to-end gradient-based learning can reduce feature engineering, support multimodal and streaming settings, enable representation learning and semi-supervised learning, and still compete with or outperform tabular baselines when designed appropriately.",
+    "source_file": [
+      "TabNet.pdf"
+    ],
+    "category": "multi_chunk_synthesis",
+    "difficulty": "hard",
+    "original_question_id": 41,
+    "architecture": "multi_agent_arch",
+    "answer": "TabNet argues that deep learning is still worth exploring for tabular data because tree-based methods dominate due to their representationally efficient nature for decision manifolds with approximately hyperplane boundaries, high interpretability, and fast training. However, TabNet proposes a new canonical DNN architecture that uses sequential attention to choose features to reason from at each decision step, enabling interpretability and better learning, making deep learning worth exploring for tabular data.",
+    "context_used": [
+      "[FINAL] Despite being the most common data type in real-world AI (as it is comprised of any categorical and numerical features), (Chui et al. 2018), deep learning for tabular data remains under-explored, with variants of ensemble decision trees (DTs) still dominating most applications (Kaggle 2019a). Why? First, because DT-based approaches have certain benefits: (i) they are representationally efficient for decision manifolds with approximately hyperplane boundaries which are common in tabular data; and (ii) they are highly interpretable in their basic form (e.g. by tracking decision nodes) and there are popular post-hoc explainability methods for their ensemble form, e.g. (Lundberg, Erion, and Lee 2018) – this is an important concern in many real-world applications; (iii) they are fast to train. Second, because previously-proposed DNN architectures are not well-suited for tabular data: e.g. stacked convolutional layers or multi-layer perceptrons (MLPs) are vastly overparametrized – the lack of appropriate inductive bias often causes them to fail to find optimal solutions for tabular decision manifolds (Goodfellow, Bengio, and Courville 2016; Shavitt and Segal 2018; Xu et al. 2019).",
+      "[FINAL] Why is deep learning worth exploring for tabular data? One obvious motivation is expected performance improve-We propose a new canonical DNN architecture for tabular data, TabNet. The main contributions are summarized as: \n1. *TabNet inputs raw tabular data without any preprocessing* and is trained using gradient descent-based optimization, enabling flexible integration into end-to-end learning. \n2. *TabNet uses sequential attention to choose which features to reason from at each decision step*, enabling interpretability and better learning as the learning capacity is used for the most salient features (see Fig. 1). This feature selection is *instance-wise*, e.g. it can be different for each input, and unlike other instance-wise feature selection methods like (Chen et al. 2018) or (Yoon, Jordon, and van der Schaar 2019), TabNet employs a *single deep learning architecture for feature selection and reasoning*."
+    ],
+    "citations": [
+      {
+        "source_file": "TabNet.pdf",
+        "page_number": 1,
+        "section_header": "TabNet: Attentive Interpretable Tabular Learning > Introduction",
+        "excerpt": "Despite being the most common data type in real-world AI (as it is comprised of any categorical and numerical features), (Chui et al. 2018), deep learning for tabular data remains under-explored, with variants of ensemble decision trees (DTs) still dominating most applications (Kaggle 2019a). Why? First, because DT-based approaches have certain benefits: (i) they are representationally efficient for decision manifolds with approximately hyperplane boundaries which are common in tabular data; and (ii) they are highly interpretable in their basic form (e.g. by tracking decision nodes) and there are popular post-hoc explainability methods for their ensemble form, e.g. (Lundberg, Erion, and Lee 2018) – this is an important concern in many real-world applications; (iii) they are fast to train. Second, because previously-proposed DNN architectures are not well-suited for tabular data: e.g. stacked convolutional layers or multi-layer perceptrons (MLPs) are vastly overparametrized – the lack of appropriate inductive bias often causes them to fail to find optimal solutions for tabular decision manifolds (Goodfellow, Bengio, and Courville 2016; Shavitt and Segal 2018; Xu et al. 2019).",
+        "content_type": "text"
+      },
+      {
+        "source_file": "TabNet.pdf",
+        "page_number": 1,
+        "section_header": "TabNet: Attentive Interpretable Tabular Learning > Introduction",
+        "excerpt": "Why is deep learning worth exploring for tabular data? One obvious motivation is expected performance improve-We propose a new canonical DNN architecture for tabular data, TabNet. The main contributions are summarized as: \n1. *TabNet inputs raw tabular data without any preprocessing* and is trained using gradient descent-based optimization, enabling flexible integration into end-to-end learning. \n2. *TabNet uses sequential attention to choose which features to reason from at each decision step*, enabling interpretability and better learning as the learning capacity is used for the most salient features (see Fig. 1). This feature selection is *instance-wise*, e.g. it can be different for each input, and unlike other instance-wise feature selection methods like (Chen et al. 2018) or (Yoon, Jordon, and van der Schaar 2019), TabNet employs a *single deep learning architecture for feature selection and reasoning*.",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 38.225999300000694,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "Why can making a neural network deeper actually make optimization worse even when overfitting is not the main issue?",
+    "ground_truth": "Because deeper plain networks can suffer from the degradation problem: optimization becomes harder, training error can increase with depth, and the solver may fail to find good solutions even though deeper models should in principle be able to represent at least the shallower solution.",
+    "source_file": [
+      "ImgRecog.pdf"
+    ],
+    "category": "paraphrase_hard_retrieval",
+    "difficulty": "hard",
+    "original_question_id": 43,
+    "architecture": "multi_agent_arch",
+    "answer": "Making a neural network deeper can actually make optimization worse, even when overfitting is not the main issue, because deeper networks can suffer from a degradation problem where accuracy gets saturated and then degrades rapidly. This degradation is not caused by overfitting, and adding more layers to a suitably deep model can lead to higher training error.",
+    "context_used": [
+      "[FINAL] When deeper networks are able to start converging, a degradation problem has been exposed: with the network depth increasing, accuracy gets saturated (which might be unsurprising) and then degrades rapidly. Unexpectedly, such degradation is not caused by overfitting, and adding more layers to a suitably deep model leads to higher training error, as reported in [11, 42] and thoroughly verified by our experiments. Fig. 1 shows a typical example. \nThe degradation (of training accuracy) indicates that not all systems are similarly easy to optimize. Let us consider a shallower architecture and its deeper counterpart that adds more layers onto it. There exists a solution by construction to the deeper model: the added layers are identity mapping, and the other layers are copied from the learned shallower model. The existence of this constructed solution indicates that a deeper model should produce no higher training error than its shallower counterpart. But experiments show that our current solvers on hand are unable to find solutions that \n1http://image-net.org/challenges/LSVRC/2015/ and http://mscoco.org/dataset/#detections-challenge2015.",
+      "[FINAL] We compare n = {3, 5, 7, 9}, leading to 20, 32, 44, and 56-layer networks. Fig. 6 (left) shows the behaviors of the plain nets. The deep plain nets suffer from increased depth, and exhibit higher training error when going deeper. This phenomenon is similar to that on ImageNet (Fig. 4, left) and on MNIST (see [42]), suggesting that such an optimization difficulty is a fundamental problem. \nFig. 6 (middle) shows the behaviors of ResNets. Also similar to the ImageNet cases (Fig. 4, right), our ResNets manage to overcome the optimization difficulty and demonstrate accuracy gains when the depth increases. \nWe further explore n = 18 that leads to a 110-layer ResNet. In this case, we find that the initial learning rate of 0.1 is slightly too large to start converging5. So we use 0.01 to warm up the training until the training error is below 80% (about 400 iterations), and then go back to 0.1 and continue training. The rest of the learning schedule is as done previously. This 110-layer network converges well (Fig. 6, middle). It has fewer parameters than other deep and thin \n5With an initial learning rate of 0.1, it starts converging (3% over VGG-16. This gain is solely because of the improved features learned by ResNet."
+    ],
+    "citations": [
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 1,
+        "section_header": "Deep Residual Learning for Image Recognition > 1. Introduction",
+        "excerpt": "When deeper networks are able to start converging, a degradation problem has been exposed: with the network depth increasing, accuracy gets saturated (which might be unsurprising) and then degrades rapidly. Unexpectedly, such degradation is not caused by overfitting, and adding more layers to a suitably deep model leads to higher training error, as reported in [11, 42] and thoroughly verified by our experiments. Fig. 1 shows a typical example. \nThe degradation (of training accuracy) indicates that not all systems are similarly easy to optimize. Let us consider a shallower architecture and its deeper counterpart that adds more layers onto it. There exists a solution by construction to the deeper model: the added layers are identity mapping, and the other layers are copied from the learned shallower model. The existence of this constructed solution indicates that a deeper model should produce no higher training error than its shallower counterpart. But experiments show that our current solvers on hand are unable to find solutions that \n1http://image-net.org/challenges/LSVRC/2015/ and http://mscoco.org/dataset/#detections-challenge2015.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "ImgRecog.pdf",
+        "page_number": 7,
+        "section_header": "filters | 32×32",
+        "excerpt": "We compare n = {3, 5, 7, 9}, leading to 20, 32, 44, and 56-layer networks. Fig. 6 (left) shows the behaviors of the plain nets. The deep plain nets suffer from increased depth, and exhibit higher training error when going deeper. This phenomenon is similar to that on ImageNet (Fig. 4, left) and on MNIST (see [42]), suggesting that such an optimization difficulty is a fundamental problem. \nFig. 6 (middle) shows the behaviors of ResNets. Also similar to the ImageNet cases (Fig. 4, right), our ResNets manage to overcome the optimization difficulty and demonstrate accuracy gains when the depth increases. \nWe further explore n = 18 that leads to a 110-layer ResNet. In this case, we find that the initial learning rate of 0.1 is slightly too large to start converging5. So we use 0.01 to warm up the training until the training error is below 80% (about 400 iterations), and then go back to 0.1 and continue training. The rest of the learning schedule is as done previously. This 110-layer network converges well (Fig. 6, middle). It has fewer parameters than other deep and thin \n5With an initial learning rate of 0.1, it starts converging (3% over VGG-16. This gain is solely because of the improved features learned by ResNet.",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 41.43835989999934,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "Which shift in English teaching moved away from abstract grammar translation toward listening, speaking, and pronunciation?",
+    "ground_truth": "That shift was the Reform movement and its direct-method orientation.",
+    "source_file": [
+      "English.pdf"
+    ],
+    "category": "paraphrase_hard_retrieval",
+    "difficulty": "medium",
+    "original_question_id": 45,
+    "architecture": "multi_agent_arch",
+    "answer": "The shift in English teaching that moved away from abstract grammar translation toward listening, speaking, and pronunciation is not explicitly mentioned in the provided evidence.",
+    "context_used": [
+      "[FINAL] Phillips, S. F., Ferguson, R. F., & Rowley, J. F. S. (2021). Do they see what I see? Toward a better understanding of the 7Cs framework of teaching effectiveness. *Educational Assessment*, 26(2), 69–87. https://doi.org/10.1080/10627197.2020.1858784 \nPuimège, E., & Peters, E. (2019). Learners' English vocabulary knowledge prior to formal instruction: The role of learner-related and word-related factors. *Language Learning*, 69(4), 943–977. https://doi.org/10.1111/lang.12364 \nRindal, U. (2025). English in Norway. In K. Bolton (Ed.), *The Wiley Blackwell Encyclopedia of World Englishes*. https://doi.org/10.1002/9781119518297.eowe00361 \nRøyneland, U., Lohndal, T., Sandvik, H., Harsvik, W., Sollid, H., Rana, S., & Soldal, H. A. (2018). *Språk i Norge - kultur og infrastruktur*. Språkrådet. https://sprakradet.no/wp-content/uploads/sprak-i-norge-kultur-og-infrastruktur.pdf \nSandsør, A. M. J., & Brevik, L. M. (2024). Gender gaps in English as a second language over time: A shift in favour of boys. *Assessment in Education: Principles, Policy & Practice*, 31(5–6), 301–324. https://doi.org/10.1080/0969594X.2024.2423151",
+      "[FINAL] . No significant differences were found across time or classrooms or between genders. Rather, considerable within-classroom variation highlights the individual student and the role of the English teacher in the socially situated practice of classroom instruction. A negative development in the reported intelligibility of the teacher's spoken English from pre- to post-Covid-19 suggests the importance of the personal and academic communication between students and teachers when they are physically present together in the classroom. The study highlights the need to focus on the role of the English teacher in a society with a considerable presence of English."
+    ],
+    "citations": [
+      {
+        "source_file": "English.pdf",
+        "page_number": 24,
+        "section_header": "References",
+        "excerpt": "Phillips, S. F., Ferguson, R. F., & Rowley, J. F. S. (2021). Do they see what I see? Toward a better understanding of the 7Cs framework of teaching effectiveness. *Educational Assessment*, 26(2), 69–87. https://doi.org/10.1080/10627197.2020.1858784 \nPuimège, E., & Peters, E. (2019). Learners' English vocabulary knowledge prior to formal instruction: The role of learner-related and word-related factors. *Language Learning*, 69(4), 943–977. https://doi.org/10.1111/lang.12364 \nRindal, U. (2025). English in Norway. In K. Bolton (Ed.), *The Wiley Blackwell Encyclopedia of World Englishes*. https://doi.org/10.1002/9781119518297.eowe00361 \nRøyneland, U., Lohndal, T., Sandvik, H., Harsvik, W., Sollid, H., Rana, S., & Soldal, H. A. (2018). *Språk i Norge - kultur og infrastruktur*. Språkrådet. https://sprakradet.no/wp-content/uploads/sprak-i-norge-kultur-og-infrastruktur.pdf \nSandsør, A. M. J., & Brevik, L. M. (2024). Gender gaps in English as a second language over time: A shift in favour of boys. *Assessment in Education: Principles, Policy & Practice*, 31(5–6), 301–324. https://doi.org/10.1080/0969594X.2024.2423151",
+        "content_type": "text"
+      },
+      {
+        "source_file": "English.pdf",
+        "page_number": 1,
+        "section_header": "Student experiences of English teaching in Norway > Abstract",
+        "excerpt": ". No significant differences were found across time or classrooms or between genders. Rather, considerable within-classroom variation highlights the individual student and the role of the English teacher in the socially situated practice of classroom instruction. A negative development in the reported intelligibility of the teacher's spoken English from pre- to post-Covid-19 suggests the importance of the personal and academic communication between students and teachers when they are physically present together in the classroom. The study highlights the need to focus on the role of the English teacher in a society with a considerable presence of English.",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 60.814971400000104,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "What BERT pre-training setup lets a token use both left and right context instead of only earlier tokens?",
+    "ground_truth": "BERT’s masked language model objective enables bidirectional context because masked tokens are predicted using both left and right context.",
+    "source_file": [
+      "BERT.pdf"
+    ],
+    "category": "paraphrase_hard_retrieval",
+    "difficulty": "medium",
+    "original_question_id": 46,
+    "architecture": "multi_agent_arch",
+    "answer": "",
+    "context_used": [],
+    "citations": [],
+    "latency_sec": 25.951753899999858,
+    "status": "error",
+    "error": {
+      "error_type": "http_error",
+      "message": "Backend returned HTTP 500.",
+      "status_code": 500,
+      "detail": {
+        "message": "Multi-agent brain processing failed.",
+        "architecture": "multi_agent_arch",
+        "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01kqh0crn6ebmseghqv57y0268` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5263, Requested 865. Please try again in 1.28s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      }
+    }
+  },
+  {
+    "question": "How do the Transformer and BERT papers use attention differently in their main contributions?",
+    "ground_truth": "The Transformer paper introduces an attention-only encoder-decoder architecture for sequence transduction, while the BERT paper uses Transformer attention inside a bidirectional pretrained language model for general-purpose language representation learning and fine-tuning.",
+    "source_file": [
+      "AttentionIsAllYouNeed.pdf",
+      "BERT.pdf"
+    ],
+    "category": "cross_paper_comparison",
+    "difficulty": "hard",
+    "original_question_id": 49,
+    "architecture": "multi_agent_arch",
+    "answer": "The Transformer paper uses multi-head attention in three different ways: \n* In encoder-decoder attention layers, the queries come from the previous decoder layer, and the memory keys and values come from the output of the encoder.\n* The encoder contains self-attention layers, where each position can attend to all positions in the previous layer of the encoder.\n* Similarly, self-attention layers in the decoder allow each position to attend to all positions in the decoder up to and including that position.\n\nIn contrast, the BERT paper uses a multi-layer bidirectional Transformer encoder with bidirectional self-attention, where each position can attend to all positions in the input sequence. This is different from the Transformer's self-attention in the decoder, which only allows each position to attend to all positions up to and including that position.",
+    "context_used": [
+      "[FINAL] The Transformer uses multi-head attention in three different ways: \n* In \"encoder-decoder attention\" layers, the queries come from the previous decoder layer, and the memory keys and values come from the output of the encoder. This allows every position in the decoder to attend over all positions in the input sequence. This mimics the typical encoder-decoder attention mechanisms in sequence-to-sequence models such as [38, 2, 9]. \n* The encoder contains self-attention layers. In a self-attention layer all of the keys, values and queries come from the same place, in this case, the output of the previous layer in the encoder. Each position in the encoder can attend to all positions in the previous layer of the encoder. \n* Similarly, self-attention layers in the decoder allow each position in the decoder to attend to all positions in the decoder up to and including that position. We need to prevent leftward information flow in the decoder to preserve the auto-regressive property. We implement this inside of scaled dot-product attention by masking out (setting to $-\\infty$) all values in the input of the softmax which correspond to illegal connections. See Figure 2.",
+      "[FINAL] **Model Architecture** BERT’s model architecture is a multi-layer bidirectional Transformer encoder based on the original implementation described in Vaswani et al. (2017) and released in the `tensor2tensor` library.1 Because the use of Transformers has become common and our implementation is almost identical to the original, we will omit an exhaustive background description of the model architecture and refer readers to Vaswani et al. (2017) as well as excellent guides such as “The Annotated Transformer.”2 \nIn this work, we denote the number of layers (i.e., Transformer blocks) as $L$, the hidden size as $H$, and the number of self-attention heads as $A$.3 We primarily report results on two model sizes: **BERTBASE** ($L=12, H=768, A=12$, Total Parameters=110M) and **BERTLARGE** ($L=24, H=1024, A=16$, Total Parameters=340M). \nBERTBASE was chosen to have the same model size as OpenAI GPT for comparison purposes. Critically, however, the BERT Transformer uses bidirectional self-attention, while the GPT Transformer uses constrained self-attention where every token can only attend to context to its left.4 \n1https://github.com/tensorflow/tensor2tensor \n2http://nlp.seas.harvard.edu/2018/04/03/attention.html"
+    ],
+    "citations": [
+      {
+        "source_file": "AttentionIsAllYouNeed.pdf",
+        "page_number": 5,
+        "section_header": "3.2.3 Applications of Attention in our Model",
+        "excerpt": "The Transformer uses multi-head attention in three different ways: \n* In \"encoder-decoder attention\" layers, the queries come from the previous decoder layer, and the memory keys and values come from the output of the encoder. This allows every position in the decoder to attend over all positions in the input sequence. This mimics the typical encoder-decoder attention mechanisms in sequence-to-sequence models such as [38, 2, 9]. \n* The encoder contains self-attention layers. In a self-attention layer all of the keys, values and queries come from the same place, in this case, the output of the previous layer in the encoder. Each position in the encoder can attend to all positions in the previous layer of the encoder. \n* Similarly, self-attention layers in the decoder allow each position in the decoder to attend to all positions in the decoder up to and including that position. We need to prevent leftward information flow in the decoder to preserve the auto-regressive property. We implement this inside of scaled dot-product attention by masking out (setting to $-\\infty$) all values in the input of the softmax which correspond to illegal connections. See Figure 2.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "BERT.pdf",
+        "page_number": 3,
+        "section_header": "3 BERT",
+        "excerpt": "**Model Architecture** BERT’s model architecture is a multi-layer bidirectional Transformer encoder based on the original implementation described in Vaswani et al. (2017) and released in the `tensor2tensor` library.1 Because the use of Transformers has become common and our implementation is almost identical to the original, we will omit an exhaustive background description of the model architecture and refer readers to Vaswani et al. (2017) as well as excellent guides such as “The Annotated Transformer.”2 \nIn this work, we denote the number of layers (i.e., Transformer blocks) as $L$, the hidden size as $H$, and the number of self-attention heads as $A$.3 We primarily report results on two model sizes: **BERTBASE** ($L=12, H=768, A=12$, Total Parameters=110M) and **BERTLARGE** ($L=24, H=1024, A=16$, Total Parameters=340M). \nBERTBASE was chosen to have the same model size as OpenAI GPT for comparison purposes. Critically, however, the BERT Transformer uses bidirectional self-attention, while the GPT Transformer uses constrained self-attention where every token can only attend to context to its left.4 \n1https://github.com/tensorflow/tensor2tensor \n2http://nlp.seas.harvard.edu/2018/04/03/attention.html",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 35.09052669999983,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "How do ResNet and TabNet each try to improve optimization or learning efficiency in different data settings?",
+    "ground_truth": "ResNet improves optimization in very deep vision networks by learning residual functions with shortcut connections, while TabNet improves efficiency in tabular learning by using sparse sequential attention to focus model capacity on salient features.",
+    "source_file": [
+      "ImgRecog.pdf",
+      "TabNet.pdf"
+    ],
+    "category": "cross_paper_comparison",
+    "difficulty": "hard",
+    "original_question_id": 50,
+    "architecture": "multi_agent_arch",
+    "answer": "",
+    "context_used": [],
+    "citations": [],
+    "latency_sec": 81.90727100000004,
+    "status": "error",
+    "error": {
+      "error_type": "http_error",
+      "message": "Backend returned HTTP 500.",
+      "status_code": 500,
+      "detail": {
+        "message": "Multi-agent brain processing failed.",
+        "architecture": "multi_agent_arch",
+        "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01kqh0crn6ebmseghqv57y0268` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 3426, Requested 2594. Please try again in 200ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      }
+    }
+  },
+  {
+    "question": "How do the English paper and the RAG survey each connect broad theory to practical application?",
+    "ground_truth": "The English paper connects theories of language and English’s global status to curriculum and teaching practice in Norway, while the RAG survey connects high-level RAG paradigms and component design to practical system building, benchmarks, and evaluation.",
+    "source_file": [
+      "English.pdf",
+      "RAGSurvey.pdf"
+    ],
+    "category": "cross_paper_comparison",
+    "difficulty": "hard",
+    "original_question_id": 53,
+    "architecture": "multi_agent_arch",
+    "answer": "The English paper and the RAG survey each connect broad theory to practical application by showcasing the evolution and advancements of RAG technologies and their applications on various tasks. \n\nThe RAG survey highlights the technical integration of RAG with other AI methodologies, such as fine-tuning and reinforcement learning, which has expanded its capabilities. It also emphasizes RAG's significant practical implications for AI deployment, attracting interest from academic and industrial sectors.\n\nThe English paper, on the other hand, focuses on the integration of RAG within LLMs, summarizing three main research paradigms from over 100 RAG studies, and analyzing key technologies in the core stages of \"Retrieval,\" \"Generation,\" and \"Augmentation.\" It also reviews downstream tasks, datasets, benchmarks, and evaluation methods applicable to RAG, providing a detailed and structured understanding of both large models and RAG.\n\nBoth the RAG survey and the English paper demonstrate the connection between broad theory and practical application by providing a comprehensive review of RAG's technical concepts, historical progression, and methodologies, as well as its applications and evaluation frameworks.",
+    "context_used": [
+      "[FINAL] The summary of this paper, as depicted in Figure 6, emphasizes RAG's significant advancement in enhancing the capabilities of LLMs by integrating parameterized knowledge from language models with extensive non-parameterized data from external knowledge bases. The survey showcases the evolution of RAG technologies and their application on many different tasks. The analysis outlines three developmental paradigms within the RAG framework: Naive, Advanced, and Modular RAG, each representing a progressive enhancement over its predecessors. RAG's technical integration with other AI methodologies, such as fine-tuning and reinforcement learning, has further expanded its capabilities. Despite the progress in RAG technology, there are research opportunities to improve its robustness and its ability to handle extended contexts. RAG's application scope is expanding into multimodal domains, adapting its principles to interpret and process diverse data forms like images, videos, and code. This expansion highlights RAG's significant practical implications for AI deployment, attracting interest from academic and industrial sectors.",
+      "[FINAL] The burgeoning field of RAG has experienced swift growth, yet it has not been accompanied by a systematic synthesis that could clarify its broader trajectory. This survey endeavors to fill this gap by mapping out the RAG process and charting its evolution and anticipated future paths, with a focus on the integration of RAG within LLMs. This paper considers both technical paradigms and research methods, summarizing three main research paradigms from over 100 RAG studies, and analyzing key technologies in the core stages of \"Retrieval,\" \"Generation,\" and \"Augmentation.\" On the other hand, current research tends to focus more on methods, lacking analysis and summarization of how to evaluate RAG. This paper comprehensively reviews the downstream tasks, datasets, benchmarks, and evaluation methods applicable to RAG. Overall, this paper sets out to meticulously compile and categorize the foundational technical concepts, historical progression, and the spectrum of RAG methodologies and applications that have emerged post-LLMs. It is designed to equip readers and professionals with a detailed and structured understanding of both large models and RAG",
+      "[FINAL] LARGE language models (LLMs) have achieved remarkable success, though they still face significant limitations, especially in domain-specific or knowledge-intensive tasks [1], notably producing \"hallucinations\" [2] when handling queries beyond their training data or requiring current information. To overcome challenges, Retrieval-Augmented Generation (RAG) enhances LLMs by retrieving relevant document chunks from external knowledge base through semantic similarity calculation. By referencing external knowledge, RAG effectively reduces the problem of generating factually incorrect content. Its integration into LLMs has resulted in widespread adoption, establishing RAG as a key technology in advancing chatbots and enhancing the suitability of LLMs for real-world applications.",
+      "[FINAL] The growing ecosystem of RAG is evidenced by the rise in RAG-centric AI applications and the continuous development of supportive tools. As RAG's application landscape broadens, there is a need to refine evaluation methodologies to keep pace with its evolution. Ensuring accurate and representative performance assessments is crucial for fully capturing RAG's contributions to the AI research and development community.",
+      "[FINAL] Large Language Models (LLMs) showcase impressive capabilities but encounter challenges like hallucination, outdated knowledge, and non-transparent, untraceable reasoning processes. Retrieval-Augmented Generation (RAG) has emerged as a promising solution by incorporating knowledge from external databases. This enhances the accuracy and credibility of the generation, particularly for knowledge-intensive tasks, and allows for continuous knowledge updates and integration of domain-specific information. RAG synergistically merges LLMs' intrinsic knowledge with the vast, dynamic repositories of external databases. This comprehensive review paper offers a detailed examination of the progression of RAG paradigms, encompassing the Naive RAG, the Advanced RAG, and the Modular RAG. It meticulously scrutinizes the tripartite foundation of RAG frameworks, which includes the retrieval, the generation and the augmentation techniques. The paper highlights the state-of-the-art technologies embedded in each of these critical components, providing a profound understanding of the advancements in RAG systems. Furthermore, this paper introduces up-to-date evaluation framework and benchmark",
+      "[FINAL] RAG technology has rapidly developed in recent years, and the technology tree summarizing related research is shown in Figure 1. The development trajectory of RAG in the era of large models exhibits several distinct stage characteristics. Initially, RAG's inception coincided with the rise of the Transformer architecture, focusing on enhancing language models by incorporating additional knowledge through Pre-Training Models (PTM). This early stage was characterized by foundational work aimed at refining pre-training techniques [3]–[5]. The subsequent arrival of ChatGPT [6] marked a pivotal moment, with LLM demonstrating powerful in context learning (ICL) capabilities. RAG research shifted towards providing better information for LLMs to answer more complex and knowledge-intensive tasks during the inference stage, leading to rapid development in RAG studies. As research progressed, the enhancement of RAG was no longer limited to the inference stage but began to incorporate more with LLM fine-tuning techniques."
+    ],
+    "citations": [
+      {
+        "source_file": "RAGSurvey.pdf",
+        "page_number": 22,
+        "section_header": "VIII. CONCLUSION",
+        "excerpt": "The summary of this paper, as depicted in Figure 6, emphasizes RAG's significant advancement in enhancing the capabilities of LLMs by integrating parameterized knowledge from language models with extensive non-parameterized data from external knowledge bases. The survey showcases the evolution of RAG technologies and their application on many different tasks. The analysis outlines three developmental paradigms within the RAG framework: Naive, Advanced, and Modular RAG, each representing a progressive enhancement over its predecessors. RAG's technical integration with other AI methodologies, such as fine-tuning and reinforcement learning, has further expanded its capabilities. Despite the progress in RAG technology, there are research opportunities to improve its robustness and its ability to handle extended contexts. RAG's application scope is expanding into multimodal domains, adapting its principles to interpret and process diverse data forms like images, videos, and code. This expansion highlights RAG's significant practical implications for AI deployment, attracting interest from academic and industrial sectors.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "RAGSurvey.pdf",
+        "page_number": 1,
+        "section_header": "Retrieval-Augmented Generation for Large Language Models: A Survey > I. INTRODUCTION",
+        "excerpt": "The burgeoning field of RAG has experienced swift growth, yet it has not been accompanied by a systematic synthesis that could clarify its broader trajectory. This survey endeavors to fill this gap by mapping out the RAG process and charting its evolution and anticipated future paths, with a focus on the integration of RAG within LLMs. This paper considers both technical paradigms and research methods, summarizing three main research paradigms from over 100 RAG studies, and analyzing key technologies in the core stages of \"Retrieval,\" \"Generation,\" and \"Augmentation.\" On the other hand, current research tends to focus more on methods, lacking analysis and summarization of how to evaluate RAG. This paper comprehensively reviews the downstream tasks, datasets, benchmarks, and evaluation methods applicable to RAG. Overall, this paper sets out to meticulously compile and categorize the foundational technical concepts, historical progression, and the spectrum of RAG methodologies and applications that have emerged post-LLMs. It is designed to equip readers and professionals with a detailed and structured understanding of both large models and RAG",
+        "content_type": "text"
+      },
+      {
+        "source_file": "RAGSurvey.pdf",
+        "page_number": 1,
+        "section_header": "Retrieval-Augmented Generation for Large Language Models: A Survey > I. INTRODUCTION",
+        "excerpt": "LARGE language models (LLMs) have achieved remarkable success, though they still face significant limitations, especially in domain-specific or knowledge-intensive tasks [1], notably producing \"hallucinations\" [2] when handling queries beyond their training data or requiring current information. To overcome challenges, Retrieval-Augmented Generation (RAG) enhances LLMs by retrieving relevant document chunks from external knowledge base through semantic similarity calculation. By referencing external knowledge, RAG effectively reduces the problem of generating factually incorrect content. Its integration into LLMs has resulted in widespread adoption, establishing RAG as a key technology in advancing chatbots and enhancing the suitability of LLMs for real-world applications.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "RAGSurvey.pdf",
+        "page_number": 23,
+        "section_header": "VIII. CONCLUSION",
+        "excerpt": "The growing ecosystem of RAG is evidenced by the rise in RAG-centric AI applications and the continuous development of supportive tools. As RAG's application landscape broadens, there is a need to refine evaluation methodologies to keep pace with its evolution. Ensuring accurate and representative performance assessments is crucial for fully capturing RAG's contributions to the AI research and development community.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "RAGSurvey.pdf",
+        "page_number": 1,
+        "section_header": "Retrieval-Augmented Generation for Large Language Models: A Survey > Abstract",
+        "excerpt": "Large Language Models (LLMs) showcase impressive capabilities but encounter challenges like hallucination, outdated knowledge, and non-transparent, untraceable reasoning processes. Retrieval-Augmented Generation (RAG) has emerged as a promising solution by incorporating knowledge from external databases. This enhances the accuracy and credibility of the generation, particularly for knowledge-intensive tasks, and allows for continuous knowledge updates and integration of domain-specific information. RAG synergistically merges LLMs' intrinsic knowledge with the vast, dynamic repositories of external databases. This comprehensive review paper offers a detailed examination of the progression of RAG paradigms, encompassing the Naive RAG, the Advanced RAG, and the Modular RAG. It meticulously scrutinizes the tripartite foundation of RAG frameworks, which includes the retrieval, the generation and the augmentation techniques. The paper highlights the state-of-the-art technologies embedded in each of these critical components, providing a profound understanding of the advancements in RAG systems. Furthermore, this paper introduces up-to-date evaluation framework and benchmark",
+        "content_type": "text"
+      },
+      {
+        "source_file": "RAGSurvey.pdf",
+        "page_number": 1,
+        "section_header": "Retrieval-Augmented Generation for Large Language Models: A Survey > I. INTRODUCTION",
+        "excerpt": "RAG technology has rapidly developed in recent years, and the technology tree summarizing related research is shown in Figure 1. The development trajectory of RAG in the era of large models exhibits several distinct stage characteristics. Initially, RAG's inception coincided with the rise of the Transformer architecture, focusing on enhancing language models by incorporating additional knowledge through Pre-Training Models (PTM). This early stage was characterized by foundational work aimed at refining pre-training techniques [3]–[5]. The subsequent arrival of ChatGPT [6] marked a pivotal moment, with LLM demonstrating powerful in context learning (ICL) capabilities. RAG research shifted towards providing better information for LLMs to answer more complex and knowledge-intensive tasks during the inference stage, leading to rapid development in RAG studies. As research progressed, the enhancement of RAG was no longer limited to the inference stage but began to incorporate more with LLM fine-tuning techniques.",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 65.37871039999936,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "In which paper does attention refer to sequential feature selection over tabular columns rather than sequence transduction over token positions?",
+    "ground_truth": "That usage appears in TabNet, where attention selects tabular features at each decision step rather than modeling token-to-token dependencies in a sequence.",
+    "source_file": [
+      "TabNet.pdf",
+      "AttentionIsAllYouNeed.pdf"
+    ],
+    "category": "distractor_edge_case",
+    "difficulty": "hard",
+    "original_question_id": 55,
+    "architecture": "multi_agent_arch",
+    "answer": "The paper where attention refers to sequential feature selection over tabular columns rather than sequence transduction over token positions is TabNet.",
+    "context_used": [
+      "[FINAL] Why is deep learning worth exploring for tabular data? One obvious motivation is expected performance improve-We propose a new canonical DNN architecture for tabular data, TabNet. The main contributions are summarized as: \n1. *TabNet inputs raw tabular data without any preprocessing* and is trained using gradient descent-based optimization, enabling flexible integration into end-to-end learning. \n2. *TabNet uses sequential attention to choose which features to reason from at each decision step*, enabling interpretability and better learning as the learning capacity is used for the most salient features (see Fig. 1). This feature selection is *instance-wise*, e.g. it can be different for each input, and unlike other instance-wise feature selection methods like (Chen et al. 2018) or (Yoon, Jordon, and van der Schaar 2019), TabNet employs a *single deep learning architecture for feature selection and reasoning*.",
+      "[FINAL] We have proposed TabNet, a novel deep learning architecture for tabular learning. TabNet uses a sequential attention mechanism to choose a subset of semantically meaningful features to process at each decision step. Instance-wise feature selection enables efficient learning as the model capacity is fully used for the most salient features, and also yields more interpretable decision making via visualization of selection masks. We demonstrate that TabNet outperforms previous work across tabular datasets from different domains. Lastly, we demonstrate significant benefits of unsupervised pre-training for fast adaptation and improved performance."
+    ],
+    "citations": [
+      {
+        "source_file": "TabNet.pdf",
+        "page_number": 1,
+        "section_header": "TabNet: Attentive Interpretable Tabular Learning > Introduction",
+        "excerpt": "Why is deep learning worth exploring for tabular data? One obvious motivation is expected performance improve-We propose a new canonical DNN architecture for tabular data, TabNet. The main contributions are summarized as: \n1. *TabNet inputs raw tabular data without any preprocessing* and is trained using gradient descent-based optimization, enabling flexible integration into end-to-end learning. \n2. *TabNet uses sequential attention to choose which features to reason from at each decision step*, enabling interpretability and better learning as the learning capacity is used for the most salient features (see Fig. 1). This feature selection is *instance-wise*, e.g. it can be different for each input, and unlike other instance-wise feature selection methods like (Chen et al. 2018) or (Yoon, Jordon, and van der Schaar 2019), TabNet employs a *single deep learning architecture for feature selection and reasoning*.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "TabNet.pdf",
+        "page_number": 5,
+        "section_header": "Conclusions",
+        "excerpt": "We have proposed TabNet, a novel deep learning architecture for tabular learning. TabNet uses a sequential attention mechanism to choose a subset of semantically meaningful features to process at each decision step. Instance-wise feature selection enables efficient learning as the model capacity is fully used for the most salient features, and also yields more interpretable decision making via visualization of selection masks. We demonstrate that TabNet outperforms previous work across tabular datasets from different domains. Lastly, we demonstrate significant benefits of unsupervised pre-training for fast adaptation and improved performance.",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 39.71201900000051,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "Which paper discusses Naive, Advanced, and Modular RAG rather than introducing a new encoder architecture?",
+    "ground_truth": "The RAG survey discusses Naive, Advanced, and Modular RAG; it is a taxonomy and survey paper rather than a paper proposing a new encoder architecture.",
+    "source_file": [
+      "RAGSurvey.pdf",
+      "AttentionIsAllYouNeed.pdf",
+      "BERT.pdf"
+    ],
+    "category": "distractor_edge_case",
+    "difficulty": "medium",
+    "original_question_id": 57,
+    "architecture": "multi_agent_arch",
+    "answer": "The paper that discusses Naive, Advanced, and Modular RAG rather than introducing a new encoder architecture is the Retrieval-Augmented Generation for Large Language Models: A Survey.",
+    "context_used": [
+      "[FINAL] Large Language Models (LLMs) showcase impressive capabilities but encounter challenges like hallucination, outdated knowledge, and non-transparent, untraceable reasoning processes. Retrieval-Augmented Generation (RAG) has emerged as a promising solution by incorporating knowledge from external databases. This enhances the accuracy and credibility of the generation, particularly for knowledge-intensive tasks, and allows for continuous knowledge updates and integration of domain-specific information. RAG synergistically merges LLMs' intrinsic knowledge with the vast, dynamic repositories of external databases. This comprehensive review paper offers a detailed examination of the progression of RAG paradigms, encompassing the Naive RAG, the Advanced RAG, and the Modular RAG. It meticulously scrutinizes the tripartite foundation of RAG frameworks, which includes the retrieval, the generation and the augmentation techniques. The paper highlights the state-of-the-art technologies embedded in each of these critical components, providing a profound understanding of the advancements in RAG systems. Furthermore, this paper introduces up-to-date evaluation framework and benchmark",
+      "[FINAL] The modular RAG architecture advances beyond the former two RAG paradigms, offering enhanced adaptability and versatility. It incorporates diverse strategies for improving its components, such as adding a search module for similarity searches and refining the retriever through fine-tuning. Innovations like restructured RAG modules [13] and rearranged RAG pipelines [14] have been introduced to tackle specific challenges. The shift towards a modular RAG approach is becoming prevalent, supporting both sequential processing and integrated end-to-end training across its components. Despite its distinctiveness, Modular RAG builds upon the foundational principles of Advanced and Naive RAG, illustrating a progression and refinement within the RAG family.",
+      "[FINAL] Comparison of three RAG paradigms showing Naive RAG, Advanced RAG, and Modular RAG architectures with their respective components and data flow \n**Fig. 3.** Comparison between the three paradigms of RAG. (Left) Naive RAG mainly consists of three parts: indexing, retrieval and generation. (Middle) Advanced RAG proposes multiple optimization strategies around pre-retrieval and post-retrieval, with a process similar to the Naive RAG, still following a chain-like structure. (Right) Modular RAG inherits and develops from the previous paradigm, showcasing greater flexibility overall. This is evident in the introduction of multiple specific functional modules and the replacement of existing modules. The overall process is not limited to sequential retrieval and generation; it includes methods such as iterative and adaptive retrieval."
+    ],
+    "citations": [
+      {
+        "source_file": "RAGSurvey.pdf",
+        "page_number": 1,
+        "section_header": "Retrieval-Augmented Generation for Large Language Models: A Survey > Abstract",
+        "excerpt": "Large Language Models (LLMs) showcase impressive capabilities but encounter challenges like hallucination, outdated knowledge, and non-transparent, untraceable reasoning processes. Retrieval-Augmented Generation (RAG) has emerged as a promising solution by incorporating knowledge from external databases. This enhances the accuracy and credibility of the generation, particularly for knowledge-intensive tasks, and allows for continuous knowledge updates and integration of domain-specific information. RAG synergistically merges LLMs' intrinsic knowledge with the vast, dynamic repositories of external databases. This comprehensive review paper offers a detailed examination of the progression of RAG paradigms, encompassing the Naive RAG, the Advanced RAG, and the Modular RAG. It meticulously scrutinizes the tripartite foundation of RAG frameworks, which includes the retrieval, the generation and the augmentation techniques. The paper highlights the state-of-the-art technologies embedded in each of these critical components, providing a profound understanding of the advancements in RAG systems. Furthermore, this paper introduces up-to-date evaluation framework and benchmark",
+        "content_type": "text"
+      },
+      {
+        "source_file": "RAGSurvey.pdf",
+        "page_number": 4,
+        "section_header": "C. Modular RAG",
+        "excerpt": "The modular RAG architecture advances beyond the former two RAG paradigms, offering enhanced adaptability and versatility. It incorporates diverse strategies for improving its components, such as adding a search module for similarity searches and refining the retriever through fine-tuning. Innovations like restructured RAG modules [13] and rearranged RAG pipelines [14] have been introduced to tackle specific challenges. The shift towards a modular RAG approach is becoming prevalent, supporting both sequential processing and integrated end-to-end training across its components. Despite its distinctiveness, Modular RAG builds upon the foundational principles of Advanced and Naive RAG, illustrating a progression and refinement within the RAG family.",
+        "content_type": "text"
+      },
+      {
+        "source_file": "RAGSurvey.pdf",
+        "page_number": 4,
+        "section_header": "II. OVERVIEW OF RAG > A. Naive RAG",
+        "excerpt": "Comparison of three RAG paradigms showing Naive RAG, Advanced RAG, and Modular RAG architectures with their respective components and data flow \n**Fig. 3.** Comparison between the three paradigms of RAG. (Left) Naive RAG mainly consists of three parts: indexing, retrieval and generation. (Middle) Advanced RAG proposes multiple optimization strategies around pre-retrieval and post-retrieval, with a process similar to the Naive RAG, still following a chain-like structure. (Right) Modular RAG inherits and develops from the previous paradigm, showcasing greater flexibility overall. This is evident in the introduction of multiple specific functional modules and the replacement of existing modules. The overall process is not limited to sequential retrieval and generation; it includes methods such as iterative and adaptive retrieval.",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 42.210285200000726,
+    "status": "ok",
+    "error": null
+  },
+  {
+    "question": "Which paper is about language beliefs and English teaching in Norway rather than neural representation learning?",
+    "ground_truth": "That is What is English?, which focuses on language beliefs, English teaching, and the status of English in Norway.",
+    "source_file": [
+      "English.pdf",
+      "BERT.pdf",
+      "AttentionIsAllYouNeed.pdf",
+      "TabNet.pdf",
+      "ImgRecog.pdf"
+    ],
+    "category": "distractor_edge_case",
+    "difficulty": "easy",
+    "original_question_id": 58,
+    "architecture": "multi_agent_arch",
+    "answer": "Based on the provided evidence, the paper about language beliefs and English teaching in Norway rather than neural representation learning is likely DOCUMENT [1]. This is because DOCUMENT [1] discusses students' experiences with English teaching in Norway, their language beliefs, and the role of the English teacher in a society with competing language role models. In contrast, DOCUMENT [2] focuses on the dynamics of the L2 English classroom in Norway, discussing student experiences, teacher instruction, and the importance of personal and academic face-to-face communication, but does not explicitly address language beliefs and English teaching in the context of Norway.",
+    "context_used": [
+      "[FINAL] Outside of school, Norwegian adolescents engage with English-language media on a daily basis (Norwegian Media Authority, 2022). Previous research shows that exposure to English outside of school has a positive influence on students' English proficiency (Puimège & Peters, 2019; Sletten et al., 2015; Sundqvist, 2019), and students themselves believe that they learn English from their out-of-school engagement with English (Brevik, 2016, 2019; Norwegian Media Authority, 2022; Schwarz, 2020; Ulfat, 2024). In this context, the English teacher is tasked to complement students' existing proficiency, levelling out the differences in students' proficiency levels and adding competencies crucial to reach the aims of the LK20 Curriculum in English (Ministry of Education and Research, 2019). We have limited knowledge about how students in Norway experience their English teaching. It is relevant to explore such experiences and how they develop over time. In particular, for English as a school subject, it is relevant to investigate how students view their teacher as an English language role model (Muir et al., 2021) and their comprehension of academic classroom talk, considering their access to numerous English language users from media",
+      "[FINAL] This study has provided insight into the dynamics of the L2 English classroom in Norway by discussing the experiences of participants who are part of a generation of students reported to struggle with mental health challenges and decreasing motivation in school. The results showed that student experiences were for the most part in line with teacher instruction argued to predict higher student achievement, engagement and motivation, suggesting the importance of personal and academic face-to-face communication between students and teachers. Rather than developing over time or varying between classrooms or teachers, student experiences varied within classrooms, highlighting the individual student in the socially situated practice of classroom instruction. The English teacher plays an important role in a society with competing and varying language role models, and the considerable within-classroom variation in this study suggests that there are many ways of being an English teacher. The results indicate the need for high quality teacher education that emphasises the role of the English teacher in a society where English is omnipresent."
+    ],
+    "citations": [
+      {
+        "source_file": "English.pdf",
+        "page_number": 3,
+        "section_header": "Elevers opplevelse av engelskundervisning i Norge > Introduction",
+        "excerpt": "Outside of school, Norwegian adolescents engage with English-language media on a daily basis (Norwegian Media Authority, 2022). Previous research shows that exposure to English outside of school has a positive influence on students' English proficiency (Puimège & Peters, 2019; Sletten et al., 2015; Sundqvist, 2019), and students themselves believe that they learn English from their out-of-school engagement with English (Brevik, 2016, 2019; Norwegian Media Authority, 2022; Schwarz, 2020; Ulfat, 2024). In this context, the English teacher is tasked to complement students' existing proficiency, levelling out the differences in students' proficiency levels and adding competencies crucial to reach the aims of the LK20 Curriculum in English (Ministry of Education and Research, 2019). We have limited knowledge about how students in Norway experience their English teaching. It is relevant to explore such experiences and how they develop over time. In particular, for English as a school subject, it is relevant to investigate how students view their teacher as an English language role model (Muir et al., 2021) and their comprehension of academic classroom talk, considering their access to numerous English language users from media",
+        "content_type": "text"
+      },
+      {
+        "source_file": "English.pdf",
+        "page_number": 20,
+        "section_header": "Conclusion",
+        "excerpt": "This study has provided insight into the dynamics of the L2 English classroom in Norway by discussing the experiences of participants who are part of a generation of students reported to struggle with mental health challenges and decreasing motivation in school. The results showed that student experiences were for the most part in line with teacher instruction argued to predict higher student achievement, engagement and motivation, suggesting the importance of personal and academic face-to-face communication between students and teachers. Rather than developing over time or varying between classrooms or teachers, student experiences varied within classrooms, highlighting the individual student in the socially situated practice of classroom instruction. The English teacher plays an important role in a society with competing and varying language role models, and the considerable within-classroom variation in this study suggests that there are many ways of being an English teacher. The results indicate the need for high quality teacher education that emphasises the role of the English teacher in a society where English is omnipresent.",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 55.05573430000004,
+    "status": "ok",
+    "error": null
+  }
+]

@@ -50,3 +50,11 @@ class GraphState(TypedDict, total=False):
 
     mixed_domain_evidence: bool
     evidence_source_distribution: Dict[str, Any]
+
+    # RL bandit: list of [state_key_str, action] pairs accumulated per episode.
+    rl_transitions: List
+    # Pending state key written by supervisor_step, consumed by _run_agent.
+    rl_pending_state_key: str
+    # Dedicated RL routing decision — written only by supervisor_step, never
+    # overwritten by agents.  choose_next_agent checks this before agent routing.
+    rl_action_recommendation: str

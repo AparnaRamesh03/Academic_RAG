@@ -21,4 +21,12 @@ MAX_REWRITE_ROUNDS = 1
 MAX_AUDIT_RETRIES = 1
 
 MAX_STEPS = 14
-MIN_CONFIDENCE_TO_STOP = 0.85
+MIN_CONFIDENCE_TO_STOP = 0.70  # Recalibrated: reachable via rerank-score interpolation (~0.55–0.82 range)
+
+# ── Reinforcement Learning (bandit routing) ──────────────────────────────────
+RL_ENABLED      = True   # Set to False to use pure rule-based routing.
+RL_EPSILON      = 0.15   # Initial exploration rate.
+RL_EPSILON_DECAY = 0.995 # Multiply epsilon by this after every episode update.
+RL_EPSILON_MIN  = 0.05   # Epsilon floor — always keep some exploration.
+RL_ALPHA        = 0.15   # TD learning rate (higher = faster warm-up convergence).
+RL_POLICY_PATH  = Path(__file__).resolve().parent / "results" / "rl_policy.json"

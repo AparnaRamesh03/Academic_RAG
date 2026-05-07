@@ -1,0 +1,215 @@
+{
+  "overall": {
+    "exact_match": 0.0,
+    "token_f1": 0.35711919490104843,
+    "rouge_l_f1": 0.2761677957910443,
+    "source_hit": 1.0,
+    "source_precision": 0.9166666666666666,
+    "source_recall": 0.8972222222222221,
+    "source_mrr": 1.0,
+    "architecture": "supervisor_arch",
+    "total_rows": 24,
+    "successful_rows": 24,
+    "failed_rows": 0,
+    "failure_rate": 0.0,
+    "avg_latency_sec": 119.09582879166676
+  },
+  "recommended_view": {
+    "direct_fact_lookup_primary_view": {
+      "count": 3,
+      "primary_metrics": [
+        "exact_match",
+        "token_f1"
+      ],
+      "exact_match": 0.0,
+      "token_f1": 0.5646181192994725,
+      "source_hit": 1.0,
+      "source_precision": 1.0,
+      "source_recall": 1.0,
+      "source_mrr": 1.0,
+      "avg_latency_sec": 102.59055576666651
+    },
+    "explanation_synthesis_primary_view": {
+      "count": 21,
+      "primary_metrics": [
+        "rouge_l_f1",
+        "token_f1"
+      ],
+      "rouge_l_f1": 0.24346534614368615,
+      "token_f1": 0.3274764914155594,
+      "source_hit": 1.0,
+      "source_precision": 0.9047619047619048,
+      "source_recall": 0.8825396825396824,
+      "source_mrr": 1.0,
+      "avg_latency_sec": 121.45372493809538
+    },
+    "retrieval_grounding_view": {
+      "count": 24,
+      "primary_metrics": [
+        "source_hit",
+        "source_precision",
+        "source_recall",
+        "source_mrr"
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.9166666666666666,
+      "source_recall": 0.8972222222222221,
+      "source_mrr": 1.0
+    }
+  },
+  "by_category_rows": [
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.30519978106185003,
+      "rouge_l_f1": 0.19883564711150917,
+      "source_hit": 1.0,
+      "source_precision": 1.0,
+      "source_recall": 0.8333333333333334,
+      "source_mrr": 1.0,
+      "category": "cross_paper_comparison",
+      "count": 3,
+      "avg_latency_sec": 137.6328062666677,
+      "recommended_primary_metric_1": "rouge_l_f1",
+      "recommended_primary_metric_2": "token_f1"
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.3793700401384932,
+      "rouge_l_f1": 0.3328584122315164,
+      "source_hit": 1.0,
+      "source_precision": 0.8333333333333334,
+      "source_recall": 1.0,
+      "source_mrr": 1.0,
+      "category": "definition_explanation",
+      "count": 3,
+      "avg_latency_sec": 97.53847766666634,
+      "recommended_primary_metric_1": "rouge_l_f1",
+      "recommended_primary_metric_2": "token_f1"
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.5646181192994725,
+      "rouge_l_f1": 0.5050849433225515,
+      "source_hit": 1.0,
+      "source_precision": 1.0,
+      "source_recall": 1.0,
+      "source_mrr": 1.0,
+      "category": "direct_fact_lookup",
+      "count": 3,
+      "avg_latency_sec": 102.59055576666651,
+      "recommended_primary_metric_1": "exact_match",
+      "recommended_primary_metric_2": "token_f1"
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.3685549949700893,
+      "rouge_l_f1": 0.2957833221984165,
+      "source_hit": 1.0,
+      "source_precision": 1.0,
+      "source_recall": 0.3444444444444444,
+      "source_mrr": 1.0,
+      "category": "distractor_edge_case",
+      "count": 3,
+      "avg_latency_sec": 113.9571138333328,
+      "recommended_primary_metric_1": "rouge_l_f1",
+      "recommended_primary_metric_2": "token_f1"
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.4605726978608335,
+      "rouge_l_f1": 0.40198303475139635,
+      "source_hit": 1.0,
+      "source_precision": 0.8333333333333334,
+      "source_recall": 1.0,
+      "source_mrr": 1.0,
+      "category": "figure_table_diagram_grounded",
+      "count": 3,
+      "avg_latency_sec": 101.67227490000005,
+      "recommended_primary_metric_1": "rouge_l_f1",
+      "recommended_primary_metric_2": "token_f1"
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.32139565503620804,
+      "rouge_l_f1": 0.17880184331797233,
+      "source_hit": 1.0,
+      "source_precision": 0.8333333333333334,
+      "source_recall": 1.0,
+      "source_mrr": 1.0,
+      "category": "intra_paper_comparison",
+      "count": 3,
+      "avg_latency_sec": 149.9471269333335,
+      "recommended_primary_metric_1": "rouge_l_f1",
+      "recommended_primary_metric_2": "token_f1"
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.26021232484242335,
+      "rouge_l_f1": 0.18332947856435902,
+      "source_hit": 1.0,
+      "source_precision": 1.0,
+      "source_recall": 1.0,
+      "source_mrr": 1.0,
+      "category": "multi_chunk_synthesis",
+      "count": 3,
+      "avg_latency_sec": 111.93609896666628,
+      "recommended_primary_metric_1": "rouge_l_f1",
+      "recommended_primary_metric_2": "token_f1"
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.19702994599901816,
+      "rouge_l_f1": 0.11266568483063327,
+      "source_hit": 1.0,
+      "source_precision": 0.8333333333333334,
+      "source_recall": 1.0,
+      "source_mrr": 1.0,
+      "category": "paraphrase_hard_retrieval",
+      "count": 3,
+      "avg_latency_sec": 137.49217600000097,
+      "recommended_primary_metric_1": "rouge_l_f1",
+      "recommended_primary_metric_2": "token_f1"
+    }
+  ],
+  "by_difficulty_rows": [
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.5727147055235174,
+      "rouge_l_f1": 0.5179471808897458,
+      "source_hit": 1.0,
+      "source_precision": 1.0,
+      "source_recall": 0.8400000000000001,
+      "source_mrr": 1.0,
+      "difficulty": "easy",
+      "count": 5,
+      "avg_latency_sec": 112.51535407999909
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.2733989231025483,
+      "rouge_l_f1": 0.19179470757875208,
+      "source_hit": 1.0,
+      "source_precision": 0.9375,
+      "source_recall": 0.875,
+      "source_mrr": 1.0,
+      "difficulty": "hard",
+      "count": 8,
+      "avg_latency_sec": 120.50301806250036
+    },
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.3200087059261082,
+      "rouge_l_f1": 0.22763032126421076,
+      "source_hit": 1.0,
+      "source_precision": 0.8636363636363636,
+      "source_recall": 0.9393939393939394,
+      "source_mrr": 1.0,
+      "difficulty": "medium",
+      "count": 11,
+      "avg_latency_sec": 121.06354328181855
+    }
+  ],
+  "detail_csv": "supervisor_arch_metrics_detailed.csv",
+  "category_csv": "supervisor_arch_metrics_by_category.csv",
+  "difficulty_csv": "supervisor_arch_metrics_by_difficulty.csv"
+}

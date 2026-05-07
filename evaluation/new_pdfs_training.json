@@ -1,0 +1,130 @@
+[
+  {
+    "question": "What is the name of the proposed multi-agent deep learning framework?",
+    "category": "direct_fact"
+  },
+  {
+    "question": "What is the primary goal of the Neural-Arbitrage framework?",
+    "category": "definition_explanation"
+  },
+  {
+    "question": "How does the Neural-Arbitrage framework compare to traditional econometric models in terms of predictive accuracy?",
+    "category": "intra_paper_comparison"
+  },
+  {
+    "question": "What are the key differences between the volatility profiles of Apple Inc. and Tesla Inc.?",
+    "category": "cross_paper_comparison"
+  },
+  {
+    "question": "What is the role of the Volatility Agent in the Neural-Arbitrage framework?",
+    "category": "figure_grounded"
+  },
+  {
+    "question": "What is the name of the reinforcement learning algorithm used in the Neural-Arbitrage framework?",
+    "category": "adversarial_superlative"
+  },
+  {
+    "question": "How does the Neural-Arbitrage framework adapt to sudden market shifts compared to traditional econometric models?",
+    "category": "definition_explanation"
+  },
+  {
+    "question": "What is the name of the study that assessed the forecasting performance of deep learning on world markets (S&P 500, DAX)?",
+    "category": "cross_paper_comparison"
+  },
+  {
+    "question": "What is the primary limitation of existing econometric frameworks in capturing the complexity of high-frequency financial data?",
+    "category": "definition_explanation"
+  },
+  {
+    "question": "How does the Neural-Arbitrage framework incorporate risk-awareness signals into the decision-making process?",
+    "category": "paraphrase_hard"
+  },
+  {
+    "question": "What is the primary function of an ML platform in the context of pathology and medicine?",
+    "category": "definition_explanation"
+  },
+  {
+    "question": "What is the current trend in pathology and medicine that is reshaping the field by offering innovative solutions to enhance diagnostic accuracy, operational workflows, clinical decision support, and clinical outcomes?",
+    "category": "direct_fact"
+  },
+  {
+    "question": "What are some of the benefits of integrating AI-ML platforms into clinical decision support systems in pathology?",
+    "category": "definition_explanation"
+  },
+  {
+    "question": "How does the proliferation of data and advancements in computational capabilities contribute to the rapid growth of machine learning technologies across healthcare?",
+    "category": "direct_fact"
+  },
+  {
+    "question": "What are some of the key challenges in the development, deployment, and management of ML systems in pathology and medicine, and how are ML platforms addressing these challenges?",
+    "category": "intra_paper_comparison"
+  },
+  {
+    "question": "What is the role of human expertise in the ML life cycle, particularly in the deployment of ML models in clinical laboratories?",
+    "category": "definition_explanation"
+  },
+  {
+    "question": "How do ML platforms facilitate data aggregation from diverse sources, including production clinical systems, while ensuring data consistency and quality?",
+    "category": "definition_explanation"
+  },
+  {
+    "question": "What are some of the tools and technologies used in ML-Ops, such as Docker and Kubernetes, and how do they facilitate collaboration, reproducibility, and scalability of ML workflows?",
+    "category": "figure_grounded"
+  },
+  {
+    "question": "What are some of the key challenges in tracking model performance, detecting data drift or shift, and alerting for timely updates or retraining of ML models, and how can future ML platforms address these challenges?",
+    "category": "adversarial_superlative"
+  },
+  {
+    "question": "What is the relationship between ML-Ops and the integration of disparate expertise, such as physicians, data scientists, IT, security, and administration, for decision-making and linkage of ML decision-making with patient outcomes?",
+    "category": "cross_paper_comparison"
+  },
+  {
+    "question": "What is the estimated prevalence of gingival recession in the general population at a cut-off score of \u22651 mm?",
+    "category": "direct_fact"
+  },
+  {
+    "question": "What is gingival recession defined as in the context of the article?",
+    "category": "definition_explanation"
+  },
+  {
+    "question": "How many studies were included in the meta-analysis of the prevalence of gingival recession at the cut-off score of \u22653 mm?",
+    "category": "direct_fact"
+  },
+  {
+    "question": "Which domains were risk factors for gingival recession categorized into in the study?",
+    "category": "definition_explanation"
+  },
+  {
+    "question": "What was the main objective of the systematic review and meta-analysis in the study?",
+    "category": "definition_explanation"
+  },
+  {
+    "question": "How many participants were included in the study with an age range of 14 to 103 years?",
+    "category": "direct_fact"
+  },
+  {
+    "question": "How does the prevalence of gingival recession in the general population compare to the findings of a previous systematic review by Yadav et al.?",
+    "category": "intra_paper_comparison"
+  },
+  {
+    "question": "What was the primary focus of periodontal research that was criticized in the introduction of the study?",
+    "category": "definition_explanation"
+  },
+  {
+    "question": "Which databases were systematically searched in November 2024 for studies included in the systematic review and meta-analysis?",
+    "category": "figure_grounded"
+  },
+  {
+    "question": "What was the estimated prevalence of gingival recession in the permanent dentition in the general population at a cut-off score of \u22655 mm?",
+    "category": "direct_fact"
+  },
+  {
+    "question": "Which risk factor domains had the highest pooled-effect estimates for the association with gingival recession in the study?",
+    "category": "adversarial_superlative"
+  },
+  {
+    "question": "What was the primary reason for excluding studies in the full-text evaluation of potentially relevant sources?",
+    "category": "paraphrase_hard"
+  }
+]

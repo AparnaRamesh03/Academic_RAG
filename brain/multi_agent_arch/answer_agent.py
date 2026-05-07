@@ -73,56 +73,25 @@ def answer_agent(state: GraphState):
 
     context = _build_context_blocks(selected_docs)
 
-    # Case 1: mixed-domain underspecified superlative -> scoped answer, no winner.
+    # Determine if a strategy should be forced based on evidence signals.
+    # These cases previously returned hardcoded static strings; we now force the
+    # right strategy label and let the LLM generate a grounded answer from the
+    # actual retrieved docs instead.
+    forced_strategy: str | None = None
+    forced_status: str = "ok"
+
     if mixed_domain_evidence and underspecified_superlative:
-        answer = (
-            "The available evidence does not justify a single best architecture across all settings because the retrieved papers address different tasks and domains. "
-            "Based on the current evidence, Transformer improves efficiency for sequence modeling by removing recurrent computation and enabling more parallelization, "
-            "while TabNet improves efficiency for tabular learning through sequential attention and feature selection. "
-            "So the fairest grounded conclusion is that the more efficient architecture depends on the task or domain being considered."
-        )
+        forced_strategy = "scoped_comparison"
+        forced_status = "degraded"
+    elif comparison_query and evidence_gap_reason == "missing_target_source_coverage":
+        forced_strategy = "cautious_partial"
+        forced_status = "degraded"
 
-        return build_agent_update(
-            state,
-            agent_name="answer_agent",
-            next_action="verification_agent",
-            decision_payload={
-                "answer_strategy": "scoped_comparison",
-                "rationale": f"Mixed-domain evidence detected across sources: {source_dist}",
-            },
-            note=f"Mixed-domain evidence detected across sources: {source_dist}",
-            status="degraded",
-            extra_updates={
-                "generation": answer,
-                "answer_strategy": "scoped_comparison",
-            },
-        )
-
-    # Case 2: comparison query but only one side is covered -> one-sided cautious answer.
-    if comparison_query and evidence_gap_reason == "missing_target_source_coverage":
-        answer = (
-            "Based on the available evidence, the ResNet paper argues that architectural design can overcome training bottlenecks by using bottleneck blocks and residual-style designs that let deeper networks train more effectively while improving efficiency. "
-            "The retrieved evidence does not provide enough grounded support to state how the Transformer paper makes the same argument here. "
-            "So this can only be answered partially from the current evidence."
-        )
-
-        return build_agent_update(
-            state,
-            agent_name="answer_agent",
-            next_action="verification_agent",
-            decision_payload={
-                "answer_strategy": "cautious_partial",
-                "rationale": "Only one side of the requested comparison is grounded, so the answer must stay one-sided and explicit about the missing evidence.",
-            },
-            note="Only one side of the requested comparison is grounded, so the answer must stay one-sided and explicit about the missing evidence.",
-            status="degraded",
-            extra_updates={
-                "generation": answer,
-                "answer_strategy": "cautious_partial",
-            },
-        )
-
-    strategy_prompt = f"""You are the Answer Agent in a hierarchical multi-agent academic QA system.
+    if forced_strategy:
+        answer_strategy = forced_strategy
+        rationale = "Strategy forced by evidence signal (mixed-domain or partial-coverage)."
+    else:
+        strategy_prompt = f"""You are the Answer Agent in a hierarchical multi-agent academic QA system.
 
 User question:
 {query}
@@ -147,14 +116,14 @@ Return ONLY valid JSON:
 }}
 """
 
-    print("\n[Multi-Agent] Answer agent planning...")
-    print(f"  -> Groq model: {GROQ_MODEL}")
+        print("\n[Multi-Agent] Answer agent planning...")
+        print(f"  -> Groq model: {GROQ_MODEL}")
 
-    strategy_response = llm.invoke([HumanMessage(content=strategy_prompt)])
-    strategy_parsed = extract_json_block(strategy_response.content, default={})
+        strategy_response = llm.invoke([HumanMessage(content=strategy_prompt)])
+        strategy_parsed = extract_json_block(strategy_response.content, default={})
 
-    answer_strategy = str(strategy_parsed.get("answer_strategy", "synthesis")).strip()
-    rationale = str(strategy_parsed.get("rationale", "No rationale provided.")).strip()
+        answer_strategy = str(strategy_parsed.get("answer_strategy", "synthesis")).strip()
+        rationale = str(strategy_parsed.get("rationale", "No rationale provided.")).strip()
 
     feedback_block = ""
     if auditor_feedback:
@@ -177,6 +146,17 @@ Mixed-domain evidence signal:
 Special rule:
 - Do NOT declare a single global winner or say one architecture is best overall unless the evidence directly compares them in the same task/domain.
 - Prefer a scoped answer that explains which architecture is efficient for which setting.
+- Ground every claim in the documents above — do not use your training knowledge.
+"""
+
+    partial_coverage_block = ""
+    if comparison_query and evidence_gap_reason == "missing_target_source_coverage":
+        partial_coverage_block = """
+Partial-coverage signal:
+- The retrieved evidence only covers one side of the requested comparison.
+- Summarise what the available evidence says about the covered side.
+- Explicitly state that the evidence for the other side is not available in the retrieved documents.
+- Do NOT invent or infer details about the missing side from your training knowledge.
 """
 
     generation_prompt = f"""You are the Answer Agent in a hierarchical multi-agent academic QA system.
@@ -193,14 +173,15 @@ Evidence:
 ---
 {feedback_block}
 {mixed_domain_block}
+{partial_coverage_block}
 
 Rules:
-1. Use ONLY the evidence above.
+1. Use ONLY the evidence above — do not use external or training knowledge.
 2. Start with the direct answer immediately.
 3. Do NOT use inline citations in the answer text.
 4. Keep the answer concise and grounded.
-5. For comparison questions, explicitly cover both sides if supported.
-6. If the evidence is partial, answer cautiously and do not invent missing parts.
+5. For comparison questions, explicitly cover both sides if supported by evidence.
+6. If the evidence is partial, answer cautiously and explicitly acknowledge the gap.
 7. If evidence spans different domains, do not force a single overall winner.
 
 Now write the final answer.
@@ -208,6 +189,8 @@ Now write the final answer.
 
     generation_response = llm.invoke([HumanMessage(content=generation_prompt)])
     answer = generation_response.content.strip()
+
+    print(f"  -> answer_strategy: {answer_strategy}")
 
     return build_agent_update(
         state,
@@ -218,6 +201,7 @@ Now write the final answer.
             "rationale": rationale,
         },
         note=rationale,
+        status=forced_status if forced_strategy else "ok",
         extra_updates={
             "generation": answer,
             "answer_strategy": answer_strategy,

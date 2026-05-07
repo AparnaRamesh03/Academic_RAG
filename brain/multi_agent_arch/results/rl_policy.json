@@ -1,0 +1,126 @@
+{
+  "episode_count": 117,
+  "epsilon": 0.08344334518074704,
+  "q_table": {
+    "('', False, False, False, 0, 0, 'other', 0)": {
+      "retriever_agent": 0.878613325952607
+    },
+    "('retriever_agent', False, False, False, 0, 0, 'other', 0)": {
+      "evidence_agent": 0.878613325952607
+    },
+    "('evidence_agent', True, False, True, 0, 0, 'other', 2)": {
+      "answer_agent": 0.075880792359375
+    },
+    "('answer_agent', True, True, True, 0, 0, 'other', 2)": {
+      "verification_agent": 0.075880792359375
+    },
+    "('verification_agent', True, True, False, 0, 1, 'other', 0)": {
+      "rewrite_agent": -0.0871990678125
+    },
+    "('rewrite_agent', False, False, False, 1, 1, 'other', 0)": {
+      "retriever_agent": -0.0871990678125
+    },
+    "('retriever_agent', False, False, False, 1, 1, 'other', 0)": {
+      "evidence_agent": -0.0871990678125
+    },
+    "('evidence_agent', True, False, True, 1, 1, 'other', 0)": {
+      "answer_agent": -0.0871990678125
+    },
+    "('answer_agent', True, True, True, 1, 1, 'other', 0)": {
+      "verification_agent": -0.0871990678125
+    },
+    "('evidence_agent', False, False, False, 0, 0, 'other', 0)": {
+      "rewrite_agent": 0.27251475
+    },
+    "('rewrite_agent', False, False, False, 1, 0, 'other', 0)": {
+      "retriever_agent": 0.27251475
+    },
+    "('retriever_agent', False, False, False, 1, 0, 'other', 0)": {
+      "evidence_agent": 0.27251475
+    },
+    "('evidence_agent', True, False, True, 1, 0, 'other', 3)": {
+      "answer_agent": 0.32413499999999995
+    },
+    "('', False, False, False, 0, 0, 'direct_fact', 0)": {
+      "retriever_agent": 0.9951279865431667
+    },
+    "('retriever_agent', False, False, False, 0, 0, 'direct_fact', 0)": {
+      "evidence_agent": 0.9951279865431667
+    },
+    "('evidence_agent', True, False, True, 0, 0, 'direct_fact', 3)": {
+      "answer_agent": 0.9998456089970129
+    },
+    "('evidence_agent', True, False, True, 0, 0, 'other', 3)": {
+      "answer_agent": 0.9797672825268142
+    },
+    "('evidence_agent', False, False, False, 0, 0, 'direct_fact', 0)": {
+      "rewrite_agent": 0.32413499999999995
+    },
+    "('rewrite_agent', False, False, False, 1, 0, 'direct_fact', 0)": {
+      "retriever_agent": 0.32413499999999995
+    },
+    "('retriever_agent', False, False, False, 1, 0, 'direct_fact', 0)": {
+      "evidence_agent": 0.32413499999999995
+    },
+    "('evidence_agent', True, False, True, 1, 0, 'direct_fact', 3)": {
+      "answer_agent": 0.32413499999999995
+    },
+    "('', False, False, False, 0, 0, 'comparison', 0)": {
+      "retriever_agent": 0.848062883944444
+    },
+    "('retriever_agent', False, False, False, 0, 0, 'comparison', 0)": {
+      "evidence_agent": 0.848062883944444
+    },
+    "('evidence_agent', True, False, True, 0, 0, 'comparison', 3)": {
+      "answer_agent": 0.8972303304691157
+    },
+    "('evidence_agent', True, False, True, 0, 0, 'direct_fact', 2)": {
+      "answer_agent": 0.47799375
+    },
+    "('answer_agent', True, True, True, 0, 0, 'direct_fact', 2)": {
+      "verification_agent": 0.47799375
+    },
+    "('evidence_agent', True, False, True, 1, 0, 'other', 2)": {
+      "answer_agent": -0.003
+    },
+    "('answer_agent', True, True, True, 1, 0, 'other', 2)": {
+      "verification_agent": -0.003
+    },
+    "('evidence_agent', False, False, False, 0, 0, 'comparison', 0)": {
+      "rewrite_agent": 0.12194999999999999
+    },
+    "('rewrite_agent', False, False, False, 1, 0, 'comparison', 0)": {
+      "retriever_agent": 0.12194999999999999
+    },
+    "('retriever_agent', False, False, False, 1, 0, 'comparison', 0)": {
+      "evidence_agent": 0.12194999999999999
+    },
+    "('evidence_agent', True, False, True, 1, 0, 'comparison', 2)": {
+      "answer_agent": 0.12194999999999999
+    },
+    "('answer_agent', True, True, True, 1, 0, 'comparison', 2)": {
+      "verification_agent": 0.12194999999999999
+    },
+    "('', False, False, False, 0, 0, 'figure', 0)": {
+      "retriever_agent": 0.38587499999999997
+    },
+    "('retriever_agent', False, False, False, 0, 0, 'figure', 0)": {
+      "evidence_agent": 0.38587499999999997
+    },
+    "('evidence_agent', True, False, True, 0, 0, 'figure', 2)": {
+      "answer_agent": 0.15
+    },
+    "('answer_agent', True, True, True, 0, 0, 'figure', 2)": {
+      "verification_agent": 0.15
+    },
+    "('evidence_agent', True, False, True, 0, 0, 'figure', 3)": {
+      "answer_agent": 0.27749999999999997
+    },
+    "('evidence_agent', True, False, True, 0, 0, 'comparison', 2)": {
+      "answer_agent": 0.27749999999999997
+    },
+    "('answer_agent', True, True, True, 0, 0, 'comparison', 2)": {
+      "verification_agent": 0.27749999999999997
+    }
+  }
+}
