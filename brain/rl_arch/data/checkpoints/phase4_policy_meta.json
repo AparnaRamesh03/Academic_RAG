@@ -1,0 +1,27 @@
+{
+  "model_path": "/Users/spartan/Documents/Academic_RAG/brain/rl_arch/data/checkpoints/phase4_policy.pt",
+  "num_transitions": 93,
+  "input_dim": 32,
+  "actions": [
+    "retrieve",
+    "rewrite_query",
+    "answer",
+    "verify",
+    "stop"
+  ],
+  "action_to_id": {
+    "retrieve": 0,
+    "rewrite_query": 1,
+    "answer": 2,
+    "verify": 3,
+    "stop": 4
+  },
+  "id_to_action": {
+    "0": "retrieve",
+    "1": "rewrite_query",
+    "2": "answer",
+    "3": "verify",
+    "4": "stop"
+  },
+  "best_val_acc": 1.0
+}

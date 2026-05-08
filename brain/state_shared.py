@@ -24,7 +24,7 @@ class GraphState(TypedDict, total=False):
     auditor_feedback: str
     claim_verification: List[Dict[str, Any]]
 
-    # Supervisor/autonomy fields
+    # Supervisor / autonomy fields
     step_count: int
     action_history: List[str]
     last_action: str
@@ -33,7 +33,11 @@ class GraphState(TypedDict, total=False):
     confidence: float
     latency_so_far: float
 
-    # Proper multi-agent communication fields
+    # RL logging fields
+    rl_episode_id: str
+    rl_step_index: int
+
+    # Optional multi-agent / analysis fields
     active_agent: str
     next_action_recommendation: str
     agent_notes: Dict[str, Any]
@@ -50,3 +54,17 @@ class GraphState(TypedDict, total=False):
 
     mixed_domain_evidence: bool
     evidence_source_distribution: Dict[str, Any]
+
+
+    valid_actions: list[str]
+    action_mask: list[int]
+    rule_action: str
+    policy_action: str
+    policy_confidence: float
+    policy_probabilities: dict
+    policy_loaded: bool
+    policy_error: str
+    chosen_action: str
+    controller_source: str
+    fallback_used: bool
+    controller_decisions: list[dict]

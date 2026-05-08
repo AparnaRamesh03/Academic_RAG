@@ -1,0 +1,1 @@
+{"event": "episode_start", "timestamp": "2026-05-01T14:05:29.457793+00:00", "episode_id": "c529b226-f50d-4fd0-ac7a-09d575477d90", "query": "What is Naive RAG according to the survey?", "extra_metadata": {"architecture": "supervisor_arch", "endpoint": "ask_debug"}}

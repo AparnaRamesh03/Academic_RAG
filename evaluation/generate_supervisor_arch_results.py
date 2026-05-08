@@ -19,7 +19,7 @@ BENCHMARK_PATH = Path("./gold_standard_dev_24.json")
 OUTPUT_PATH = Path("./results/supervisor_arch/dev24_results.json")
 
 API_BASE_URL = "http://localhost:8000"
-ASK_URL = f"{API_BASE_URL}/ask"
+ASK_URL = f"{API_BASE_URL}/ask_debug"
 
 ARCHITECTURE_NAME = "supervisor_arch"
 REQUEST_TIMEOUT_SEC = 300
