@@ -1,0 +1,559 @@
+[
+  {
+    "question": "Why is Norway’s status as an Expanding Circle country described as increasingly fuzzy?",
+    "ground_truth": "It is described as fuzzy because English has expanded strongly in Norway beyond a typical foreign-language role, including broad use in education, business, and international communication.",
+    "source_file": [
+      "English.pdf"
+    ],
+    "category": "direct_fact_lookup",
+    "difficulty": "easy",
+    "architecture": "supervisor_arch",
+    "answer": "Norway's status as an Expanding Circle country is described as increasingly fuzzy because English has developed over the past decades, and its use and influence have become more widespread and complex, blurring the traditional distinctions between native and non-native speakers.",
+    "contexts": [
+      "[FINAL] **The status of English today** \nNorway is no exception to the exceptions of the concentric-circle categories. Norway is traditionally an expanding-circle country with foreign-language status for English; taught at scheduled hours in the classroom, and acknowledged for its significance to education, business and mobility, but not an official second language. However, Norway has seen an increase in English language access and domain use. In large companies English is often used as lingua franca (Hellekjær, 2007), and in higher education a considerable amount of written material and lectures are given in English (Ljosland, 2008). English is a mandatory school subject for 11 years, and we can assume that all now living Norwegians have had some form of English language teaching (Graedler, 2002). The past couple of decades young Norwegians have experienced massive exposure to English through audio and audiovisual media, and many travel frequently and use English as a lingua franca with both native and non-native speakers (Graedler, 2002: Rindal, 2010). English has developed into a familiar language for Norwegians (Graedler, 2002; Rindal, 2013; Simensen, 2011).",
+      "[FINAL] about the language and use it better and more appropriately than both native and second-language users. The edges of this model are increasingly *fuzzy*, because English has developed over these past decades. When the model is nonetheless included here, it is because it aptly illustrates a *nation view* of language – where speakers are categorised into groups based solely on geographical borders, and where speakers in certain countries are more valid users of English than others – which is still a very prevalent view in ELT documents and practices. \n**The status of English today**",
+      "[FINAL] In this model, the inner circle represents the speakers who have English as their first language – native speakers of English, who through history spread the language, more often than not through colonialism, to countries that have been placed in the outer circle. In these outer-circle countries, English is an official second language, and it often dominates in certain domains such as education, government and among higher social classes. And then, in the expanding circle, we find all those countries where English is taught as a foreign language in school, and where English is acknowledged as important to, for instance, tourism, business, and international communication. Countries in the outer circle have developed their own models of pronunciation due to a long history of intra-national English language use. In these countries English has been influenced by one or more local languages, and historical traces of these local languages can be found in the English spoken there, so that for instance Indian English and Nigerian English have become recognisable concepts",
+      "[FINAL] By presenting communication and English as a tool as the major goals of instruction and by emphasising the development of English as a global language, the national curriculum acknowledges the status of English in the world and in Norway. There is a delay, however, in the application of social constructionist perspectives in the English subject. Although social constructionist perspectives have influenced applied linguistic *science*, they have most likely not yet influenced ELT *practices* to the same degree. In the subject curriculum, linguistic forms seem to be attached to geographical areas or communicative purposes, and these attachments seem to be non-negotiable. Social constructionist perspectives are present but not applied, and they conflict with more instrumental perspectives on second language competence. Herein lies the status quo of *beliefs* about language in general and English specifically, and their accompanying ELT practices in Norwegian school: While there seems to be no doubt about the globalness of English and the relevance this status has to language learning, educators seem at the same time to have difficulties ridding themselves of the idea of English as nationally defined",
+      "[FINAL] This familiarity is not specifically a Norwegian or European phenomenon. In the concentric-circles model, native speakers are located in the *core*, which makes them more important in a way. However, today the majority of English interactions involve only non-native speakers of English, and so the status of English in the world is increasingly characterised by those who use it as a second or later language, rather than by its native speakers (Graddol, 2006; Kirkpatrick, 2010). English increasingly belongs to the world as it is used and shaped by different communities and for different purposes. English is *the* global language of communication; between two people with different first languages, English is very likely the lingua franca they use to communicate. *English as a lingua franca* (ELF) scholars argue that non-native speakers of English form new Englishes which express their sociocultural identities (Jenkins, 2007; Seidlhofer, 2011), and their research is concerned with the fluidity and hybridity of language"
+    ],
+    "citations": [
+      {
+        "source_file": "English.pdf",
+        "page_number": 8,
+        "section_header": "The speaker of English > Fuzzy edges",
+        "excerpt": "**The status of English today** \nNorway is no exception to the exceptions of the concentric-circle categories. Norway is traditionally an expanding-circle country with foreign-language status for English; taught at scheduled hours in the classroom, and acknowledged for its significance to education, business and mobility, but not an official second language. However, Norway has seen an increase in English language access and domain use. In large companies English is often used as lingua franca (Hellekjær, 2007), and in higher education a considerable amount of written material and lectures are given in English (Ljosland, 2008). English is a mandatory school subject for 11 years, and we can assume that all now living Norwegians have had some form of English language teaching (Graedler, 2002). The past couple of decades young Norwegians have experienced massive exposure to English through audio and audiovisual media, and many travel frequently and use English as a lingua franca with both native and non-native speakers (Graedler, 2002: Rindal, 2010). English has developed into a familiar language for Norwegians (Graedler, 2002; Rindal, 2013; Simensen, 2011).",
+        "content_type": "text"
+      },
+      {
+        "source_file": "English.pdf",
+        "page_number": 8,
+        "section_header": "The speaker of English > Fuzzy edges",
+        "excerpt": "about the language and use it better and more appropriately than both native and second-language users. The edges of this model are increasingly *fuzzy*, because English has developed over these past decades. When the model is nonetheless included here, it is because it aptly illustrates a *nation view* of language – where speakers are categorised into groups based solely on geographical borders, and where speakers in certain countries are more valid users of English than others – which is still a very prevalent view in ELT documents and practices. \n**The status of English today**",
+        "content_type": "text"
+      },
+      {
+        "source_file": "English.pdf",
+        "page_number": 7,
+        "section_header": "The speaker of English > Fuzzy edges",
+        "excerpt": "In this model, the inner circle represents the speakers who have English as their first language – native speakers of English, who through history spread the language, more often than not through colonialism, to countries that have been placed in the outer circle. In these outer-circle countries, English is an official second language, and it often dominates in certain domains such as education, government and among higher social classes. And then, in the expanding circle, we find all those countries where English is taught as a foreign language in school, and where English is acknowledged as important to, for instance, tourism, business, and international communication. Countries in the outer circle have developed their own models of pronunciation due to a long history of intra-national English language use. In these countries English has been influenced by one or more local languages, and historical traces of these local languages can be found in the English spoken there, so that for instance Indian English and Nigerian English have become recognisable concepts",
+        "content_type": "text"
+      },
+      {
+        "source_file": "English.pdf",
+        "page_number": 10,
+        "section_header": "Status quo",
+        "excerpt": "By presenting communication and English as a tool as the major goals of instruction and by emphasising the development of English as a global language, the national curriculum acknowledges the status of English in the world and in Norway. There is a delay, however, in the application of social constructionist perspectives in the English subject. Although social constructionist perspectives have influenced applied linguistic *science*, they have most likely not yet influenced ELT *practices* to the same degree. In the subject curriculum, linguistic forms seem to be attached to geographical areas or communicative purposes, and these attachments seem to be non-negotiable. Social constructionist perspectives are present but not applied, and they conflict with more instrumental perspectives on second language competence. Herein lies the status quo of *beliefs* about language in general and English specifically, and their accompanying ELT practices in Norwegian school: While there seems to be no doubt about the globalness of English and the relevance this status has to language learning, educators seem at the same time to have difficulties ridding themselves of the idea of English as nationally defined",
+        "content_type": "text"
+      },
+      {
+        "source_file": "English.pdf",
+        "page_number": 8,
+        "section_header": "The speaker of English > Fuzzy edges",
+        "excerpt": "This familiarity is not specifically a Norwegian or European phenomenon. In the concentric-circles model, native speakers are located in the *core*, which makes them more important in a way. However, today the majority of English interactions involve only non-native speakers of English, and so the status of English in the world is increasingly characterised by those who use it as a second or later language, rather than by its native speakers (Graddol, 2006; Kirkpatrick, 2010). English increasingly belongs to the world as it is used and shaped by different communities and for different purposes. English is *the* global language of communication; between two people with different first languages, English is very likely the lingua franca they use to communicate. *English as a lingua franca* (ELF) scholars argue that non-native speakers of English form new Englishes which express their sociocultural identities (Jenkins, 2007; Seidlhofer, 2011), and their research is concerned with the fluidity and hybridity of language",
+        "content_type": "text"
+      }
+    ],
+    "latency_sec": 67.0126,
+    "status": "ok",
+    "error": null,
+    "original_query": "Why is Norway’s status as an Expanding Circle country described as increasingly fuzzy?",
+    "final_search_query": "Why is Norway’s status as an Expanding Circle country described as increasingly fuzzy?",
+    "retrieved_docs": [
+      {
+        "text": "**The status of English today** \nNorway is no exception to the exceptions of the concentric-circle categories. Norway is traditionally an expanding-circle country with foreign-language status for English; taught at scheduled hours in the classroom, and acknowledged for its significance to education, business and mobility, but not an official second language. However, Norway has seen an increase in English language access and domain use. In large companies English is often used as lingua franca (Hellekjær, 2007), and in higher education a considerable amount of written material and lectures are given in English (Ljosland, 2008). English is a mandatory school subject for 11 years, and we can assume that all now living Norwegians have had some form of English language teaching (Graedler, 2002). The past couple of decades young Norwegians have experienced massive exposure to English through audio and audiovisual media, and many travel frequently and use English as a lingua franca with both native and non-native speakers (Graedler, 2002: Rindal, 2010). English has developed into a familiar language for Norwegians (Graedler, 2002; Rindal, 2013; Simensen, 2011).",
+        "score": 1.0,
+        "rerank_score": 0.4675487279891968,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 8,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 29,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": "about the language and use it better and more appropriately than both native and second-language users. The edges of this model are increasingly *fuzzy*, because English has developed over these past decades. When the model is nonetheless included here, it is because it aptly illustrates a *nation view* of language – where speakers are categorised into groups based solely on geographical borders, and where speakers in certain countries are more valid users of English than others – which is still a very prevalent view in ELT documents and practices. \n**The status of English today**",
+        "score": 0.5,
+        "rerank_score": -1.596747636795044,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 8,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 28,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": true,
+          "previous_page_number": 7,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": ". Countries in the expanding circle, however, have traditionally looked to the inner circle – the native speakers – for models; imitating a native speaker as carefully as possible has often had successful outcomes for learners in the expanding circle.",
+        "score": 0.5,
+        "rerank_score": -4.193645477294922,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 7,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 26,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": "In this model, the inner circle represents the speakers who have English as their first language – native speakers of English, who through history spread the language, more often than not through colonialism, to countries that have been placed in the outer circle. In these outer-circle countries, English is an official second language, and it often dominates in certain domains such as education, government and among higher social classes. And then, in the expanding circle, we find all those countries where English is taught as a foreign language in school, and where English is acknowledged as important to, for instance, tourism, business, and international communication. Countries in the outer circle have developed their own models of pronunciation due to a long history of intra-national English language use. In these countries English has been influenced by one or more local languages, and historical traces of these local languages can be found in the English spoken there, so that for instance Indian English and Nigerian English have become recognisable concepts",
+        "score": 0.3,
+        "rerank_score": -5.272550106048584,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 7,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 25,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": "By presenting communication and English as a tool as the major goals of instruction and by emphasising the development of English as a global language, the national curriculum acknowledges the status of English in the world and in Norway. There is a delay, however, in the application of social constructionist perspectives in the English subject. Although social constructionist perspectives have influenced applied linguistic *science*, they have most likely not yet influenced ELT *practices* to the same degree. In the subject curriculum, linguistic forms seem to be attached to geographical areas or communicative purposes, and these attachments seem to be non-negotiable. Social constructionist perspectives are present but not applied, and they conflict with more instrumental perspectives on second language competence. Herein lies the status quo of *beliefs* about language in general and English specifically, and their accompanying ELT practices in Norwegian school: While there seems to be no doubt about the globalness of English and the relevance this status has to language learning, educators seem at the same time to have difficulties ridding themselves of the idea of English as nationally defined",
+        "score": 0.1534091,
+        "rerank_score": -5.810256004333496,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 10,
+          "section_header": "Status quo",
+          "content_type": "text",
+          "chunk_index": 37,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": "This familiarity is not specifically a Norwegian or European phenomenon. In the concentric-circles model, native speakers are located in the *core*, which makes them more important in a way. However, today the majority of English interactions involve only non-native speakers of English, and so the status of English in the world is increasingly characterised by those who use it as a second or later language, rather than by its native speakers (Graddol, 2006; Kirkpatrick, 2010). English increasingly belongs to the world as it is used and shaped by different communities and for different purposes. English is *the* global language of communication; between two people with different first languages, English is very likely the lingua franca they use to communicate. *English as a lingua franca* (ELF) scholars argue that non-native speakers of English form new Englishes which express their sociocultural identities (Jenkins, 2007; Seidlhofer, 2011), and their research is concerned with the fluidity and hybridity of language",
+        "score": 0.36666667,
+        "rerank_score": -6.428498268127441,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 8,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 30,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": "One reason why there is little doubt about the international status of English among teachers and language education authorities in Norway is that these people, too, use English for various purposes. Norwegians, too, are *users* of English. Because there is general agreement about the global status of English as a language of communication, Norwegian ELT will most likely continue to apply international perspectives of English through the curriculum, textbooks and teacher education. However, less certainty is related to how the *implications* of this developing status of English will be handled in Norwegian ELT; how educators will deal with the consequences of English being a language of communication for Norwegians, of English being, to a considerable extent, *their* language. The national curriculum acknowledges the development of English as a global lingua franca, but it does not pay attention to Norwegians’ reactions to this development; how they interpret and respond to not only the development of",
+        "score": 0.15476191,
+        "rerank_score": -6.610316276550293,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 10,
+          "section_header": "Status quo",
+          "content_type": "text",
+          "chunk_index": 39,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": "The historical developments of language views and research interests presented above show that trends in applied linguistics are significantly influenced by trends in general linguistic science, and that ELT in Norway generally follows global trends of language teaching practices. It is therefore this author’s prediction that English in Norwegian lower and higher education will “catch up” with the latest trends in general linguistic science. Catching up with linguistic science entails that the acknowledgment of language variation as structured and meaningful will reach the English subject discipline in higher education, where “objective” descriptions of (ideal) language have traditionally held their ground. At the very least, the number of courses that are thematically related to the current status of English as a global language is likely to increase in English language and teacher education departments. Catching up with linguistic science also involves perspectives of social constructionism increasingly influencing English language teaching in Norway towards 2030, if not dominantly, then at least in part (new perspectives rarely replace old ones entirely, but new knowledge adds to established practices)",
+        "score": 0.17142858,
+        "rerank_score": -6.840250015258789,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 16,
+          "section_header": "Predictions towards 2030: Stylistic practice and communicative competence",
+          "content_type": "text",
+          "chunk_index": 57,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": "*This article considers the developing status of English in Norway, both as a language and as a school subject, making predictions about which ontological and epistemological perspectives will influence English language teaching (ELT) in Norway towards 2030. Status quo and predictions for English in Norway are approached from two angles; the development of presiding beliefs about language in linguistic science and in ELT practices from the 19th century to the present, and the development of English as the foremost global language of communication. The article shows how English language beliefs and the status of English are made visible in the national subject curriculum and in the English language practices among Norwegian adolescent learners. The discussion suggests that English is increasingly characterised by those who use it as a second or later language, including Norwegians who negotiate the meanings of English in the ELT classroom. The article predicts that a logical development for Norwegian ELT is increased influence from social constructionist perspectives, in combination with the existing focus on communicative competence",
+        "score": 0.26785713,
+        "rerank_score": -6.880549430847168,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 1,
+          "section_header": "What is English? > *Abstract*",
+          "content_type": "text",
+          "chunk_index": 1,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": ". The article therefore presents the historical development of views of language and language learning since the 19th century in linguistic science as well as in English language teaching practices in Norway. Furthermore, it reviews previous categorisations of speakers of English across the globe and attempts to place Norway in this categorisation. Based on the previous and current status of English in the world and in Norway, predictions will be made about which ontological and epistemological perspectives will influence Norwegian ELT in the decades to come. This article structure may seem like an unlikely composition of content and purpose. However, predicting the future when it comes to languages is an unconventional practice for scholars, and this mandate has elicited a somewhat unconventional article genre.",
+        "score": 0.13333334,
+        "rerank_score": -7.598957061767578,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 2,
+          "section_header": "What is English? > Introduction",
+          "content_type": "text",
+          "chunk_index": 5,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      }
+    ],
+    "candidate_docs": [
+      {
+        "text": "**The status of English today** \nNorway is no exception to the exceptions of the concentric-circle categories. Norway is traditionally an expanding-circle country with foreign-language status for English; taught at scheduled hours in the classroom, and acknowledged for its significance to education, business and mobility, but not an official second language. However, Norway has seen an increase in English language access and domain use. In large companies English is often used as lingua franca (Hellekjær, 2007), and in higher education a considerable amount of written material and lectures are given in English (Ljosland, 2008). English is a mandatory school subject for 11 years, and we can assume that all now living Norwegians have had some form of English language teaching (Graedler, 2002). The past couple of decades young Norwegians have experienced massive exposure to English through audio and audiovisual media, and many travel frequently and use English as a lingua franca with both native and non-native speakers (Graedler, 2002: Rindal, 2010). English has developed into a familiar language for Norwegians (Graedler, 2002; Rindal, 2013; Simensen, 2011).",
+        "score": 1.0,
+        "rerank_score": 0.4675487279891968,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 8,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 29,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": "about the language and use it better and more appropriately than both native and second-language users. The edges of this model are increasingly *fuzzy*, because English has developed over these past decades. When the model is nonetheless included here, it is because it aptly illustrates a *nation view* of language – where speakers are categorised into groups based solely on geographical borders, and where speakers in certain countries are more valid users of English than others – which is still a very prevalent view in ELT documents and practices. \n**The status of English today**",
+        "score": 0.5,
+        "rerank_score": -1.596747636795044,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 8,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 28,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": true,
+          "previous_page_number": 7,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": ". Countries in the expanding circle, however, have traditionally looked to the inner circle – the native speakers – for models; imitating a native speaker as carefully as possible has often had successful outcomes for learners in the expanding circle.",
+        "score": 0.5,
+        "rerank_score": -4.193645477294922,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 7,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 26,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": "In this model, the inner circle represents the speakers who have English as their first language – native speakers of English, who through history spread the language, more often than not through colonialism, to countries that have been placed in the outer circle. In these outer-circle countries, English is an official second language, and it often dominates in certain domains such as education, government and among higher social classes. And then, in the expanding circle, we find all those countries where English is taught as a foreign language in school, and where English is acknowledged as important to, for instance, tourism, business, and international communication. Countries in the outer circle have developed their own models of pronunciation due to a long history of intra-national English language use. In these countries English has been influenced by one or more local languages, and historical traces of these local languages can be found in the English spoken there, so that for instance Indian English and Nigerian English have become recognisable concepts",
+        "score": 0.3,
+        "rerank_score": -5.272550106048584,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 7,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 25,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": "By presenting communication and English as a tool as the major goals of instruction and by emphasising the development of English as a global language, the national curriculum acknowledges the status of English in the world and in Norway. There is a delay, however, in the application of social constructionist perspectives in the English subject. Although social constructionist perspectives have influenced applied linguistic *science*, they have most likely not yet influenced ELT *practices* to the same degree. In the subject curriculum, linguistic forms seem to be attached to geographical areas or communicative purposes, and these attachments seem to be non-negotiable. Social constructionist perspectives are present but not applied, and they conflict with more instrumental perspectives on second language competence. Herein lies the status quo of *beliefs* about language in general and English specifically, and their accompanying ELT practices in Norwegian school: While there seems to be no doubt about the globalness of English and the relevance this status has to language learning, educators seem at the same time to have difficulties ridding themselves of the idea of English as nationally defined",
+        "score": 0.1534091,
+        "rerank_score": -5.810256004333496,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 10,
+          "section_header": "Status quo",
+          "content_type": "text",
+          "chunk_index": 37,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": "This familiarity is not specifically a Norwegian or European phenomenon. In the concentric-circles model, native speakers are located in the *core*, which makes them more important in a way. However, today the majority of English interactions involve only non-native speakers of English, and so the status of English in the world is increasingly characterised by those who use it as a second or later language, rather than by its native speakers (Graddol, 2006; Kirkpatrick, 2010). English increasingly belongs to the world as it is used and shaped by different communities and for different purposes. English is *the* global language of communication; between two people with different first languages, English is very likely the lingua franca they use to communicate. *English as a lingua franca* (ELF) scholars argue that non-native speakers of English form new Englishes which express their sociocultural identities (Jenkins, 2007; Seidlhofer, 2011), and their research is concerned with the fluidity and hybridity of language",
+        "score": 0.36666667,
+        "rerank_score": -6.428498268127441,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 8,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 30,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      }
+    ],
+    "weak_signal_docs": [
+      {
+        "text": "**The status of English today** \nNorway is no exception to the exceptions of the concentric-circle categories. Norway is traditionally an expanding-circle country with foreign-language status for English; taught at scheduled hours in the classroom, and acknowledged for its significance to education, business and mobility, but not an official second language. However, Norway has seen an increase in English language access and domain use. In large companies English is often used as lingua franca (Hellekjær, 2007), and in higher education a considerable amount of written material and lectures are given in English (Ljosland, 2008). English is a mandatory school subject for 11 years, and we can assume that all now living Norwegians have had some form of English language teaching (Graedler, 2002). The past couple of decades young Norwegians have experienced massive exposure to English through audio and audiovisual media, and many travel frequently and use English as a lingua franca with both native and non-native speakers (Graedler, 2002: Rindal, 2010). English has developed into a familiar language for Norwegians (Graedler, 2002; Rindal, 2013; Simensen, 2011).",
+        "score": 1.0,
+        "rerank_score": 0.4675487279891968,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 8,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 29,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": "about the language and use it better and more appropriately than both native and second-language users. The edges of this model are increasingly *fuzzy*, because English has developed over these past decades. When the model is nonetheless included here, it is because it aptly illustrates a *nation view* of language – where speakers are categorised into groups based solely on geographical borders, and where speakers in certain countries are more valid users of English than others – which is still a very prevalent view in ELT documents and practices. \n**The status of English today**",
+        "score": 0.5,
+        "rerank_score": -1.596747636795044,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 8,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 28,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": true,
+          "previous_page_number": 7,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": ". Countries in the expanding circle, however, have traditionally looked to the inner circle – the native speakers – for models; imitating a native speaker as carefully as possible has often had successful outcomes for learners in the expanding circle.",
+        "score": 0.5,
+        "rerank_score": -4.193645477294922,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 7,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 26,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      }
+    ],
+    "graded_docs": [
+      {
+        "text": "**The status of English today** \nNorway is no exception to the exceptions of the concentric-circle categories. Norway is traditionally an expanding-circle country with foreign-language status for English; taught at scheduled hours in the classroom, and acknowledged for its significance to education, business and mobility, but not an official second language. However, Norway has seen an increase in English language access and domain use. In large companies English is often used as lingua franca (Hellekjær, 2007), and in higher education a considerable amount of written material and lectures are given in English (Ljosland, 2008). English is a mandatory school subject for 11 years, and we can assume that all now living Norwegians have had some form of English language teaching (Graedler, 2002). The past couple of decades young Norwegians have experienced massive exposure to English through audio and audiovisual media, and many travel frequently and use English as a lingua franca with both native and non-native speakers (Graedler, 2002: Rindal, 2010). English has developed into a familiar language for Norwegians (Graedler, 2002; Rindal, 2013; Simensen, 2011).",
+        "score": 1.0,
+        "rerank_score": 0.4675487279891968,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 8,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 29,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": "about the language and use it better and more appropriately than both native and second-language users. The edges of this model are increasingly *fuzzy*, because English has developed over these past decades. When the model is nonetheless included here, it is because it aptly illustrates a *nation view* of language – where speakers are categorised into groups based solely on geographical borders, and where speakers in certain countries are more valid users of English than others – which is still a very prevalent view in ELT documents and practices. \n**The status of English today**",
+        "score": 0.5,
+        "rerank_score": -1.596747636795044,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 8,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 28,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": true,
+          "previous_page_number": 7,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": "In this model, the inner circle represents the speakers who have English as their first language – native speakers of English, who through history spread the language, more often than not through colonialism, to countries that have been placed in the outer circle. In these outer-circle countries, English is an official second language, and it often dominates in certain domains such as education, government and among higher social classes. And then, in the expanding circle, we find all those countries where English is taught as a foreign language in school, and where English is acknowledged as important to, for instance, tourism, business, and international communication. Countries in the outer circle have developed their own models of pronunciation due to a long history of intra-national English language use. In these countries English has been influenced by one or more local languages, and historical traces of these local languages can be found in the English spoken there, so that for instance Indian English and Nigerian English have become recognisable concepts",
+        "score": 0.3,
+        "rerank_score": -5.272550106048584,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 7,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 25,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": "By presenting communication and English as a tool as the major goals of instruction and by emphasising the development of English as a global language, the national curriculum acknowledges the status of English in the world and in Norway. There is a delay, however, in the application of social constructionist perspectives in the English subject. Although social constructionist perspectives have influenced applied linguistic *science*, they have most likely not yet influenced ELT *practices* to the same degree. In the subject curriculum, linguistic forms seem to be attached to geographical areas or communicative purposes, and these attachments seem to be non-negotiable. Social constructionist perspectives are present but not applied, and they conflict with more instrumental perspectives on second language competence. Herein lies the status quo of *beliefs* about language in general and English specifically, and their accompanying ELT practices in Norwegian school: While there seems to be no doubt about the globalness of English and the relevance this status has to language learning, educators seem at the same time to have difficulties ridding themselves of the idea of English as nationally defined",
+        "score": 0.1534091,
+        "rerank_score": -5.810256004333496,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 10,
+          "section_header": "Status quo",
+          "content_type": "text",
+          "chunk_index": 37,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      },
+      {
+        "text": "This familiarity is not specifically a Norwegian or European phenomenon. In the concentric-circles model, native speakers are located in the *core*, which makes them more important in a way. However, today the majority of English interactions involve only non-native speakers of English, and so the status of English in the world is increasingly characterised by those who use it as a second or later language, rather than by its native speakers (Graddol, 2006; Kirkpatrick, 2010). English increasingly belongs to the world as it is used and shaped by different communities and for different purposes. English is *the* global language of communication; between two people with different first languages, English is very likely the lingua franca they use to communicate. *English as a lingua franca* (ELF) scholars argue that non-native speakers of English form new Englishes which express their sociocultural identities (Jenkins, 2007; Seidlhofer, 2011), and their research is concerned with the fluidity and hybridity of language",
+        "score": 0.36666667,
+        "rerank_score": -6.428498268127441,
+        "metadata": {
+          "source_file": "English.pdf",
+          "page_number": 8,
+          "section_header": "The speaker of English > Fuzzy edges",
+          "content_type": "text",
+          "chunk_index": 30,
+          "has_table": false,
+          "has_image_description": false,
+          "continued_from_previous_page": false,
+          "previous_page_number": null,
+          "figure_number": null,
+          "figure_caption": null
+        }
+      }
+    ],
+    "crag_retries": 0,
+    "verify_retries": 0,
+    "citations_pass": true,
+    "auditor_feedback": "",
+    "claim_verification": [
+      {
+        "claim_id": 1,
+        "claim_text": "Norway's status as an Expanding Circle country is described as increasingly fuzzy because English has developed over the past decades, and its use and influence have become more widespread and complex, blurring the traditional distinctions between native and non-native speakers.",
+        "supported": true,
+        "feedback": "supported",
+        "supporting_doc_ids": [
+          1,
+          2,
+          5
+        ],
+        "supporting_sources": [
+          {
+            "doc_id": 1,
+            "source_file": "English.pdf",
+            "page_number": 8,
+            "section_header": "The speaker of English > Fuzzy edges",
+            "content_type": "text",
+            "excerpt": "**The status of English today** \nNorway is no exception to the exceptions of the concentric-circle categories. Norway is traditionally an expanding-circle country with foreign-language status for English; taught at scheduled hours in the classroom, and acknowledged for its significance to education,"
+          },
+          {
+            "doc_id": 2,
+            "source_file": "English.pdf",
+            "page_number": 8,
+            "section_header": "The speaker of English > Fuzzy edges",
+            "content_type": "text",
+            "excerpt": "about the language and use it better and more appropriately than both native and second-language users. The edges of this model are increasingly *fuzzy*, because English has developed over these past decades. When the model is nonetheless included here, it is because it aptly illustrates a *nation v"
+          },
+          {
+            "doc_id": 5,
+            "source_file": "English.pdf",
+            "page_number": 8,
+            "section_header": "The speaker of English > Fuzzy edges",
+            "content_type": "text",
+            "excerpt": "This familiarity is not specifically a Norwegian or European phenomenon. In the concentric-circles model, native speakers are located in the *core*, which makes them more important in a way. However, today the majority of English interactions involve only non-native speakers of English, and so the s"
+          }
+        ]
+      }
+    ],
+    "step_count": 6,
+    "action_history": [
+      "retrieve_original",
+      "rerank_original",
+      "evaluate_retrieval",
+      "grade_documents",
+      "generate",
+      "audit_answer"
+    ],
+    "last_action": "audit_answer",
+    "done": true,
+    "stop_reason": "grounded_answer_ready",
+    "confidence": 1.0,
+    "latency_so_far": 66.94354620703962
+  }
+]

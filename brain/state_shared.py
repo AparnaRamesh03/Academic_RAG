@@ -58,6 +58,7 @@ class GraphState(TypedDict, total=False):
 
     valid_actions: list[str]
     action_mask: list[int]
+    controller_mode: str
     rule_action: str
     policy_action: str
     policy_confidence: float

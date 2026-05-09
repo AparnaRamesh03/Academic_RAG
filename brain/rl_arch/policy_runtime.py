@@ -9,9 +9,21 @@ import torch.nn.functional as F
 try:
     from .policy_model import ControllerPolicyNet
     from .state_encoder import encode_state
+    # Try to import A2C model for deployment
+    try:
+        from actor_critic.a2c_model import ActorCriticNet
+    except ImportError:
+        # Handle standalone or relative path issues
+        sys.path.append(str(Path(__file__).resolve().parents[1] / "actor_critic"))
+        from a2c_model import ActorCriticNet
 except ImportError:
     from policy_model import ControllerPolicyNet
     from state_encoder import encode_state
+    try:
+        from actor_critic.a2c_model import ActorCriticNet
+    except ImportError:
+        sys.path.append(str(Path(__file__).resolve().parents[1] / "actor_critic"))
+        from a2c_model import ActorCriticNet
 
 
 ACTION_TO_ID = {
@@ -40,6 +52,12 @@ class PolicyRuntime:
         self._load_checkpoint()
 
     def _checkpoint_path(self) -> Path:
+        # [NEW] Check for A2C policy first (Phase 4 Goal)
+        a2c_path = Path(__file__).resolve().parents[1] / "actor_critic" / "checkpoints" / "a2c_policy.pt"
+        if a2c_path.exists():
+            return a2c_path
+            
+        # Fallback to standard policy
         return Path(__file__).resolve().parent / "data" / "checkpoints" / "phase4_policy.pt"
 
     def _load_checkpoint(self) -> None:
@@ -54,11 +72,20 @@ class PolicyRuntime:
             self.input_dim = int(checkpoint.get("input_dim", 32))
             self.num_actions = int(checkpoint.get("num_actions", 5))
 
-            self.model = ControllerPolicyNet(
-                input_dim=self.input_dim,
-                hidden_dim=128,
-                output_dim=self.num_actions,
-            )
+            # Detect if this is an A2C model or a standard policy
+            if "a2c_policy.pt" in str(ckpt_path):
+                self.model = ActorCriticNet(
+                    input_dim=self.input_dim,
+                    hidden_dim=int(checkpoint.get("hidden_dim", 128)),
+                    output_dim=self.num_actions,
+                )
+            else:
+                self.model = ControllerPolicyNet(
+                    input_dim=self.input_dim,
+                    hidden_dim=128,
+                    output_dim=self.num_actions,
+                )
+                
             self.model.load_state_dict(checkpoint["model_state_dict"])
             self.model.eval()
             self.loaded = True
@@ -117,7 +144,13 @@ class PolicyRuntime:
             vector = self._coerce_feature_vector(encoded)
 
             x = torch.tensor(vector, dtype=torch.float32).unsqueeze(0)
-            logits = self.model(x).squeeze(0)
+            
+            # Handle A2C model forward pass (returns logits, value)
+            if isinstance(self.model, ActorCriticNet):
+                logits, _ = self.model(x)
+                logits = logits.squeeze(0)
+            else:
+                logits = self.model(x).squeeze(0)
 
             masked_logits = torch.full_like(logits, float("-inf"))
             for action in valid_actions:

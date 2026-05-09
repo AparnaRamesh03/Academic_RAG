@@ -20,6 +20,14 @@ from config import ARCHITECTURE_NAME
 from qdrant_config import QDRANT_URL, COLLECTION_NAME
 from llm_config import GROQ_MODEL
 
+try:
+    sys.path.append(str(ROOT))
+    from rl_arch.trajectory_logger import TrajectoryLogger
+    _traj_logger = TrajectoryLogger()
+except Exception as e:
+    print(f"Warning: Could not initialize TrajectoryLogger: {e}")
+    _traj_logger = None
+
 load_dotenv()
 
 app_graph = build_graph()
@@ -153,7 +161,29 @@ def ask_question(request: QueryRequest):
     initial_state = _build_initial_state(request.query)
 
     try:
-        result = app_graph.invoke(initial_state)
+        # Start trajectory logging episode
+        episode_id = None
+        if _traj_logger:
+            episode_id = _traj_logger.start_episode(query=request.query)
+
+        prev_state = _build_initial_state(request.query)
+        result = app_graph.invoke(prev_state)
+
+        # Log final transition and end episode
+        if _traj_logger and episode_id:
+            step_count = int(result.get("step_count", 0))
+            for i, action in enumerate(result.get("action_history", [])):
+                _traj_logger.log_transition(
+                    episode_id=episode_id,
+                    step_index=i,
+                    query=request.query,
+                    action=action,
+                    prev_state=prev_state,
+                    next_state=result,
+                )
+                prev_state = result
+            _traj_logger.end_episode(episode_id=episode_id, final_state=result)
+
         final_docs = result.get("graded_docs", [])
 
         contexts = build_contexts_from_docs(final_docs, prefix="[FINAL]")
@@ -186,7 +216,28 @@ def ask_question_debug(request: QueryRequest):
     initial_state = _build_initial_state(request.query)
 
     try:
-        result = app_graph.invoke(initial_state)
+        # Start trajectory logging episode
+        episode_id = None
+        if _traj_logger:
+            episode_id = _traj_logger.start_episode(query=request.query)
+
+        prev_state = _build_initial_state(request.query)
+        result = app_graph.invoke(prev_state)
+
+        # Log transitions and end episode
+        if _traj_logger and episode_id:
+            for i, action in enumerate(result.get("action_history", [])):
+                _traj_logger.log_transition(
+                    episode_id=episode_id,
+                    step_index=i,
+                    query=request.query,
+                    action=action,
+                    prev_state=prev_state,
+                    next_state=result,
+                )
+                prev_state = result
+            _traj_logger.end_episode(episode_id=episode_id, final_state=result)
+
         final_docs = result.get("graded_docs", [])
 
         contexts = build_contexts_from_docs(final_docs, prefix="[FINAL]")
@@ -216,6 +267,12 @@ def ask_question_debug(request: QueryRequest):
             "stop_reason": result.get("stop_reason", ""),
             "confidence": result.get("confidence", 0.0),
             "latency_so_far": result.get("latency_so_far", 0.0),
+            "controller_mode": result.get("controller_mode", "rule_only"),
+            "rule_action": result.get("rule_action", ""),
+            "policy_action": result.get("policy_action", ""),
+            "chosen_action": result.get("chosen_action", ""),
+            "controller_source": result.get("controller_source", ""),
+            "fallback_used": result.get("fallback_used", False),
         }
 
     except HTTPException:

@@ -1,0 +1,6 @@
+exact_match,token_f1,rouge_l_f1,source_hit,source_precision,source_recall,source_mrr,category,count,avg_latency_sec,recommended_primary_metric_1,recommended_primary_metric_2
+0.0,0.28861732232880966,0.20062760287801562,1.0,0.9,0.8,1.0,cross_paper_comparison,5,68.44404,rouge_l_f1,token_f1
+0.0,0.41284504913076336,0.29343008314436886,1.0,0.9,0.5066666666666666,1.0,distractor_edge_case,5,73.68214,rouge_l_f1,token_f1
+0.0,0.3588512981904013,0.31557828481510625,1.0,1.0,1.0,1.0,figure_table_diagram_grounded,3,47.00326666666666,rouge_l_f1,token_f1
+0.0,0.2805175827661707,0.20547459465056303,1.0,1.0,1.0,1.0,multi_chunk_synthesis,8,89.4983125,rouge_l_f1,token_f1
+0.0,0.2903470798207641,0.19732014017728305,1.0,0.9166666666666666,1.0,1.0,paraphrase_hard_retrieval,6,73.28903333333334,rouge_l_f1,token_f1

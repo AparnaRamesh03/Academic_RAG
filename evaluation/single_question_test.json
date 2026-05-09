@@ -1,0 +1,9 @@
+[
+  {
+    "question": "Why is Norway’s status as an Expanding Circle country described as increasingly fuzzy?",
+    "ground_truth": "It is described as fuzzy because English has expanded strongly in Norway beyond a typical foreign-language role, including broad use in education, business, and international communication.",
+    "source_file": ["English.pdf"],
+    "category": "direct_fact_lookup",
+    "difficulty": "easy"
+  }
+]

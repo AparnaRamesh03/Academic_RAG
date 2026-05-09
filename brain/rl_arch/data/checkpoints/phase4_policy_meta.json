@@ -1,6 +1,6 @@
 {
   "model_path": "/Users/spartan/Documents/Academic_RAG/brain/rl_arch/data/checkpoints/phase4_policy.pt",
-  "num_transitions": 93,
+  "num_transitions": 212,
   "input_dim": 32,
   "actions": [
     "retrieve",

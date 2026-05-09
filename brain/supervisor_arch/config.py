@@ -1,5 +1,6 @@
 from pathlib import Path
 import sys
+import os
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -23,3 +24,6 @@ MAX_AUDIT_RETRIES = 1
 # New supervisor controls
 MAX_STEPS = 12
 MIN_CONFIDENCE_TO_STOP = 0.85
+
+# Controller modes: rule_only, policy_shadow, policy_guarded
+CONTROLLER_MODE = os.getenv("CONTROLLER_MODE", "policy_guarded")

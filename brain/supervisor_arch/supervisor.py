@@ -6,7 +6,15 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
 from state_shared import GraphState
-from config import MAX_STEPS, MAX_REWRITE_ROUNDS, MAX_AUDIT_RETRIES, MIN_CONFIDENCE_TO_STOP
+from config import MAX_STEPS, MAX_REWRITE_ROUNDS, MAX_AUDIT_RETRIES, MIN_CONFIDENCE_TO_STOP, CONTROLLER_MODE
+
+try:
+    sys.path.append(str(ROOT))
+    from rl_arch.policy_runtime import POLICY_RUNTIME
+    from rl_arch.action_space import get_valid_actions
+except ImportError:
+    POLICY_RUNTIME = None
+    def get_valid_actions(state): return []
 
 
 def estimate_confidence(state: GraphState) -> float:
@@ -84,9 +92,9 @@ def supervisor_step(state: GraphState):
     }
 
 
-def choose_next_action(state: GraphState) -> str:
+def _determine_rule_action(state: GraphState) -> str:
     """
-    Decide which worker node should act next.
+    Decide which worker node should act next based on hardcoded rules.
     """
     if state.get("done", False):
         return "finish"
@@ -159,10 +167,105 @@ def choose_next_action(state: GraphState) -> str:
     if generation:
         return "audit_answer"
 
-    if retrieved_docs and not candidate_docs:
-        return "evaluate_retrieval"
-
     return "finish"
+
+
+def _map_rl_to_node(rl_action: str, rule_action: str, state: GraphState) -> str:
+    """Maps the high-level RL action back to a specific supervisor node,
+    ensuring all prerequisite steps (like reranking) are completed."""
+    
+    retrieved_docs = state.get("retrieved_docs", []) or []
+    candidate_docs = state.get("candidate_docs", []) or []
+    graded_docs = state.get("graded_docs", []) or []
+    
+    if rl_action == "retrieve":
+        # If the rule says retrieve, follow it. 
+        # If rule says rerank/evaluate, we should probably finish that first before re-retrieving.
+        if "retrieve" in rule_action:
+            return rule_action
+        if not retrieved_docs:
+            return "retrieve_original"
+        return rule_action # Fallback to rule if we are already in a retrieval sequence
+        
+    if rl_action == "rewrite_query":
+        return "rewrite_query"
+        
+    if rl_action == "answer":
+        # Answer has prerequisites: rerank -> evaluate -> grade -> generate
+        if not candidate_docs and retrieved_docs:
+            history = state.get("action_history", [])
+            # If we haven't reranked yet, do that first
+            if "rerank_original" not in history and "rerank_rewritten" not in history:
+                return "rerank_original"
+            # If we reranked but still no candidate_docs, we need to evaluate to populate them
+            return "evaluate_retrieval"
+            
+        if not graded_docs and candidate_docs:
+            return "grade_documents"
+            
+        return "generate"
+        
+    if rl_action == "verify":
+        return "audit_answer"
+        
+    if rl_action == "stop":
+        return "finish"
+        
+    return rule_action
+
+
+def choose_next_action(state: GraphState) -> str:
+    # 1. Get the Rule-Based Action
+    rule_action = _determine_rule_action(state)
+    
+    # Defaults
+    state["controller_mode"] = CONTROLLER_MODE
+    state["rule_action"] = rule_action
+    state["policy_action"] = ""
+    state["chosen_action"] = rule_action
+    state["controller_source"] = "rule"
+    state["fallback_used"] = False
+    
+    if CONTROLLER_MODE == "rule_only" or POLICY_RUNTIME is None or not POLICY_RUNTIME.loaded:
+        return rule_action
+
+    # 2. Get the Policy Action
+    valid_actions = get_valid_actions(state)
+    policy_pred = POLICY_RUNTIME.predict(state, valid_actions)
+    
+    rl_policy_action = policy_pred.get("action", "")
+    state["policy_confidence"] = policy_pred.get("confidence", 0.0)
+    
+    if not rl_policy_action:
+        return rule_action
+        
+    # 3. Guardrails & Selection
+    chosen_rl_action = rl_policy_action
+    state["controller_source"] = "policy"
+    
+    # [GUARDRAIL A] Prevent skipping rewrite if retrieval is clearly insufficient
+    if rule_action == "rewrite_query" and rl_policy_action == "answer":
+        retrieved = state.get("retrieved_docs", []) or []
+        if len(retrieved) < 3:
+            chosen_rl_action = "rewrite_query"
+            state["controller_source"] = "rule_guardrail_override"
+            
+    # [GUARDRAIL B] Prevent early stopping if rule says more generation is needed
+    if rl_policy_action == "stop" and rule_action == "generate":
+        chosen_rl_action = "answer"
+        state["controller_source"] = "rule_guardrail_override"
+
+    # Map the high-level RL action to a specific graph node
+    node_to_run = _map_rl_to_node(chosen_rl_action, rule_action, state)
+    
+    state["policy_action"] = rl_policy_action
+    state["chosen_action"] = node_to_run
+    
+    if CONTROLLER_MODE == "policy_shadow":
+        # In shadow mode, we return the rule action but log what we WOULD have done
+        return rule_action
+        
+    return node_to_run
 
 
 def finish_step(state: GraphState):
