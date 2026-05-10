@@ -15,7 +15,6 @@ class GeneratorAgent(BaseAgent):
         super().__init__("generator")
 
     def act(self, state: ContextState, action_name: str) -> ContextState:
-        # Check for evidence
         if not state.selected_evidence and action_name != "abstain_request_more_evidence":
              action_name = "abstain_request_more_evidence"
 
@@ -27,20 +26,19 @@ class GeneratorAgent(BaseAgent):
             state.num_llm_calls -= 1
             return state
 
-        # 1. Prepare evidence (ensure sequential IDs)
+        # 1. Prepare evidence
         state.selected_evidence = reassign_citation_ids(state.selected_evidence)
         
         # 2. Generate answer
-        answer = generate_answer(state.user_query, state.selected_evidence, mode=action_name)
+        answer, tokens = generate_answer(state.user_query, state.selected_evidence, mode=action_name)
+        state.token_usage += tokens
         
         if not answer or answer.strip() == "":
             print(f"Warning: Generator produced empty answer for {state.question_id}")
             state.generated_answer = ""
-            # Mark as generation_failed so verifier doesn't try to accept it
             state.final_status = "generation_failed"
         else:
             state.generated_answer = answer
-            # Reset status if it was failed before (unlikely in single pass but good for retries)
             if state.final_status == "generation_failed":
                 state.final_status = "pending"
         

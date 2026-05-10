@@ -14,17 +14,17 @@ class RewriterAgent(BaseAgent):
 
     def act(self, state: ContextState, action_name: str) -> ContextState:
         if action_name == "no_rewrite":
-            # No LLM call here
             state.record_action(self.name, action_name)
             state.update_latency()
             return state
             
         # Use LLM to rewrite
-        rewritten = rewrite_query(state.user_query, mode=action_name)
+        rewritten, tokens = rewrite_query(state.user_query, mode=action_name)
         
-        # Update state for logging and next steps
+        # Update state
         state.rewritten_query = rewritten
         state.user_query = rewritten
+        state.token_usage += tokens
         
         self.log_action(state, action_name)
         return state

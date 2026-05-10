@@ -20,13 +20,12 @@ class GraderAgent(BaseAgent):
             return state
             
         # 1. Run Filtering/Grading
-        filtered_chunks = grade_chunks(state.user_query, state.retrieved_chunks, mode=action_name)
+        filtered_chunks, tokens = grade_chunks(state.user_query, state.retrieved_chunks, mode=action_name)
+        state.token_usage += tokens
         
         # 2. Fallback Logic
         fallback_used = False
-        # If rerank_only or filtering removed everything, but we HAVE chunks, use top 3
         if not filtered_chunks and state.retrieved_chunks:
-            # Sort by score just in case they aren't
             sorted_chunks = sorted(state.retrieved_chunks, key=lambda x: x.get("score", 0.0), reverse=True)
             filtered_chunks = sorted_chunks[:3]
             fallback_used = True

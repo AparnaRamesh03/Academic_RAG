@@ -28,7 +28,6 @@ from context_marl_ac.marl.marl_env import MARLEnv
 from context_marl_ac.marl.actors import build_marl_actors
 from context_marl_ac.marl.centralized_critic import CentralizedCritic
 from context_marl_ac.marl.checkpointing import MARLCheckpointManager
-from context_marl_ac.schemas.results_schema import EvalResult
 from context_marl_ac.schemas.actions import AGENT_ACTIONS, AGENT_NAMES
 
 def parse_args():
@@ -50,9 +49,15 @@ def select_smoke_action(agent: str, state: Any, valid_actions: List[str]) -> str
         return "keyword_rewrite" if "keyword_rewrite" in valid_actions else "no_rewrite"
     
     if agent == "retriever":
-        # Do not retrieve more unless we have nothing
-        if not state.retrieved_chunks and "hybrid_rerank" in valid_actions:
-            return "hybrid_rerank"
+        # Do NOT call retrieve_more by default if we already have chunks
+        if state.retrieved_chunks:
+            # We already acted as retriever in a previous step?
+            # MARL Env might cycle back to retriever if verifier requested more.
+            # But here we want to avoid the default retrieve_more loop.
+            if "hybrid_rerank" in valid_actions:
+                 return "hybrid_rerank"
+            return valid_actions[0]
+            
         if "hybrid_rerank" in valid_actions:
             return "hybrid_rerank"
         return valid_actions[0]
@@ -61,7 +66,6 @@ def select_smoke_action(agent: str, state: Any, valid_actions: List[str]) -> str
         return "loose_filter" if "loose_filter" in valid_actions else "keep_all"
 
     if agent == "generator":
-        # Force answer generation if evidence exists
         if state.selected_evidence:
             if "generate_with_strict_citations" in valid_actions:
                 return "generate_with_strict_citations"
@@ -70,9 +74,9 @@ def select_smoke_action(agent: str, state: Any, valid_actions: List[str]) -> str
         return "abstain_request_more_evidence" if "abstain_request_more_evidence" in valid_actions else valid_actions[0]
 
     if agent == "verifier":
-        # In smoke mode, verifier always chooses accept if an answer was generated
-        if state.generated_answer and "accept" in valid_actions:
-            return "accept"
+        # Use new action name 'verify_answer'
+        if state.generated_answer and "verify_answer" in valid_actions:
+            return "verify_answer"
         return valid_actions[0]
 
     return valid_actions[0]
@@ -89,16 +93,13 @@ def evaluate():
     critic = CentralizedCritic()
     
     # 2. Load Checkpoint
-    checkpoint_loaded = False
     if not args.dry_run and args.policy_mode == "learned":
         try:
             print(f"Loading checkpoint: {args.checkpoint}")
             ckpt_manager.load_checkpoint(actors, critic, filename=args.checkpoint)
-            checkpoint_loaded = True
         except Exception as e:
-            print(f"Error loading checkpoint: {e}. Falling back to policy-mode: smoke if not specified.")
-            if args.policy_mode == "learned":
-                args.policy_mode = "smoke"
+            print(f"Error loading checkpoint: {e}. Falling back to policy-mode: smoke.")
+            args.policy_mode = "smoke"
     
     # 3. Load Benchmark
     if args.benchmark_path.endswith(".jsonl"):
@@ -127,7 +128,6 @@ def evaluate():
             agent_to_act = None
             action_to_take = None
             
-            # Find next agent
             for agent_name in AGENT_NAMES:
                 mask = env.get_mask(agent_name)
                 if sum(mask) > 0:
@@ -139,7 +139,6 @@ def evaluate():
                     elif args.policy_mode == "random":
                         action_to_take = random.choice(valid_actions)
                     else:
-                        # Learned policy (Argmax)
                         obs = torch.tensor(env.get_obs(agent_name), dtype=torch.float32)
                         mask_t = torch.tensor(mask, dtype=torch.float32)
                         with torch.no_grad():
@@ -151,7 +150,6 @@ def evaluate():
             if not agent_to_act:
                 break
                 
-            # Execute Step
             new_state, reward, done, info = env.step(agent_to_act, action_to_take)
             
             step_data = {
@@ -164,28 +162,29 @@ def evaluate():
             trace.append(step_data)
             state = new_state
             
-        # 5. Build Result Row
+        # 5. Build Result Row (Enhanced Logging)
         final_result = {
+            "question_id":   state.question_id,
             "question":      question_dict.get("question", ""),
             "ground_truth":  question_dict.get("ground_truth", ""),
-            "source_file":   question_dict.get("source_file"),
             "category":      question_dict.get("category"),
             "difficulty":    question_dict.get("difficulty"),
-            "question_id":   state.question_id,
-            "final_answer":  state.generated_answer,
-            "selected_evidence": state.selected_evidence,
-            "latency_sec":   state.latency_so_far,
-            "num_steps":     state.num_steps,
-            "num_llm_calls": state.num_llm_calls,
-            "token_usage":   state.token_usage,
             "final_status":  state.final_status,
-            "verification_pass": (state.final_status == "accepted"),
-            "policy_mode":   args.policy_mode,
-            "trace":         trace,
-            **state.to_debug_dict()
+            "final_answer":  state.generated_answer,
+            "generated_answer_length": len(state.generated_answer) if state.generated_answer else 0,
+            "selected_evidence_count": len(state.selected_evidence),
+            "citation_support_rate":   state.citation_support_rate,
+            "verifier_decision":       state.verification_result.get("decision", "N/A"),
+            "verifier_reason":         state.verification_result.get("reason", ""),
+            "latency_seconds":         state.latency_so_far,
+            "num_steps":               state.num_steps,
+            "num_llm_calls":           state.num_llm_calls,
+            "token_usage":             state.token_usage,
+            "policy_mode":             args.policy_mode,
+            "trace":                   trace,
+            **state.to_debug_dict() # Includes previews, ids, etc.
         }
         
-        # 6. Save result
         with open(output_path, "a") as f:
             f.write(json.dumps(final_result, ensure_ascii=False) + "\n")
             

@@ -104,6 +104,7 @@ Rules:
 8. If part of a broader answer is not clearly supported, omit it.
 9. Do NOT include inline citations or bracket citations in the answer text.
 10. Write clean natural prose only.
+11. If the question asks to "distinguish between", "compare", or "list", use a structured bulleted format with bolded headers for each category (e.g., **Inner Circle**: ...).
 
 Now answer the question.
 """

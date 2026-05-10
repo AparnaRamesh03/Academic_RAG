@@ -14,7 +14,6 @@ class VerifierAgent(BaseAgent):
         super().__init__("verifier")
 
     def act(self, state: ContextState, action_name: str) -> ContextState:
-        # Robust check for empty answer
         if not state.generated_answer or state.generated_answer.strip() == "":
             state.record_action(self.name, "skipped_no_answer")
             state.final_status = "generation_failed"
@@ -22,7 +21,8 @@ class VerifierAgent(BaseAgent):
             return state
 
         # 1. Run LLM verification
-        verification = verify_answer(state.user_query, state.generated_answer, state.selected_evidence)
+        verification, tokens = verify_answer(state.user_query, state.generated_answer, state.selected_evidence)
+        state.token_usage += tokens
         state.verification_result = verification
         
         # 2. Compute citation metrics
@@ -37,23 +37,13 @@ class VerifierAgent(BaseAgent):
         )
         
         # 3. Handle terminal decision
-        if action_name == "accept":
-            # Cannot accept if generation failed or is empty
-            if not state.generated_answer or state.generated_answer.strip() == "":
-                state.final_status = "generation_failed"
-                state.done = True
-            elif verification.get("decision") == "PASS":
+        if action_name == "verify_answer":
+            if verification.get("decision") == "PASS":
                 state.final_status = "accepted"
-                state.done = True
             else:
-                # Agent tried to accept a bad answer
                 state.final_status = "rejected"
-                state.done = True 
-        elif action_name == "reject":
-            state.final_status = "rejected"
             state.done = True
         else:
-            # Other actions (request_rewrite, etc.) mean we continue
             state.record_action(self.name, action_name)
             self.update_latency(state)
             

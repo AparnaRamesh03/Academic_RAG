@@ -86,9 +86,8 @@ GENERATOR_ID_TO_ACTION: Dict[int, str] = {i: a for a, i in GENERATOR_ACTION_TO_I
 # Verifier agent actions
 # ---------------------------------------------------------------------------
 VERIFIER_ACTIONS: List[str] = [
-    "accept",                   # answer is grounded — episode ends
-    "reject",                   # answer fails verification
-    "request_regeneration",     # ask generator to retry
+    "verify_answer",            # Check answer quality and grounding — ends episode
+    "request_regeneration",     # ask generator to retry with feedback
     "request_more_retrieval",   # ask retriever to fetch more evidence
     "request_rewrite",          # ask rewriter to reformulate query
 ]
