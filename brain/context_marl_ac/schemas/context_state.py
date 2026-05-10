@@ -41,12 +41,13 @@ QUERY_TYPES = [
 QUERY_COMPLEXITIES = ["low", "medium", "high"]
 
 FINAL_STATUSES = [
-    "pending",          # episode not yet resolved
-    "accepted",         # verifier accepted the answer
-    "rejected",         # verifier rejected, max retries hit
-    "abstained",        # generator abstained (no evidence)
-    "timeout",          # max steps or max llm calls reached
-    "error",            # unrecoverable execution error
+    "pending",             # episode not yet resolved
+    "accepted",            # verifier accepted the answer
+    "rejected",            # verifier rejected the answer
+    "abstained",           # generator abstained due to insufficient evidence
+    "generation_failed",   # generator returned empty/invalid output
+    "timeout",             # max steps or max LLM calls reached
+    "error",               # unrecoverable execution error
 ]
 
 

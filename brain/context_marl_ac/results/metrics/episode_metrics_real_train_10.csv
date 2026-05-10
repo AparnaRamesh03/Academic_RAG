@@ -1,0 +1,11 @@
+episode_id,question_id,query_type,total_reward,answer_quality,citation_support_rate,verification_pass,final_status,num_steps,num_llm_calls,latency_seconds,token_usage,has_gen,ans_len,ev_count,ver_dec
+episode_0001_Q023,Q023,conceptual,-1.846,0.0,0.0,False,timeout,12,6,21.8778,10244,True,451,3,RETRY
+episode_0002_Q030,Q030,factual,-0.4199,0.0,0.0,False,abstained,9,4,4.4133,4031,True,56,3,RETRY
+episode_0003_Q034,Q034,comparison,-0.2429,0.0,0.0,False,rejected,5,4,6.8791,3216,True,540,3,FAIL
+episode_0004_Q005,Q005,definition,0.0973,0.0,0.0,False,abstained,4,1,0.1759,2093,True,56,3,N/A
+episode_0005_Q028,Q028,conceptual,0.0299,0.0,0.0,False,abstained,4,2,6.9266,1839,True,56,3,N/A
+episode_0006_Q036,Q036,factual,0.145,0.0,0.0,False,abstained,4,2,0.2782,2022,True,56,3,N/A
+episode_0007_Q035,Q035,multi_hop,-0.9388,0.0,0.0,False,rejected,9,5,36.3373,6984,True,441,3,FAIL
+episode_0008_Q030,Q030,factual,-1.8626,0.0,0.0,False,timeout,12,7,34.4086,5672,True,237,3,RETRY
+episode_0009_Q036,Q036,factual,-0.6693,0.0,0.0,False,abstained,9,4,14.3246,2825,True,56,8,RETRY
+episode_0010_Q023,Q023,conceptual,-0.8869,0.0,0.0,False,abstained,8,3,27.1091,6190,True,56,3,RETRY

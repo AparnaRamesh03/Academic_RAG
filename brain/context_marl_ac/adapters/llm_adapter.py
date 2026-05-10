@@ -185,22 +185,95 @@ def generate_answer(query: str, evidence_pack: List[Dict[str, Any]], mode: str =
 
 
 def verify_answer(query: str, answer: str, evidence_pack: List[Dict[str, Any]]) -> Tuple[Dict[str, Any], int]:
+    """
+    Verify the generated answer against selected evidence.
+
+    Important:
+    The legacy final_arch claim verifier can sometimes return malformed JSON.
+    This wrapper must never crash evaluation/training. If parsing fails,
+    return a controlled FAIL result so the episode can terminate normally.
+    """
     if cfg.DRY_RUN:
-        return {"decision": "PASS", "reason": "Dry-run", "verified_claims": []}, 0
+        return {
+            "decision": "PASS",
+            "reason": "Dry-run verification passed.",
+            "verified_claims": [],
+        }, 0
+
+    if not answer or not answer.strip():
+        return {
+            "decision": "FAIL",
+            "reason": "Empty answer; verification skipped.",
+            "verified_claims": [],
+            "verifier_error": "empty_answer",
+        }, 0
+
+    if not evidence_pack:
+        return {
+            "decision": "FAIL",
+            "reason": "No evidence provided for verification.",
+            "verified_claims": [],
+            "verifier_error": "missing_evidence",
+        }, _estimate_tokens(query + answer)
 
     _ensure_llm_loaded()
     docs = _evidence_pack_to_docs(evidence_pack)
-    
-    # verify_claims(query, answer, docs)
-    result = _verify_fn(query, answer, docs)
 
-    formatted = {
-        "decision":        result.get("decision", "FAIL"),
-        "reason":          result.get("overall_feedback", ""),
-        "verified_claims": result.get("claims", []),
-    }
-    
     evidence_text = "".join([e.get("text", "") for e in evidence_pack])
     tokens = _estimate_tokens(query + answer + evidence_text)
-    
-    return formatted, tokens
+
+    try:
+        result = _verify_fn(query, answer, docs)
+
+        if not isinstance(result, dict):
+            return {
+                "decision": "FAIL",
+                "reason": f"Verifier returned unexpected type: {type(result)}",
+                "verified_claims": [],
+                "verifier_error": "unexpected_verifier_return_type",
+            }, tokens
+
+        claims = (
+            result.get("claims")
+            or result.get("verified_claims")
+            or []
+        )
+
+        decision = str(result.get("decision", "")).upper()
+        if decision not in {"PASS", "FAIL"}:
+            # Fallback: infer from claims if possible.
+            if claims:
+                unsupported = [
+                    c for c in claims
+                    if not (
+                        c.get("supported") is True
+                        or str(c.get("decision", "")).upper() == "PASS"
+                        or str(c.get("status", "")).upper() == "SUPPORTED"
+                        or str(c.get("support_status", "")).upper() == "SUPPORTED"
+                    )
+                ]
+                decision = "PASS" if not unsupported else "FAIL"
+            else:
+                decision = "FAIL"
+
+        formatted = {
+            "decision": decision,
+            "reason": (
+                result.get("overall_feedback")
+                or result.get("reason")
+                or result.get("feedback")
+                or ""
+            ),
+            "verified_claims": claims,
+        }
+
+        return formatted, tokens
+
+    except Exception as exc:
+        # Do not crash evaluation/training because the verifier returned malformed JSON.
+        return {
+            "decision": "FAIL",
+            "reason": f"Verifier failed or returned unparseable output: {type(exc).__name__}: {exc}",
+            "verified_claims": [],
+            "verifier_error": "claim_verifier_exception",
+        }, tokens

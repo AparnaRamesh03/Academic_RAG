@@ -1,0 +1,9 @@
+{
+    "run_name": "real_train_10",
+    "episodes": 10,
+    "lr": 0.0003,
+    "hidden_dim": 64,
+    "dry_run": false,
+    "benchmark_path": "brain/context_marl_ac/results/benchmark_splits/train.jsonl",
+    "checkpoint_every": 50
+}

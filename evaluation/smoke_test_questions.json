@@ -1,29 +1,74 @@
 [
     {
-        "question": "What are the four main subject areas of the current Norwegian national English curriculum?",
-        "ground_truth": "The four main subject areas are Language learning, Oral communication, Written communication, and Culture, society and literature.",
+        "question": "What BLEU score did the Transformer achieve on the WMT 2014 English-to-German translation task?",
+        "ground_truth": "The Transformer achieved 28.4 BLEU on WMT 2014 English-to-German.",
         "source_file": [
-            "English.pdf"
+            "AttentionIsAllYouNeed.pdf"
         ],
         "category": "direct_fact_lookup",
         "difficulty": "easy"
     },
     {
-        "question": "How does Kachru's concentric circles model distinguish between the Inner, Outer, and Expanding circles?",
-        "ground_truth": "The Inner circle refers to native speakers of English as a first language. The Outer circle refers to countries where English became an official second language, often through colonial history. The Expanding circle refers to places where English is mainly used as a foreign or international language.",
+        "question": "What BLEU score did the Transformer achieve on the WMT 2014 English-to-French translation task?",
+        "ground_truth": "The Transformer achieved 41.8 BLEU on WMT 2014 English-to-French.",
         "source_file": [
-            "English.pdf"
+            "AttentionIsAllYouNeed.pdf"
         ],
         "category": "direct_fact_lookup",
         "difficulty": "easy"
     },
     {
-        "question": "Why is Norway's status as an Expanding Circle country described as increasingly fuzzy?",
-        "ground_truth": "It is described as fuzzy because English has expanded strongly in Norway beyond a typical foreign-language role, including broad use in education, business, and international communication.",
+        "question": "What does BERT stand for?",
+        "ground_truth": "BERT stands for Bidirectional Encoder Representations from Transformers.",
         "source_file": [
-            "English.pdf"
+            "BERT.pdf"
         ],
         "category": "direct_fact_lookup",
         "difficulty": "easy"
+    },
+    {
+        "question": "Which two pre-training tasks are used in BERT?",
+        "ground_truth": "BERT uses masked language modeling and next sentence prediction.",
+        "source_file": [
+            "BERT.pdf"
+        ],
+        "category": "direct_fact_lookup",
+        "difficulty": "easy"
+    },
+    {
+        "question": "According to the RAG survey, what are the three main RAG paradigms?",
+        "ground_truth": "The three main paradigms are Naive RAG, Advanced RAG, and Modular RAG.",
+        "source_file": [
+            "RAGSurvey.pdf"
+        ],
+        "category": "direct_fact_lookup",
+        "difficulty": "easy"
+    },
+    {
+        "question": "How deep is the deepest residual network reported in the ResNet paper, and how does it compare to VGG in depth?",
+        "ground_truth": "The deepest residual network reported is 152 layers, which is about 8 times deeper than VGG nets mentioned in the paper.",
+        "source_file": [
+            "ImgRecog.pdf"
+        ],
+        "category": "direct_fact_lookup",
+        "difficulty": "easy"
+    },
+    {
+        "question": "What core mechanism does TabNet use to choose which features to reason from at each decision step?",
+        "ground_truth": "TabNet uses sequential attention with sparse, instance-wise feature selection at each decision step.",
+        "source_file": [
+            "TabNet.pdf"
+        ],
+        "category": "direct_fact_lookup",
+        "difficulty": "easy"
+    },
+    {
+        "question": "Why does the English paper argue that what English is depends on context?",
+        "ground_truth": "The paper argues that English can refer to different things in different contexts, such as a people, a spoken language, a codified system in grammars and dictionaries, or literature, so its meaning depends on the setting in which it is discussed.",
+        "source_file": [
+            "English.pdf"
+        ],
+        "category": "definition_explanation",
+        "difficulty": "medium"
     }
 ]

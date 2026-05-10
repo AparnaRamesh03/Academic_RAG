@@ -6,6 +6,7 @@ A2C Trainer for the Context-Engineered MARL system.
 
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import torch.optim as optim
 from typing import List, Dict, Any
 
@@ -107,4 +108,4 @@ class MARLTrainer:
             "entropy_loss":   total_entropy_loss.item() / num_steps,
             "entropy":        total_raw_entropy.item() / num_steps
         }
-import torch.nn.functional as F
+
