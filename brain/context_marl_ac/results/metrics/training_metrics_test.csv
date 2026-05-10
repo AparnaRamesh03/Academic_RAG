@@ -1,0 +1,2 @@
+epoch,mean_reward,mean_steps,mean_llm_calls,loss,actor_loss,critic_loss,entropy
+1,1.2,0.0,0.0,0.5,0.0,0.0,0.0
