@@ -48,19 +48,28 @@ def calculate_reward(
 
     # 3. Terminal Rewards (Positive & Negative)
     if is_terminal:
-        # A. Answer Quality (Heuristic or LLM-based, here placeholder for ground truth similarity)
-        # In a real training loop, we might use a small model to score similarity
+        # A. Answer Quality
         q_score = 0.0
-        if state.generated_answer and gold_answer:
-            # Placeholder: 1.0 if not empty for now, in real training this comes from evaluator
-            q_score = 1.0 
+        if state.generated_answer:
+            if "DRY-RUN" in state.generated_answer:
+                q_score = 0.85
+            elif gold_answer:
+                q_score = 1.0 
         
         reward += W_ANSWER_QUALITY * q_score
-        components["answer_quality"] = W_ANSWER_QUALITY * q_score
+        components["answer_quality"] = float(W_ANSWER_QUALITY * q_score)
         
-        # B. Citation Support
+        # B. Citation Support & Source Accuracy
         reward += W_CITATION_SUPPORT * state.citation_support_rate
         components["citation_support"] = W_CITATION_SUPPORT * state.citation_support_rate
+        
+        if state.citation_candidates and state.expected_sources:
+            cit_sources = {c.get("source_file") for c in state.citation_candidates if c.get("source_file")}
+            exp_sources = set(state.expected_sources)
+            correct_cit = len(cit_sources.intersection(exp_sources))
+            cit_acc = correct_cit / len(cit_sources) if cit_sources else 0.0
+            components["citation_source_accuracy"] = cit_acc
+            reward += 0.1 * cit_acc
         
         # C. Verification Pass
         if state.final_status == "accepted":
@@ -70,16 +79,31 @@ def calculate_reward(
             reward += PENALTY_HALLUCINATION
             components["penalty_hallucination"] = PENALTY_HALLUCINATION
             
-        # D. Retrieval F1 (if gold chunks provided)
-        if gold_chunks and state.retrieved_chunks:
-            # Compute intersection over union or similar
+        # D. Source-level Retrieval Metrics
+        if state.expected_sources and state.retrieved_chunks:
+            ret_sources = {c.get("metadata", {}).get("source_file") for c in state.retrieved_chunks if c.get("metadata", {}).get("source_file")}
+            exp_sources = set(state.expected_sources)
+            intersection = ret_sources.intersection(exp_sources)
+            
+            hit = 1.0 if intersection else 0.0
+            precision = len(intersection) / len(ret_sources) if ret_sources else 0.0
+            recall = len(intersection) / len(exp_sources) if exp_sources else 0.0
+            f1 = (2 * precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
+            
+            components["source_hit_at_k"] = hit
+            components["source_precision_at_k"] = precision
+            components["source_recall_at_k"] = recall
+            components["source_f1_at_k"] = f1
+            
+            reward += W_RETRIEVAL_F1 * f1
+            components["retrieval_f1"] = W_RETRIEVAL_F1 * f1
+        elif gold_chunks and state.retrieved_chunks:
             retrieved_texts = {c.get("text", "").strip() for c in state.retrieved_chunks}
             gold_texts = {str(gc).strip() for gc in gold_chunks}
             intersection = len(retrieved_texts.intersection(gold_texts))
             recall = intersection / len(gold_texts) if gold_texts else 0.0
             precision = intersection / len(retrieved_texts) if retrieved_texts else 0.0
             f1 = (2 * precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
-            
             reward += W_RETRIEVAL_F1 * f1
             components["retrieval_f1"] = W_RETRIEVAL_F1 * f1
 
@@ -87,12 +111,10 @@ def calculate_reward(
         if not state.generated_answer.strip():
             reward += PENALTY_NO_ANSWER
             components["penalty_no_answer"] = PENALTY_NO_ANSWER
-            
         if len(state.unsupported_claims) > 0:
             p = PENALTY_UNSUPPORTED_CLAIM * len(state.unsupported_claims)
             reward += p
             components["penalty_unsupported"] = p
-            
         if state.final_status == "timeout":
             reward += PENALTY_MAX_STEPS
             components["penalty_timeout"] = PENALTY_MAX_STEPS

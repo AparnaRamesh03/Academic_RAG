@@ -45,7 +45,7 @@ RERANK_OUTPUT_TOP_K    = 10
 # ---------------------------------------------------------------------------
 # Episode limits
 # ---------------------------------------------------------------------------
-MAX_STEPS_PER_EPISODE      = 10
+MAX_STEPS_PER_EPISODE      = 12
 MAX_LLM_CALLS_PER_EPISODE  = 15
 MAX_RETRIEVAL_RETRIES      = 2
 MAX_REWRITES               = 2

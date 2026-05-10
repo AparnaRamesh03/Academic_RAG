@@ -70,7 +70,11 @@ class ContextState:
 
     # ── Query metadata ──────────────────────────────────────────────────────
     question_id: str = field(default_factory=lambda: str(uuid.uuid4()))
-    user_query:  str = ""
+    original_query: str = "" # Fixed benchmark question
+    user_query:  str = ""     # Current active query (may be rewritten)
+    rewritten_query: str = ""  # Last rewrite result
+    # List of filenames/identifiers expected for this question
+    expected_sources: List[str] = field(default_factory=list)
 
     # Populated by query_analyzer
     query_type:                str  = "factual"   # one of QUERY_TYPES
@@ -105,6 +109,9 @@ class ContextState:
     # Computed from verification_result by VerifierAgent
     unsupported_claims:    List[str] = field(default_factory=list)
     citation_support_rate: float     = 0.0   # fraction of claims supported
+    
+    # Debug info from agents
+    grader_output: Dict[str, Any] = field(default_factory=dict)
 
     # ── Episode bookkeeping ─────────────────────────────────────────────────
     # History of (agent, action) pairs this episode
@@ -154,6 +161,7 @@ class ContextState:
         return {
             "question_id":               self.question_id,
             "user_query":                self.user_query,
+            "expected_sources":          self.expected_sources,
             "query_type":                self.query_type,
             "query_complexity":          self.query_complexity,
             "requires_multiple_sources": self.requires_multiple_sources,
@@ -183,17 +191,62 @@ class ContextState:
             "done":                      self.done,
         }
 
+    def to_debug_dict(self) -> Dict[str, Any]:
+        """Returns a dict with detailed agent outputs for debugging."""
+        return {
+            "question":                  self.original_query,
+            "current_query":             self.user_query,
+            "rewritten_query":           self.rewritten_query,
+            "retrieved_chunk_ids":       [
+                c.get("metadata", {}).get("chunk_id") or 
+                c.get("id") or 
+                f"{c.get('metadata', {}).get('source_file')}_p{c.get('metadata', {}).get('page_number')}_{i}"
+                for i, c in enumerate(self.retrieved_chunks)
+            ],
+            "retrieved_chunk_preview":   [c.get("text", "")[:300] for c in self.retrieved_chunks],
+            "retrieval_scores":          self.retrieval_scores,
+            "selected_evidence_ids":     [e.get("chunk_id") for e in self.selected_evidence],
+            "selected_evidence_preview": [e.get("text", "")[:300] for e in self.selected_evidence],
+            "generated_answer_preview":  self.generated_answer[:300],
+            "generated_answer_length":   len(self.generated_answer),
+            "citations":                 self.citation_candidates,
+            "verifier_decision":         self.verification_result.get("decision", "N/A"),
+            "verifier_reason":           self.verification_result.get("reason", ""),
+            "unsupported_claims":        self.unsupported_claims,
+            "citation_support_rate":     self.citation_support_rate,
+            "final_status":              self.final_status,
+            "grader_output":             self.grader_output
+        }
+
     @classmethod
-    def from_question(cls, question_dict: Dict[str, Any]) -> "ContextState":
+    def from_question(cls, question_dict: Dict[str, Any], index: int = 1) -> "ContextState":
         """
         Convenience constructor: initialise a fresh ContextState from a
-        benchmark question dict.
+        benchmark question dict. Supports the standard_benchmark_v3 format.
 
-        Expected keys in question_dict:
-            question    (str, required)
-            question_id (str, optional — generated if missing)
+        Mappings:
+            question      -> user_query
+            ground_truth  -> gold_answer (stored in evaluator/reward)
+            source_file   -> expected_sources (list)
+            category      -> query_type
+            difficulty    -> query_complexity
         """
+        q_id = question_dict.get("question_id")
+        if not q_id:
+            # Generate Q001, Q002, etc.
+            q_id = f"Q{index:03d}"
+            
+        # Map source_file (can be string or list)
+        src = question_dict.get("source_file", [])
+        if isinstance(src, str):
+            src = [src]
+
+        q_text = str(question_dict.get("question", ""))
         return cls(
-            question_id=str(question_dict.get("question_id", str(uuid.uuid4()))),
-            user_query=str(question_dict.get("question", "")),
+            question_id=str(q_id),
+            original_query=q_text,
+            user_query=q_text,
+            expected_sources=src,
+            query_type=str(question_dict.get("category", "factual")),
+            query_complexity=str(question_dict.get("difficulty", "medium")),
         )

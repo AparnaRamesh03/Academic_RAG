@@ -23,11 +23,11 @@ except ImportError:
     from context_engineering.query_analyzer import analyze_query
     from context_engineering.evidence_pack_builder import build_evidence_pack
 
-def initialize_context(question_dict: Dict[str, Any]) -> ContextState:
+def initialize_context(question_dict: Dict[str, Any], index: int = 1) -> ContextState:
     """
     Creates initial ContextState and performs query analysis.
     """
-    state = ContextState.from_question(question_dict)
+    state = ContextState.from_question(question_dict, index=index)
     
     # 1. Analyze query
     analysis = analyze_query(state.user_query)

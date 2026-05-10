@@ -38,13 +38,13 @@ if str(_BRAIN_ROOT) not in sys.path:
 # Config (DRY_RUN flag lives here)
 # ---------------------------------------------------------------------------
 try:
-    from context_marl_ac.config import DRY_RUN, DEFAULT_TOP_K
+    import context_marl_ac.config as cfg
 except ImportError:
     # Fallback when running as a standalone script
     _MARL_ROOT = Path(__file__).resolve().parents[1]
     if str(_MARL_ROOT.parent) not in sys.path:
         sys.path.insert(0, str(_MARL_ROOT.parent))
-    from context_marl_ac.config import DRY_RUN, DEFAULT_TOP_K
+    import context_marl_ac.config as cfg
 
 
 # ---------------------------------------------------------------------------
@@ -101,7 +101,7 @@ def _dry_run_chunks(top_k: int) -> List[Dict[str, Any]]:
 
 
 # ---------------------------------------------------------------------------
-# Real retriever imports (lazy, so they are only loaded when DRY_RUN=False)
+# Real retriever imports (lazy, so they are only loaded when cfg.DRY_RUN=False)
 # ---------------------------------------------------------------------------
 _retriever_loaded = False
 _retrieve_docs_fn = None
@@ -179,23 +179,23 @@ def _ensure_reranker_loaded() -> None:
 # Public API
 # ---------------------------------------------------------------------------
 
-def retrieve_hybrid(query: str, top_k: int = DEFAULT_TOP_K) -> List[Dict[str, Any]]:
+def retrieve_hybrid(query: str, top_k: int = cfg.DEFAULT_TOP_K) -> List[Dict[str, Any]]:
     """
     Hybrid RRF retrieval: BGE-M3 dense + BM25 sparse fused via Qdrant RRF.
     Returns up to top_k chunks sorted by RRF score (highest first).
     """
-    if DRY_RUN:
+    if cfg.DRY_RUN:
         return _dry_run_chunks(top_k)
     _ensure_retriever_loaded()
     docs = _retrieve_docs_fn(query)
     return docs[:top_k]
 
 
-def retrieve_dense(query: str, top_k: int = DEFAULT_TOP_K) -> List[Dict[str, Any]]:
+def retrieve_dense(query: str, top_k: int = cfg.DEFAULT_TOP_K) -> List[Dict[str, Any]]:
     """
     Dense-only retrieval using BGE-M3 embeddings via Qdrant ANN search.
     """
-    if DRY_RUN:
+    if cfg.DRY_RUN:
         return _dry_run_chunks(top_k)
     _ensure_retriever_loaded()
 
@@ -217,11 +217,11 @@ def retrieve_dense(query: str, top_k: int = DEFAULT_TOP_K) -> List[Dict[str, Any
     ]
 
 
-def retrieve_sparse(query: str, top_k: int = DEFAULT_TOP_K) -> List[Dict[str, Any]]:
+def retrieve_sparse(query: str, top_k: int = cfg.DEFAULT_TOP_K) -> List[Dict[str, Any]]:
     """
     Sparse-only retrieval using BM25 (FastEmbed) via Qdrant sparse vector search.
     """
-    if DRY_RUN:
+    if cfg.DRY_RUN:
         return _dry_run_chunks(top_k)
     _ensure_retriever_loaded()
 
@@ -246,12 +246,12 @@ def retrieve_sparse(query: str, top_k: int = DEFAULT_TOP_K) -> List[Dict[str, An
     ]
 
 
-def retrieve_hybrid_rerank(query: str, top_k: int = DEFAULT_TOP_K) -> List[Dict[str, Any]]:
+def retrieve_hybrid_rerank(query: str, top_k: int = cfg.DEFAULT_TOP_K) -> List[Dict[str, Any]]:
     """
     Hybrid RRF retrieval followed by CrossEncoder reranking.
     Fetches RERANK_INPUT_TOP_K candidates, reranks, returns top_k.
     """
-    if DRY_RUN:
+    if cfg.DRY_RUN:
         return _dry_run_chunks(top_k)
     _ensure_retriever_loaded()
     _ensure_reranker_loaded()
@@ -262,8 +262,9 @@ def retrieve_hybrid_rerank(query: str, top_k: int = DEFAULT_TOP_K) -> List[Dict[
 
     # Build a minimal GraphState-compatible dict for reranker_shared
     mock_state: Dict[str, Any] = {
-        "search_query": query,
-        "retrieved_docs": candidates,
+        "original_query":   query,
+        "search_query":     query,
+        "retrieved_docs":   candidates,
     }
     updated = _reranker_fn(
         mock_state,
@@ -277,13 +278,13 @@ def retrieve_hybrid_rerank(query: str, top_k: int = DEFAULT_TOP_K) -> List[Dict[
 def retrieve_more(
     query: str,
     current_chunks: List[Dict[str, Any]],
-    top_k: int = DEFAULT_TOP_K,
+    top_k: int = cfg.DEFAULT_TOP_K,
 ) -> List[Dict[str, Any]]:
     """
     Retrieve additional chunks not already present in current_chunks.
     Uses text content as the deduplication key.
     """
-    if DRY_RUN:
+    if cfg.DRY_RUN:
         # Return a slightly different dummy chunk in dry-run
         extra = {
             "text": (

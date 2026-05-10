@@ -38,12 +38,12 @@ for _p in [str(_BRAIN_ROOT), str(_FINAL_ARCH_DIR)]:
 # Config
 # ---------------------------------------------------------------------------
 try:
-    from context_marl_ac.config import DRY_RUN
+    import context_marl_ac.config as cfg
 except ImportError:
     _MARL_ROOT = Path(__file__).resolve().parents[1]
     if str(_MARL_ROOT.parent) not in sys.path:
         sys.path.insert(0, str(_MARL_ROOT.parent))
-    from context_marl_ac.config import DRY_RUN
+    import context_marl_ac.config as cfg
 
 
 # ---------------------------------------------------------------------------
@@ -120,7 +120,7 @@ def build_citations(chunks: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     List[dict] — each dict has:
         source_file, page_number, section_header, excerpt, content_type
     """
-    if DRY_RUN:
+    if cfg.DRY_RUN:
         return [
             {
                 "source_file":    "AttentionIsAllYouNeed.pdf",
@@ -157,8 +157,10 @@ def compute_citation_support(
     -------
     float in [0.0, 1.0] — citation support rate.
     """
-    if DRY_RUN:
-        return 1.0
+    if cfg.DRY_RUN:
+        if not answer.strip() or not evidence_pack:
+            return 0.0
+        return 0.95
 
     if not answer.strip() or not evidence_pack:
         return 0.0
@@ -195,7 +197,7 @@ def detect_unsupported_claims(
     -------
     List[str] — text of each unsupported claim.
     """
-    if DRY_RUN:
+    if cfg.DRY_RUN:
         return []
 
     if not answer.strip() or not evidence_pack:

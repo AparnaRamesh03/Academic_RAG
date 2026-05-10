@@ -33,6 +33,12 @@ class MARLLogger:
         self.training_csv = self.metrics_dir / f"training_metrics_{run_name}.csv"
         self.trajectory_jsonl = self.trajectories_dir / f"train_trajectories_{run_name}.jsonl"
         
+        # Fresh run: delete existing files for specific runs
+        if run_name != "latest":
+            for p in [self.episode_csv, self.training_csv, self.trajectory_jsonl]:
+                if os.path.exists(p):
+                    os.remove(p)
+
         self._init_csvs()
 
     def _init_csvs(self):
@@ -43,7 +49,8 @@ class MARLLogger:
                 writer.writerow([
                     "episode_id", "question_id", "query_type", "total_reward",
                     "answer_quality", "citation_support_rate", "verification_pass",
-                    "final_status", "num_steps", "num_llm_calls", "latency_seconds"
+                    "final_status", "num_steps", "num_llm_calls", "latency_seconds",
+                    "token_usage", "has_gen", "ans_len", "ev_count", "ver_dec"
                 ])
                 
         if not os.path.exists(self.training_csv):
@@ -51,7 +58,7 @@ class MARLLogger:
                 writer = csv.writer(f)
                 writer.writerow([
                     "epoch", "mean_reward", "mean_steps", "mean_llm_calls",
-                    "loss", "actor_loss", "critic_loss", "entropy"
+                    "loss", "actor_loss", "critic_loss", "entropy", "entropy_loss"
                 ])
 
     def log_episode(self, episode: Episode):
@@ -76,7 +83,8 @@ class MARLLogger:
             "loss":           metrics.get("loss", 0.0),
             "actor_loss":     metrics.get("actor_loss", 0.0),
             "critic_loss":    metrics.get("critic_loss", 0.0),
-            "entropy":        metrics.get("entropy", 0.0)
+            "entropy":        metrics.get("entropy", 0.0),
+            "entropy_loss":   metrics.get("entropy_loss", 0.0)
         }
         with open(self.training_csv, "a", newline="") as f:
             writer = csv.DictWriter(f, fieldnames=row.keys())

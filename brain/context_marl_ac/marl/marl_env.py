@@ -36,11 +36,11 @@ class MARLEnv:
         self.state: Optional[ContextState] = None
         self.total_reward: float = 0.0
 
-    def reset(self, question_dict: Dict[str, Any]) -> ContextState:
+    def reset(self, question_dict: Dict[str, Any], index: int = 1) -> ContextState:
         """
         Starts a new episode for a given question.
         """
-        self.state = initialize_context(question_dict)
+        self.state = initialize_context(question_dict, index=index)
         self.total_reward = 0.0
         self.gold_answer = question_dict.get("ground_truth", "")
         self.gold_chunks = question_dict.get("source_file", []) # simplified

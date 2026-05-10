@@ -14,8 +14,11 @@ class VerifierAgent(BaseAgent):
         super().__init__("verifier")
 
     def act(self, state: ContextState, action_name: str) -> ContextState:
-        if not state.generated_answer:
+        # Robust check for empty answer
+        if not state.generated_answer or state.generated_answer.strip() == "":
             state.record_action(self.name, "skipped_no_answer")
+            state.final_status = "generation_failed"
+            state.done = True
             return state
 
         # 1. Run LLM verification
@@ -35,8 +38,11 @@ class VerifierAgent(BaseAgent):
         
         # 3. Handle terminal decision
         if action_name == "accept":
-            # If agent chose to accept, check if it actually passed
-            if verification.get("decision") == "PASS":
+            # Cannot accept if generation failed or is empty
+            if not state.generated_answer or state.generated_answer.strip() == "":
+                state.final_status = "generation_failed"
+                state.done = True
+            elif verification.get("decision") == "PASS":
                 state.final_status = "accepted"
                 state.done = True
             else:
@@ -48,7 +54,7 @@ class VerifierAgent(BaseAgent):
             state.done = True
         else:
             # Other actions (request_rewrite, etc.) mean we continue
-            pass
+            state.record_action(self.name, action_name)
+            self.update_latency(state)
             
-        self.log_action(state, action_name)
         return state

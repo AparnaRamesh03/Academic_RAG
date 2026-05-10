@@ -41,6 +41,7 @@ class MARLTrainer:
         total_actor_loss = torch.tensor(0.0, requires_grad=True)
         total_critic_loss = torch.tensor(0.0, requires_grad=True)
         total_entropy_loss = torch.tensor(0.0, requires_grad=True)
+        total_raw_entropy = torch.tensor(0.0)
         
         num_steps = 0
         
@@ -83,6 +84,7 @@ class MARLTrainer:
                 total_actor_loss = total_actor_loss + actor_loss
                 total_critic_loss = total_critic_loss + critic_loss
                 total_entropy_loss = total_entropy_loss - ENTROPY_COEF * entropy
+                total_raw_entropy = total_raw_entropy + entropy.detach()
                 num_steps += 1
 
         if num_steps == 0:
@@ -99,9 +101,10 @@ class MARLTrainer:
         self.optimizer.step()
         
         return {
-            "loss": total_loss.item(),
-            "actor_loss": total_actor_loss.item() / num_steps,
-            "critic_loss": total_critic_loss.item() / num_steps,
-            "entropy": total_entropy_loss.item() / num_steps
+            "loss":           total_loss.item(),
+            "actor_loss":     total_actor_loss.item() / num_steps,
+            "critic_loss":    total_critic_loss.item() / num_steps,
+            "entropy_loss":   total_entropy_loss.item() / num_steps,
+            "entropy":        total_raw_entropy.item() / num_steps
         }
 import torch.nn.functional as F

@@ -1,0 +1,29 @@
+[
+    {
+        "question": "What are the four main subject areas of the current Norwegian national English curriculum?",
+        "ground_truth": "The four main subject areas are Language learning, Oral communication, Written communication, and Culture, society and literature.",
+        "source_file": [
+            "English.pdf"
+        ],
+        "category": "direct_fact_lookup",
+        "difficulty": "easy"
+    },
+    {
+        "question": "How does Kachru's concentric circles model distinguish between the Inner, Outer, and Expanding circles?",
+        "ground_truth": "The Inner circle refers to native speakers of English as a first language. The Outer circle refers to countries where English became an official second language, often through colonial history. The Expanding circle refers to places where English is mainly used as a foreign or international language.",
+        "source_file": [
+            "English.pdf"
+        ],
+        "category": "direct_fact_lookup",
+        "difficulty": "easy"
+    },
+    {
+        "question": "Why is Norway's status as an Expanding Circle country described as increasingly fuzzy?",
+        "ground_truth": "It is described as fuzzy because English has expanded strongly in Norway beyond a typical foreign-language role, including broad use in education, business, and international communication.",
+        "source_file": [
+            "English.pdf"
+        ],
+        "category": "direct_fact_lookup",
+        "difficulty": "easy"
+    }
+]

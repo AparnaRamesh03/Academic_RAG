@@ -1,2 +1,0 @@
-episode_id,question_id,query_type,total_reward,answer_quality,citation_support_rate,verification_pass,final_status,num_steps,num_llm_calls,latency_seconds
-e1,q1,factual,0.0,0.0,0.0,False,pending,0,0,0.0,0

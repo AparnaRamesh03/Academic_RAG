@@ -131,6 +131,12 @@ class Episode:
     num_llm_calls:         int   = 0
     latency_seconds:       float = 0.0
     token_usage:           int   = 0
+    
+    # Debug fields
+    has_generated_answer:  bool  = False
+    answer_length:         int   = 0
+    selected_evidence_count: int = 0
+    verifier_decision:     str   = "N/A"
 
     def add_step(self, step: TrajectoryStep) -> None:
         self.steps.append(step)
@@ -163,6 +169,10 @@ class Episode:
             "num_llm_calls":       self.num_llm_calls,
             "latency_seconds":     round(self.latency_seconds, 4),
             "token_usage":         self.token_usage,
+            "has_gen":             self.has_generated_answer,
+            "ans_len":             self.answer_length,
+            "ev_count":            self.selected_evidence_count,
+            "ver_dec":             self.verifier_decision
         }
 
     def steps_to_jsonl(self) -> str:

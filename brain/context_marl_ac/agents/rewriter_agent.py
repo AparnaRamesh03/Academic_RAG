@@ -20,10 +20,11 @@ class RewriterAgent(BaseAgent):
             return state
             
         # Use LLM to rewrite
-        rewritten_query = rewrite_query(state.user_query, mode=action_name)
+        rewritten = rewrite_query(state.user_query, mode=action_name)
         
-        # Update current user_query in state for next retrieval
-        state.user_query = rewritten_query
+        # Update state for logging and next steps
+        state.rewritten_query = rewritten
+        state.user_query = rewritten
         
         self.log_action(state, action_name)
         return state
