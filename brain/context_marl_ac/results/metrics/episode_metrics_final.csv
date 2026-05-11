@@ -11,3 +11,4 @@ episode_0009_Q023,Q023,conceptual,-2.4589,0.0,0.0,False,rejected,10,7,74.0515,74
 episode_0010_Q016,Q016,factual,-4.3498,0.0,0.0,False,timeout,12,8,75.442,8775,False,0,0,N/A
 episode_0011_Q028,Q028,conceptual,0.2154,1.0,1.0,True,accepted,4,2,39.3466,3202,True,174,8,PASS
 episode_0012_Q035,Q035,multi_hop,-3.396,0.0,0.0,False,timeout,12,8,69.688,9173,True,714,3,N/A
+episode_0013_Q020,Q020,conceptual,-1.3591,1.0,1.0,True,accepted,10,7,57.0028,4458,True,210,3,PASS
