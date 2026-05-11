@@ -49,7 +49,7 @@ def parse_args():
     parser.add_argument(
         "--resume-checkpoint",
         type=str,
-        default=None,
+        default=str(_BRAIN_ROOT.parent / "brain" / "context_marl_ac" / "results" / "checkpoints" / "best_reward.pt"),
         help="Resume training from checkpoint filename in checkpoints directory",
     )
     parser.add_argument(
@@ -72,7 +72,7 @@ def parse_args():
     parser.add_argument(
         "--benchmark-path",
         type=str,
-        default=str(_BRAIN_ROOT.parent / "evaluation" / "standard_benchmark_v3.json"),
+        default=str(_BRAIN_ROOT.parent / "brain" / "context_marl_ac" / "results" / "benchmark_splits" / "train.jsonl"),
         help="Path to training benchmark JSON or JSONL",
     )
     parser.add_argument(

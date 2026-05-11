@@ -43,7 +43,7 @@ def parse_args():
     parser.add_argument(
         "--benchmark-path",
         type=str,
-        default=str(_BRAIN_ROOT.parent / "evaluation" / "standard_benchmark_v3.json"),
+        default=str(_BRAIN_ROOT.parent / "brain" / "context_marl_ac" / "results" / "benchmark_splits" / "test.jsonl"),
         help="Path to evaluation benchmark JSON or JSONL",
     )
 
