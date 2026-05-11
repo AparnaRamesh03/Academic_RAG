@@ -10,6 +10,9 @@ Returns (result, token_count) for all LLM-backed calls.
 from __future__ import annotations
 
 import sys
+import time
+import re
+import random
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
 
@@ -38,6 +41,31 @@ except ImportError:
 # ---------------------------------------------------------------------------
 # Internal format conversion helpers
 # ---------------------------------------------------------------------------
+
+def _extract_retry_after_seconds(exc_msg: str) -> float:
+    ms_match = re.search(r"try again in\s+(\d+(?:\.\d+)?)\s*ms", exc_msg, re.IGNORECASE)
+    if ms_match:
+        return max(0.5, float(ms_match.group(1)) / 1000.0)
+    sec_match = re.search(r"try again in\s+(\d+(?:\.\d+)?)\s*s", exc_msg, re.IGNORECASE)
+    if sec_match:
+        return max(0.5, float(sec_match.group(1)))
+    return 2.0
+
+def _call_with_retry(fn):
+    max_attempts = 10
+    for attempt in range(1, max_attempts + 1):
+        try:
+            return fn()
+        except Exception as exc:
+            exc_msg = str(exc).lower()
+            if "rate limit" in exc_msg or "429" in exc_msg or "rate_limit_exceeded" in exc_msg:
+                wait_sec = _extract_retry_after_seconds(exc_msg)
+                wait_sec += random.uniform(0.1, 0.5)
+                print(f"[llm_adapter] Rate limit hit. Retrying in {wait_sec:.2f}s (Attempt {attempt}/{max_attempts})...")
+                time.sleep(wait_sec)
+            else:
+                raise
+    raise Exception(f"Failed after {max_attempts} retries due to rate limits.")
 
 def _estimate_tokens(text: str) -> int:
     """Fallback token estimation: ~4 characters per token."""
@@ -121,7 +149,7 @@ def rewrite_query(query: str, mode: str = "simple_rewrite") -> Tuple[str, int]:
     _ensure_llm_loaded()
     mock_state = {"original_query": query, "search_query": query, "weak_signal_docs": [], "crag_retries": 0}
     
-    result = _rewrite_fn(mock_state)
+    result = _call_with_retry(lambda: _rewrite_fn(mock_state))
     rewritten = result.get("search_query", query)
     # Estimation as legacy node doesn't return raw response
     return rewritten, _estimate_tokens(query + rewritten)
@@ -139,7 +167,7 @@ def grade_chunks(query: str, chunks: List[Dict[str, Any]], mode: str = "medium_f
     _ensure_llm_loaded()
     mock_state = {"original_query": query, "retrieved_docs": chunks}
     
-    result = _grade_fn(mock_state)
+    result = _call_with_retry(lambda: _grade_fn(mock_state))
     filtered = result.get("retrieved_docs", [])
     # Estimation: query + all chunk texts
     chunk_text = "".join([c.get("text", "") for c in chunks])
@@ -157,7 +185,7 @@ def generate_answer(query: str, evidence_pack: List[Dict[str, Any]], mode: str =
     docs = _evidence_pack_to_docs(evidence_pack)
     mock_state = {"original_query": query, "search_query": query, "graded_docs": docs, "final_answer": ""}
 
-    result = _gen_fn(mock_state)
+    result = _call_with_retry(lambda: _gen_fn(mock_state))
     
     # Extraction logic
     extracted = ""
@@ -223,7 +251,7 @@ def verify_answer(query: str, answer: str, evidence_pack: List[Dict[str, Any]]) 
     tokens = _estimate_tokens(query + answer + evidence_text)
 
     try:
-        result = _verify_fn(query, answer, docs)
+        result = _call_with_retry(lambda: _verify_fn(query, answer, docs))
 
         if not isinstance(result, dict):
             return {

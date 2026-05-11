@@ -1,0 +1,9 @@
+exact_match,token_f1,rouge_l_f1,source_hit,source_precision,source_recall,source_mrr,category,count,avg_latency_sec,recommended_primary_metric_1,recommended_primary_metric_2
+0.0,0.1225200666363774,0.10120399818264425,1.0,0.75,0.75,1.0,cross_paper_comparison,2,81.31525,rouge_l_f1,token_f1
+0.0,0.3909490886235072,0.28514561072700606,1.0,1.0,1.0,1.0,definition_explanation,2,56.68645,rouge_l_f1,token_f1
+0.0,0.6699532952776336,0.6132157066251513,1.0,1.0,1.0,1.0,direct_fact_lookup,2,66.53905,exact_match,token_f1
+0.0,0.2969287976862691,0.21112794380939265,1.0,0.5833333333333333,1.0,1.0,distractor_edge_case,2,118.6538,rouge_l_f1,token_f1
+0.0,0.49661042711658315,0.32235902112783094,1.0,1.0,1.0,1.0,figure_table_diagram_grounded,3,54.05793333333333,rouge_l_f1,token_f1
+0.0,0.2934422252769467,0.18759602167057493,1.0,0.75,1.0,1.0,intra_paper_comparison,2,105.71594999999999,rouge_l_f1,token_f1
+0.0,0.2771072796934866,0.18697318007662833,1.0,1.0,1.0,1.0,multi_chunk_synthesis,2,96.83394999999999,rouge_l_f1,token_f1
+0.0,0.25037037037037035,0.19999999999999998,1.0,0.8333333333333334,1.0,1.0,paraphrase_hard_retrieval,3,54.01746666666666,rouge_l_f1,token_f1

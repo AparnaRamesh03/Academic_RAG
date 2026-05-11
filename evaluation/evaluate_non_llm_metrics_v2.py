@@ -163,6 +163,9 @@ def build_detail_rows(results):
         predicted_sources = extract_predicted_sources(row.get("citations", []))
         src_metrics = source_metrics(row.get("source_file"), predicted_sources)
 
+        is_ok = row.get("status") == "ok" or row.get("final_status") in ["accepted", "rejected"]
+        status_val = row.get("status") or row.get("final_status")
+
         rows.append(
             {
                 "question": row.get("question"),
@@ -174,15 +177,15 @@ def build_detail_rows(results):
                 "category": row.get("category"),
                 "difficulty": row.get("difficulty"),
                 "latency_sec": row.get("latency_sec"),
-                "status": row.get("status"),
+                "status": status_val,
                 "error": json.dumps(row.get("error"), ensure_ascii=False) if row.get("error") is not None else None,
-                "exact_match": exact_match(answer, ground_truth) if row.get("status") == "ok" else None,
-                "token_f1": token_f1(answer, ground_truth) if row.get("status") == "ok" else None,
-                "rouge_l_f1": rouge_l_f1(answer, ground_truth) if row.get("status") == "ok" else None,
-                "source_hit": src_metrics["source_hit"] if row.get("status") == "ok" else None,
-                "source_precision": src_metrics["source_precision"] if row.get("status") == "ok" else None,
-                "source_recall": src_metrics["source_recall"] if row.get("status") == "ok" else None,
-                "source_mrr": src_metrics["source_mrr"] if row.get("status") == "ok" else None,
+                "exact_match": exact_match(answer, ground_truth) if is_ok else None,
+                "token_f1": token_f1(answer, ground_truth) if is_ok else None,
+                "rouge_l_f1": rouge_l_f1(answer, ground_truth) if is_ok else None,
+                "source_hit": src_metrics["source_hit"] if is_ok else None,
+                "source_precision": src_metrics["source_precision"] if is_ok else None,
+                "source_recall": src_metrics["source_recall"] if is_ok else None,
+                "source_mrr": src_metrics["source_mrr"] if is_ok else None,
             }
         )
     return rows
@@ -284,14 +287,14 @@ def main():
     results = load_json(results_path)
 
     total_rows = len(results)
-    ok_rows = sum(1 for r in results if r.get("status") == "ok")
+    ok_rows = sum(1 for r in results if r.get("status") == "ok" or r.get("final_status") in ["accepted", "rejected"])
     failed_rows = total_rows - ok_rows
 
     detail_rows = build_detail_rows(results)
     detailed_df = pd.DataFrame(detail_rows)
     detailed_df.to_csv(detail_csv_path, index=False)
 
-    ok_df = detailed_df[detailed_df["status"] == "ok"].copy()
+    ok_df = detailed_df[detailed_df["status"].isin(["ok", "accepted", "rejected"])].copy()
 
     overall = aggregate(ok_df)
     overall["architecture"] = results[0].get("architecture") if results else None
