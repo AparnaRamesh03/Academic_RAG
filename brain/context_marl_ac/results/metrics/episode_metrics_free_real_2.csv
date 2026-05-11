@@ -1,0 +1,3 @@
+episode_id,question_id,query_type,total_reward,answer_quality,citation_support_rate,verification_pass,final_status,num_steps,num_llm_calls,latency_seconds,token_usage,has_gen,ans_len,ev_count,ver_dec
+episode_0001_Q027,Q027,conceptual,-0.0081,1.0,1.0,True,accepted,7,4,17.1164,5973,True,1042,8,PASS
+episode_0002_Q033,Q033,multi_hop,0.3498,1.0,1.0,True,accepted,5,4,35.1593,3287,True,622,8,PASS

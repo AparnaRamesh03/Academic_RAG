@@ -1,0 +1,7 @@
+episode_id,question_id,query_type,total_reward,answer_quality,citation_support_rate,verification_pass,final_status,num_steps,num_llm_calls,latency_seconds,token_usage,has_gen,ans_len,ev_count,ver_dec
+episode_0001_Q006,Q006,factual,0.2235,1.0,1.0,True,accepted,4,3,30.6932,2847,True,58,3,PASS
+episode_0002_Q010,Q010,definition,-1.0623,0.0,0.0,False,rejected,7,4,15.2276,3988,True,335,8,FAIL
+episode_0003_Q009,Q009,factual,0.5576,1.0,1.0,True,accepted,5,3,18.3215,2217,True,111,3,PASS
+episode_0004_Q012,Q012,factual,0.4908,1.0,1.0,True,accepted,5,3,21.4411,2899,True,222,3,PASS
+episode_0005_Q028,Q028,conceptual,0.5825,1.0,1.0,True,accepted,4,3,19.5824,2766,True,174,3,PASS
+episode_0006_Q018,Q018,section_specific,-2.0413,0.0,0.0,False,rejected,10,7,35.5982,3233,True,72,8,FAIL
