@@ -5,7 +5,7 @@ The Multi-Agent Reinforcement Learning Environment for Context-Engineered RAG.
 """
 
 import time
-from typing import Dict, Any, Tuple, Optional, List
+from typing import Dict, Any, Tuple, Optional, List, Union
 
 from context_marl_ac.config import MAX_STEPS_PER_EPISODE, MAX_LLM_CALLS_PER_EPISODE
 from context_marl_ac.schemas.context_state import ContextState
@@ -46,7 +46,7 @@ class MARLEnv:
         self.gold_chunks = question_dict.get("source_file", []) # simplified
         return self.state
 
-    def step(self, agent_name: str, action_name: str) -> Tuple[ContextState, float, bool, Dict[str, Any]]:
+    def step(self, agent_name: str, action_name: str, params: Optional[Dict[str, Any]] = None) -> Tuple[ContextState, float, bool, Dict[str, Any]]:
         """
         Performs one action by one agent and returns (new_state, reward, done, info).
         """
@@ -59,7 +59,11 @@ class MARLEnv:
         agent = self.agents.get(agent_name)
         if not agent:
             raise ValueError(f"Unknown agent: {agent_name}")
-            
+
+        # Inject MADDPG continuous params so agents can adapt RAG behaviour.
+        if params is not None:
+            self.state.maddpg_params = params
+
         # The agent mutates self.state in-place
         self.state = agent.act(self.state, action_name)
         

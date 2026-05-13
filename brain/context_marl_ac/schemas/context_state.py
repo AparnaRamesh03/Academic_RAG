@@ -129,6 +129,11 @@ class ContextState:
     final_status: str  = "pending"   # one of FINAL_STATUSES
     done:         bool = False
 
+    # Optional dict injected by MADDPG before each step so agents can adapt
+    # their RAG parameters (top_k, temperature, thresholds, …).
+    # Discrete MARL leaves this None; MADDPG sets it before every env.step().
+    maddpg_params: Optional[Dict[str, Any]] = field(default=None, repr=False)
+
     # Internal: episode start timestamp (for latency calculation)
     _start_time: float = field(default_factory=time.perf_counter, repr=False, compare=False)
 

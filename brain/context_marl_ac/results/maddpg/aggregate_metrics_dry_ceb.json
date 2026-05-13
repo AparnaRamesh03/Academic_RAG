@@ -1,0 +1,15 @@
+{
+  "run_name": "dry_ceb",
+  "episodes": 10,
+  "use_ceb": true,
+  "state_dim": 20,
+  "joint_action_dim": 16,
+  "mean_reward": 0.4185,
+  "mean_steps": 4.0,
+  "mean_llm_calls": 3.0,
+  "verification_pass_rate": 1.0,
+  "mean_citation_support": 1.0,
+  "mean_latency": 0.0010999999999999998,
+  "best_reward": 0.53,
+  "total_env_steps": 40
+}

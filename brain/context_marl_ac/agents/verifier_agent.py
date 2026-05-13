@@ -198,6 +198,15 @@ class VerifierAgent(BaseAgent):
 
         self._update_support_metrics_from_verification(state, verification)
 
+        # MADDPG support_threshold: override LLM decision with citation-rate check.
+        p = state.maddpg_params or {}
+        support_threshold = p.get("support_threshold", None)
+        if support_threshold is not None and state.citation_support_rate > 0:
+            overridden = "PASS" if state.citation_support_rate >= float(support_threshold) else "FAIL"
+            state.verification_result = dict(state.verification_result)
+            state.verification_result["decision"] = overridden
+            verification = state.verification_result
+
         # verify_answer is an LLM-backed call.
         self.log_action(state, action_name)
 

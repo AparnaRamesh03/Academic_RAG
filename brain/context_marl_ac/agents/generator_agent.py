@@ -33,11 +33,18 @@ class GeneratorAgent(BaseAgent):
         # Prepare evidence with sequential citation IDs.
         state.selected_evidence = reassign_citation_ids(state.selected_evidence)
 
+        # MADDPG continuous params: temperature and max_tokens for generation.
+        p = state.maddpg_params or {}
+        temperature = p.get("temperature", None)  # None → adapter default
+        max_tokens  = p.get("max_tokens", None)   # None → adapter default
+
         # Use the original user question, not the rewritten retrieval query.
         answer, tokens = generate_answer(
             state.original_query,
             state.selected_evidence,
             mode=action_name,
+            temperature=temperature,
+            max_tokens=max_tokens,
         )
 
         state.token_usage += tokens

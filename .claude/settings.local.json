@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\juand\\\\Documents\\\\Academic_RAG\\\\brain\\\\context_marl_ac\" -Recurse -File)",
+      "Bash(Select-Object DirectoryName, Name)",
+      "Bash(ConvertTo-Json)",
+      "PowerShell(Get-ChildItem -Recurse -Force -Path \"c:\\\\Users\\\\juand\\\\Documents\\\\Academic_RAG\" | Where-Object { $_.FullName -notmatch '\\\\.git' } | Select-Object FullName | Sort-Object FullName)",
+      "Bash(python -m context_marl_ac.maddpg.train_maddpg --episodes 50 --dry-run)",
+      "Bash(python -m context_marl_ac.maddpg.evaluate_maddpg --mode compare_all --dry-run --n-questions 3)",
+      "Bash(python -m context_marl_ac.maddpg.train_maddpg --episodes 20 --dry-run --use-ceb --run-name ceb_test)",
+      "Bash(python -c ' *)",
+      "Bash(python -m context_marl_ac.run_comparison --dry-run)",
+      "Bash(python -m context_marl_ac.build_defense_table)",
+      "Bash(python -c \"import json; qs = [json.loads\\(l\\) for l in open\\('c:/Users/juand/Documents/Academic_RAG/brain/context_marl_ac/results/benchmark_splits/train.jsonl'\\) if l.strip\\(\\)]; print\\(f'{len\\(qs\\)} questions in train split'\\)\")",
+      "Bash(python -m context_marl_ac.maddpg.train_maddpg --episodes 50 --use-ceb --run-name maddpg_ceb_run_01)",
+      "PowerShell($k = $env:GROQ_API_KEY; if \\($k\\) { \"set \\(length=$\\($k.Length\\)\\)\" } else { \"NOT SET\" }; $u = [System.Environment]::GetEnvironmentVariable\\(\"GROQ_API_KEY\",\"User\"\\); if \\($u\\) { \"user-scope: set\" } else { \"user-scope: NOT SET\" })",
+      "Bash(python -m context_marl_ac.maddpg.live_maddpg_runner --episodes 20 --n-eval 9)",
+      "Bash(python -m context_marl_ac.maddpg.live_maddpg_runner --skip-training --n-eval 9)",
+      "Bash(python -m context_marl_ac.maddpg.train_maddpg --episodes 10 --dry-run --run-name dry_no_ceb)",
+      "Bash(python -m context_marl_ac.maddpg.train_maddpg --episodes 10 --dry-run --use-ceb --run-name dry_ceb)"
+    ]
+  }
+}

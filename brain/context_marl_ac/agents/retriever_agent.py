@@ -19,9 +19,11 @@ class RetrieverAgent(BaseAgent):
     def act(self, state: ContextState, action_name: str) -> ContextState:
         # Get query (might be original or rewritten)
         query = state.user_query
-        
-        # Determine top_k (can be tuned or based on complexity)
-        top_k = 8
+
+        # MADDPG continuous params override top_k when available.
+        p = state.maddpg_params or {}
+        raw_top_k = p.get("top_k", 8)
+        top_k = max(1, int(round(float(raw_top_k))))
         
         if action_name == "dense_retrieve":
             chunks = retrieve_dense(query, top_k)

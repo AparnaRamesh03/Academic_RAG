@@ -1,0 +1,4 @@
+policy,n_questions,data_source,token_f1,rouge_l,correctness,faithfulness,citation_support_rate,source_precision,source_recall,verification_pass_rate,unsupported_claims,avg_latency_s,avg_llm_calls,avg_steps,avg_token_usage,failure_rate
+discrete_marl,9,real_llm,0.2373,0.1912,0.2373,0.7778,0.7778,0.1111,0.1111,0.6667,0.56,37.61,2.11,4.0,3413.78,0.3333
+maddpg_no_ce,9,dry_run_stub,0.0476,0.0350,0.0476,1.0000,1.0000,0.0370,0.1111,1.0000,0.00,0.00,3.00,4.0,0.00,0.0000
+maddpg_with_ce,9,dry_run_stub,0.0476,0.0350,0.0476,1.0000,1.0000,0.0370,0.1111,1.0000,0.00,0.00,3.00,4.0,0.00,0.0000

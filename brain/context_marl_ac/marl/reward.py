@@ -40,7 +40,7 @@ def calculate_reward(
     components["latency_cost"] = -latency_cost
     
     # 2. Penalty for repeated actions (encourages variety/efficiency)
-    if state.last_action_for(state.previous_actions[-1]["agent"]) == action_name and state.num_steps > 1:
+    if state.num_steps > 1 and state.previous_actions and state.last_action_for(state.previous_actions[-1]["agent"]) == action_name:
          # Penalty if same agent does same action twice in a row (unless it's retrieval)
          if state.previous_actions[-1]["agent"] != "retriever":
              reward += PENALTY_REPEATED_ACTION
@@ -108,7 +108,7 @@ def calculate_reward(
             components["retrieval_f1"] = W_RETRIEVAL_F1 * f1
 
         # E. Critical Penalties
-        if not state.generated_answer.strip():
+        if not (state.generated_answer or "").strip():
             reward += PENALTY_NO_ANSWER
             components["penalty_no_answer"] = PENALTY_NO_ANSWER
         if len(state.unsupported_claims) > 0:

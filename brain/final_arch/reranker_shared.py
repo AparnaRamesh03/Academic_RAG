@@ -23,7 +23,7 @@ def _get_reranker() -> FlagReranker:
             RERANKER_MODEL,
             use_fp16=False,   # safer for Mac / CPU
         )
-        print("[✓] Reranker loaded.")
+        print("[OK] Reranker loaded.")
 
     return _reranker
 
