@@ -9,11 +9,11 @@
 
 | Metric | Discrete MARL | MADDPG no-CEB | Delta | MADDPG CEB | Delta |
 |--------|:---:|:---:|:---:|:---:|:---:|
-| Token F1 | 0.2857 | 0.0000 | -0.2857 (-100.0%) | 0.1333 | -0.1524 (-53.3%) |
-| ROUGE-L | 0.1194 | 0.0000 | -0.1194 (-100.0%) | 0.1818 | +0.0624 (+52.3%) |
-| Verif. Pass | 1.0000 | 0.0000 | -1.0000 (-100.0%) | 1.0000 | +0.0000 (+0.0%) |
-| Citation | 1.0000 | 0.0000 | -1.0000 (-100.0%) | 1.0000 | +0.0000 (+0.0%) |
-| Failure | 0.0000 | 0.0000 | +0.0000 (+0.0%) | 0.0000 | +0.0000 (+0.0%) |
+| Token F1 | 0.3243 | 0.0000 | -0.3243 (-100.0%) | 0.2553 | -0.0690 (-21.3%) |
+| ROUGE-L | 0.1937 | 0.0000 | -0.1937 (-100.0%) | 0.1903 | -0.0034 (-1.8%) |
+| Verif. Pass | 0.6667 | 0.0000 | -0.6667 (-100.0%) | 0.6667 | +0.0000 (+0.0%) |
+| Citation | 0.6919 | 0.0000 | -0.6919 (-100.0%) | 0.5926 | -0.0993 (-14.4%) |
+| Failure | 0.3333 | 0.0000 | -0.3333 (-100.0%) | 0.3333 | +0.0000 (+0.0%) |
 
 **Interpretation:** MADDPG is trained on the same benchmark distribution, using continuous parameters (top_k, grading threshold, temperature, citation strictness, verification threshold) that adapt per query. After training, the actor learns which parameter configurations maximise the cooperative reward signal. Whether it outperforms the discrete baseline depends on the number of training episodes and the difficulty distribution of the test split.
 
@@ -25,10 +25,10 @@ CEB adds 6 extra state features: source diversity, evidence coverage, step fract
 
 | Metric | no-CEB | with-CEB | CEB gain |
 |--------|:---:|:---:|:---:|
-| Token F1 | 0.0000 | 0.1333 | +0.1333 (+0.0%) |
-| ROUGE-L | 0.0000 | 0.1818 | +0.1818 (+0.0%) |
-| Faithfulness | 0.0000 | 1.0000 | +1.0000 (+0.0%) |
-| Citation | 0.0000 | 1.0000 | +1.0000 (+0.0%) |
+| Token F1 | 0.0000 | 0.2553 | +0.2553 (+0.0%) |
+| ROUGE-L | 0.0000 | 0.1903 | +0.1903 (+0.0%) |
+| Faithfulness | 0.0000 | 0.5926 | +0.5926 (+0.0%) |
+| Citation | 0.0000 | 0.5926 | +0.5926 (+0.0%) |
 
 ---
 
@@ -36,8 +36,8 @@ CEB adds 6 extra state features: source diversity, evidence coverage, step fract
 
 | System | Avg Latency (s) | Avg LLM Calls | Avg Token Usage |
 |--------|:---:|:---:|:---:|
-| maddpg_ceb | 45.02 | 5.00 | 1528 |
-| discrete_marl | 32.75 | 2.00 | 4666 |
+| maddpg_ceb | 86.96 | 4.44 | 5026 |
+| discrete_marl | 53.84 | 2.44 | 4383 |
 
 MADDPG adds exactly **zero extra LLM calls** beyond what the discrete baseline uses. The actor overhead (one MLP forward pass per step, ~0.1-0.5 ms on CPU) is negligible relative to Groq API latency.
 
