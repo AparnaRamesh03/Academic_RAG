@@ -1,0 +1,6 @@
+episode,question_id,final_status,total_reward,num_steps,num_llm_calls,latency_seconds,token_usage,citation_support,verification_pass,buffer_size
+1,Q029,timeout,-5.1496,12,8,100.6151,8032,0.0,0,12
+2,Q029,timeout,-4.2505,12,4,79.7754,3462,0.0,0,24
+3,Q002,accepted,0.1664,4,2,19.3553,880,1.0,1,28
+4,Q016,timeout,-3.4449,12,5,44.1971,1238,0.0,0,40
+5,Q012,accepted,-1.0905,9,4,41.2031,1942,0.6667,1,49

@@ -39,18 +39,18 @@ if str(_BRAIN_ROOT) not in sys.path:
 import context_marl_ac.config as cfg
 from context_marl_ac.marl.marl_env import MARLEnv
 from context_marl_ac.schemas.actions import AGENT_ACTIONS, AGENT_NAMES
-from context_marl_ac.maddpg.maddpg_agent import MADDPGAgentWrapper
-from context_marl_ac.maddpg.continuous_action_mapper import (
+from maddpg.maddpg_agent import MADDPGAgentWrapper
+from maddpg.continuous_action_mapper import (
     JOINT_ACTION_DIM, select_discrete_action,
 )
-from context_marl_ac.maddpg.context_engineering_block import (
+from maddpg.context_engineering_block import (
     CEB_STATE_DIM, build_ceb_features,
 )
-from context_marl_ac.maddpg.train_maddpg import build_maddpg_agents, HIDDEN_DIM
+from maddpg.train_maddpg import build_maddpg_agents, HIDDEN_DIM
 
-_THIS   = Path(__file__).resolve().parent
-OUT_DIR = _THIS / "results" / "defense_comparison"
-CKPT    = _THIS / "results" / "maddpg" / "checkpoints" / "best_reward.pt"
+_MADDPG_DIR = _BRAIN_ROOT / "maddpg"
+OUT_DIR     = _MADDPG_DIR / "results" / "defense_comparison"
+CKPT        = _MADDPG_DIR / "results" / "maddpg" / "checkpoints" / "best_reward.pt"
 
 # ── NLP metrics ───────────────────────────────────────────────────────────────
 

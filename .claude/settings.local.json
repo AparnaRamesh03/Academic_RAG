@@ -17,7 +17,24 @@
       "Bash(python -m context_marl_ac.maddpg.live_maddpg_runner --episodes 20 --n-eval 9)",
       "Bash(python -m context_marl_ac.maddpg.live_maddpg_runner --skip-training --n-eval 9)",
       "Bash(python -m context_marl_ac.maddpg.train_maddpg --episodes 10 --dry-run --run-name dry_no_ceb)",
-      "Bash(python -m context_marl_ac.maddpg.train_maddpg --episodes 10 --dry-run --use-ceb --run-name dry_ceb)"
+      "Bash(python -m context_marl_ac.maddpg.train_maddpg --episodes 10 --dry-run --use-ceb --run-name dry_ceb)",
+      "Bash(python -m context_marl_ac.maddpg.live_maddpg_runner --episodes 3 --n-eval 1)",
+      "PowerShell(netstat -an)",
+      "PowerShell(docker --version 2>&1)",
+      "PowerShell(docker info 2>&1)",
+      "PowerShell(Start-Process \"C:\\\\Program Files\\\\Docker\\\\Docker\\\\Docker Desktop.exe\" -ErrorAction SilentlyContinue)",
+      "PowerShell($timeout = 60; $elapsed = 0; while \\($elapsed -lt $timeout\\) { Start-Sleep -Seconds 5; $elapsed += 5; $result = docker ps 2>&1; if \\($LASTEXITCODE -eq 0\\) { Write-Host \"Docker is ready after ${elapsed}s\"; break } else { Write-Host \"Waiting... ${elapsed}s\" } })",
+      "Bash(curl -s http://localhost:6333/healthz)",
+      "Bash(curl -s http://localhost:6333/)",
+      "Bash(python -m context_marl_ac.maddpg.live_maddpg_runner --episodes 100 --n-eval 9)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(pkill -f \"live_maddpg_runner\")",
+      "Bash(kill 1251 1252)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(python -m maddpg.train_maddpg --episodes 5 --dry-run --run-name move_test)",
+      "Bash(grep -rn \"context_marl_ac/results\\\\|context_marl_ac\\\\\\\\\\\\\\\\results\\\\|_MARL_ROOT.*results\\\\|parent\\\\.parent.*results\" \"c:/Users/juand/Documents/Academic_RAG/brain\" --include=\"*.py\")",
+      "Bash(python -m maddpg.train_maddpg --episodes 3 --dry-run --run-name path_test)",
+      "Bash(python -m maddpg.live_maddpg_runner --episodes 5 --n-eval 1 --eval-only-variant ceb)"
     ]
   }
 }

@@ -1,0 +1,6 @@
+episode,question_id,total_reward,num_steps,num_llm_calls,final_status,verification_pass,citation_support,latency_seconds,token_usage,buffer_size
+1,Q024,0.355,4,3,accepted,1,1.0,0.002,0,4
+2,Q026,0.355,4,3,accepted,1,1.0,0.001,0,8
+3,Q004,0.355,4,3,accepted,1,1.0,0.001,0,12
+4,Q031,0.355,4,3,accepted,1,1.0,0.001,0,16
+5,Q010,0.355,4,3,accepted,1,1.0,0.001,0,20

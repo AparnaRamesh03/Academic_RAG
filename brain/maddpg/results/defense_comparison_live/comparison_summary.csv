@@ -1,0 +1,3 @@
+policy,n_questions,data_source,mean_token_f1,mean_rouge_l,mean_correctness,mean_faithfulness,mean_citation_support,mean_source_precision,mean_source_recall,mean_verification_pass,mean_unsupported_claims,mean_latency_seconds,mean_num_llm_calls,mean_token_usage,mean_num_steps,failure_rate
+maddpg_ceb,1,live_llm,0.1333,0.1818,0.1333,1.0,1.0,1.0,1.0,1.0,0.0,45.0218,5.0,1528.0,10.0,0.0
+discrete_marl,1,real_llm,0.2857,0.1194,0.2857,1.0,1.0,1.0,1.0,1.0,0.0,32.7469,2.0,4666.0,4.0,0.0

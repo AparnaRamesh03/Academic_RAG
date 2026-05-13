@@ -1,0 +1,74 @@
+[env] Loaded .env from C:\Users\juand\Documents\Academic_RAG\brain\.env
+
+[live_runner] episodes=100  n_eval=9  device=cpu
+  train benchmark: C:\Users\juand\Documents\Academic_RAG\brain\context_marl_ac\results\benchmark_splits\train.jsonl  (38 questions)
+  eval  benchmark: C:\Users\juand\Documents\Academic_RAG\brain\context_marl_ac\results\benchmark_splits\test.jsonl  (9 questions)
+  output dir:      C:\Users\juand\Documents\Academic_RAG\brain\context_marl_ac\results\defense_comparison_live
+
+============================================================
+  TRAINING: maddpg_no_ceb   episodes=100   CEB=False
+============================================================
+maddpg_no_ceb:   0%|          | 0/100 [00:00<?, ?it/s]
+Fetching 30 files:   0%|          | 0/30 [00:00<?, ?it/s][AFetching 30 files: 100%|##########| 30/30 [00:00<00:00, 449389.71it/s]
+[32m2026-05-13 12:15:09.191[0m | [33m[1mWARNING [0m | [36mfastembed.common.model_management[0m:[36mdownload_files_from_huggingface[0m:[36m225[0m - [33m[1mLocal file sizes do not match the metadata.[0m
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 877.84it/s]
+You're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.60it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.59it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+[*] Loading reranker model: BAAI/bge-reranker-v2-m3 ...
+[OK] Reranker loaded.
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][AYou're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+pre tokenize: 100%|##########| 3/3 [00:00<00:00, 437.45it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:07<00:14,  7.07s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:11<00:05,  5.27s/it][A
+Compute Scores: 100%|##########| 3/3 [00:12<00:00,  3.38s/it][ACompute Scores: 100%|##########| 3/3 [00:12<00:00,  4.07s/it]
+maddpg_no_ceb:   1%|1         | 1/100 [00:49<1:21:26, 49.36s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=6.0749
+  -> Doc 2: retrieval_score=0.35 | rerank_score=1.9103
+  -> Doc 3: retrieval_score=0.5 | rerank_score=1.8561
+  -> Doc 4: retrieval_score=0.22619048 | rerank_score=0.5750
+  -> Doc 5: retrieval_score=0.43333334 | rerank_score=0.3626
+  -> Doc 6: retrieval_score=0.15384616 | rerank_score=-0.1203
+  -> Doc 7: retrieval_score=0.18382353 | rerank_score=-0.1444
+  -> Doc 8: retrieval_score=0.0625 | rerank_score=-0.2126
+  -> Doc 9: retrieval_score=0.34285715 | rerank_score=-0.4266
+  -> Doc 10: retrieval_score=0.14285715 | rerank_score=-0.8366
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: IRRELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: IRRELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: IRRELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 6 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+  [ckpt] saved -> C:\Users\juand\Documents\Academic_RAG\brain\context_marl_ac\results\defense_comparison_live\checkpoints\best_maddpg_no_ceb_live.pt
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 4614.20it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 11.66it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 9...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 660.80it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:04<00:09,  4.60s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:07<00:03,  3.36s/it][A
+Compute Scores: 100%|##########| 3/3 [00:07<00:00,  2.10s/it][ACompute Scores: 100%|##########| 3/3 [00:07<00:00,  2.56s/it]

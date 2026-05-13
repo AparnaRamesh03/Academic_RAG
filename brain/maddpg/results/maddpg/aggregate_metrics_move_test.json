@@ -1,0 +1,15 @@
+{
+  "run_name": "move_test",
+  "episodes": 5,
+  "use_ceb": false,
+  "state_dim": 14,
+  "joint_action_dim": 16,
+  "mean_reward": 0.355,
+  "mean_steps": 4.0,
+  "mean_llm_calls": 3.0,
+  "verification_pass_rate": 1.0,
+  "mean_citation_support": 1.0,
+  "mean_latency": 0.0012000000000000001,
+  "best_reward": 0.355,
+  "total_env_steps": 20
+}

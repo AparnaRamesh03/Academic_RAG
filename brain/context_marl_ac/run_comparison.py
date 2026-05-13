@@ -49,15 +49,15 @@ if str(_BRAIN_ROOT) not in sys.path:
 import context_marl_ac.config as cfg
 from context_marl_ac.marl.marl_env import MARLEnv
 from context_marl_ac.schemas.actions import AGENT_ACTIONS, AGENT_NAMES
-from context_marl_ac.maddpg.maddpg_agent import MADDPGAgentWrapper
-from context_marl_ac.maddpg.maddpg_critic import MADDPGCritic
-from context_marl_ac.maddpg.continuous_action_mapper import (
+from maddpg.maddpg_agent import MADDPGAgentWrapper
+from maddpg.maddpg_critic import MADDPGCritic
+from maddpg.continuous_action_mapper import (
     JOINT_ACTION_DIM, select_discrete_action,
 )
-from context_marl_ac.maddpg.context_engineering_block import (
+from maddpg.context_engineering_block import (
     CEB_STATE_DIM, build_ceb_features,
 )
-from context_marl_ac.maddpg.train_maddpg import build_maddpg_agents, HIDDEN_DIM
+from maddpg.train_maddpg import build_maddpg_agents, HIDDEN_DIM
 
 # ── Smoke policy for discrete baseline ────────────────────────────────────────
 _SMOKE: Dict[str, str] = {
@@ -498,18 +498,18 @@ def run():
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
     # ── Paths ─────────────────────────────────────────────────────────────────
-    _this = Path(__file__).resolve().parent
+    _maddpg_dir = _BRAIN_ROOT / "maddpg"
     out_dir = (
         Path(args.output_dir) if args.output_dir
-        else _this / "results" / "defense_comparison"
+        else _maddpg_dir / "results" / "defense_comparison"
     )
     out_dir.mkdir(parents=True, exist_ok=True)
 
     bench_path = args.benchmark_path or str(
-        _this / "results" / "benchmark_splits" / "test.jsonl"
+        _maddpg_dir / "results" / "benchmark_splits" / "test.jsonl"
     )
     ckpt_path = args.checkpoint or str(
-        _this / "results" / "maddpg" / "checkpoints" / "best_reward.pt"
+        _maddpg_dir / "results" / "maddpg" / "checkpoints" / "best_reward.pt"
     )
 
     # ── Load benchmark ────────────────────────────────────────────────────────

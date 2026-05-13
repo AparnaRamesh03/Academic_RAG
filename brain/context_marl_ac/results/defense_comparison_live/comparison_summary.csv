@@ -1,4 +1,0 @@
-policy,n_questions,data_source,mean_token_f1,mean_rouge_l,mean_correctness,mean_faithfulness,mean_citation_support,mean_source_precision,mean_source_recall,mean_verification_pass,mean_unsupported_claims,mean_latency_seconds,mean_num_llm_calls,mean_token_usage,mean_num_steps,failure_rate
-maddpg_no_ceb,9,live_llm,0.1853,0.1244,0.1853,0.1852,0.1852,0.7037,0.8889,0.2222,0.5556,43.9113,4.0,2069.3333,6.0,0.7778
-maddpg_ceb,9,live_llm,0.0,0.0,0.0,0.0,0.0,0.7037,0.8889,0.0,0.0,15.4926,0.0,0.0,1.0,1.0
-discrete_marl,9,real_llm,0.3243,0.1937,0.3243,0.6919,0.6919,0.7963,0.8889,0.6667,0.7778,53.8446,2.4444,4383.1111,4.8889,0.3333

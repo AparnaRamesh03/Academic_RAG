@@ -1,0 +1,38 @@
+{
+  "maddpg_ceb": {
+    "n_questions": 1,
+    "data_source": "live_llm",
+    "mean_token_f1": 0.1333,
+    "mean_rouge_l": 0.1818,
+    "mean_correctness": 0.1333,
+    "mean_faithfulness": 1.0,
+    "mean_citation_support": 1.0,
+    "mean_source_precision": 1.0,
+    "mean_source_recall": 1.0,
+    "mean_verification_pass": 1.0,
+    "mean_unsupported_claims": 0.0,
+    "mean_latency_seconds": 45.0218,
+    "mean_num_llm_calls": 5.0,
+    "mean_token_usage": 1528.0,
+    "mean_num_steps": 10.0,
+    "failure_rate": 0.0
+  },
+  "discrete_marl": {
+    "n_questions": 1,
+    "data_source": "real_llm",
+    "mean_token_f1": 0.2857,
+    "mean_rouge_l": 0.1194,
+    "mean_correctness": 0.2857,
+    "mean_faithfulness": 1.0,
+    "mean_citation_support": 1.0,
+    "mean_source_precision": 1.0,
+    "mean_source_recall": 1.0,
+    "mean_verification_pass": 1.0,
+    "mean_unsupported_claims": 0.0,
+    "mean_latency_seconds": 32.7469,
+    "mean_num_llm_calls": 2.0,
+    "mean_token_usage": 4666.0,
+    "mean_num_steps": 4.0,
+    "failure_rate": 0.0
+  }
+}

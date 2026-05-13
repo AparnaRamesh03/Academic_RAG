@@ -1,0 +1,11 @@
+question_id,question,ground_truth,category,difficulty,policy,data_source,final_status,final_answer,token_f1,rouge_l,correctness,faithfulness,citation_support,source_precision,source_recall,verification_pass,unsupported_claims,latency_seconds,num_llm_calls,token_usage,num_steps
+Q001,What are the four main subject areas of the current Norwegian national English curriculum?,"The four main subject areas are Language learning, Oral communication, Written communication, and Culture, society and literature.",direct_fact_lookup,easy,maddpg_ceb,live_llm,accepted,"The LK20 Curriculum in English emphasizes metalinguistic and genre awareness, intercultural competence, and all-round education.",0.1333,0.1818,0.1333,1.0,1.0,1.0,1.0,1,0,45.0218,5,1528,10
+Q001,How do the Transformer and BERT papers use attention differently in their main contributions?,"The Transformer paper introduces an attention-only encoder-decoder architecture for sequence transduction, while the BERT paper uses Transformer attention inside a bidirectional pretrained language model for general-purpose language representation learning and fine-tuning.",cross_paper_comparison,hard,discrete_marl,real_llm,accepted,"The Transformer paper uses attention in three different ways: encoder-decoder attention, self-attention in the encoder, and self-attention in the decoder. In contrast, BERT uses bidirectional self-attention, where every position in the input sequence can attend to all positions in the input sequence, whereas OpenAI GPT uses constrained self-attention where every token can only attend to context to its left.
+
+**Transformer's Use of Attention:**
+* Encoder-decoder attention: queries come from the previous decoder layer, and the memory keys and values come from the output of the encoder.
+* Self-attention in the encoder: all keys, values, and queries come from the same place, in this case, the output of the previous layer in the encoder.
+* Self-attention in the decoder: each position in the decoder can attend to all positions in the decoder up to and including that position.
+
+**BERT's Use of Attention:**
+* Bidirectional self-attention: every position in the input sequence can attend to all positions in the input sequence.",0.2857,0.1194,0.2857,1.0,1.0,1.0,1.0,1,0,32.7469,2,4666,4
