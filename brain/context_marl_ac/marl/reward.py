@@ -4,6 +4,7 @@ brain/context_marl_ac/marl/reward.py
 Cooperative reward function for the MARL system.
 """
 
+import re
 from typing import Dict, Any, Tuple
 from context_marl_ac.config import (
     W_ANSWER_QUALITY, W_CITATION_SUPPORT, W_VERIFICATION_PASS, W_RETRIEVAL_F1,
@@ -12,6 +13,20 @@ from context_marl_ac.config import (
     PENALTY_INVALID_ACTION, PENALTY_NO_ANSWER, PENALTY_MAX_STEPS
 )
 from context_marl_ac.schemas.context_state import ContextState
+
+
+def _token_f1(pred: str, gold: str) -> float:
+    """Token-set F1 between predicted and gold answer. Used as a quality proxy."""
+    p = set(re.findall(r"\b\w+\b", (pred or "").lower()))
+    g = set(re.findall(r"\b\w+\b", (gold or "").lower()))
+    if not p or not g:
+        return 0.0
+    tp = len(p & g)
+    if tp == 0:
+        return 0.0
+    prec = tp / len(p)
+    rec  = tp / len(g)
+    return 2 * prec * rec / (prec + rec)
 
 def calculate_reward(
     state: ContextState, 
@@ -29,15 +44,9 @@ def calculate_reward(
     components = {}
     reward = 0.0
     
-    # 1. Basic Step Costs (Negative)
-    step_cost = W_STEP_COST
-    latency_cost = state.latency_so_far * W_LATENCY_COST / 10.0 # scale latency
-    
-    reward -= step_cost
-    reward -= latency_cost
-    
-    components["step_cost"] = -step_cost
-    components["latency_cost"] = -latency_cost
+    # 1. Per-step cost (small fixed cost to discourage purely random exploration)
+    reward -= W_STEP_COST
+    components["step_cost"] = -W_STEP_COST
     
     # 2. Penalty for repeated actions (encourages variety/efficiency)
     if state.num_steps > 1 and state.previous_actions and state.last_action_for(state.previous_actions[-1]["agent"]) == action_name:
@@ -48,16 +57,24 @@ def calculate_reward(
 
     # 3. Terminal Rewards (Positive & Negative)
     if is_terminal:
-        # A. Answer Quality
+        # A. Answer Quality — token F1 against gold (not a constant!)
         q_score = 0.0
         if state.generated_answer:
             if "DRY-RUN" in state.generated_answer:
                 q_score = 0.85
             elif gold_answer:
-                q_score = 1.0 
-        
+                q_score = _token_f1(state.generated_answer, gold_answer)
+
         reward += W_ANSWER_QUALITY * q_score
         components["answer_quality"] = float(W_ANSWER_QUALITY * q_score)
+
+        # A2. Latency cost — charged once at episode end, normalized to [0, 1]
+        # by 120 s reference (typical Groq budget). Caps prevent latency dominating
+        # over quality terms.
+        latency_norm = min(state.latency_so_far / 120.0, 1.0)
+        latency_cost = W_LATENCY_COST * latency_norm
+        reward -= latency_cost
+        components["latency_cost"] = -latency_cost
         
         # B. Citation Support & Source Accuracy
         reward += W_CITATION_SUPPORT * state.citation_support_rate

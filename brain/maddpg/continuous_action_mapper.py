@@ -1,5 +1,5 @@
 """
-brain/context_marl_ac/maddpg/continuous_action_mapper.py
+brain/maddpg/continuous_action_mapper.py
 ----------------------------------------------------------
 Maps MADDPG actor outputs in [-1, 1] to:
   1. Real RAG execution parameters (numeric).

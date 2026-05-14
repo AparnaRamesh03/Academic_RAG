@@ -1,5 +1,5 @@
 """
-brain/context_marl_ac/maddpg/evaluate_maddpg.py
+brain/maddpg/evaluate_maddpg.py
 ------------------------------------------------
 Evaluation and comparison script for MADDPG continuous-control RAG.
 
@@ -16,10 +16,10 @@ Outputs (written to results/maddpg/ by default):
 
 Usage:
   # from Academic_RAG/brain/
-  python -m context_marl_ac.maddpg.evaluate_maddpg --mode compare_all --dry-run
+  python -m maddpg.evaluate_maddpg --mode compare_all --dry-run
 
   # evaluate trained checkpoint on real benchmark:
-  python -m context_marl_ac.maddpg.evaluate_maddpg \\
+  python -m maddpg.evaluate_maddpg \\
       --mode maddpg --checkpoint results/maddpg/checkpoints/best_reward.pt \\
       --benchmark-path results/benchmark_splits/test.jsonl
 """

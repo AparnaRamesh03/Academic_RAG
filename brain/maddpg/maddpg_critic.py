@@ -1,5 +1,5 @@
 """
-brain/context_marl_ac/maddpg/maddpg_critic.py
+brain/maddpg/maddpg_critic.py
 ----------------------------------------------
 MADDPG centralized critic.
 Input:  global state features  (state_dim,)

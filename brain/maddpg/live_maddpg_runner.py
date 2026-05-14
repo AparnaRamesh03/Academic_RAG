@@ -1,14 +1,14 @@
 """
-brain/context_marl_ac/maddpg/live_maddpg_runner.py
-----------------------------------------------------
+brain/maddpg/live_maddpg_runner.py
+-----------------------------------
 Self-contained live training + evaluation pipeline for MADDPG.
 
 Runs both no-CEB and CEB variants end-to-end with real LLM/Qdrant calls,
 then compares against the discrete MARL baseline from existing eval results.
 
 Usage (from brain/):
-  python -m context_marl_ac.maddpg.live_maddpg_runner
-  python -m context_marl_ac.maddpg.live_maddpg_runner --episodes 30 --n-eval 9
+  python -m maddpg.live_maddpg_runner
+  python -m maddpg.live_maddpg_runner --episodes 30 --n-eval 9
 
 Outputs in results/defense_comparison_live/:
   trained checkpoints, episode_metrics.csv, action_params_log.csv,
@@ -166,8 +166,8 @@ def train_variant(
     traj_dir:      Path,
     device:        str,
     checkpoint_every: int = 10,
-) -> Path:
-    """Train one MADDPG variant. Returns path to best_reward checkpoint."""
+) -> Tuple[Path, int]:
+    """Train one MADDPG variant. Returns (best_reward checkpoint, total_gradient_updates)."""
     print(f"\n{'='*60}")
     print(f"  TRAINING: maddpg_{variant}   episodes={episodes}   CEB={use_ceb}")
     print(f"{'='*60}")
@@ -188,6 +188,8 @@ def train_variant(
     best_ckpt    = ckpt_dir    / f"best_{run_name}.pt"
     best_reward  = -float("inf")
     total_steps  = 0
+    total_updates = 0
+    step_errors   = 0
 
     with (
         open(ep_path,    "w", newline="", encoding="utf-8") as ep_f,
@@ -241,7 +243,15 @@ def train_variant(
                 joint_vec  = build_joint_action_vector({active_agent: raw_action})
 
                 # Execute step — params injected so agents adapt RAG behaviour.
-                new_state, reward, done, info = env.step(active_agent, discrete, params=params)
+                try:
+                    new_state, reward, done, info = env.step(active_agent, discrete, params=params)
+                except Exception as exc:
+                    step_errors += 1
+                    print(f"  [train-err] ep={ep_idx} agent={active_agent} action={discrete}: {exc}")
+                    state.final_status = "error"
+                    state.done = True
+                    done = True
+                    break
 
                 next_features = _state_features(env, use_ceb)
                 total_steps  += 1
@@ -289,9 +299,13 @@ def train_variant(
                 state = new_state
 
             # DDPG update.
+            last_losses: Dict[str, float] = {}
             if len(buffer) >= WARMUP_STEPS and len(buffer) >= BATCH_SIZE:
                 if total_steps % UPDATE_EVERY == 0:
-                    _ddpg_update(agents, critic, t_critic, critic_optim, buffer, torch.device(device))
+                    last_losses = _ddpg_update(
+                        agents, critic, t_critic, critic_optim, buffer, torch.device(device)
+                    )
+                    total_updates += 1
 
             # Episode metrics.
             ep_metrics = {
@@ -306,6 +320,17 @@ def train_variant(
                 "citation_support":  state.citation_support_rate,
                 "verification_pass": int(state.final_status == "accepted"),
                 "buffer_size":       len(buffer),
+                "total_updates":     total_updates,
+                "critic_loss":       round(last_losses.get("critic_loss", float("nan")), 6)
+                                       if last_losses else "",
+                "actor_loss_retriever":  round(last_losses.get("actor_loss_retriever", float("nan")), 6)
+                                       if last_losses else "",
+                "actor_loss_grader":     round(last_losses.get("actor_loss_grader", float("nan")), 6)
+                                       if last_losses else "",
+                "actor_loss_generator":  round(last_losses.get("actor_loss_generator", float("nan")), 6)
+                                       if last_losses else "",
+                "actor_loss_verifier":   round(last_losses.get("actor_loss_verifier", float("nan")), 6)
+                                       if last_losses else "",
             }
             if ep_writer is None:
                 ep_writer = csv.DictWriter(ep_f, fieldnames=list(ep_metrics.keys()))
@@ -330,8 +355,17 @@ def train_variant(
                 periodic = ckpt_dir / f"{run_name}_ep{ep_idx:04d}.pt"
                 _save_checkpoint(periodic, agents, critic, t_critic, critic_optim, ep_idx, ep_metrics)
 
-    print(f"  [done] best_reward={best_reward:.4f}  checkpoint -> {best_ckpt}")
-    return best_ckpt
+    print(
+        f"  [done] best_reward={best_reward:.4f}  "
+        f"gradient_updates={total_updates}  step_errors={step_errors}  "
+        f"checkpoint -> {best_ckpt}"
+    )
+    if total_updates == 0:
+        print(
+            f"  [warn] Zero gradient updates performed: buffer never reached "
+            f"BATCH_SIZE={BATCH_SIZE}. Policy is effectively random — increase episodes."
+        )
+    return best_ckpt, total_updates
 
 
 # ── Evaluation loop ───────────────────────────────────────────────────────────
@@ -599,13 +633,19 @@ def _print_table(agg_all: Dict[str, Dict]) -> None:
 # ── Interpretation writer ─────────────────────────────────────────────────────
 
 def _write_interpretation(
-    agg_all:  Dict[str, Dict],
-    out_path: Path,
+    agg_all:       Dict[str, Dict],
+    out_path:      Path,
+    update_counts: Optional[Dict[str, Optional[int]]] = None,
 ) -> None:
     pols = list(agg_all.keys())
     base = agg_all.get("discrete_marl", {})
     no_ceb = agg_all.get("maddpg_no_ceb", {})
     ceb    = agg_all.get("maddpg_ceb", {})
+
+    update_counts = update_counts or {}
+    trained_variants   = [v for v, n in update_counts.items() if n and n > 0]
+    untrained_variants = [v for v, n in update_counts.items() if n == 0]
+    skipped_variants   = [v for v, n in update_counts.items() if n is None]
 
     def _d(agg, key): return agg.get(key, 0.0) or 0.0
 
@@ -628,12 +668,53 @@ def _write_interpretation(
     lat_ceb = _d(ceb,    "mean_latency_seconds")
     lat_base= _d(base,   "mean_latency_seconds")
 
-    lines = [
+    lines: List[str] = [
         "# Live MADDPG vs Discrete MARL — Defense Interpretation",
         "",
         f"**Evaluation date:** {time.strftime('%Y-%m-%d')}",
         f"**Data source:** All results from live LLM inference (no stubs)",
         "",
+    ]
+
+    if update_counts:
+        lines += [
+            "## Training status",
+            "",
+            "| Variant | Gradient updates |",
+            "|---|---:|",
+        ]
+        for v, n in update_counts.items():
+            display = "skipped (eval-only)" if n is None else str(n)
+            lines.append(f"| maddpg_{v} | {display} |")
+        lines.append("")
+
+    if untrained_variants and not trained_variants:
+        lines += [
+            "> **WARNING — UNTRAINED POLICY.** Zero gradient updates were performed for "
+            f"{', '.join('maddpg_' + v for v in untrained_variants)}. The buffer never reached "
+            f"BATCH_SIZE={BATCH_SIZE}, so the actor and critic weights are at their random "
+            f"initialisation. Any metric improvements below reflect random behaviour, not a "
+            f"learned policy. Increase --episodes (or lower BATCH_SIZE) and rerun before "
+            f"drawing conclusions.",
+            "",
+        ]
+    elif untrained_variants:
+        lines += [
+            f"> **NOTE.** Variants without gradient updates: "
+            f"{', '.join('maddpg_' + v for v in untrained_variants)}. "
+            f"Their reported metrics reflect a random policy.",
+            "",
+        ]
+    if skipped_variants:
+        lines += [
+            f"> **NOTE.** Training was skipped (--skip-training) for "
+            f"{', '.join('maddpg_' + v for v in skipped_variants)}; "
+            f"metrics reflect whichever checkpoint was loaded — see `training_meta.json` "
+            f"from the run that produced it.",
+            "",
+        ]
+
+    lines += [
         "---",
         "",
         "## 1. Did trained MADDPG improve over discrete MARL?",
@@ -816,6 +897,7 @@ def main():
     print(f"  output dir:      {out_dir}")
 
     all_results: Dict[str, List[Dict]] = {}
+    update_counts: Dict[str, Optional[int]] = {}   # variant -> updates (None if skipped)
 
     # ── Training ──────────────────────────────────────────────────────────────
     ckpt_no_ceb = ckpt_dir / "best_maddpg_no_ceb_live.pt"
@@ -829,7 +911,7 @@ def main():
     if not args.skip_training:
         for variant in variants:
             use_ceb = (variant == "ceb")
-            ckpt_path = train_variant(
+            ckpt_path, n_updates = train_variant(
                 variant          = variant,
                 use_ceb          = use_ceb,
                 benchmark        = train_bm,
@@ -840,12 +922,27 @@ def main():
                 device           = device,
                 checkpoint_every = args.checkpoint_every,
             )
+            update_counts[variant] = n_updates
             if variant == "no_ceb":
                 ckpt_no_ceb = ckpt_path
             else:
                 ckpt_ceb = ckpt_path
     else:
         print("[live_runner] --skip-training: using existing checkpoints.")
+        for variant in variants:
+            update_counts[variant] = None   # unknown — eval-only run
+
+    # Persist training meta for downstream readers.
+    meta_path = out_dir / "training_meta.json"
+    with open(meta_path, "w", encoding="utf-8") as f:
+        json.dump({
+            "episodes":      args.episodes if not args.skip_training else None,
+            "skip_training": bool(args.skip_training),
+            "update_counts": update_counts,
+            "batch_size":    BATCH_SIZE,
+            "warmup_steps":  WARMUP_STEPS,
+        }, f, indent=2)
+    print(f"[meta] Saved -> {meta_path}")
 
     # ── Evaluation ────────────────────────────────────────────────────────────
     for variant in variants:
@@ -914,7 +1011,7 @@ def main():
 
     # Save interpretation.
     interp_path = out_dir / "results_interpretation.md"
-    _write_interpretation(agg_all, interp_path)
+    _write_interpretation(agg_all, interp_path, update_counts=update_counts)
 
     # Print quick summary.
     print("\n-- Summary " + "-"*57)

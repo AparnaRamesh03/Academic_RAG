@@ -1,5 +1,5 @@
 """
-brain/context_marl_ac/maddpg/noise.py
+brain/maddpg/noise.py
 --------------------------------------
 Exploration noise processes for MADDPG continuous action space.
 """

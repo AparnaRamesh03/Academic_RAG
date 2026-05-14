@@ -74,8 +74,8 @@ W_ANSWER_QUALITY    = 0.30
 W_CITATION_SUPPORT  = 0.25
 W_VERIFICATION_PASS = 0.20
 W_RETRIEVAL_F1      = 0.15
-W_LATENCY_COST      = 0.05   # subtracted
-W_STEP_COST         = 0.05   # subtracted
+W_LATENCY_COST      = 0.05   # subtracted; applied once at terminal, capped at 1.0 normalized
+W_STEP_COST         = 0.02   # subtracted per step
 
 # Penalty magnitudes (applied as negative rewards)
 PENALTY_HALLUCINATION        = -0.30

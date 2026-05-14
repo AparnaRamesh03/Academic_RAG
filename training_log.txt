@@ -1,35 +1,1544 @@
 [env] Loaded .env from C:\Users\juand\Documents\Academic_RAG\brain\.env
 
-[live_runner] episodes=100  n_eval=9  device=cpu
-  train benchmark: C:\Users\juand\Documents\Academic_RAG\brain\context_marl_ac\results\benchmark_splits\train.jsonl  (38 questions)
-  eval  benchmark: C:\Users\juand\Documents\Academic_RAG\brain\context_marl_ac\results\benchmark_splits\test.jsonl  (9 questions)
-  output dir:      C:\Users\juand\Documents\Academic_RAG\brain\context_marl_ac\results\defense_comparison_live
+[live_runner] episodes=50  n_eval=9  device=cpu
+  train benchmark: C:\Users\juand\Documents\Academic_RAG\brain\maddpg\results\benchmark_splits\train.jsonl  (38 questions)
+  eval  benchmark: C:\Users\juand\Documents\Academic_RAG\brain\maddpg\results\benchmark_splits\test.jsonl  (9 questions)
+  output dir:      C:\Users\juand\Documents\Academic_RAG\brain\maddpg\results\defense_comparison_live
 
 ============================================================
-  TRAINING: maddpg_no_ceb   episodes=100   CEB=False
+  TRAINING: maddpg_ceb   episodes=50   CEB=True
 ============================================================
-maddpg_no_ceb:   0%|          | 0/100 [00:00<?, ?it/s]
-Fetching 30 files:   0%|          | 0/30 [00:00<?, ?it/s][AFetching 30 files: 100%|##########| 30/30 [00:00<00:00, 449389.71it/s]
-[32m2026-05-13 12:15:09.191[0m | [33m[1mWARNING [0m | [36mfastembed.common.model_management[0m:[36mdownload_files_from_huggingface[0m:[36m225[0m - [33m[1mLocal file sizes do not match the metadata.[0m
+maddpg_ceb:   0%|          | 0/50 [00:00<?, ?it/s]
+Fetching 30 files:   0%|          | 0/30 [00:00<?, ?it/s][AFetching 30 files: 100%|##########| 30/30 [00:00<00:00, 455902.61it/s]
+[32m2026-05-13 12:55:06.989[0m | [33m[1mWARNING [0m | [36mfastembed.common.model_management[0m:[36mdownload_files_from_huggingface[0m:[36m225[0m - [33m[1mLocal file sizes do not match the metadata.[0m
 
-pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 877.84it/s]
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 1316.89it/s]
 You're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
 
-Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
-Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.60it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.59it/s]
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 10.42it/s]
 
 [Reranker] Reranking top 20 retrieved docs -> keeping top 10...
 [*] Loading reranker model: BAAI/bge-reranker-v2-m3 ...
 [OK] Reranker loaded.
 
 pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][AYou're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
-pre tokenize: 100%|##########| 3/3 [00:00<00:00, 437.45it/s]
+pre tokenize: 100%|##########| 3/3 [00:00<00:00, 741.96it/s]
 
 Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
-Compute Scores:  33%|###3      | 1/3 [00:07<00:14,  7.07s/it][A
-Compute Scores:  67%|######6   | 2/3 [00:11<00:05,  5.27s/it][A
-Compute Scores: 100%|##########| 3/3 [00:12<00:00,  3.38s/it][ACompute Scores: 100%|##########| 3/3 [00:12<00:00,  4.07s/it]
-maddpg_no_ceb:   1%|1         | 1/100 [00:49<1:21:26, 49.36s/it][Reranker] Kept 10 reranked docs.
+Compute Scores:  33%|###3      | 1/3 [00:04<00:08,  4.48s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:07<00:03,  3.73s/it][A
+Compute Scores: 100%|##########| 3/3 [00:08<00:00,  2.46s/it][ACompute Scores: 100%|##########| 3/3 [00:08<00:00,  2.88s/it]
+maddpg_ceb:   2%|2         | 1/50 [01:40<1:22:11, 100.64s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.09090909 | rerank_score=2.5597
+  -> Doc 2: retrieval_score=0.2159091 | rerank_score=2.5540
+  -> Doc 3: retrieval_score=0.6666667 | rerank_score=1.8630
+  -> Doc 4: retrieval_score=0.25396827 | rerank_score=1.8429
+  -> Doc 5: retrieval_score=0.6 | rerank_score=1.1252
+  -> Doc 6: retrieval_score=0.13942307 | rerank_score=0.8918
+  -> Doc 7: retrieval_score=0.75 | rerank_score=0.8751
+  -> Doc 8: retrieval_score=0.2254902 | rerank_score=0.7794
+  -> Doc 9: retrieval_score=0.45 | rerank_score=0.6516
+  -> Doc 10: retrieval_score=0.325 | rerank_score=0.0294
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 9 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+  [ckpt] saved -> C:\Users\juand\Documents\Academic_RAG\brain\maddpg\results\defense_comparison_live\checkpoints\best_maddpg_ceb_live.pt
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 4391.94it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 11.11it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 542.20it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:04<00:09,  4.79s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:07<00:03,  3.44s/it][A
+Compute Scores: 100%|##########| 3/3 [00:07<00:00,  2.15s/it][ACompute Scores: 100%|##########| 3/3 [00:07<00:00,  2.63s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.36666667 | rerank_score=6.2564
+  -> Doc 2: retrieval_score=0.5833334 | rerank_score=6.1189
+  -> Doc 3: retrieval_score=0.375 | rerank_score=4.6171
+  -> Doc 4: retrieval_score=1.0 | rerank_score=4.4833
+  -> Doc 5: retrieval_score=0.5 | rerank_score=4.4444
+  -> Doc 6: retrieval_score=0.19090909 | rerank_score=3.1346
+  -> Doc 7: retrieval_score=0.071428575 | rerank_score=1.5510
+  -> Doc 8: retrieval_score=0.10644258 | rerank_score=0.8363
+  -> Doc 9: retrieval_score=0.14285715 | rerank_score=0.7645
+  -> Doc 10: retrieval_score=0.26785713 | rerank_score=-0.1042
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: IRRELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 9 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  According to the RAG survey, what are the three main RAG paradigms?
+[Final Combined] Rewritten query: RAG survey main paradigms.
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 4963.67it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 15.45it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 504.18it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:04<00:09,  4.61s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:07<00:03,  3.39s/it][A
+Compute Scores: 100%|##########| 3/3 [00:07<00:00,  2.10s/it][ACompute Scores: 100%|##########| 3/3 [00:07<00:00,  2.57s/it]
+maddpg_ceb:   4%|4         | 2/50 [03:55<1:36:36, 120.77s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.30952382 | rerank_score=5.5737
+  -> Doc 2: retrieval_score=0.31111112 | rerank_score=4.8115
+  -> Doc 3: retrieval_score=0.53333336 | rerank_score=4.4018
+  -> Doc 4: retrieval_score=1.0 | rerank_score=4.3185
+  -> Doc 5: retrieval_score=0.20952383 | rerank_score=3.4059
+  -> Doc 6: retrieval_score=0.19642857 | rerank_score=2.9883
+  -> Doc 7: retrieval_score=0.5 | rerank_score=2.5528
+  -> Doc 8: retrieval_score=0.35 | rerank_score=1.9359
+  -> Doc 9: retrieval_score=0.13247864 | rerank_score=1.9050
+  -> Doc 10: retrieval_score=0.0625 | rerank_score=0.8667
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 4
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 2504.06it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.46it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.44it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 639.90it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:10,  5.39s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:08<00:04,  4.15s/it][A
+Compute Scores: 100%|##########| 3/3 [00:09<00:00,  2.81s/it][ACompute Scores: 100%|##########| 3/3 [00:09<00:00,  3.30s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.625 | rerank_score=2.3136
+  -> Doc 2: retrieval_score=0.1 | rerank_score=1.3618
+  -> Doc 3: retrieval_score=0.8333334 | rerank_score=1.2360
+  -> Doc 4: retrieval_score=0.19285715 | rerank_score=0.8859
+  -> Doc 5: retrieval_score=0.44444445 | rerank_score=0.8047
+  -> Doc 6: retrieval_score=0.45 | rerank_score=0.7829
+  -> Doc 7: retrieval_score=0.11111111 | rerank_score=0.1837
+  -> Doc 8: retrieval_score=0.15384616 | rerank_score=-0.1288
+  -> Doc 9: retrieval_score=0.4166667 | rerank_score=-0.4738
+  -> Doc 10: retrieval_score=0.14285715 | rerank_score=-0.8687
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  Which basic retrieve-read framework splits documents, stores vectorized chunks, fetches top-k relevant context, and then answers with an LLM?
+[Final Combined] Rewritten query: "Basic retrieve-read framework with vectorized chunks, top-k context, and LLM answer mechanism."
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 4629.47it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.67it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.66it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 668.27it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:10,  5.08s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:08<00:04,  4.09s/it][A
+Compute Scores: 100%|##########| 3/3 [00:09<00:00,  2.82s/it][ACompute Scores: 100%|##########| 3/3 [00:09<00:00,  3.26s/it]
+maddpg_ceb:   6%|6         | 3/50 [06:49<1:53:38, 145.06s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.2 | rerank_score=1.0550
+  -> Doc 2: retrieval_score=0.26785713 | rerank_score=0.5154
+  -> Doc 3: retrieval_score=0.16666667 | rerank_score=0.3100
+  -> Doc 4: retrieval_score=0.75 | rerank_score=0.2982
+  -> Doc 5: retrieval_score=0.53333336 | rerank_score=-0.0180
+  -> Doc 6: retrieval_score=0.5555556 | rerank_score=-0.3083
+  -> Doc 7: retrieval_score=0.083333336 | rerank_score=-0.8847
+  -> Doc 8: retrieval_score=0.11111111 | rerank_score=-1.0322
+  -> Doc 9: retrieval_score=0.125 | rerank_score=-1.2403
+  -> Doc 10: retrieval_score=0.16666667 | rerank_score=-1.3079
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 6
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  "Basic retrieve-read framework with vectorized chunks, top-k context, and LLM answer mechanism."
+[Final Combined] Rewritten query: "Vectorized chunk retrieval framework with top-k context and LLM answer mechanism."
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 4614.20it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 11.94it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 401.45it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:10,  5.09s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:07<00:03,  3.66s/it][A
+Compute Scores: 100%|##########| 3/3 [00:08<00:00,  2.35s/it][ACompute Scores: 100%|##########| 3/3 [00:08<00:00,  2.84s/it]
+maddpg_ceb:   8%|8         | 4/50 [07:57<1:27:54, 114.66s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.2916667 | rerank_score=3.7460
+  -> Doc 2: retrieval_score=0.8333334 | rerank_score=2.3145
+  -> Doc 3: retrieval_score=0.34285715 | rerank_score=1.7128
+  -> Doc 4: retrieval_score=0.5833334 | rerank_score=1.2243
+  -> Doc 5: retrieval_score=0.14285715 | rerank_score=1.1050
+  -> Doc 6: retrieval_score=0.14354068 | rerank_score=0.1727
+  -> Doc 7: retrieval_score=0.6 | rerank_score=0.0456
+  -> Doc 8: retrieval_score=0.375 | rerank_score=-0.9245
+  -> Doc 9: retrieval_score=0.17777778 | rerank_score=-1.0069
+  -> Doc 10: retrieval_score=0.25263157 | rerank_score=-2.6518
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: IRRELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 9 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+  [ckpt] saved -> C:\Users\juand\Documents\Academic_RAG\brain\maddpg\results\defense_comparison_live\checkpoints\best_maddpg_ceb_live.pt
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 3066.01it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.95it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.94it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 790.43it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:10,  5.45s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:08<00:04,  4.02s/it][A
+Compute Scores: 100%|##########| 3/3 [00:09<00:00,  2.63s/it][ACompute Scores: 100%|##########| 3/3 [00:09<00:00,  3.15s/it]
+maddpg_ceb:  10%|#         | 5/50 [09:07<1:13:56, 98.58s/it] [Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.33333334 | rerank_score=2.5531
+  -> Doc 2: retrieval_score=0.6666667 | rerank_score=2.4636
+  -> Doc 3: retrieval_score=1.0 | rerank_score=1.9603
+  -> Doc 4: retrieval_score=0.45 | rerank_score=1.6759
+  -> Doc 5: retrieval_score=0.36666667 | rerank_score=0.3816
+  -> Doc 6: retrieval_score=0.225 | rerank_score=-0.5610
+  -> Doc 7: retrieval_score=0.30952382 | rerank_score=-0.9739
+  -> Doc 8: retrieval_score=0.23376624 | rerank_score=-1.5193
+  -> Doc 9: retrieval_score=0.05882353 | rerank_score=-1.7384
+  -> Doc 10: retrieval_score=0.13025211 | rerank_score=-1.9288
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: IRRELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 9 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+  [ckpt] saved -> C:\Users\juand\Documents\Academic_RAG\brain\maddpg\results\defense_comparison_live\checkpoints\best_maddpg_ceb_live.pt
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 2933.08it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.03it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.02it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 775.48it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:11,  5.64s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:08<00:04,  4.15s/it][A
+Compute Scores: 100%|##########| 3/3 [00:09<00:00,  2.75s/it][ACompute Scores: 100%|##########| 3/3 [00:09<00:00,  3.28s/it]
+maddpg_ceb:  12%|#2        | 6/50 [10:05<1:02:11, 84.81s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.36666667 | rerank_score=-1.5753
+  -> Doc 2: retrieval_score=0.6666667 | rerank_score=-1.7075
+  -> Doc 3: retrieval_score=0.32142857 | rerank_score=-2.0103
+  -> Doc 4: retrieval_score=0.20192307 | rerank_score=-2.5257
+  -> Doc 5: retrieval_score=0.39583334 | rerank_score=-3.1119
+  -> Doc 6: retrieval_score=0.07692308 | rerank_score=-3.2881
+  -> Doc 7: retrieval_score=0.14285715 | rerank_score=-3.4063
+  -> Doc 8: retrieval_score=0.45 | rerank_score=-3.9060
+  -> Doc 9: retrieval_score=0.16111112 | rerank_score=-3.9354
+  -> Doc 10: retrieval_score=0.4761905 | rerank_score=-3.9468
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: IRRELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: IRRELEVANT
+  -> Doc 7: IRRELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: IRRELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 5 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+  [ckpt] saved -> C:\Users\juand\Documents\Academic_RAG\brain\maddpg\results\defense_comparison_live\checkpoints\best_maddpg_ceb_live.pt
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 3258.98it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.91it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.90it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 575.90it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:11,  5.67s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:09<00:04,  4.41s/it][A
+Compute Scores: 100%|##########| 3/3 [00:10<00:00,  2.89s/it][ACompute Scores: 100%|##########| 3/3 [00:10<00:00,  3.43s/it]
+maddpg_ceb:  14%|#4        | 7/50 [11:18<58:01, 80.97s/it]  [Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.8333334 | rerank_score=1.1611
+  -> Doc 2: retrieval_score=0.2909091 | rerank_score=0.2844
+  -> Doc 3: retrieval_score=0.5 | rerank_score=-0.1532
+  -> Doc 4: retrieval_score=0.33333334 | rerank_score=-0.2124
+  -> Doc 5: retrieval_score=0.13333334 | rerank_score=-1.1472
+  -> Doc 6: retrieval_score=0.3026316 | rerank_score=-1.7351
+  -> Doc 7: retrieval_score=0.24358976 | rerank_score=-2.4163
+  -> Doc 8: retrieval_score=0.27142859 | rerank_score=-2.5833
+  -> Doc 9: retrieval_score=0.25 | rerank_score=-2.9162
+  -> Doc 10: retrieval_score=0.20535715 | rerank_score=-3.2441
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 5548.02it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 10.87it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 807.37it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:04<00:08,  4.50s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:08<00:04,  4.01s/it][A
+Compute Scores: 100%|##########| 3/3 [00:09<00:00,  2.73s/it][ACompute Scores: 100%|##########| 3/3 [00:09<00:00,  3.12s/it]
+maddpg_ceb:  16%|#6        | 8/50 [12:51<59:13, 84.61s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.8333334 | rerank_score=4.0004
+  -> Doc 2: retrieval_score=0.8333334 | rerank_score=3.4156
+  -> Doc 3: retrieval_score=0.33333334 | rerank_score=2.4516
+  -> Doc 4: retrieval_score=0.125 | rerank_score=1.7611
+  -> Doc 5: retrieval_score=0.325 | rerank_score=0.9500
+  -> Doc 6: retrieval_score=0.17424244 | rerank_score=0.2182
+  -> Doc 7: retrieval_score=0.32142857 | rerank_score=-0.1417
+  -> Doc 8: retrieval_score=0.17424244 | rerank_score=-1.1086
+  -> Doc 9: retrieval_score=0.45 | rerank_score=-1.3090
+  -> Doc 10: retrieval_score=0.06666667 | rerank_score=-1.3256
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 6
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 3647.22it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.55it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.54it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 730.21it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:06<00:12,  6.49s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:10<00:04,  4.75s/it][A
+Compute Scores: 100%|##########| 3/3 [00:11<00:00,  3.06s/it][ACompute Scores: 100%|##########| 3/3 [00:11<00:00,  3.69s/it]
+maddpg_ceb:  18%|#8        | 9/50 [14:21<59:07, 86.53s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.5769231 | rerank_score=-5.4063
+  -> Doc 2: retrieval_score=0.21428572 | rerank_score=-6.6292
+  -> Doc 3: retrieval_score=0.20168068 | rerank_score=-6.6820
+  -> Doc 4: retrieval_score=0.53333336 | rerank_score=-6.8938
+  -> Doc 5: retrieval_score=0.30555555 | rerank_score=-6.9283
+  -> Doc 6: retrieval_score=0.11111111 | rerank_score=-6.9825
+  -> Doc 7: retrieval_score=0.125 | rerank_score=-6.9857
+  -> Doc 8: retrieval_score=0.125 | rerank_score=-7.0497
+  -> Doc 9: retrieval_score=0.09090909 | rerank_score=-7.2072
+  -> Doc 10: retrieval_score=0.14285715 | rerank_score=-7.3874
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: IRRELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: IRRELEVANT
+  -> Doc 4: IRRELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: IRRELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: IRRELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 4 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 8
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 3916.25it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.75it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.74it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 839.92it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:10,  5.29s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:08<00:04,  4.18s/it][A
+Compute Scores: 100%|##########| 3/3 [00:09<00:00,  2.54s/it][ACompute Scores: 100%|##########| 3/3 [00:09<00:00,  3.10s/it]
+maddpg_ceb:  20%|##        | 10/50 [15:31<54:08, 81.20s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.75 | rerank_score=3.3495
+  -> Doc 2: retrieval_score=0.8333334 | rerank_score=3.2038
+  -> Doc 3: retrieval_score=0.53333336 | rerank_score=1.9819
+  -> Doc 4: retrieval_score=0.2777778 | rerank_score=0.6624
+  -> Doc 5: retrieval_score=0.14358975 | rerank_score=-0.8703
+  -> Doc 6: retrieval_score=0.19642857 | rerank_score=-1.0827
+  -> Doc 7: retrieval_score=0.1984127 | rerank_score=-1.2736
+  -> Doc 8: retrieval_score=0.21111111 | rerank_score=-2.7218
+  -> Doc 9: retrieval_score=0.25 | rerank_score=-2.7386
+  -> Doc 10: retrieval_score=0.24358976 | rerank_score=-3.1154
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: IRRELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 9 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 4
+  [ckpt] saved -> C:\Users\juand\Documents\Academic_RAG\brain\maddpg\results\defense_comparison_live\checkpoints\maddpg_ceb_live_ep0010.pt
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 3816.47it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.33it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.32it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 869.11it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:06<00:13,  6.84s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:10<00:05,  5.19s/it][A
+Compute Scores: 100%|##########| 3/3 [00:11<00:00,  3.31s/it][ACompute Scores: 100%|##########| 3/3 [00:11<00:00,  3.98s/it]
+maddpg_ceb:  22%|##2       | 11/50 [16:41<50:32, 77.77s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=6.0749
+  -> Doc 2: retrieval_score=0.35 | rerank_score=1.9103
+  -> Doc 3: retrieval_score=0.5 | rerank_score=1.8561
+  -> Doc 4: retrieval_score=0.22619048 | rerank_score=0.5750
+  -> Doc 5: retrieval_score=0.43333334 | rerank_score=0.3626
+  -> Doc 6: retrieval_score=0.15384616 | rerank_score=-0.1203
+  -> Doc 7: retrieval_score=0.18382353 | rerank_score=-0.1444
+  -> Doc 8: retrieval_score=0.0625 | rerank_score=-0.2126
+  -> Doc 9: retrieval_score=0.34285715 | rerank_score=-0.4266
+  -> Doc 10: retrieval_score=0.14285715 | rerank_score=-0.8366
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: IRRELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: IRRELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: IRRELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 6 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 5683.34it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.19it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.18it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 846.82it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:10,  5.25s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:09<00:04,  4.40s/it][A
+Compute Scores: 100%|##########| 3/3 [00:10<00:00,  2.91s/it][ACompute Scores: 100%|##########| 3/3 [00:10<00:00,  3.40s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.09090909 | rerank_score=2.5597
+  -> Doc 2: retrieval_score=0.2159091 | rerank_score=2.5540
+  -> Doc 3: retrieval_score=0.6666667 | rerank_score=1.8630
+  -> Doc 4: retrieval_score=0.25396827 | rerank_score=1.8429
+  -> Doc 5: retrieval_score=0.6 | rerank_score=1.1252
+  -> Doc 6: retrieval_score=0.13942307 | rerank_score=0.8918
+  -> Doc 7: retrieval_score=0.75 | rerank_score=0.8751
+  -> Doc 8: retrieval_score=0.2254902 | rerank_score=0.7794
+  -> Doc 9: retrieval_score=0.45 | rerank_score=0.6516
+  -> Doc 10: retrieval_score=0.325 | rerank_score=0.0294
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 9 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 4
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[llm_adapter] Rate limit hit. Retrying in 0.61s (Attempt 1/10)...
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  How do plain networks differ from residual networks in the ResNet paper's framing of the optimization problem?
+[Final Combined] Rewritten query: "Plain vs residual networks optimization in ResNet paper framing."
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 4284.27it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.75it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.73it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 741.65it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:07<00:14,  7.09s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:11<00:05,  5.25s/it][A
+Compute Scores: 100%|##########| 3/3 [00:12<00:00,  3.52s/it][ACompute Scores: 100%|##########| 3/3 [00:12<00:00,  4.17s/it]
+maddpg_ceb:  24%|##4       | 12/50 [19:36<1:07:58, 107.33s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=1.8963
+  -> Doc 2: retrieval_score=0.125 | rerank_score=1.7486
+  -> Doc 3: retrieval_score=0.5833334 | rerank_score=1.5042
+  -> Doc 4: retrieval_score=0.2769231 | rerank_score=1.4122
+  -> Doc 5: retrieval_score=0.26785713 | rerank_score=1.2669
+  -> Doc 6: retrieval_score=0.14215687 | rerank_score=0.9711
+  -> Doc 7: retrieval_score=0.26666668 | rerank_score=0.9237
+  -> Doc 8: retrieval_score=0.3611111 | rerank_score=0.2389
+  -> Doc 9: retrieval_score=0.07692308 | rerank_score=0.1266
+  -> Doc 10: retrieval_score=0.23333335 | rerank_score=0.1094
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  "Plain vs residual networks optimization in ResNet paper framing."
+[Final Combined] Rewritten query: "ResNet optimization techniques comparison: plain vs residual networks."
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 2465.79it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:02<00:00,  2.41s/it][AInference Embeddings: 100%|##########| 1/1 [00:02<00:00,  2.41s/it]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 96.95it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:10<00:21, 10.76s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:15<00:07,  7.21s/it][A
+Compute Scores: 100%|##########| 3/3 [00:17<00:00,  4.74s/it][ACompute Scores: 100%|##########| 3/3 [00:17<00:00,  5.76s/it]
+maddpg_ceb:  26%|##6       | 13/50 [20:52<1:00:22, 97.90s/it] [Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.2916667 | rerank_score=3.7460
+  -> Doc 2: retrieval_score=0.8333334 | rerank_score=2.3145
+  -> Doc 3: retrieval_score=0.34285715 | rerank_score=1.7128
+  -> Doc 4: retrieval_score=0.5833334 | rerank_score=1.2243
+  -> Doc 5: retrieval_score=0.14285715 | rerank_score=1.1050
+  -> Doc 6: retrieval_score=0.14354068 | rerank_score=0.1727
+  -> Doc 7: retrieval_score=0.6 | rerank_score=0.0456
+  -> Doc 8: retrieval_score=0.375 | rerank_score=-0.9245
+  -> Doc 9: retrieval_score=0.17777778 | rerank_score=-1.0069
+  -> Doc 10: retrieval_score=0.25263157 | rerank_score=-2.6518
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: IRRELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 9 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 1597.83it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  4.84it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  4.84it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 270.06it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:07<00:14,  7.16s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:11<00:05,  5.61s/it][A
+Compute Scores: 100%|##########| 3/3 [00:13<00:00,  3.66s/it][ACompute Scores: 100%|##########| 3/3 [00:13<00:00,  4.34s/it]
+maddpg_ceb:  28%|##8       | 14/50 [22:15<56:07, 93.55s/it]  [Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.45833334 | rerank_score=1.9913
+  -> Doc 2: retrieval_score=0.34285715 | rerank_score=1.5662
+  -> Doc 3: retrieval_score=0.8333334 | rerank_score=0.2731
+  -> Doc 4: retrieval_score=0.45 | rerank_score=-0.0712
+  -> Doc 5: retrieval_score=0.75 | rerank_score=-0.7156
+  -> Doc 6: retrieval_score=0.33333334 | rerank_score=-1.1646
+  -> Doc 7: retrieval_score=0.19642857 | rerank_score=-1.7385
+  -> Doc 8: retrieval_score=0.18181819 | rerank_score=-2.2979
+  -> Doc 9: retrieval_score=0.0625 | rerank_score=-2.4977
+  -> Doc 10: retrieval_score=0.18333334 | rerank_score=-2.5766
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 6
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 252.40it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  6.80it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  6.79it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 342.72it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:06<00:13,  6.71s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:10<00:05,  5.29s/it][A
+Compute Scores: 100%|##########| 3/3 [00:12<00:00,  3.61s/it][ACompute Scores: 100%|##########| 3/3 [00:12<00:00,  4.20s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=0.1883
+  -> Doc 2: retrieval_score=0.11428572 | rerank_score=-0.0999
+  -> Doc 3: retrieval_score=0.21929824 | rerank_score=-0.1049
+  -> Doc 4: retrieval_score=0.1 | rerank_score=-0.7006
+  -> Doc 5: retrieval_score=0.28333333 | rerank_score=-0.9612
+  -> Doc 6: retrieval_score=0.25 | rerank_score=-1.4836
+  -> Doc 7: retrieval_score=0.11111111 | rerank_score=-2.7539
+  -> Doc 8: retrieval_score=0.083333336 | rerank_score=-3.2037
+  -> Doc 9: retrieval_score=0.19285715 | rerank_score=-3.4342
+  -> Doc 10: retrieval_score=0.30882353 | rerank_score=-3.4995
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: IRRELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: IRRELEVANT
+  -> Doc 8: IRRELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 6 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  How do the Transformer and ResNet papers each argue that architectural design can overcome training bottlenecks in deep learning?
+[Final Combined] Rewritten query: Transformer and ResNet architectural designs overcoming deep learning training bottlenecks.
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 986.90it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  7.88it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  7.87it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 546.06it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:08<00:16,  8.23s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:13<00:06,  6.24s/it][A
+Compute Scores: 100%|##########| 3/3 [00:14<00:00,  4.08s/it][ACompute Scores: 100%|##########| 3/3 [00:14<00:00,  4.86s/it]
+maddpg_ceb:  30%|###       | 15/50 [24:55<1:06:08, 113.38s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=2.2578
+  -> Doc 2: retrieval_score=0.12955466 | rerank_score=2.0058
+  -> Doc 3: retrieval_score=0.6666667 | rerank_score=1.9845
+  -> Doc 4: retrieval_score=0.30555555 | rerank_score=1.6430
+  -> Doc 5: retrieval_score=0.09090909 | rerank_score=0.8403
+  -> Doc 6: retrieval_score=0.325 | rerank_score=-0.2919
+  -> Doc 7: retrieval_score=0.21111111 | rerank_score=-1.5854
+  -> Doc 8: retrieval_score=0.22916667 | rerank_score=-1.8804
+  -> Doc 9: retrieval_score=0.125 | rerank_score=-2.5214
+  -> Doc 10: retrieval_score=0.083333336 | rerank_score=-2.7248
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 6
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 506.93it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  5.68it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  5.67it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 170.70it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:08<00:16,  8.38s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:13<00:06,  6.39s/it][A
+Compute Scores: 100%|##########| 3/3 [00:15<00:00,  4.30s/it][ACompute Scores: 100%|##########| 3/3 [00:15<00:00,  5.07s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.625 | rerank_score=2.3136
+  -> Doc 2: retrieval_score=0.1 | rerank_score=1.3618
+  -> Doc 3: retrieval_score=0.8333334 | rerank_score=1.2360
+  -> Doc 4: retrieval_score=0.19285715 | rerank_score=0.8859
+  -> Doc 5: retrieval_score=0.44444445 | rerank_score=0.8047
+  -> Doc 6: retrieval_score=0.45 | rerank_score=0.7829
+  -> Doc 7: retrieval_score=0.11111111 | rerank_score=0.1837
+  -> Doc 8: retrieval_score=0.15384616 | rerank_score=-0.1288
+  -> Doc 9: retrieval_score=0.4166667 | rerank_score=-0.4738
+  -> Doc 10: retrieval_score=0.14285715 | rerank_score=-0.8687
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  Which basic retrieve-read framework splits documents, stores vectorized chunks, fetches top-k relevant context, and then answers with an LLM?
+[Final Combined] Rewritten query: "Basic retrieve-read framework with vectorized chunks, top-k context, and LLM answer mechanism."
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 2417.47it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  5.19it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  5.19it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 160.69it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:10<00:21, 10.52s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:16<00:08,  8.12s/it][A
+Compute Scores: 100%|##########| 3/3 [00:19<00:00,  5.35s/it][ACompute Scores: 100%|##########| 3/3 [00:19<00:00,  6.34s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.2 | rerank_score=1.0550
+  -> Doc 2: retrieval_score=0.26785713 | rerank_score=0.5154
+  -> Doc 3: retrieval_score=0.16666667 | rerank_score=0.3100
+  -> Doc 4: retrieval_score=0.75 | rerank_score=0.2982
+  -> Doc 5: retrieval_score=0.53333336 | rerank_score=-0.0180
+  -> Doc 6: retrieval_score=0.5555556 | rerank_score=-0.3083
+  -> Doc 7: retrieval_score=0.083333336 | rerank_score=-0.8847
+  -> Doc 8: retrieval_score=0.11111111 | rerank_score=-1.0322
+  -> Doc 9: retrieval_score=0.125 | rerank_score=-1.2403
+  -> Doc 10: retrieval_score=0.16666667 | rerank_score=-1.3079
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 4173.44it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  4.30it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  4.30it/s]
+maddpg_ceb:  32%|###2      | 16/50 [27:21<1:09:50, 123.25s/it]
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 3446.43it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  4.12it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  4.12it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 472.23it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:07<00:14,  7.50s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:12<00:05,  5.89s/it][A
+Compute Scores: 100%|##########| 3/3 [00:13<00:00,  3.91s/it][ACompute Scores: 100%|##########| 3/3 [00:13<00:00,  4.61s/it]
+maddpg_ceb:  34%|###4      | 17/50 [28:33<59:23, 107.98s/it]  [Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=0.1883
+  -> Doc 2: retrieval_score=0.11428572 | rerank_score=-0.0999
+  -> Doc 3: retrieval_score=0.21929824 | rerank_score=-0.1049
+  -> Doc 4: retrieval_score=0.1 | rerank_score=-0.7006
+  -> Doc 5: retrieval_score=0.28333333 | rerank_score=-0.9612
+  -> Doc 6: retrieval_score=0.25 | rerank_score=-1.4836
+  -> Doc 7: retrieval_score=0.11111111 | rerank_score=-2.7539
+  -> Doc 8: retrieval_score=0.083333336 | rerank_score=-3.2037
+  -> Doc 9: retrieval_score=0.19285715 | rerank_score=-3.4342
+  -> Doc 10: retrieval_score=0.30882353 | rerank_score=-3.4995
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: IRRELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: IRRELEVANT
+  -> Doc 8: IRRELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 6 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 4
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 163.68it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  7.68it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  7.67it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 169.00it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:04<00:09,  4.78s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:08<00:04,  4.37s/it][A
+Compute Scores: 100%|##########| 3/3 [00:10<00:00,  2.99s/it][ACompute Scores: 100%|##########| 3/3 [00:10<00:00,  3.41s/it]
+maddpg_ceb:  36%|###6      | 18/50 [30:00<54:08, 101.53s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.75 | rerank_score=4.5037
+  -> Doc 2: retrieval_score=0.4047619 | rerank_score=2.5522
+  -> Doc 3: retrieval_score=0.45 | rerank_score=1.9321
+  -> Doc 4: retrieval_score=0.64285713 | rerank_score=1.9255
+  -> Doc 5: retrieval_score=0.14583334 | rerank_score=1.4822
+  -> Doc 6: retrieval_score=0.14090909 | rerank_score=1.4611
+  -> Doc 7: retrieval_score=0.2 | rerank_score=0.6218
+  -> Doc 8: retrieval_score=0.14354068 | rerank_score=0.6200
+  -> Doc 9: retrieval_score=0.0625 | rerank_score=0.5451
+  -> Doc 10: retrieval_score=0.20192307 | rerank_score=0.4859
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 400.22it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.59it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.57it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 270.48it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:08<00:16,  8.31s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:14<00:06,  6.97s/it][A
+Compute Scores: 100%|##########| 3/3 [00:16<00:00,  4.76s/it][ACompute Scores: 100%|##########| 3/3 [00:16<00:00,  5.49s/it]
+maddpg_ceb:  38%|###8      | 19/50 [31:04<46:40, 90.33s/it] [Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.5833334 | rerank_score=6.2630
+  -> Doc 2: retrieval_score=1.0 | rerank_score=6.2329
+  -> Doc 3: retrieval_score=0.5833334 | rerank_score=4.8913
+  -> Doc 4: retrieval_score=0.36666667 | rerank_score=3.2845
+  -> Doc 5: retrieval_score=0.23809525 | rerank_score=3.0290
+  -> Doc 6: retrieval_score=0.25396827 | rerank_score=1.8610
+  -> Doc 7: retrieval_score=0.2 | rerank_score=1.4078
+  -> Doc 8: retrieval_score=0.11111111 | rerank_score=1.0980
+  -> Doc 9: retrieval_score=0.14583334 | rerank_score=0.9011
+  -> Doc 10: retrieval_score=0.12454213 | rerank_score=0.8965
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: IRRELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 8 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 72.99it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  6.50it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  6.49it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 124.14it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:06<00:12,  6.32s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:10<00:05,  5.08s/it][A
+Compute Scores: 100%|##########| 3/3 [00:11<00:00,  3.19s/it][ACompute Scores: 100%|##########| 3/3 [00:11<00:00,  3.83s/it]
+maddpg_ceb:  40%|####      | 20/50 [32:10<41:26, 82.88s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.6666667 | rerank_score=0.9915
+  -> Doc 2: retrieval_score=0.4761905 | rerank_score=-0.4663
+  -> Doc 3: retrieval_score=0.6111111 | rerank_score=-0.9925
+  -> Doc 4: retrieval_score=0.375 | rerank_score=-1.1247
+  -> Doc 5: retrieval_score=0.33333334 | rerank_score=-1.2614
+  -> Doc 6: retrieval_score=0.2 | rerank_score=-1.4878
+  -> Doc 7: retrieval_score=0.4761905 | rerank_score=-1.5482
+  -> Doc 8: retrieval_score=0.28333333 | rerank_score=-1.6136
+  -> Doc 9: retrieval_score=0.2777778 | rerank_score=-1.9705
+  -> Doc 10: retrieval_score=0.17142858 | rerank_score=-2.5179
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: IRRELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 9 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+  [ckpt] saved -> C:\Users\juand\Documents\Academic_RAG\brain\maddpg\results\defense_comparison_live\checkpoints\maddpg_ceb_live_ep0020.pt
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 4481.09it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  6.71it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  6.70it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 607.66it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:07<00:14,  7.17s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:11<00:05,  5.51s/it][A
+Compute Scores: 100%|##########| 3/3 [00:12<00:00,  3.50s/it][ACompute Scores: 100%|##########| 3/3 [00:12<00:00,  4.21s/it]
+maddpg_ceb:  42%|####2     | 21/50 [33:28<39:27, 81.65s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.45833334 | rerank_score=1.9913
+  -> Doc 2: retrieval_score=0.34285715 | rerank_score=1.5662
+  -> Doc 3: retrieval_score=0.8333334 | rerank_score=0.2731
+  -> Doc 4: retrieval_score=0.45 | rerank_score=-0.0712
+  -> Doc 5: retrieval_score=0.75 | rerank_score=-0.7156
+  -> Doc 6: retrieval_score=0.33333334 | rerank_score=-1.1646
+  -> Doc 7: retrieval_score=0.19642857 | rerank_score=-1.7385
+  -> Doc 8: retrieval_score=0.18181819 | rerank_score=-2.2979
+  -> Doc 9: retrieval_score=0.0625 | rerank_score=-2.4977
+  -> Doc 10: retrieval_score=0.18333334 | rerank_score=-2.5766
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 4328.49it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  6.65it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  6.64it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 562.34it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:10,  5.17s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:09<00:04,  4.48s/it][A
+Compute Scores: 100%|##########| 3/3 [00:10<00:00,  3.17s/it][ACompute Scores: 100%|##########| 3/3 [00:10<00:00,  3.59s/it]
+maddpg_ceb:  44%|####4     | 22/50 [34:53<38:34, 82.66s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.75 | rerank_score=4.5037
+  -> Doc 2: retrieval_score=0.4047619 | rerank_score=2.5522
+  -> Doc 3: retrieval_score=0.45 | rerank_score=1.9321
+  -> Doc 4: retrieval_score=0.64285713 | rerank_score=1.9255
+  -> Doc 5: retrieval_score=0.14583334 | rerank_score=1.4822
+  -> Doc 6: retrieval_score=0.14090909 | rerank_score=1.4611
+  -> Doc 7: retrieval_score=0.2 | rerank_score=0.6218
+  -> Doc 8: retrieval_score=0.14354068 | rerank_score=0.6200
+  -> Doc 9: retrieval_score=0.0625 | rerank_score=0.5451
+  -> Doc 10: retrieval_score=0.20192307 | rerank_score=0.4859
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 3855.06it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  6.08it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  6.07it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 618.14it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:06<00:13,  6.83s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:10<00:05,  5.05s/it][A
+Compute Scores: 100%|##########| 3/3 [00:11<00:00,  3.15s/it][ACompute Scores: 100%|##########| 3/3 [00:11<00:00,  3.84s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.6666667 | rerank_score=0.9915
+  -> Doc 2: retrieval_score=0.4761905 | rerank_score=-0.4663
+  -> Doc 3: retrieval_score=0.6111111 | rerank_score=-0.9925
+  -> Doc 4: retrieval_score=0.375 | rerank_score=-1.1247
+  -> Doc 5: retrieval_score=0.33333334 | rerank_score=-1.2614
+  -> Doc 6: retrieval_score=0.2 | rerank_score=-1.4878
+  -> Doc 7: retrieval_score=0.4761905 | rerank_score=-1.5482
+  -> Doc 8: retrieval_score=0.28333333 | rerank_score=-1.6136
+  -> Doc 9: retrieval_score=0.2777778 | rerank_score=-1.9705
+  -> Doc 10: retrieval_score=0.17142858 | rerank_score=-2.5179
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: IRRELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 9 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  According to Figure 1 in the Transformer paper, what are the major components of the encoder and decoder?
+[Final Combined] Rewritten query: "Transformer paper Figure 1 encoder and decoder major components"
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 168.98it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  4.79it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  4.79it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 239.30it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:06<00:13,  6.67s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:10<00:05,  5.05s/it][A
+Compute Scores: 100%|##########| 3/3 [00:11<00:00,  2.99s/it][ACompute Scores: 100%|##########| 3/3 [00:11<00:00,  3.71s/it]
+maddpg_ceb:  46%|####6     | 23/50 [37:40<48:29, 107.74s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=1.4046
+  -> Doc 2: retrieval_score=0.42424244 | rerank_score=0.2018
+  -> Doc 3: retrieval_score=0.45833334 | rerank_score=-0.1808
+  -> Doc 4: retrieval_score=0.2 | rerank_score=-0.7094
+  -> Doc 5: retrieval_score=0.33333334 | rerank_score=-0.9415
+  -> Doc 6: retrieval_score=0.2857143 | rerank_score=-1.0840
+  -> Doc 7: retrieval_score=0.2254902 | rerank_score=-1.1105
+  -> Doc 8: retrieval_score=0.2020202 | rerank_score=-1.1982
+  -> Doc 9: retrieval_score=0.31111112 | rerank_score=-1.5789
+  -> Doc 10: retrieval_score=0.07692308 | rerank_score=-2.5627
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+[llm_adapter] Rate limit hit. Retrying in 1.00s (Attempt 1/10)...
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 4457.28it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  6.65it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  6.64it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 502.03it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:08<00:17,  8.90s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:13<00:06,  6.46s/it][A
+Compute Scores: 100%|##########| 3/3 [00:15<00:00,  4.13s/it][ACompute Scores: 100%|##########| 3/3 [00:15<00:00,  5.00s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=0.1883
+  -> Doc 2: retrieval_score=0.11428572 | rerank_score=-0.0999
+  -> Doc 3: retrieval_score=0.21929824 | rerank_score=-0.1049
+  -> Doc 4: retrieval_score=0.1 | rerank_score=-0.7006
+  -> Doc 5: retrieval_score=0.28333333 | rerank_score=-0.9612
+  -> Doc 6: retrieval_score=0.25 | rerank_score=-1.4836
+  -> Doc 7: retrieval_score=0.11111111 | rerank_score=-2.7539
+  -> Doc 8: retrieval_score=0.083333336 | rerank_score=-3.2037
+  -> Doc 9: retrieval_score=0.19285715 | rerank_score=-3.4342
+  -> Doc 10: retrieval_score=0.30882353 | rerank_score=-3.4995
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: IRRELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: IRRELEVANT
+  -> Doc 8: IRRELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 6 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 10
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  How do the Transformer and ResNet papers each argue that architectural design can overcome training bottlenecks in deep learning?
+[Final Combined] Rewritten query: Transformer and ResNet architectural designs overcoming deep learning training bottlenecks.
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 4686.37it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.07it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.06it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 497.64it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:06<00:13,  6.56s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:10<00:05,  5.15s/it][A
+Compute Scores: 100%|##########| 3/3 [00:12<00:00,  3.42s/it][ACompute Scores: 100%|##########| 3/3 [00:12<00:00,  4.02s/it]
+maddpg_ceb:  48%|####8     | 24/50 [40:12<52:31, 121.19s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=2.2578
+  -> Doc 2: retrieval_score=0.12955466 | rerank_score=2.0058
+  -> Doc 3: retrieval_score=0.6666667 | rerank_score=1.9845
+  -> Doc 4: retrieval_score=0.30555555 | rerank_score=1.6430
+  -> Doc 5: retrieval_score=0.09090909 | rerank_score=0.8403
+  -> Doc 6: retrieval_score=0.325 | rerank_score=-0.2919
+  -> Doc 7: retrieval_score=0.21111111 | rerank_score=-1.5854
+  -> Doc 8: retrieval_score=0.22916667 | rerank_score=-1.8804
+  -> Doc 9: retrieval_score=0.125 | rerank_score=-2.5214
+  -> Doc 10: retrieval_score=0.083333336 | rerank_score=-2.7248
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+[llm_adapter] Rate limit hit. Retrying in 1.24s (Attempt 1/10)...
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  Transformer and ResNet architectural designs overcoming deep learning training bottlenecks.
+[Final Combined] Rewritten query: "Deep learning training bottlenecks in Transformers and ResNets: architectural design improvements."
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 55.26it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  4.93it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  4.93it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 59.33it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:09<00:18,  9.45s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:15<00:07,  7.59s/it][A
+Compute Scores: 100%|##########| 3/3 [00:17<00:00,  5.14s/it][ACompute Scores: 100%|##########| 3/3 [00:17<00:00,  5.99s/it]
+maddpg_ceb:  50%|#####     | 25/50 [41:35<45:42, 109.68s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=4.2469
+  -> Doc 2: retrieval_score=0.3888889 | rerank_score=3.5604
+  -> Doc 3: retrieval_score=0.5833334 | rerank_score=3.2914
+  -> Doc 4: retrieval_score=0.21929824 | rerank_score=2.9706
+  -> Doc 5: retrieval_score=0.125 | rerank_score=2.5977
+  -> Doc 6: retrieval_score=0.14285715 | rerank_score=2.2370
+  -> Doc 7: retrieval_score=0.20952383 | rerank_score=1.9986
+  -> Doc 8: retrieval_score=0.325 | rerank_score=1.7372
+  -> Doc 9: retrieval_score=0.121323526 | rerank_score=0.0508
+  -> Doc 10: retrieval_score=0.2777778 | rerank_score=-0.3777
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 4
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 41.59it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  7.67it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  7.66it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][A
+pre tokenize: 100%|##########| 3/3 [00:00<00:00, 23.29it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 23.25it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:11,  5.61s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:09<00:04,  4.84s/it][A
+Compute Scores: 100%|##########| 3/3 [00:11<00:00,  3.21s/it][ACompute Scores: 100%|##########| 3/3 [00:11<00:00,  3.72s/it]
+maddpg_ceb:  52%|#####2    | 26/50 [42:33<37:36, 94.04s/it] [Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=8.1995
+  -> Doc 2: retrieval_score=0.33333334 | rerank_score=-2.6810
+  -> Doc 3: retrieval_score=0.1 | rerank_score=-3.3722
+  -> Doc 4: retrieval_score=0.25396827 | rerank_score=-3.5865
+  -> Doc 5: retrieval_score=0.23809525 | rerank_score=-4.3034
+  -> Doc 6: retrieval_score=0.20833334 | rerank_score=-4.8310
+  -> Doc 7: retrieval_score=0.1875 | rerank_score=-5.8039
+  -> Doc 8: retrieval_score=0.11111111 | rerank_score=-5.9409
+  -> Doc 9: retrieval_score=0.25 | rerank_score=-6.1397
+  -> Doc 10: retrieval_score=0.09090909 | rerank_score=-6.2992
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: IRRELEVANT
+  -> Doc 3: IRRELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: IRRELEVANT
+  -> Doc 6: IRRELEVANT
+  -> Doc 7: IRRELEVANT
+  -> Doc 8: IRRELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 3 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 751.53it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  6.91it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  6.90it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 299.11it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:07<00:15,  7.97s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:12<00:06,  6.12s/it][A
+Compute Scores: 100%|##########| 3/3 [00:14<00:00,  3.90s/it][ACompute Scores: 100%|##########| 3/3 [00:14<00:00,  4.68s/it]
+[Reranker] Kept 10 reranked docs.
   -> Doc 1: retrieval_score=1.0 | rerank_score=6.0749
   -> Doc 2: retrieval_score=0.35 | rerank_score=1.9103
   -> Doc 3: retrieval_score=0.5 | rerank_score=1.8561
@@ -58,17 +1567,1514 @@ You're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast t
 [Claim Verifier] Verifying answer claim by claim...
   -> Groq model: llama-3.1-8b-instant
   -> Claims to verify: 3
-  [ckpt] saved -> C:\Users\juand\Documents\Academic_RAG\brain\context_marl_ac\results\defense_comparison_live\checkpoints\best_maddpg_no_ceb_live.pt
 
-pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 4614.20it/s]
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
 
-Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 11.66it/s]
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  According to Figure 1 in the TabNet paper, how does sparse feature selection work during prediction?
+[Final Combined] Rewritten query: TabNet sparse feature selection mechanism during prediction process Figure 1.
 
-[Reranker] Reranking top 20 retrieved docs -> keeping top 9...
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 100.42it/s]
 
-pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 660.80it/s]
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  7.89it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  7.88it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 131.22it/s]
 
 Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
-Compute Scores:  33%|###3      | 1/3 [00:04<00:09,  4.60s/it][A
-Compute Scores:  67%|######6   | 2/3 [00:07<00:03,  3.36s/it][A
-Compute Scores: 100%|##########| 3/3 [00:07<00:00,  2.10s/it][ACompute Scores: 100%|##########| 3/3 [00:07<00:00,  2.56s/it]
+Compute Scores:  33%|###3      | 1/3 [00:07<00:14,  7.14s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:11<00:05,  5.26s/it][A
+Compute Scores: 100%|##########| 3/3 [00:12<00:00,  3.30s/it][ACompute Scores: 100%|##########| 3/3 [00:12<00:00,  4.02s/it]
+maddpg_ceb:  54%|#####4    | 27/50 [45:17<44:11, 115.30s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=6.5974
+  -> Doc 2: retrieval_score=0.5 | rerank_score=1.6075
+  -> Doc 3: retrieval_score=0.18055555 | rerank_score=1.4148
+  -> Doc 4: retrieval_score=0.45833334 | rerank_score=0.9707
+  -> Doc 5: retrieval_score=0.53333336 | rerank_score=0.9260
+  -> Doc 6: retrieval_score=0.21929824 | rerank_score=0.7873
+  -> Doc 7: retrieval_score=0.0952381 | rerank_score=0.7525
+  -> Doc 8: retrieval_score=0.21978024 | rerank_score=0.5310
+  -> Doc 9: retrieval_score=0.13809524 | rerank_score=0.3979
+  -> Doc 10: retrieval_score=0.17692308 | rerank_score=0.3900
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 1151.96it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  4.92it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  4.91it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 230.88it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:07<00:14,  7.37s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:13<00:06,  6.58s/it][A
+Compute Scores: 100%|##########| 3/3 [00:15<00:00,  4.53s/it][ACompute Scores: 100%|##########| 3/3 [00:15<00:00,  5.16s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.8333334 | rerank_score=4.0004
+  -> Doc 2: retrieval_score=0.8333334 | rerank_score=3.4156
+  -> Doc 3: retrieval_score=0.33333334 | rerank_score=2.4516
+  -> Doc 4: retrieval_score=0.125 | rerank_score=1.7611
+  -> Doc 5: retrieval_score=0.325 | rerank_score=0.9500
+  -> Doc 6: retrieval_score=0.17424244 | rerank_score=0.2182
+  -> Doc 7: retrieval_score=0.32142857 | rerank_score=-0.1417
+  -> Doc 8: retrieval_score=0.17424244 | rerank_score=-1.1086
+  -> Doc 9: retrieval_score=0.45 | rerank_score=-1.3090
+  -> Doc 10: retrieval_score=0.06666667 | rerank_score=-1.3256
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  What is a masked language model in BERT?
+[Final Combined] Rewritten query: "Masked language model in BERT architecture and its applications"
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 74.25it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  4.25it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  4.25it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 70.10it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:08<00:16,  8.20s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:13<00:06,  6.71s/it][A
+Compute Scores: 100%|##########| 3/3 [00:15<00:00,  4.53s/it][ACompute Scores: 100%|##########| 3/3 [00:15<00:00,  5.27s/it]
+maddpg_ceb:  56%|#####6    | 28/50 [48:15<49:08, 134.04s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.75 | rerank_score=2.7560
+  -> Doc 2: retrieval_score=0.75 | rerank_score=2.1454
+  -> Doc 3: retrieval_score=0.30952382 | rerank_score=1.5959
+  -> Doc 4: retrieval_score=0.125 | rerank_score=1.3156
+  -> Doc 5: retrieval_score=0.25263157 | rerank_score=0.6596
+  -> Doc 6: retrieval_score=0.116666675 | rerank_score=0.5609
+  -> Doc 7: retrieval_score=0.22222222 | rerank_score=0.2511
+  -> Doc 8: retrieval_score=0.34285715 | rerank_score=0.0151
+  -> Doc 9: retrieval_score=0.6666667 | rerank_score=-0.2678
+  -> Doc 10: retrieval_score=0.11111111 | rerank_score=-0.4064
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 6
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 24.12it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  5.64it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  5.63it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 35.20it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:09<00:18,  9.29s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:13<00:06,  6.51s/it][A
+Compute Scores: 100%|##########| 3/3 [00:15<00:00,  4.11s/it][ACompute Scores: 100%|##########| 3/3 [00:15<00:00,  5.04s/it]
+maddpg_ceb:  58%|#####8    | 29/50 [49:30<40:43, 116.34s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.20168068 | rerank_score=3.2406
+  -> Doc 2: retrieval_score=0.75 | rerank_score=3.1551
+  -> Doc 3: retrieval_score=0.24285716 | rerank_score=2.2040
+  -> Doc 4: retrieval_score=0.45833334 | rerank_score=2.1093
+  -> Doc 5: retrieval_score=0.7 | rerank_score=1.7342
+  -> Doc 6: retrieval_score=0.5 | rerank_score=1.3500
+  -> Doc 7: retrieval_score=0.16111112 | rerank_score=0.8159
+  -> Doc 8: retrieval_score=0.07692308 | rerank_score=0.6798
+  -> Doc 9: retrieval_score=0.09090909 | rerank_score=0.2023
+  -> Doc 10: retrieval_score=0.25 | rerank_score=-0.4930
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 9 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 294.67it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 12.17it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 98.33it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:11,  5.51s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:12<00:06,  6.14s/it][A
+Compute Scores: 100%|##########| 3/3 [00:14<00:00,  4.33s/it][ACompute Scores: 100%|##########| 3/3 [00:14<00:00,  4.75s/it]
+maddpg_ceb:  60%|######    | 30/50 [51:30<39:04, 117.22s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=4.8508
+  -> Doc 2: retrieval_score=0.10882353 | rerank_score=-0.8446
+  -> Doc 3: retrieval_score=0.23809525 | rerank_score=-1.1065
+  -> Doc 4: retrieval_score=0.125 | rerank_score=-1.5323
+  -> Doc 5: retrieval_score=0.38596493 | rerank_score=-1.7403
+  -> Doc 6: retrieval_score=0.30952382 | rerank_score=-2.0169
+  -> Doc 7: retrieval_score=0.12222223 | rerank_score=-2.0746
+  -> Doc 8: retrieval_score=0.16025642 | rerank_score=-2.0980
+  -> Doc 9: retrieval_score=0.375 | rerank_score=-2.1898
+  -> Doc 10: retrieval_score=0.17692308 | rerank_score=-2.3629
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+[llm_adapter] Rate limit hit. Retrying in 0.81s (Attempt 1/10)...
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+  [ckpt] saved -> C:\Users\juand\Documents\Academic_RAG\brain\maddpg\results\defense_comparison_live\checkpoints\maddpg_ceb_live_ep0030.pt
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 386.61it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.11it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.10it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 353.07it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:11,  5.83s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:08<00:04,  4.21s/it][A
+Compute Scores: 100%|##########| 3/3 [00:09<00:00,  2.78s/it][ACompute Scores: 100%|##########| 3/3 [00:09<00:00,  3.33s/it]
+maddpg_ceb:  62%|######2   | 31/50 [52:32<31:52, 100.65s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.33333334 | rerank_score=2.5531
+  -> Doc 2: retrieval_score=0.6666667 | rerank_score=2.4636
+  -> Doc 3: retrieval_score=1.0 | rerank_score=1.9603
+  -> Doc 4: retrieval_score=0.45 | rerank_score=1.6759
+  -> Doc 5: retrieval_score=0.36666667 | rerank_score=0.3816
+  -> Doc 6: retrieval_score=0.225 | rerank_score=-0.5610
+  -> Doc 7: retrieval_score=0.30952382 | rerank_score=-0.9739
+  -> Doc 8: retrieval_score=0.23376624 | rerank_score=-1.5193
+  -> Doc 9: retrieval_score=0.05882353 | rerank_score=-1.7384
+  -> Doc 10: retrieval_score=0.13025211 | rerank_score=-1.9288
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: IRRELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 9 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 105.93it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  6.44it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  6.43it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 191.39it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:08<00:16,  8.25s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:11<00:05,  5.56s/it][A
+Compute Scores: 100%|##########| 3/3 [00:12<00:00,  3.45s/it][ACompute Scores: 100%|##########| 3/3 [00:12<00:00,  4.29s/it]
+maddpg_ceb:  64%|######4   | 32/50 [53:18<25:20, 84.48s/it] [Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.75 | rerank_score=-0.5153
+  -> Doc 2: retrieval_score=0.75 | rerank_score=-1.0772
+  -> Doc 3: retrieval_score=0.14285715 | rerank_score=-2.5705
+  -> Doc 4: retrieval_score=0.26666668 | rerank_score=-3.1232
+  -> Doc 5: retrieval_score=0.33333334 | rerank_score=-3.6122
+  -> Doc 6: retrieval_score=0.09090909 | rerank_score=-3.7244
+  -> Doc 7: retrieval_score=0.41025642 | rerank_score=-3.7869
+  -> Doc 8: retrieval_score=0.31111112 | rerank_score=-3.9777
+  -> Doc 9: retrieval_score=0.36666667 | rerank_score=-4.2008
+  -> Doc 10: retrieval_score=0.2159091 | rerank_score=-4.5647
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: IRRELEVANT
+  -> Doc 3: IRRELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: IRRELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: IRRELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: IRRELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 4 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+  [ckpt] saved -> C:\Users\juand\Documents\Academic_RAG\brain\maddpg\results\defense_comparison_live\checkpoints\best_maddpg_ceb_live.pt
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 1957.21it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  5.14it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  5.14it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 523.29it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:09<00:19,  9.70s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:14<00:07,  7.07s/it][A
+Compute Scores: 100%|##########| 3/3 [00:16<00:00,  4.56s/it][ACompute Scores: 100%|##########| 3/3 [00:16<00:00,  5.50s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=0.1883
+  -> Doc 2: retrieval_score=0.11428572 | rerank_score=-0.0999
+  -> Doc 3: retrieval_score=0.21929824 | rerank_score=-0.1049
+  -> Doc 4: retrieval_score=0.1 | rerank_score=-0.7006
+  -> Doc 5: retrieval_score=0.28333333 | rerank_score=-0.9612
+  -> Doc 6: retrieval_score=0.25 | rerank_score=-1.4836
+  -> Doc 7: retrieval_score=0.11111111 | rerank_score=-2.7539
+  -> Doc 8: retrieval_score=0.083333336 | rerank_score=-3.2037
+  -> Doc 9: retrieval_score=0.19285715 | rerank_score=-3.4342
+  -> Doc 10: retrieval_score=0.30882353 | rerank_score=-3.4995
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: IRRELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: IRRELEVANT
+  -> Doc 8: IRRELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 6 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  How do the Transformer and ResNet papers each argue that architectural design can overcome training bottlenecks in deep learning?
+[Final Combined] Rewritten query: Transformer and ResNet architectural designs overcoming deep learning training bottlenecks.
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 4934.48it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.44it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.43it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 857.56it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:11,  5.70s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:09<00:04,  4.46s/it][A
+Compute Scores: 100%|##########| 3/3 [00:10<00:00,  2.97s/it][ACompute Scores: 100%|##########| 3/3 [00:10<00:00,  3.50s/it]
+maddpg_ceb:  66%|######6   | 33/50 [56:10<31:21, 110.67s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=2.2578
+  -> Doc 2: retrieval_score=0.12955466 | rerank_score=2.0058
+  -> Doc 3: retrieval_score=0.6666667 | rerank_score=1.9845
+  -> Doc 4: retrieval_score=0.30555555 | rerank_score=1.6430
+  -> Doc 5: retrieval_score=0.09090909 | rerank_score=0.8403
+  -> Doc 6: retrieval_score=0.325 | rerank_score=-0.2919
+  -> Doc 7: retrieval_score=0.21111111 | rerank_score=-1.5854
+  -> Doc 8: retrieval_score=0.22916667 | rerank_score=-1.8804
+  -> Doc 9: retrieval_score=0.125 | rerank_score=-2.5214
+  -> Doc 10: retrieval_score=0.083333336 | rerank_score=-2.7248
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  Transformer and ResNet architectural designs overcoming deep learning training bottlenecks.
+[Final Combined] Rewritten query: "Deep learning training bottlenecks in Transformers and ResNets: architectural design improvements."
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 2169.84it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.14it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.12it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 750.95it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:11,  5.88s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:09<00:04,  4.62s/it][A
+Compute Scores: 100%|##########| 3/3 [00:10<00:00,  3.14s/it][ACompute Scores: 100%|##########| 3/3 [00:10<00:00,  3.66s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.625 | rerank_score=2.3136
+  -> Doc 2: retrieval_score=0.1 | rerank_score=1.3618
+  -> Doc 3: retrieval_score=0.8333334 | rerank_score=1.2360
+  -> Doc 4: retrieval_score=0.19285715 | rerank_score=0.8859
+  -> Doc 5: retrieval_score=0.44444445 | rerank_score=0.8047
+  -> Doc 6: retrieval_score=0.45 | rerank_score=0.7829
+  -> Doc 7: retrieval_score=0.11111111 | rerank_score=0.1837
+  -> Doc 8: retrieval_score=0.15384616 | rerank_score=-0.1288
+  -> Doc 9: retrieval_score=0.4166667 | rerank_score=-0.4738
+  -> Doc 10: retrieval_score=0.14285715 | rerank_score=-0.8687
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  Which basic retrieve-read framework splits documents, stores vectorized chunks, fetches top-k relevant context, and then answers with an LLM?
+[Final Combined] Rewritten query: "Basic retrieve-read framework with vectorized chunks, top-k context, and LLM answer mechanism."
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 4036.87it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.95it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.93it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 896.73it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:06<00:12,  6.39s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:10<00:04,  4.89s/it][A
+Compute Scores: 100%|##########| 3/3 [00:11<00:00,  3.30s/it][ACompute Scores: 100%|##########| 3/3 [00:11<00:00,  3.88s/it]
+maddpg_ceb:  68%|######8   | 34/50 [58:39<32:33, 122.07s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.2 | rerank_score=1.0550
+  -> Doc 2: retrieval_score=0.26785713 | rerank_score=0.5154
+  -> Doc 3: retrieval_score=0.16666667 | rerank_score=0.3100
+  -> Doc 4: retrieval_score=0.75 | rerank_score=0.2982
+  -> Doc 5: retrieval_score=0.53333336 | rerank_score=-0.0180
+  -> Doc 6: retrieval_score=0.5555556 | rerank_score=-0.3083
+  -> Doc 7: retrieval_score=0.083333336 | rerank_score=-0.8847
+  -> Doc 8: retrieval_score=0.11111111 | rerank_score=-1.0322
+  -> Doc 9: retrieval_score=0.125 | rerank_score=-1.2403
+  -> Doc 10: retrieval_score=0.16666667 | rerank_score=-1.3079
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  "Basic retrieve-read framework with vectorized chunks, top-k context, and LLM answer mechanism."
+[Final Combined] Rewritten query: "Vectorized chunk retrieval framework with top-k context and LLM answer mechanism."
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 413.88it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.89it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.88it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 536.22it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:10,  5.30s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:08<00:03,  3.86s/it][A
+Compute Scores: 100%|##########| 3/3 [00:09<00:00,  2.58s/it][ACompute Scores: 100%|##########| 3/3 [00:09<00:00,  3.07s/it]
+maddpg_ceb:  70%|#######   | 35/50 [1:00:07<27:57, 111.86s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.36666667 | rerank_score=-1.5753
+  -> Doc 2: retrieval_score=0.6666667 | rerank_score=-1.7075
+  -> Doc 3: retrieval_score=0.32142857 | rerank_score=-2.0103
+  -> Doc 4: retrieval_score=0.20192307 | rerank_score=-2.5257
+  -> Doc 5: retrieval_score=0.39583334 | rerank_score=-3.1119
+  -> Doc 6: retrieval_score=0.07692308 | rerank_score=-3.2881
+  -> Doc 7: retrieval_score=0.14285715 | rerank_score=-3.4063
+  -> Doc 8: retrieval_score=0.45 | rerank_score=-3.9060
+  -> Doc 9: retrieval_score=0.16111112 | rerank_score=-3.9354
+  -> Doc 10: retrieval_score=0.4761905 | rerank_score=-3.9468
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: IRRELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: IRRELEVANT
+  -> Doc 7: IRRELEVANT
+  -> Doc 8: RELEVANT
+[llm_adapter] Rate limit hit. Retrying in 1.26s (Attempt 1/10)...
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+[llm_adapter] Rate limit hit. Retrying in 1.65s (Attempt 2/10)...
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: IRRELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: IRRELEVANT
+  -> Doc 7: IRRELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: IRRELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 5 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 34.73it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.64it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.63it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 123.47it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:06<00:13,  6.81s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:10<00:05,  5.07s/it][A
+Compute Scores: 100%|##########| 3/3 [00:11<00:00,  3.27s/it][ACompute Scores: 100%|##########| 3/3 [00:11<00:00,  3.93s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.5833333 | rerank_score=2.3981
+  -> Doc 2: retrieval_score=0.5 | rerank_score=1.0997
+  -> Doc 3: retrieval_score=0.25757575 | rerank_score=-0.2065
+  -> Doc 4: retrieval_score=0.125 | rerank_score=-0.8045
+  -> Doc 5: retrieval_score=0.2857143 | rerank_score=-1.0073
+  -> Doc 6: retrieval_score=0.44444445 | rerank_score=-1.1518
+  -> Doc 7: retrieval_score=0.07692308 | rerank_score=-4.1036
+  -> Doc 8: retrieval_score=0.38333336 | rerank_score=-4.1778
+  -> Doc 9: retrieval_score=0.083333336 | rerank_score=-4.4221
+  -> Doc 10: retrieval_score=0.5625 | rerank_score=-4.5939
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: IRRELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: IRRELEVANT
+  -> Doc 8: IRRELEVANT
+  -> Doc 9: IRRELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 5 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  Why does the Transformer paper claim its model is both more parallelizable and effective at modeling long-range dependencies?
+[Final Combined] Rewritten query: Transformer model parallelizability and long-range dependency effectiveness claims explanation.
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 101.88it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  7.93it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  7.91it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 521.70it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:06<00:12,  6.12s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:09<00:04,  4.74s/it][A
+Compute Scores: 100%|##########| 3/3 [00:10<00:00,  3.00s/it][ACompute Scores: 100%|##########| 3/3 [00:10<00:00,  3.61s/it]
+maddpg_ceb:  72%|#######2  | 36/50 [1:02:25<27:55, 119.66s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.5833334 | rerank_score=-0.6614
+  -> Doc 2: retrieval_score=0.36666667 | rerank_score=-0.6942
+  -> Doc 3: retrieval_score=0.44444445 | rerank_score=-1.2145
+  -> Doc 4: retrieval_score=0.6 | rerank_score=-1.9173
+  -> Doc 5: retrieval_score=0.083333336 | rerank_score=-2.1587
+  -> Doc 6: retrieval_score=0.07692308 | rerank_score=-2.8040
+  -> Doc 7: retrieval_score=0.071428575 | rerank_score=-3.1201
+  -> Doc 8: retrieval_score=0.25 | rerank_score=-3.1348
+  -> Doc 9: retrieval_score=0.14285715 | rerank_score=-3.2202
+  -> Doc 10: retrieval_score=0.21929824 | rerank_score=-3.2208
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 5
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 1218.57it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 11.53it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 967.40it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:04<00:09,  4.90s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:07<00:03,  3.81s/it][A
+Compute Scores: 100%|##########| 3/3 [00:08<00:00,  2.53s/it][ACompute Scores: 100%|##########| 3/3 [00:08<00:00,  2.98s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.8333334 | rerank_score=1.1611
+  -> Doc 2: retrieval_score=0.2909091 | rerank_score=0.2844
+  -> Doc 3: retrieval_score=0.5 | rerank_score=-0.1532
+  -> Doc 4: retrieval_score=0.33333334 | rerank_score=-0.2124
+  -> Doc 5: retrieval_score=0.13333334 | rerank_score=-1.1472
+  -> Doc 6: retrieval_score=0.3026316 | rerank_score=-1.7351
+  -> Doc 7: retrieval_score=0.24358976 | rerank_score=-2.4163
+  -> Doc 8: retrieval_score=0.27142859 | rerank_score=-2.5833
+  -> Doc 9: retrieval_score=0.25 | rerank_score=-2.9162
+  -> Doc 10: retrieval_score=0.20535715 | rerank_score=-3.2441
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 5
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  In the Transformer paper, what design choice removes recurrence while still allowing the model to learn dependencies across positions?
+[Final Combined] Rewritten query: Transformer paper: design choice removing recurrence while preserving positional dependency learning.
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 99.16it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 11.23it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 455.72it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:03<00:06,  3.43s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:05<00:02,  2.89s/it][A
+Compute Scores: 100%|##########| 3/3 [00:06<00:00,  1.76s/it][ACompute Scores: 100%|##########| 3/3 [00:06<00:00,  2.12s/it]
+maddpg_ceb:  74%|#######4  | 37/50 [1:05:30<30:11, 139.35s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.75 | rerank_score=0.7655
+  -> Doc 2: retrieval_score=0.25 | rerank_score=0.2611
+  -> Doc 3: retrieval_score=0.5 | rerank_score=-0.6485
+  -> Doc 4: retrieval_score=0.4047619 | rerank_score=-1.7427
+  -> Doc 5: retrieval_score=0.33333334 | rerank_score=-2.0554
+  -> Doc 6: retrieval_score=0.38333336 | rerank_score=-2.2733
+  -> Doc 7: retrieval_score=0.2 | rerank_score=-2.5589
+  -> Doc 8: retrieval_score=0.18803419 | rerank_score=-2.6471
+  -> Doc 9: retrieval_score=0.15757576 | rerank_score=-3.2936
+  -> Doc 10: retrieval_score=0.1 | rerank_score=-3.6549
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: IRRELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 9 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 6
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 83.85it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 12.71it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 84.80it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:10,  5.44s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:08<00:04,  4.20s/it][A
+Compute Scores: 100%|##########| 3/3 [00:09<00:00,  2.73s/it][ACompute Scores: 100%|##########| 3/3 [00:09<00:00,  3.25s/it]
+maddpg_ceb:  76%|#######6  | 38/50 [1:06:46<24:05, 120.49s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.5 | rerank_score=-5.1216
+  -> Doc 2: retrieval_score=0.14285715 | rerank_score=-5.5599
+  -> Doc 3: retrieval_score=0.43333334 | rerank_score=-6.1701
+  -> Doc 4: retrieval_score=0.2 | rerank_score=-6.3280
+  -> Doc 5: retrieval_score=0.125 | rerank_score=-6.6098
+  -> Doc 6: retrieval_score=0.11111111 | rerank_score=-6.8038
+  -> Doc 7: retrieval_score=0.18382353 | rerank_score=-7.2718
+  -> Doc 8: retrieval_score=0.09090909 | rerank_score=-7.6038
+  -> Doc 9: retrieval_score=0.25 | rerank_score=-8.0652
+  -> Doc 10: retrieval_score=0.14285715 | rerank_score=-8.3600
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: IRRELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: IRRELEVANT
+  -> Doc 5: IRRELEVANT
+  -> Doc 6: IRRELEVANT
+  -> Doc 7: IRRELEVANT
+  -> Doc 8: IRRELEVANT
+  -> Doc 9: IRRELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 2 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 111.78it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.64it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  8.63it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 767.81it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:04<00:08,  4.38s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:07<00:03,  3.75s/it][A
+Compute Scores: 100%|##########| 3/3 [00:08<00:00,  2.55s/it][ACompute Scores: 100%|##########| 3/3 [00:08<00:00,  2.94s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.75 | rerank_score=3.1545
+  -> Doc 2: retrieval_score=0.375 | rerank_score=2.8663
+  -> Doc 3: retrieval_score=0.5 | rerank_score=2.4177
+  -> Doc 4: retrieval_score=0.8333334 | rerank_score=2.0121
+  -> Doc 5: retrieval_score=0.27142859 | rerank_score=1.8276
+  -> Doc 6: retrieval_score=0.18333334 | rerank_score=0.5707
+  -> Doc 7: retrieval_score=0.1254902 | rerank_score=0.3263
+  -> Doc 8: retrieval_score=0.14285715 | rerank_score=-0.0238
+  -> Doc 9: retrieval_score=0.2159091 | rerank_score=-0.1042
+  -> Doc 10: retrieval_score=0.14285715 | rerank_score=-0.4751
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  How deep is the deepest residual network reported in the ResNet paper, and how does it compare to VGG in depth?
+[Final Combined] Rewritten query: "ResNet paper deepest residual network depth comparison to VGG network depth."
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 651.09it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 10.86it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 832.04it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:04<00:08,  4.31s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:07<00:03,  3.48s/it][A
+Compute Scores: 100%|##########| 3/3 [00:08<00:00,  2.32s/it][ACompute Scores: 100%|##########| 3/3 [00:08<00:00,  2.72s/it]
+maddpg_ceb:  78%|#######8  | 39/50 [1:09:40<25:01, 136.46s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.225 | rerank_score=3.1372
+  -> Doc 2: retrieval_score=0.3611111 | rerank_score=2.9266
+  -> Doc 3: retrieval_score=0.42424244 | rerank_score=2.3374
+  -> Doc 4: retrieval_score=0.8333334 | rerank_score=2.2466
+  -> Doc 5: retrieval_score=0.1 | rerank_score=2.2303
+  -> Doc 6: retrieval_score=0.64285713 | rerank_score=2.1829
+  -> Doc 7: retrieval_score=0.24358976 | rerank_score=1.8265
+  -> Doc 8: retrieval_score=0.13095239 | rerank_score=1.1351
+  -> Doc 9: retrieval_score=0.23376624 | rerank_score=0.6866
+  -> Doc 10: retrieval_score=0.32692307 | rerank_score=0.4848
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 5405.03it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.51it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.50it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 1017.38it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:04<00:09,  4.68s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:07<00:03,  3.62s/it][A
+Compute Scores: 100%|##########| 3/3 [00:08<00:00,  2.38s/it][ACompute Scores: 100%|##########| 3/3 [00:08<00:00,  2.82s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.8333334 | rerank_score=1.1611
+  -> Doc 2: retrieval_score=0.2909091 | rerank_score=0.2844
+  -> Doc 3: retrieval_score=0.5 | rerank_score=-0.1532
+  -> Doc 4: retrieval_score=0.33333334 | rerank_score=-0.2124
+  -> Doc 5: retrieval_score=0.13333334 | rerank_score=-1.1472
+  -> Doc 6: retrieval_score=0.3026316 | rerank_score=-1.7351
+  -> Doc 7: retrieval_score=0.24358976 | rerank_score=-2.4163
+  -> Doc 8: retrieval_score=0.27142859 | rerank_score=-2.5833
+  -> Doc 9: retrieval_score=0.25 | rerank_score=-2.9162
+  -> Doc 10: retrieval_score=0.20535715 | rerank_score=-3.2441
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  In the Transformer paper, what design choice removes recurrence while still allowing the model to learn dependencies across positions?
+[Final Combined] Rewritten query: Transformer paper: design choice removing recurrence while preserving positional dependency learning.
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 5178.15it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 11.98it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 1092.55it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:03<00:06,  3.31s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:05<00:02,  2.80s/it][A
+Compute Scores: 100%|##########| 3/3 [00:06<00:00,  1.69s/it][ACompute Scores: 100%|##########| 3/3 [00:06<00:00,  2.04s/it]
+maddpg_ceb:  80%|########  | 40/50 [1:12:00<22:56, 137.60s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.75 | rerank_score=0.7655
+  -> Doc 2: retrieval_score=0.25 | rerank_score=0.2611
+  -> Doc 3: retrieval_score=0.5 | rerank_score=-0.6485
+  -> Doc 4: retrieval_score=0.4047619 | rerank_score=-1.7427
+  -> Doc 5: retrieval_score=0.33333334 | rerank_score=-2.0554
+  -> Doc 6: retrieval_score=0.38333336 | rerank_score=-2.2733
+  -> Doc 7: retrieval_score=0.2 | rerank_score=-2.5589
+  -> Doc 8: retrieval_score=0.18803419 | rerank_score=-2.6471
+  -> Doc 9: retrieval_score=0.15757576 | rerank_score=-3.2936
+  -> Doc 10: retrieval_score=0.1 | rerank_score=-3.6549
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: IRRELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 9 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+  [ckpt] saved -> C:\Users\juand\Documents\Academic_RAG\brain\maddpg\results\defense_comparison_live\checkpoints\maddpg_ceb_live_ep0040.pt
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 2233.39it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 10.66it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 931.65it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:04<00:09,  4.90s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:07<00:03,  3.52s/it][A
+Compute Scores: 100%|##########| 3/3 [00:08<00:00,  2.20s/it][ACompute Scores: 100%|##########| 3/3 [00:08<00:00,  2.70s/it]
+maddpg_ceb:  82%|########2 | 41/50 [1:13:07<17:27, 116.41s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.36666667 | rerank_score=6.2564
+  -> Doc 2: retrieval_score=0.5833334 | rerank_score=6.1189
+  -> Doc 3: retrieval_score=0.375 | rerank_score=4.6171
+  -> Doc 4: retrieval_score=1.0 | rerank_score=4.4833
+  -> Doc 5: retrieval_score=0.5 | rerank_score=4.4444
+  -> Doc 6: retrieval_score=0.19090909 | rerank_score=3.1346
+  -> Doc 7: retrieval_score=0.071428575 | rerank_score=1.5510
+  -> Doc 8: retrieval_score=0.10644258 | rerank_score=0.8363
+  -> Doc 9: retrieval_score=0.14285715 | rerank_score=0.7645
+  -> Doc 10: retrieval_score=0.26785713 | rerank_score=-0.1042
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: IRRELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 9 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 4
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 5890.88it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 11.64it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 931.10it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:03<00:07,  3.92s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:07<00:03,  3.52s/it][A
+Compute Scores: 100%|##########| 3/3 [00:08<00:00,  2.41s/it][ACompute Scores: 100%|##########| 3/3 [00:08<00:00,  2.75s/it]
+maddpg_ceb:  84%|########4 | 42/50 [1:14:28<14:06, 105.79s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.8333334 | rerank_score=4.0004
+  -> Doc 2: retrieval_score=0.8333334 | rerank_score=3.4156
+  -> Doc 3: retrieval_score=0.33333334 | rerank_score=2.4516
+  -> Doc 4: retrieval_score=0.125 | rerank_score=1.7611
+  -> Doc 5: retrieval_score=0.325 | rerank_score=0.9500
+  -> Doc 6: retrieval_score=0.17424244 | rerank_score=0.2182
+  -> Doc 7: retrieval_score=0.32142857 | rerank_score=-0.1417
+  -> Doc 8: retrieval_score=0.17424244 | rerank_score=-1.1086
+  -> Doc 9: retrieval_score=0.45 | rerank_score=-1.3090
+  -> Doc 10: retrieval_score=0.06666667 | rerank_score=-1.3256
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 4798.97it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.32it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.31it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 690.16it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:10,  5.13s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:08<00:04,  4.12s/it][A
+Compute Scores: 100%|##########| 3/3 [00:09<00:00,  2.77s/it][ACompute Scores: 100%|##########| 3/3 [00:09<00:00,  3.24s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=0.1883
+  -> Doc 2: retrieval_score=0.11428572 | rerank_score=-0.0999
+  -> Doc 3: retrieval_score=0.21929824 | rerank_score=-0.1049
+  -> Doc 4: retrieval_score=0.1 | rerank_score=-0.7006
+  -> Doc 5: retrieval_score=0.28333333 | rerank_score=-0.9612
+  -> Doc 6: retrieval_score=0.25 | rerank_score=-1.4836
+  -> Doc 7: retrieval_score=0.11111111 | rerank_score=-2.7539
+  -> Doc 8: retrieval_score=0.083333336 | rerank_score=-3.2037
+  -> Doc 9: retrieval_score=0.19285715 | rerank_score=-3.4342
+  -> Doc 10: retrieval_score=0.30882353 | rerank_score=-3.4995
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: IRRELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: IRRELEVANT
+  -> Doc 8: IRRELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 6 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  How do the Transformer and ResNet papers each argue that architectural design can overcome training bottlenecks in deep learning?
+[Final Combined] Rewritten query: Transformer and ResNet architectural designs overcoming deep learning training bottlenecks.
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 5315.97it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 10.28it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 1053.93it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:10,  5.01s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:08<00:03,  3.95s/it][A
+Compute Scores: 100%|##########| 3/3 [00:09<00:00,  2.65s/it][ACompute Scores: 100%|##########| 3/3 [00:09<00:00,  3.11s/it]
+maddpg_ceb:  86%|########6 | 43/50 [1:17:04<14:05, 120.83s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=1.0 | rerank_score=2.2578
+  -> Doc 2: retrieval_score=0.12955466 | rerank_score=2.0058
+  -> Doc 3: retrieval_score=0.6666667 | rerank_score=1.9845
+  -> Doc 4: retrieval_score=0.30555555 | rerank_score=1.6430
+  -> Doc 5: retrieval_score=0.09090909 | rerank_score=0.8403
+  -> Doc 6: retrieval_score=0.325 | rerank_score=-0.2919
+  -> Doc 7: retrieval_score=0.21111111 | rerank_score=-1.5854
+  -> Doc 8: retrieval_score=0.22916667 | rerank_score=-1.8804
+  -> Doc 9: retrieval_score=0.125 | rerank_score=-2.5214
+  -> Doc 10: retrieval_score=0.083333336 | rerank_score=-2.7248
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 5
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  Transformer and ResNet architectural designs overcoming deep learning training bottlenecks.
+[Final Combined] Rewritten query: "Deep learning training bottlenecks in Transformers and ResNets: architectural design improvements."
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 5309.25it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 10.05it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 1010.19it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:04<00:08,  4.27s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:07<00:03,  3.60s/it][A
+Compute Scores: 100%|##########| 3/3 [00:08<00:00,  2.46s/it][ACompute Scores: 100%|##########| 3/3 [00:08<00:00,  2.84s/it]
+maddpg_ceb:  88%|########8 | 44/50 [1:18:28<10:58, 109.76s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.75 | rerank_score=3.1545
+  -> Doc 2: retrieval_score=0.375 | rerank_score=2.8663
+  -> Doc 3: retrieval_score=0.5 | rerank_score=2.4177
+  -> Doc 4: retrieval_score=0.8333334 | rerank_score=2.0121
+  -> Doc 5: retrieval_score=0.27142859 | rerank_score=1.8276
+  -> Doc 6: retrieval_score=0.18333334 | rerank_score=0.5707
+  -> Doc 7: retrieval_score=0.1254902 | rerank_score=0.3263
+  -> Doc 8: retrieval_score=0.14285715 | rerank_score=-0.0238
+  -> Doc 9: retrieval_score=0.2159091 | rerank_score=-0.1042
+  -> Doc 10: retrieval_score=0.14285715 | rerank_score=-0.4751
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 2
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 5706.54it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 11.42it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 1072.80it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:05<00:10,  5.13s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:07<00:03,  3.76s/it][A
+Compute Scores: 100%|##########| 3/3 [00:08<00:00,  2.40s/it][ACompute Scores: 100%|##########| 3/3 [00:08<00:00,  2.90s/it]
+maddpg_ceb:  90%|######### | 45/50 [1:19:31<07:58, 95.75s/it] [Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.5833334 | rerank_score=6.2630
+  -> Doc 2: retrieval_score=1.0 | rerank_score=6.2329
+  -> Doc 3: retrieval_score=0.5833334 | rerank_score=4.8913
+  -> Doc 4: retrieval_score=0.36666667 | rerank_score=3.2845
+  -> Doc 5: retrieval_score=0.23809525 | rerank_score=3.0290
+  -> Doc 6: retrieval_score=0.25396827 | rerank_score=1.8610
+  -> Doc 7: retrieval_score=0.2 | rerank_score=1.4078
+  -> Doc 8: retrieval_score=0.11111111 | rerank_score=1.0980
+  -> Doc 9: retrieval_score=0.14583334 | rerank_score=0.9011
+  -> Doc 10: retrieval_score=0.12454213 | rerank_score=0.8965
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: IRRELEVANT
+  -> Doc 10: IRRELEVANT
+[Final Combined] Kept 8 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 1
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 4013.69it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 11.55it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 1034.01it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:04<00:08,  4.40s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:07<00:03,  3.46s/it][A
+Compute Scores: 100%|##########| 3/3 [00:07<00:00,  2.12s/it][ACompute Scores: 100%|##########| 3/3 [00:07<00:00,  2.57s/it]
+maddpg_ceb:  92%|#########2| 46/50 [1:20:43<05:53, 88.40s/it][Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.75 | rerank_score=3.3495
+  -> Doc 2: retrieval_score=0.8333334 | rerank_score=3.2038
+  -> Doc 3: retrieval_score=0.53333336 | rerank_score=1.9819
+  -> Doc 4: retrieval_score=0.2777778 | rerank_score=0.6624
+  -> Doc 5: retrieval_score=0.14358975 | rerank_score=-0.8703
+  -> Doc 6: retrieval_score=0.19642857 | rerank_score=-1.0827
+  -> Doc 7: retrieval_score=0.1984127 | rerank_score=-1.2736
+  -> Doc 8: retrieval_score=0.21111111 | rerank_score=-2.7218
+  -> Doc 9: retrieval_score=0.25 | rerank_score=-2.7386
+  -> Doc 10: retrieval_score=0.24358976 | rerank_score=-3.1154
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: IRRELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 9 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 4
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 362.17it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00, 10.96it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 616.69it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:03<00:07,  3.72s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:06<00:03,  3.20s/it][A
+Compute Scores: 100%|##########| 3/3 [00:07<00:00,  2.15s/it][ACompute Scores: 100%|##########| 3/3 [00:07<00:00,  2.48s/it]
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.8333334 | rerank_score=3.6974
+  -> Doc 2: retrieval_score=0.14215687 | rerank_score=2.8332
+  -> Doc 3: retrieval_score=0.4166667 | rerank_score=1.9112
+  -> Doc 4: retrieval_score=0.19642857 | rerank_score=1.8722
+  -> Doc 5: retrieval_score=0.083333336 | rerank_score=1.8112
+  -> Doc 6: retrieval_score=0.4166667 | rerank_score=1.7374
+  -> Doc 7: retrieval_score=0.09090909 | rerank_score=1.4040
+  -> Doc 8: retrieval_score=0.2 | rerank_score=1.2253
+  -> Doc 9: retrieval_score=0.7 | rerank_score=1.0747
+  -> Doc 10: retrieval_score=0.17777778 | rerank_score=1.0304
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: RELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: RELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+  -> Doc 8: RELEVANT
+  -> Doc 9: RELEVANT
+  -> Doc 10: RELEVANT
+[Final Combined] Kept 10 / 10 docs.
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+[llm_adapter] Rate limit hit. Retrying in 2.29s (Attempt 1/10)...
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+[llm_adapter] Rate limit hit. Retrying in 2.44s (Attempt 2/10)...
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+[llm_adapter] Rate limit hit. Retrying in 2.27s (Attempt 3/10)...
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+[llm_adapter] Rate limit hit. Retrying in 2.42s (Attempt 4/10)...
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+[llm_adapter] Rate limit hit. Retrying in 2.10s (Attempt 5/10)...
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+[llm_adapter] Rate limit hit. Retrying in 2.40s (Attempt 6/10)...
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+[llm_adapter] Rate limit hit. Retrying in 2.20s (Attempt 7/10)...
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+[llm_adapter] Rate limit hit. Retrying in 2.50s (Attempt 8/10)...
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+[llm_adapter] Rate limit hit. Retrying in 2.45s (Attempt 9/10)...
+
+[Claim Verifier] Verifying answer claim by claim...
+  -> Groq model: llama-3.1-8b-instant
+  -> Claims to verify: 3
+[llm_adapter] Rate limit hit. Retrying in 2.33s (Attempt 10/10)...
+
+[Final Combined] Rewriting retrieval query...
+  -> Groq model: llama-3.1-8b-instant
+[Final Combined] Original query:  How do BERT and TabNet each use pre-training before downstream task-specific learning?
+[Final Combined] Rewritten query: "BERT pre-training mechanisms vs TabNet pre-training strategies for downstream task adaptation."
+
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 1/1 [00:00<00:00, 110.18it/s]
+
+Inference Embeddings:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.84it/s][AInference Embeddings: 100%|##########| 1/1 [00:00<00:00,  9.82it/s]
+
+[Reranker] Reranking top 20 retrieved docs -> keeping top 10...
+
+pre tokenize:   0%|          | 0/3 [00:00<?, ?it/s][Apre tokenize: 100%|##########| 3/3 [00:00<00:00, 902.84it/s]
+
+Compute Scores:   0%|          | 0/3 [00:00<?, ?it/s][A
+Compute Scores:  33%|###3      | 1/3 [00:03<00:07,  3.75s/it][A
+Compute Scores:  67%|######6   | 2/3 [00:06<00:03,  3.28s/it][A
+Compute Scores: 100%|##########| 3/3 [00:07<00:00,  2.19s/it][ACompute Scores: 100%|##########| 3/3 [00:07<00:00,  2.53s/it]
+maddpg_ceb:  92%|#########2| 46/50 [1:49:48<09:32, 143.23s/it]
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\juand\Documents\Academic_RAG\brain\maddpg\live_maddpg_runner.py", line 935, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\juand\Documents\Academic_RAG\brain\maddpg\live_maddpg_runner.py", line 832, in main
+    ckpt_path = train_variant(
+        variant          = variant,
+    ...<7 lines>...
+        checkpoint_every = args.checkpoint_every,
+    )
+  File "C:\Users\juand\Documents\Academic_RAG\brain\maddpg\live_maddpg_runner.py", line 244, in train_variant
+    new_state, reward, done, info = env.step(active_agent, discrete, params=params)
+                                    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\juand\Documents\Academic_RAG\brain\context_marl_ac\marl\marl_env.py", line 68, in step
+    self.state = agent.act(self.state, action_name)
+                 ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\juand\Documents\Academic_RAG\brain\context_marl_ac\agents\grader_agent.py", line 27, in act
+    filtered_chunks, tokens = grade_chunks(state.user_query, state.retrieved_chunks, mode=action_name)
+                              ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\juand\Documents\Academic_RAG\brain\context_marl_ac\adapters\llm_adapter.py", line 174, in grade_chunks
+    result = _call_with_retry(lambda: _grade_fn(mock_state))
+  File "C:\Users\juand\Documents\Academic_RAG\brain\context_marl_ac\adapters\llm_adapter.py", line 68, in _call_with_retry
+    raise Exception(f"Failed after {max_attempts} retries due to rate limits.")
+Exception: Failed after 10 retries due to rate limits.
+[Reranker] Kept 10 reranked docs.
+  -> Doc 1: retrieval_score=0.75 | rerank_score=3.4018
+  -> Doc 2: retrieval_score=0.75 | rerank_score=2.3443
+  -> Doc 3: retrieval_score=0.083333336 | rerank_score=1.7791
+  -> Doc 4: retrieval_score=0.25396827 | rerank_score=1.7765
+  -> Doc 5: retrieval_score=0.225 | rerank_score=1.4751
+  -> Doc 6: retrieval_score=0.24285716 | rerank_score=1.2782
+  -> Doc 7: retrieval_score=0.5 | rerank_score=1.2743
+  -> Doc 8: retrieval_score=0.11111111 | rerank_score=1.2275
+  -> Doc 9: retrieval_score=0.06666667 | rerank_score=1.1737
+  -> Doc 10: retrieval_score=0.53333336 | rerank_score=0.8946
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: IRRELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: IRRELEVANT
+  -> Doc 4: RELEVANT
+[llm_adapter] Rate limit hit. Retrying in 2.45s (Attempt 1/10)...
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+[llm_adapter] Rate limit hit. Retrying in 2.47s (Attempt 2/10)...
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: IRRELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: IRRELEVANT
+  -> Doc 4: RELEVANT
+  -> Doc 5: RELEVANT
+  -> Doc 6: RELEVANT
+  -> Doc 7: RELEVANT
+[llm_adapter] Rate limit hit. Retrying in 2.43s (Attempt 3/10)...
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: IRRELEVANT
+  -> Doc 2: RELEVANT
+[llm_adapter] Rate limit hit. Retrying in 2.33s (Attempt 4/10)...
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: IRRELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: IRRELEVANT
+[llm_adapter] Rate limit hit. Retrying in 2.32s (Attempt 5/10)...
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: IRRELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: IRRELEVANT
+[llm_adapter] Rate limit hit. Retrying in 2.24s (Attempt 6/10)...
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: IRRELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: IRRELEVANT
+[llm_adapter] Rate limit hit. Retrying in 2.32s (Attempt 7/10)...
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: IRRELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: IRRELEVANT
+[llm_adapter] Rate limit hit. Retrying in 2.36s (Attempt 8/10)...
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: IRRELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: IRRELEVANT
+[llm_adapter] Rate limit hit. Retrying in 2.47s (Attempt 9/10)...
+
+[Final Combined] Grading 10 candidate docs...
+  -> Groq model: llama-3.1-8b-instant
+  -> Doc 1: IRRELEVANT
+  -> Doc 2: RELEVANT
+  -> Doc 3: IRRELEVANT
+[llm_adapter] Rate limit hit. Retrying in 2.34s (Attempt 10/10)...

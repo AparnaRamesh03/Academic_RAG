@@ -1,5 +1,5 @@
 """
-brain/context_marl_ac/maddpg/context_engineering_block.py
+brain/maddpg/context_engineering_block.py
 ----------------------------------------------------------
 Builds a richer 20-dim state representation from ContextState.
 Extends the base 14-dim global features with 6 additional features.

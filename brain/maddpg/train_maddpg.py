@@ -1,6 +1,6 @@
 """
-brain/context_marl_ac/maddpg/train_maddpg.py
----------------------------------------------
+brain/maddpg/train_maddpg.py
+-----------------------------
 MADDPG training loop for stage-constrained cooperative RAG.
 
 policy_mode = "maddpg_continuous"
@@ -19,10 +19,10 @@ Design:
 
 Usage:
   # from Academic_RAG/brain/
-  python -m context_marl_ac.maddpg.train_maddpg --episodes 200 --dry-run
+  python -m maddpg.train_maddpg --episodes 200 --dry-run
 
   # with Context Engineering Block (20-dim state):
-  python -m context_marl_ac.maddpg.train_maddpg --episodes 200 --use-ceb --dry-run
+  python -m maddpg.train_maddpg --episodes 200 --use-ceb --dry-run
 """
 
 import argparse
@@ -99,7 +99,7 @@ ACTOR_LR        = 1e-3
 CRITIC_LR       = 1e-3
 GAMMA           = 0.99
 TAU             = 0.005      # soft target update
-BATCH_SIZE      = 256
+BATCH_SIZE      = 64         # binding constraint: gradient updates start only after buffer ≥ BATCH_SIZE
 BUFFER_CAPACITY = 50_000
 HIDDEN_DIM      = 128
 NOISE_SIGMA     = 0.15
@@ -344,6 +344,8 @@ def train():
     ep_csv_writer: Optional[csv.DictWriter] = None
 
     total_steps        = 0
+    total_updates      = 0
+    last_losses: Dict[str, float] = {}
     best_reward        = -float("inf")
     all_episode_metrics: List[Dict] = []
 
@@ -405,7 +407,14 @@ def train():
 
             # Execute via existing env.step — stage constraints fully preserved.
             # params are injected into state so agents can adapt RAG behaviour.
-            new_state, reward, done, info = env.step(active_agent, discrete_action, params=params)
+            try:
+                new_state, reward, done, info = env.step(active_agent, discrete_action, params=params)
+            except Exception as exc:
+                print(f"  [train-err] ep={ep_idx} agent={active_agent} action={discrete_action}: {exc}")
+                state.final_status = "error"
+                state.done = True
+                done = True
+                break
 
             next_features = _state_features(env, args.use_ceb)
             ep_steps  += 1
@@ -457,8 +466,12 @@ def train():
             })
 
             # DDPG network update (after warmup, every UPDATE_EVERY steps).
-            if buffer.is_ready(WARMUP_STEPS) and total_steps % UPDATE_EVERY == 0:
-                _ddpg_update(agents, critic, target_critic, critic_optim, buffer, device)
+            if buffer.is_ready(WARMUP_STEPS) and len(buffer) >= BATCH_SIZE \
+                    and total_steps % UPDATE_EVERY == 0:
+                last_losses = _ddpg_update(
+                    agents, critic, target_critic, critic_optim, buffer, device,
+                )
+                total_updates += 1
 
             state = new_state
 
@@ -476,6 +489,17 @@ def train():
             "latency_seconds":   round(state.latency_so_far, 3),
             "token_usage":       state.token_usage,
             "buffer_size":       len(buffer),
+            "total_updates":     total_updates,
+            "critic_loss":       round(last_losses.get("critic_loss", float("nan")), 6)
+                                   if last_losses else "",
+            "actor_loss_retriever":  round(last_losses.get("actor_loss_retriever", float("nan")), 6)
+                                   if last_losses else "",
+            "actor_loss_grader":     round(last_losses.get("actor_loss_grader", float("nan")), 6)
+                                   if last_losses else "",
+            "actor_loss_generator":  round(last_losses.get("actor_loss_generator", float("nan")), 6)
+                                   if last_losses else "",
+            "actor_loss_verifier":   round(last_losses.get("actor_loss_verifier", float("nan")), 6)
+                                   if last_losses else "",
         }
         all_episode_metrics.append(ep_metrics)
 
@@ -525,6 +549,9 @@ def train():
             "mean_latency":           sum(m["latency_seconds"]   for m in all_episode_metrics) / n,
             "best_reward":            best_reward,
             "total_env_steps":        total_steps,
+            "total_gradient_updates": total_updates,
+            "batch_size":             BATCH_SIZE,
+            "warmup_steps":           WARMUP_STEPS,
         }
         with open(agg_path, "w") as f:
             json.dump(agg, f, indent=2)
@@ -536,9 +563,14 @@ def train():
 
     print(
         f"[train_maddpg] Done. best_reward={best_reward:.4f}  "
-        f"total_steps={total_steps}\n"
+        f"total_steps={total_steps}  gradient_updates={total_updates}\n"
         f"  Results in: {base}"
     )
+    if total_updates == 0:
+        print(
+            f"  [warn] Zero gradient updates performed: buffer never reached "
+            f"BATCH_SIZE={BATCH_SIZE}. Policy is effectively random — increase episodes."
+        )
 
 
 if __name__ == "__main__":

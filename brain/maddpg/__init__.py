@@ -1,5 +1,5 @@
 """
-brain/context_marl_ac/maddpg/
+brain/maddpg/
 MADDPG continuous-control extension for the stage-constrained cooperative MARL RAG.
 
 policy_mode: 'discrete_marl'       — existing A2C discrete actors (unchanged)

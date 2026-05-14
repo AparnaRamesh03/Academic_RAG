@@ -1,5 +1,5 @@
 """
-brain/context_marl_ac/maddpg/maddpg_actor.py
+brain/maddpg/maddpg_actor.py
 ---------------------------------------------
 MADDPG per-agent deterministic actor network.
 Input:  observation vector  (obs_dim,)

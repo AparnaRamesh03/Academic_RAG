@@ -1,5 +1,5 @@
 """
-brain/context_marl_ac/maddpg/maddpg_agent.py
+brain/maddpg/maddpg_agent.py
 ---------------------------------------------
 Per-agent MADDPG wrapper: actor + target actor + optimizer + OUNoise.
 """

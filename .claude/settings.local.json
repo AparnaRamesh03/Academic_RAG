@@ -34,7 +34,24 @@
       "Bash(python -m maddpg.train_maddpg --episodes 5 --dry-run --run-name move_test)",
       "Bash(grep -rn \"context_marl_ac/results\\\\|context_marl_ac\\\\\\\\\\\\\\\\results\\\\|_MARL_ROOT.*results\\\\|parent\\\\.parent.*results\" \"c:/Users/juand/Documents/Academic_RAG/brain\" --include=\"*.py\")",
       "Bash(python -m maddpg.train_maddpg --episodes 3 --dry-run --run-name path_test)",
-      "Bash(python -m maddpg.live_maddpg_runner --episodes 5 --n-eval 1 --eval-only-variant ceb)"
+      "Bash(python -m maddpg.live_maddpg_runner --episodes 5 --n-eval 1 --eval-only-variant ceb)",
+      "Bash(kill 1557)",
+      "Bash(Get-ChildItem -Recurse \"c:\\\\Users\\\\juand\\\\Documents\\\\Academic_RAG\\\\brain\\\\maddpg\\\\results\\\\\" -Filter \"*.pt\" | Select-Object FullName, LastWriteTime, Length)",
+      "Bash(python -m maddpg.live_maddpg_runner --skip-training --eval-only-variant ceb --n-eval 9 --output-dir maddpg/results/defense_comparison_ep40)",
+      "Bash(sleep 20 && cat /tmp/ep40_eval.log)",
+      "Read(//tmp/**)",
+      "Bash(kill 6395)",
+      "Bash(python -m py_compile brain/maddpg/live_maddpg_runner.py brain/maddpg/train_maddpg.py)",
+      "Bash(python -m py_compile brain/context_marl_ac/marl/reward.py brain/context_marl_ac/config.py)",
+      "Bash(rm -v brain/maddpg/results/checkpoints/best_reward.pt brain/maddpg/results/maddpg/checkpoints/best_reward.pt brain/maddpg/results/maddpg/checkpoints/ep_0050.pt brain/maddpg/results/defense_comparison_live/checkpoints/*.pt brain/maddpg/results/defense_comparison_ep40/checkpoints/*.pt)",
+      "Bash(cd /c/Users/juand/Documents/Academic_RAG && rm -v brain/maddpg/results/checkpoints/best_reward.pt brain/maddpg/results/maddpg/checkpoints/best_reward.pt brain/maddpg/results/maddpg/checkpoints/ep_0050.pt brain/maddpg/results/defense_comparison_live/checkpoints/*.pt brain/maddpg/results/defense_comparison_ep40/checkpoints/*.pt)",
+      "Bash(python -m maddpg.live_maddpg_runner --episodes 30 --n-eval 9 --output-dir maddpg/results/defense_comparison_v2)",
+      "Bash(echo \"Started PID $!\")",
+      "Bash(kill 8060)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\juand\\Documents\\Academic_RAG\\brain\\maddpg\\results\\brain\\maddpg\\results\\defense_comparison_live\\checkpoints",
+      "c:\\c\\Users\\juand\\Documents\\Academic_RAG\\brain\\maddpg\\results\\checkpoints"
     ]
   }
 }

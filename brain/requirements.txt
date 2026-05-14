@@ -11,3 +11,8 @@ ollama
 FlagEmbedding==1.3.5
 transformers==4.50.1
 langchain-groq
+
+# MARL / MADDPG (brain/maddpg/ and brain/context_marl_ac/)
+torch
+numpy
+tqdm
