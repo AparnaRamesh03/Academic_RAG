@@ -68,12 +68,19 @@ GRAD_CLIP_NORM = 1.0
 CHECKPOINT_EVERY = 50   # save checkpoint every N episodes
 
 # ---------------------------------------------------------------------------
-# Cooperative reward weights  (must sum to 1.0 for the positive terms)
+# Cooperative reward weights  (positive terms sum to ~0.95)
 # ---------------------------------------------------------------------------
-W_ANSWER_QUALITY    = 0.30
-W_CITATION_SUPPORT  = 0.25
-W_VERIFICATION_PASS = 0.20
-W_RETRIEVAL_F1      = 0.15
+# Rebalanced to disincentivise reward-hacking the verifier with minimal evidence:
+#   - Answer-quality (token F1 vs gold) is now the dominant signal.
+#   - Verification-pass weight cut from 0.20 → 0.10 so "verifier passed" is no
+#     longer worth more than a 0.4 F1 improvement.
+#   - Citation-support cut from 0.25 → 0.15 since the trained policy was
+#     trivially maxing it on 1-chunk answers.
+#   - Retrieval-F1 boosted 0.15 → 0.20 so picking the right sources matters more.
+W_ANSWER_QUALITY    = 0.50
+W_CITATION_SUPPORT  = 0.15
+W_VERIFICATION_PASS = 0.10
+W_RETRIEVAL_F1      = 0.20
 W_LATENCY_COST      = 0.05   # subtracted; applied once at terminal, capped at 1.0 normalized
 W_STEP_COST         = 0.02   # subtracted per step
 

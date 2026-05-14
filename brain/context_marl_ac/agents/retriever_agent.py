@@ -38,7 +38,7 @@ def _enforce_source_diversity(
     if diversity < 0.7:
         return chunks
     span = max(1, top_k)
-    # Remap diversity in [0.7, 1.0] to a cap in [span, 1].
+    # Remap diversity in [0.7, 1.0] to a per-source cap in [span, 1].
     t = (diversity - 0.7) / 0.3
     cap = max(1, int(round(span * (1.0 - t) + 1.0 * t)))
     counts: Dict[str, int] = {}
@@ -49,6 +49,15 @@ def _enforce_source_diversity(
         counts[src] = counts.get(src, 0) + 1
         if counts[src] <= cap:
             out.append(c)
+    # Hard floor: never strip below min(3, len(chunks)) regardless of diversity.
+    # Without this the actor learned to push diversity high to collapse
+    # evidence to 1 chunk per question and reward-hack the verifier.
+    floor = min(3, len(chunks))
+    if len(out) < floor:
+        # Re-add highest-scoring excluded chunks until we hit the floor.
+        excluded = [c for c in chunks if c not in out]
+        excluded.sort(key=lambda c: c.get("score", 0.0), reverse=True)
+        out.extend(excluded[: floor - len(out)])
     return out if out else chunks
 
 class RetrieverAgent(BaseAgent):

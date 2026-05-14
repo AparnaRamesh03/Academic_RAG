@@ -71,7 +71,11 @@
       "Bash(tee /tmp/openai_200ep_v2.log)",
       "Bash(mv ep_0010.pt ep_0010_old_keep_ratio_lo.pt)",
       "Bash(mv ep_0020.pt ep_0020_old_keep_ratio_lo.pt)",
-      "Bash(mv ep_0030.pt ep_0030_old_keep_ratio_lo.pt)"
+      "Bash(mv ep_0030.pt ep_0030_old_keep_ratio_lo.pt)",
+      "Bash(python -m maddpg.evaluate_maddpg --mode maddpg_ceb --checkpoint maddpg/results/maddpg/checkpoints/best_reward.pt --benchmark-path maddpg/results/benchmark_splits/test.jsonl --output-dir maddpg/results/eval_200ep_v2 --compare-baseline --hidden-dim 128)",
+      "Bash(tee /tmp/eval_200ep_v2.log)",
+      "Bash(python -m maddpg.train_maddpg --train-mode live --use-ceb --episodes 200 --batch-size 64 --warmup-steps 32 --update-every 2 --min-updates 100 --run-name maddpg_ceb_openai_200ep_v3 --seed 42 --hidden-dim 128 --checkpoint-every 25 --results-dir maddpg/results/maddpg_v3)",
+      "Bash(tee /tmp/openai_200ep_v3.log)"
     ],
     "additionalDirectories": [
       "C:\\Users\\juand\\Documents\\Academic_RAG\\brain\\maddpg\\results\\brain\\maddpg\\results\\defense_comparison_live\\checkpoints",
