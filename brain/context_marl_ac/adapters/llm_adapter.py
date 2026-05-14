@@ -223,15 +223,13 @@ def _generate_with_temperature(
     _fa = _BRAIN_ROOT / "final_arch"
     if str(_fa) not in sys.path:
         sys.path.insert(0, str(_fa))
-    from llm_config import build_groq_llm
+    from llm_config import build_llm
 
-    from langchain_groq import ChatGroq
     import os
-    _model = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
-    chat_kwargs: Dict[str, Any] = {"model": _model, "temperature": float(temperature)}
+    chat_kwargs: Dict[str, Any] = {"temperature": float(temperature)}
     if max_tokens is not None:
         chat_kwargs["max_tokens"] = int(max_tokens)
-    temp_llm = ChatGroq(**chat_kwargs)
+    temp_llm = build_llm(**chat_kwargs)
 
     docs    = _evidence_pack_to_docs(evidence_pack)
     prompt  = _build_generation_prompt(query, docs)

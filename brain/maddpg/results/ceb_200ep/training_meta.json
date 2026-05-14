@@ -1,0 +1,9 @@
+{
+  "episodes": 200,
+  "skip_training": false,
+  "update_counts": {
+    "ceb": 23
+  },
+  "batch_size": 64,
+  "warmup_steps": 50
+}

@@ -2,7 +2,8 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 
-_env = Path(__file__).resolve().parent / ".env"
+# Load from brain/.env if not already loaded
+_env = Path(__file__).resolve().parents[1] / ".env"
 if _env.exists():
     load_dotenv(dotenv_path=_env)
 
@@ -22,5 +23,5 @@ def build_llm(temperature: float = 0.0, **kwargs):
 
 
 def build_groq_llm(temperature: float = 0.0, **kwargs):
-    """Legacy alias — delegates to build_llm()."""
+    """Legacy alias — now delegates to build_llm() so all nodes get OpenAI automatically."""
     return build_llm(temperature=temperature, **kwargs)
