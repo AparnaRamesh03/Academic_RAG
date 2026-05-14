@@ -1,0 +1,38 @@
+{
+  "run_name": "maddpg_ceb_dry_smoke",
+  "architecture": "maddpg_style_continuous_control",
+  "critic_type": "stage_conditioned",
+  "use_ceb": true,
+  "state_dim": 20,
+  "episodes": 5,
+  "total_env_steps": 20,
+  "total_gradient_updates": 17,
+  "trained": true,
+  "best_reward": 0.65,
+  "mean_reward": 0.51,
+  "verification_pass_rate": 1.0,
+  "mean_citation_support": 1.0,
+  "mean_latency": 0.0152,
+  "failure_rate": 0.0,
+  "last_losses": {
+    "critic_loss": 0.009172669611871243,
+    "actor_loss_grader": 0.10239557176828384,
+    "actor_loss_generator": 0.18510623276233673,
+    "actor_loss_verifier": -0.6809719800949097
+  },
+  "hyperparameters": {
+    "batch_size": 4,
+    "warmup_steps": 4,
+    "update_every": 1,
+    "min_updates": 1,
+    "gamma": 0.99,
+    "tau": 0.005,
+    "actor_lr": 0.001,
+    "critic_lr": 0.001,
+    "noise_sigma": 0.15,
+    "grad_clip": 1.0,
+    "error_penalty": -1.0,
+    "seed": 42,
+    "hidden_dim": 64
+  }
+}

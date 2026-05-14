@@ -21,7 +21,8 @@ class GraderAgent(BaseAgent):
 
         # MADDPG continuous params for post-grading filtering.
         p = state.maddpg_params or {}
-        keep_ratio    = float(p.get("evidence_keep_ratio", 1.0))
+        keep_ratio          = float(p.get("evidence_keep_ratio", 1.0))
+        relevance_threshold = float(p.get("relevance_threshold", 0.0))
 
         # 1. Run Filtering/Grading
         filtered_chunks, tokens = grade_chunks(state.user_query, state.retrieved_chunks, mode=action_name)
@@ -34,7 +35,14 @@ class GraderAgent(BaseAgent):
             filtered_chunks = sorted_chunks[:3]
             fallback_used = True
 
-        # 3. MADDPG evidence_keep_ratio: trim to top-N fraction after LLM grading.
+        # 3. MADDPG relevance_threshold: drop chunks below the threshold score
+        # before applying keep-ratio. Only meaningful when chunks have scores.
+        if relevance_threshold > 0.0 and filtered_chunks:
+            scored = [c for c in filtered_chunks if float(c.get("score", 0.0)) >= relevance_threshold]
+            if scored:
+                filtered_chunks = scored
+
+        # 4. MADDPG evidence_keep_ratio: trim to top-N fraction after LLM grading.
         if keep_ratio < 1.0 and filtered_chunks:
             n_keep = max(1, int(len(filtered_chunks) * keep_ratio))
             filtered_chunks = sorted(filtered_chunks, key=lambda x: x.get("score", 0.0), reverse=True)[:n_keep]

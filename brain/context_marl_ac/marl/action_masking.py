@@ -40,13 +40,15 @@ def _non_retrieve_more(actions: List[str]) -> List[str]:
 
 def _default_retrieval_action(actions: List[str]) -> List[str]:
     """
-    Force reranked retrieval as the default retrieval strategy.
+    Allow the retriever to pick its retrieval strategy. The MADDPG-style
+    continuous-control architecture relies on the retriever actor being able
+    to choose dense / sparse / hybrid / hybrid_rerank on the main retrieval
+    paths — restricting this to a single fixed strategy makes the actor's
+    continuous parameters meaningless.
 
-    This ensures the reranker runs for the main retrieval path.
+    `retrieve_more` is explicitly excluded here because it is a recovery-only
+    action that requires existing retrieved chunks.
     """
-    if "hybrid_rerank" in actions:
-        return ["hybrid_rerank"]
-
     return _non_retrieve_more(actions)
 
 

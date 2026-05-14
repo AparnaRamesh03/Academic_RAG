@@ -1,0 +1,38 @@
+{
+  "run_name": "maddpg_ceb_live_precheck_v2",
+  "architecture": "maddpg_style_continuous_control",
+  "critic_type": "stage_conditioned",
+  "use_ceb": true,
+  "state_dim": 20,
+  "episodes": 3,
+  "total_env_steps": 11,
+  "total_gradient_updates": 8,
+  "trained": true,
+  "best_reward": -0.02,
+  "mean_reward": -0.12,
+  "verification_pass_rate": 0.0,
+  "mean_citation_support": 0.0,
+  "mean_latency": 28.118666666666666,
+  "failure_rate": 1.0,
+  "last_losses": {
+    "critic_loss": 0.04339243099093437,
+    "actor_loss_retriever": -0.06294848769903183,
+    "actor_loss_grader": 0.32436180114746094,
+    "actor_loss_verifier": 0.2423003911972046
+  },
+  "hyperparameters": {
+    "batch_size": 4,
+    "warmup_steps": 4,
+    "update_every": 1,
+    "min_updates": 1,
+    "gamma": 0.99,
+    "tau": 0.005,
+    "actor_lr": 0.001,
+    "critic_lr": 0.001,
+    "noise_sigma": 0.15,
+    "grad_clip": 1.0,
+    "error_penalty": -1.0,
+    "seed": 42,
+    "hidden_dim": 64
+  }
+}

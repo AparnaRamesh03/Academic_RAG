@@ -220,18 +220,12 @@ def _generate_with_temperature(
     from langchain_core.messages import HumanMessage
     import sys
     from pathlib import Path
-    _fa = _BRAIN_ROOT / "final_arch"
-    if str(_fa) not in sys.path:
-        sys.path.insert(0, str(_fa))
-    from llm_config import build_groq_llm
+    if str(_BRAIN_ROOT) not in sys.path:
+        sys.path.insert(0, str(_BRAIN_ROOT))
+    from llm_config import build_llm
 
-    from langchain_groq import ChatGroq
-    import os
-    _model = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
-    chat_kwargs: Dict[str, Any] = {"model": _model, "temperature": float(temperature)}
-    if max_tokens is not None:
-        chat_kwargs["max_tokens"] = int(max_tokens)
-    temp_llm = ChatGroq(**chat_kwargs)
+    # Provider-aware: dispatches to ChatGroq or ChatOpenAI based on LLM_PROVIDER.
+    temp_llm = build_llm(temperature=float(temperature), max_tokens=max_tokens)
 
     docs    = _evidence_pack_to_docs(evidence_pack)
     prompt  = _build_generation_prompt(query, docs)

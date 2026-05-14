@@ -1,0 +1,6 @@
+episode,question_id,total_reward,num_steps,num_llm_calls,final_status,verification_pass,citation_support,latency_seconds,token_usage,buffer_size,total_gradient_updates,critic_loss,actor_loss_retriever,actor_loss_rewriter,actor_loss_grader,actor_loss_generator,actor_loss_verifier,trained_so_far
+1,Q025,0.475,4,3,accepted,1,1.0,0.003,0,4,1,0.369486,0.197768,nan,-0.165119,0.20435,0.037568,True
+2,Q026,0.475,4,3,accepted,1,1.0,0.024,0,8,5,0.135426,-0.272972,nan,-0.223659,-0.004208,-0.187606,True
+3,Q022,0.475,4,3,accepted,1,1.0,0.022,0,12,9,0.042944,-0.435955,nan,-0.28336,0.092691,-0.415042,True
+4,Q022,0.475,4,3,accepted,1,1.0,0.019,0,16,13,0.012947,nan,nan,-0.228793,0.181718,-0.483562,True
+5,Q033,0.475,4,3,accepted,1,1.0,0.021,0,20,17,0.022549,-0.301691,nan,nan,0.090811,-0.558631,True
