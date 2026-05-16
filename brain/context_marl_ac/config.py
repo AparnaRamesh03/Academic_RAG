@@ -134,14 +134,14 @@ GROQ_RETRY_MAX_SLEEP_SECONDS = 30.0
 
 # Small pacing delay before every Groq-backed LLM call.
 # Increase to 2.0 or 3.0 if TPM errors continue.
-GROQ_MIN_SECONDS_BETWEEN_CALLS = 0.75
+GROQ_MIN_SECONDS_BETWEEN_CALLS = 2.5
 
 # Reduce prompt size sent to generator/verifier.
 LLM_MAX_EVIDENCE_DOCS = 4
 LLM_MAX_EVIDENCE_CHARS_PER_DOC = 900
 
 # Reduce prompt size sent to LLM grader.
-LLM_MAX_GRADER_CHUNKS = 8
+LLM_MAX_GRADER_CHUNKS = 16
 LLM_MAX_GRADER_CHARS_PER_CHUNK = 800
 
 # Limit source-diversity retries:
@@ -173,13 +173,8 @@ LIGHTWEIGHT_VERIFIER_MODEL = "llama-3.1-8b-instant"
 # Use local/non-LLM grading during training.
 FAST_TRAINING_GRADER = True
 
-# Keep retrieval smaller.
 RETRIEVAL_TOP_K = 5
 
 # If your retriever_adapter supports these, use them there too.
 RERANK_INPUT_TOP_K = 10
 RERANK_KEEP_TOP_K = 5
-
-
-LLM_MAX_GRADER_CHUNKS = 5
-LLM_MAX_GRADER_CHARS_PER_CHUNK = 500

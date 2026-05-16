@@ -1,0 +1,79 @@
+{
+  "overall": {
+    "exact_match": 0.0,
+    "token_f1": 0.014643531112908365,
+    "rouge_l_f1": 0.014643531112908365,
+    "source_hit": 0.6,
+    "source_precision": 0.5666666666666667,
+    "source_recall": 0.5333333333333333,
+    "source_mrr": 0.6,
+    "architecture": "context_marl_ac",
+    "total_rows": 10,
+    "successful_rows": 10,
+    "failed_rows": 0,
+    "failure_rate": 0.0,
+    "avg_latency_sec": 140.67413
+  },
+  "recommended_view": {
+    "explanation_synthesis_primary_view": {
+      "count": 10,
+      "primary_metrics": [
+        "rouge_l_f1",
+        "token_f1"
+      ],
+      "rouge_l_f1": 0.014643531112908365,
+      "token_f1": 0.014643531112908365,
+      "source_hit": 0.6,
+      "source_precision": 0.5666666666666667,
+      "source_recall": 0.5333333333333333,
+      "source_mrr": 0.6,
+      "avg_latency_sec": 140.67413
+    },
+    "retrieval_grounding_view": {
+      "count": 10,
+      "primary_metrics": [
+        "source_hit",
+        "source_precision",
+        "source_recall",
+        "source_mrr"
+      ],
+      "source_hit": 0.6,
+      "source_precision": 0.5666666666666667,
+      "source_recall": 0.5333333333333333,
+      "source_mrr": 0.6
+    }
+  },
+  "by_category_rows": [
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.014643531112908365,
+      "rouge_l_f1": 0.014643531112908365,
+      "source_hit": 0.6,
+      "source_precision": 0.5666666666666667,
+      "source_recall": 0.5333333333333333,
+      "source_mrr": 0.6,
+      "category": "multi_chunk_synthesis",
+      "count": 10,
+      "avg_latency_sec": 140.67413,
+      "recommended_primary_metric_1": "rouge_l_f1",
+      "recommended_primary_metric_2": "token_f1"
+    }
+  ],
+  "by_difficulty_rows": [
+    {
+      "exact_match": 0.0,
+      "token_f1": 0.014643531112908365,
+      "rouge_l_f1": 0.014643531112908365,
+      "source_hit": 0.6,
+      "source_precision": 0.5666666666666667,
+      "source_recall": 0.5333333333333333,
+      "source_mrr": 0.6,
+      "difficulty": "hard",
+      "count": 10,
+      "avg_latency_sec": 140.67413
+    }
+  ],
+  "detail_csv": "/Users/spartan/Documents/Academic_RAG/brain/context_marl_ac/results/final_eval/results/multihop_rag_metrics_detailed.csv",
+  "category_csv": "/Users/spartan/Documents/Academic_RAG/brain/context_marl_ac/results/final_eval/results/multihop_rag_metrics_by_category.csv",
+  "difficulty_csv": "/Users/spartan/Documents/Academic_RAG/brain/context_marl_ac/results/final_eval/results/multihop_rag_metrics_by_difficulty.csv"
+}

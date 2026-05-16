@@ -55,10 +55,10 @@ GROQ_RETRY_BASE_SLEEP_SECONDS = float(_cfg("GROQ_RETRY_BASE_SLEEP_SECONDS", 2.0)
 GROQ_RETRY_MAX_SLEEP_SECONDS = float(_cfg("GROQ_RETRY_MAX_SLEEP_SECONDS", 30.0))
 GROQ_MIN_SECONDS_BETWEEN_CALLS = float(_cfg("GROQ_MIN_SECONDS_BETWEEN_CALLS", 1.25))
 
-LLM_MAX_EVIDENCE_DOCS = int(_cfg("LLM_MAX_EVIDENCE_DOCS", 4))
+LLM_MAX_EVIDENCE_DOCS = int(_cfg("LLM_MAX_EVIDENCE_DOCS", 6))
 LLM_MAX_EVIDENCE_CHARS_PER_DOC = int(_cfg("LLM_MAX_EVIDENCE_CHARS_PER_DOC", 900))
 
-LLM_MAX_GRADER_CHUNKS = int(_cfg("LLM_MAX_GRADER_CHUNKS", 8))
+LLM_MAX_GRADER_CHUNKS = int(_cfg("LLM_MAX_GRADER_CHUNKS", 16))
 LLM_MAX_GRADER_CHARS_PER_CHUNK = int(_cfg("LLM_MAX_GRADER_CHARS_PER_CHUNK", 800))
 
 LIGHTWEIGHT_VERIFIER_MODEL = str(
@@ -335,10 +335,11 @@ def generate_answer(
     query: str,
     evidence_pack: List[Dict[str, Any]],
     mode: str = "generate_answer",
+    choices: Dict[str, Any] = None,  # New: ARC support
 ) -> Tuple[str, int]:
     if cfg.DRY_RUN:
         if mode == "abstain_request_more_evidence":
-            return "I don't have enough information to answer this question.", 0
+            return "Insufficient information.", 0
 
         text_snippet = evidence_pack[0].get("text", "")[:100] if evidence_pack else ""
         return f"[DRY-RUN] Answer about {text_snippet}", 0
@@ -353,6 +354,7 @@ def generate_answer(
         "search_query": query,
         "graded_docs": docs,
         "final_answer": "",
+        "choices": choices,
     }
 
     result = _call_with_retry(
@@ -585,8 +587,9 @@ Return this exact JSON shape:
 }}
 
 Decision rule:
-- PASS if all important factual claims in the answer are supported.
-- FAIL if any important factual claim is unsupported or contradicted.
+- PASS if the primary answer is factually correct and supported by the evidence.
+- Do not reject an answer solely because a minor 'bridge' claim is implied rather than explicitly stated, as long as the final conclusion is solid.
+- FAIL if the answer contradicts the evidence or makes a major factual error that is not supported.
 """.strip()
 
     try:

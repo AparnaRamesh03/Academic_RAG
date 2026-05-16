@@ -1,0 +1,2 @@
+exact_match,token_f1,rouge_l_f1,source_hit,source_precision,source_recall,source_mrr,difficulty,count,avg_latency_sec
+0.0,0.014643531112908365,0.014643531112908365,0.6,0.5666666666666667,0.5333333333333333,0.6,hard,10,140.67413

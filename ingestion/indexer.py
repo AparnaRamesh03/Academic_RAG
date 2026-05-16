@@ -23,8 +23,15 @@ from fastembed import SparseTextEmbedding
 from FlagEmbedding import BGEM3FlagModel
 
 # ── Configuration ───────────────────────────────────────────────────────────
-QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
-COLLECTION_NAME = "academic_papers"
+import sys
+from pathlib import Path
+
+# Add project root to sys.path to import brain modules
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))
+
+from brain.qdrant_config import QDRANT_URL, COLLECTION_NAME
 
 DENSE_MODEL = "BAAI/bge-m3"
 SPARSE_MODEL = "Qdrant/bm25"

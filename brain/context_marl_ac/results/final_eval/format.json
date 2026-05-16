@@ -1,0 +1,1583 @@
+[
+    {
+        "question_id": "MH-200-007",
+        "question": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+        "ground_truth": "Insufficient information.",
+        "category": "null_query",
+        "difficulty": "hard",
+        "source_file": [],
+        "architecture": "context_marl_ac",
+        "routing_mode": "supervisor_free",
+        "policy_mode": "smoke",
+        "final_status": "rejected",
+        "final_answer": "Insufficient information.",
+        "answer": "Insufficient information.",
+        "generated_answer_length": 25,
+        "selected_evidence_count": 3,
+        "selected_evidence": [
+            {
+                "chunk_id": "0",
+                "source": "U.S.-China_relations_are_now_more_about_crisis_pre.md",
+                "page": "1",
+                "section": "U.S.-China relations are now more about crisis prevention",
+                "text": "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chinese tech. U.S. Commerce Secretary Gina Raimondo in a trip in August had \"said no\" to China's requests to reduce the controls and called the them \"matters of national security.\" Chinese Vice Premier He Lifeng also raised the issues during preparatory meetings with U.S. Treasury Secretary Janet Yellen in San Francisco on Nov. 10, according to state media. \"Aside from Taiwan, export controls are Beijing's top concern, but there is no political space in Washington roll back existing controls,\" Gabriel Wildau, managing director at consulting firm Teneo, said in a note. \"The immediate aftermath of the [Biden-Xi] meeting is likely to mark a cyclical high point for bilateral relations,\" he said. \"The key question is whether this high point extends into a plateau or whether political pressures trigger a new cycle of deterioration,\" he said",
+                "retrieval_score": 0.5,
+                "grade": "ungraded",
+                "citation_id": "[1]"
+            },
+            {
+                "chunk_id": "1",
+                "source": "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                "page": "1",
+                "section": "Republicans dump Jim Jordan as House Speaker nominee, leaving Congress in crisis yet again",
+                "text": "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his time in office. He also faces questions about his past. \nSome years ago, Jordan denied allegations from former wrestlers during his time as an assistant wrestling coach at Ohio State University who accused him of knowing about claims they were inappropriately groped by an Ohio State doctor. Jordan has said he was never aware of any abuse.",
+                "retrieval_score": 0.5,
+                "grade": "ungraded",
+                "citation_id": "[2]"
+            },
+            {
+                "chunk_id": "2",
+                "source": "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                "page": "1",
+                "section": "Sweeping White House AI executive order takes aim at the technology's toughest challenges",
+                "text": "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last week on Capitol Hill, while Vice President Kamala Harris is scheduled to speak at the UK Summit on AI Safety, hosted by Prime Minister Rishi Sunak on Tuesday. \nChip Somodevilla via Getty Images \nAt an event hosted by The Washington Post on Thursday, Senate Majority Leader Chuck Schumer (D-NY) was already arguing that the executive order did not go far enough and could not be considered an effective replacement for congressional action, which to date, has been slow in coming. \n“There’s probably a limit to what you can do by executive order,” Schumer told WaPo, “They [the Biden Administration] are concerned, and they’re doing a lot regulatorily, but everyone admits the only real answer is legislative.”",
+                "retrieval_score": 0.33333334,
+                "grade": "ungraded",
+                "citation_id": "[3]"
+            }
+        ],
+        "retrieved_chunks": [
+            {
+                "text": "What's more, the EO will encourage the Departments of Energy and Homeland Security to address AI threats \"to critical infrastructure, as well as chemical, biological, radiological, nuclear, and cybersecurity risks,\" per the release. \"Agencies that fund life-science projects will establish these standards as a condition of federal funding, creating powerful incentives to ensure appropriate screening and manage risks potentially made worse by AI.\" In short, any developers found in violation of the EO can likely expect a prompt and unpleasant visit from the DoE, FDA, EPA or other applicable regulatory agency, regardless of their AI model’s age or processing speed. \nIn an effort to proactively address the decrepit state of America's digital infrastructure, the order also seeks to establish a cybersecurity program, based loosely on the administration's existing AI Cyber Challenge, to develop AI tools that can autonomously root out and shore up security vulnerabilities in critical software infrastructure. It remains to be seen whether those systems will be able to address the concerns of misbehaving models that SEC head Gary Gensler recently raised. \nAI watermarking and cryptographic validation",
+                "metadata": {
+                    "source_file": "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                    "section_header": "Sweeping White House AI executive order takes aim at the technology's toughest challenges",
+                    "page_number": 1,
+                    "chunk_index": 3,
+                    "content_type": "text",
+                    "has_table": false,
+                    "has_image_description": false,
+                    "continued_from_previous_page": false,
+                    "previous_page_number": null,
+                    "text": "What's more, the EO will encourage the Departments of Energy and Homeland Security to address AI threats \"to critical infrastructure, as well as chemical, biological, radiological, nuclear, and cybersecurity risks,\" per the release. \"Agencies that fund life-science projects will establish these standards as a condition of federal funding, creating powerful incentives to ensure appropriate screening and manage risks potentially made worse by AI.\" In short, any developers found in violation of the EO can likely expect a prompt and unpleasant visit from the DoE, FDA, EPA or other applicable regulatory agency, regardless of their AI model’s age or processing speed. \nIn an effort to proactively address the decrepit state of America's digital infrastructure, the order also seeks to establish a cybersecurity program, based loosely on the administration's existing AI Cyber Challenge, to develop AI tools that can autonomously root out and shore up security vulnerabilities in critical software infrastructure. It remains to be seen whether those systems will be able to address the concerns of misbehaving models that SEC head Gary Gensler recently raised. \nAI watermarking and cryptographic validation"
+                },
+                "score": 0.25,
+                "rerank_score": -3.3774757385253906
+            },
+            {
+                "text": "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last week on Capitol Hill, while Vice President Kamala Harris is scheduled to speak at the UK Summit on AI Safety, hosted by Prime Minister Rishi Sunak on Tuesday. \nChip Somodevilla via Getty Images \nAt an event hosted by The Washington Post on Thursday, Senate Majority Leader Chuck Schumer (D-NY) was already arguing that the executive order did not go far enough and could not be considered an effective replacement for congressional action, which to date, has been slow in coming. \n“There’s probably a limit to what you can do by executive order,” Schumer told WaPo, “They [the Biden Administration] are concerned, and they’re doing a lot regulatorily, but everyone admits the only real answer is legislative.”",
+                "metadata": {
+                    "source_file": "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                    "section_header": "Sweeping White House AI executive order takes aim at the technology's toughest challenges",
+                    "page_number": 1,
+                    "chunk_index": 9,
+                    "content_type": "text",
+                    "has_table": false,
+                    "has_image_description": false,
+                    "continued_from_previous_page": false,
+                    "previous_page_number": null,
+                    "text": "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last week on Capitol Hill, while Vice President Kamala Harris is scheduled to speak at the UK Summit on AI Safety, hosted by Prime Minister Rishi Sunak on Tuesday. \nChip Somodevilla via Getty Images \nAt an event hosted by The Washington Post on Thursday, Senate Majority Leader Chuck Schumer (D-NY) was already arguing that the executive order did not go far enough and could not be considered an effective replacement for congressional action, which to date, has been slow in coming. \n“There’s probably a limit to what you can do by executive order,” Schumer told WaPo, “They [the Biden Administration] are concerned, and they’re doing a lot regulatorily, but everyone admits the only real answer is legislative.”"
+                },
+                "score": 0.33333334,
+                "rerank_score": -6.206388473510742
+            },
+            {
+                "text": "ChatGPT and other AI chatbots are fueling an increase in phishing emails \nAccording to a new report by SlashNext, there’s been a 1,265% increase in malicious phishing emails since Q4 of 2022. The report alleges that AI tools like ChatGPT are being prominently used by cybercriminals to write compelling and sophisticated phishing emails. \nSouth Africa officials investigate if President Cyril Ramaphosa used ChatGPT to write a speech \nFollowing speculation, social media users fed portions of Ramaphosa’s November 21 speech in Johannesburg through AI detectors, alleging parts of it may have been written with ChatGPT. South African presidency spokesperson Vincent Magwenya refuted the claims, and local officials are investigating. \nChatGPT Voice can be used to replace Siri \nNow that OpenAI’s ChatGPT Voice feature is available to all free users, it can be used to replace Siri on an iPhone 15 Pro and Pro Max by configuring the new Action Button. The new feature lets you ask ChatGPT questions and listen to its responses — like a much smarter version of Siri. \nSam Altman returns as CEO",
+                "metadata": {
+                    "source_file": "ChatGPT_Everything_you_need_to_know_about_the_AI-p.md",
+                    "section_header": "ChatGPT: Everything you need to know about the AI-powered chatbot",
+                    "page_number": 1,
+                    "chunk_index": 6,
+                    "content_type": "text",
+                    "has_table": false,
+                    "has_image_description": false,
+                    "continued_from_previous_page": false,
+                    "previous_page_number": null,
+                    "text": "ChatGPT and other AI chatbots are fueling an increase in phishing emails \nAccording to a new report by SlashNext, there’s been a 1,265% increase in malicious phishing emails since Q4 of 2022. The report alleges that AI tools like ChatGPT are being prominently used by cybercriminals to write compelling and sophisticated phishing emails. \nSouth Africa officials investigate if President Cyril Ramaphosa used ChatGPT to write a speech \nFollowing speculation, social media users fed portions of Ramaphosa’s November 21 speech in Johannesburg through AI detectors, alleging parts of it may have been written with ChatGPT. South African presidency spokesperson Vincent Magwenya refuted the claims, and local officials are investigating. \nChatGPT Voice can be used to replace Siri \nNow that OpenAI’s ChatGPT Voice feature is available to all free users, it can be used to replace Siri on an iPhone 15 Pro and Pro Max by configuring the new Action Button. The new feature lets you ask ChatGPT questions and listen to its responses — like a much smarter version of Siri. \nSam Altman returns as CEO"
+                },
+                "score": 0.25,
+                "rerank_score": -6.397977828979492
+            },
+            {
+                "text": "Sam Altman is a hero of mine. He built a company from nothing to $90 Billion in value, and changed our collective world forever. I can't wait to see what he does next. I, and billions of people, will benefit from his future work- it's going to be simply incredible. Thank you… — Eric Schmidt (@ericschmidt) November 17, 2023 \nOpenAI’s board of directors now consists of OpenAI’s chief scientist Ilya Sutskever; Quora CEO Adam D’Angelo; tech entrepreneur Tasha McCauley; and Helen Toner, the director of strategy at Georgetown University’s Center for Security and Emerging Technology. \nAltman’s removal comes unexpectedly, to say the least. The company just last week hosted its first developer conference, OpenAI DevDay, which Altman emceed. Altman spoke at the Asia-Pacific Economic Cooperation conference and an Oakland, California event on Thursday. And according to The Verge and The New York Times, citing multiple internal sources, OpenAI employees learned of Altman’s firing when it was announced publicly.",
+                "metadata": {
+                    "source_file": "Sam_Altman_ousted_as_OpenAIs_CEO.md",
+                    "section_header": "Sam Altman ousted as OpenAI’s CEO",
+                    "page_number": 1,
+                    "chunk_index": 2,
+                    "content_type": "text",
+                    "has_table": false,
+                    "has_image_description": false,
+                    "continued_from_previous_page": false,
+                    "previous_page_number": null,
+                    "text": "Sam Altman is a hero of mine. He built a company from nothing to $90 Billion in value, and changed our collective world forever. I can't wait to see what he does next. I, and billions of people, will benefit from his future work- it's going to be simply incredible. Thank you… — Eric Schmidt (@ericschmidt) November 17, 2023 \nOpenAI’s board of directors now consists of OpenAI’s chief scientist Ilya Sutskever; Quora CEO Adam D’Angelo; tech entrepreneur Tasha McCauley; and Helen Toner, the director of strategy at Georgetown University’s Center for Security and Emerging Technology. \nAltman’s removal comes unexpectedly, to say the least. The company just last week hosted its first developer conference, OpenAI DevDay, which Altman emceed. Altman spoke at the Asia-Pacific Economic Cooperation conference and an Oakland, California event on Thursday. And according to The Verge and The New York Times, citing multiple internal sources, OpenAI employees learned of Altman’s firing when it was announced publicly."
+                },
+                "score": 0.16666667,
+                "rerank_score": -6.520338535308838
+            },
+            {
+                "text": "Flexing their independence, the holdouts are a mix of pragmatists — ranging from seasoned legislators and committee chairs worried about governing, to newer lawmakers from districts where voters back home prefer President Joe Biden to Trump. \nSome Republicans resent being pressured by Jordan’s allies and say they are being threatened with primary opponents if they don’t support him as speaker. Others are simply upset at the way the whole process has dragged out. \nThey cast their ballots for McCarthy, Majority Leader Steve Scalise — who had been the party’s first nominee to replace McCarthy — and others, one vote even going to the retired Boehner. \n“Jim Jordan will be a great speaker,” Trump had said Tuesday said outside a courthouse in Manhattan, where he is facing business fraud charges. “I think he’s going to have the votes soon, if not today, over the next day or two.” \nJordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom.",
+                "metadata": {
+                    "source_file": "Republicans_just_dumped_Jim_Jordan_again._Theyre_l.md",
+                    "section_header": "Republicans just dumped Jim Jordan again. They're looking for another speaker candidate",
+                    "page_number": 1,
+                    "chunk_index": 4,
+                    "content_type": "text",
+                    "has_table": false,
+                    "has_image_description": false,
+                    "continued_from_previous_page": false,
+                    "previous_page_number": null,
+                    "text": "Flexing their independence, the holdouts are a mix of pragmatists — ranging from seasoned legislators and committee chairs worried about governing, to newer lawmakers from districts where voters back home prefer President Joe Biden to Trump. \nSome Republicans resent being pressured by Jordan’s allies and say they are being threatened with primary opponents if they don’t support him as speaker. Others are simply upset at the way the whole process has dragged out. \nThey cast their ballots for McCarthy, Majority Leader Steve Scalise — who had been the party’s first nominee to replace McCarthy — and others, one vote even going to the retired Boehner. \n“Jim Jordan will be a great speaker,” Trump had said Tuesday said outside a courthouse in Manhattan, where he is facing business fraud charges. “I think he’s going to have the votes soon, if not today, over the next day or two.” \nJordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom."
+                },
+                "score": 0.2,
+                "rerank_score": -7.012869358062744
+            },
+            {
+                "text": "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chinese tech. U.S. Commerce Secretary Gina Raimondo in a trip in August had \"said no\" to China's requests to reduce the controls and called the them \"matters of national security.\" Chinese Vice Premier He Lifeng also raised the issues during preparatory meetings with U.S. Treasury Secretary Janet Yellen in San Francisco on Nov. 10, according to state media. \"Aside from Taiwan, export controls are Beijing's top concern, but there is no political space in Washington roll back existing controls,\" Gabriel Wildau, managing director at consulting firm Teneo, said in a note. \"The immediate aftermath of the [Biden-Xi] meeting is likely to mark a cyclical high point for bilateral relations,\" he said. \"The key question is whether this high point extends into a plateau or whether political pressures trigger a new cycle of deterioration,\" he said",
+                "metadata": {
+                    "source_file": "U.S.-China_relations_are_now_more_about_crisis_pre.md",
+                    "section_header": "U.S.-China relations are now more about crisis prevention",
+                    "page_number": 1,
+                    "chunk_index": 4,
+                    "content_type": "text",
+                    "has_table": false,
+                    "has_image_description": false,
+                    "continued_from_previous_page": false,
+                    "previous_page_number": null,
+                    "text": "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chinese tech. U.S. Commerce Secretary Gina Raimondo in a trip in August had \"said no\" to China's requests to reduce the controls and called the them \"matters of national security.\" Chinese Vice Premier He Lifeng also raised the issues during preparatory meetings with U.S. Treasury Secretary Janet Yellen in San Francisco on Nov. 10, according to state media. \"Aside from Taiwan, export controls are Beijing's top concern, but there is no political space in Washington roll back existing controls,\" Gabriel Wildau, managing director at consulting firm Teneo, said in a note. \"The immediate aftermath of the [Biden-Xi] meeting is likely to mark a cyclical high point for bilateral relations,\" he said. \"The key question is whether this high point extends into a plateau or whether political pressures trigger a new cycle of deterioration,\" he said"
+                },
+                "score": 0.5,
+                "rerank_score": -7.366349220275879
+            },
+            {
+                "text": "Anti-vaccine activist and presidential candidate Robert F. Kennedy Jr. calls The Epoch Times a daily read, among his most trusted news sources. “They have a real bias against China, but on other reporting, they’re very courageous and it’s real journalism,” Kennedy said in an interview with NBC News this summer. \nIn July, Rep. Ralph Norman, R-S.C., recited the history of The Epoch Times into the congressional record. “This is all about one word: freedom,” Norman said. \nThe Epoch Times has yet to throw its weight behind a candidate for 2024, but heading into the election cycle, it is moving into new and bigger office spaces and production studios in California, hiring mainstream news veterans who are not affiliated with Falun Gong, and revving up an ad-buying blitz. \n“They achieved the goal,” said Brendan Steinhauser, a Texas-based Republican strategist hired by The Epoch Times in 2018 to open doors to conservative politicians and players. Steinhauser said that a series of interviews and introductions with politicians and media figures at that year’s Conservative Political Action Conference offered access to a wider conservative audience. The Epoch Times was a “supporting sponsor” for this year’s conference.",
+                "metadata": {
+                    "source_file": "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md",
+                    "section_header": "How the conspiracy-fueled Epoch Times went mainstream and made millions",
+                    "page_number": 1,
+                    "chunk_index": 2,
+                    "content_type": "text",
+                    "has_table": false,
+                    "has_image_description": false,
+                    "continued_from_previous_page": false,
+                    "previous_page_number": null,
+                    "text": "Anti-vaccine activist and presidential candidate Robert F. Kennedy Jr. calls The Epoch Times a daily read, among his most trusted news sources. “They have a real bias against China, but on other reporting, they’re very courageous and it’s real journalism,” Kennedy said in an interview with NBC News this summer. \nIn July, Rep. Ralph Norman, R-S.C., recited the history of The Epoch Times into the congressional record. “This is all about one word: freedom,” Norman said. \nThe Epoch Times has yet to throw its weight behind a candidate for 2024, but heading into the election cycle, it is moving into new and bigger office spaces and production studios in California, hiring mainstream news veterans who are not affiliated with Falun Gong, and revving up an ad-buying blitz. \n“They achieved the goal,” said Brendan Steinhauser, a Texas-based Republican strategist hired by The Epoch Times in 2018 to open doors to conservative politicians and players. Steinhauser said that a series of interviews and introductions with politicians and media figures at that year’s Conservative Political Action Conference offered access to a wider conservative audience. The Epoch Times was a “supporting sponsor” for this year’s conference."
+                },
+                "score": 0.16666667,
+                "rerank_score": -8.802595138549805
+            },
+            {
+                "text": "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his time in office. He also faces questions about his past. \nSome years ago, Jordan denied allegations from former wrestlers during his time as an assistant wrestling coach at Ohio State University who accused him of knowing about claims they were inappropriately groped by an Ohio State doctor. Jordan has said he was never aware of any abuse.",
+                "metadata": {
+                    "source_file": "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                    "section_header": "Republicans dump Jim Jordan as House Speaker nominee, leaving Congress in crisis yet again",
+                    "page_number": 1,
+                    "chunk_index": 5,
+                    "content_type": "text",
+                    "has_table": false,
+                    "has_image_description": false,
+                    "continued_from_previous_page": false,
+                    "previous_page_number": null,
+                    "text": "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his time in office. He also faces questions about his past. \nSome years ago, Jordan denied allegations from former wrestlers during his time as an assistant wrestling coach at Ohio State University who accused him of knowing about claims they were inappropriately groped by an Ohio State doctor. Jordan has said he was never aware of any abuse."
+                },
+                "score": 0.5,
+                "rerank_score": -9.439334869384766
+            },
+            {
+                "text": "After marathon ‘final’ talks which stretched to almost three days European Union lawmakers have tonight clinched a political deal on a risk-based framework for regulating artificial intelligence. The file was originally proposed back in April 2021 but it’s taken months of tricky three-way negotiations to get a deal over the line. The development means a pan-EU AI law is definitively on the way. \nGiving a triumphant but exhausted press conference in the small hours of Friday night/Saturday morning local time key representatives for the European Parliament, Council and the Commission — the bloc’s co-legislators — hailed the agreement as hard fought, a milestone achievement and historic, respectively. \nTaking to X to tweet the news, the EU’s president, Ursula von der Leyen — who made delivering a regulation to promote “trustworthy” AI a key priority of her term when she took up the post in late 2019 — also lauded the political agreement as a “global first”.",
+                "metadata": {
+                    "source_file": "EU_lawmakers_bag_late_night_deal_on_global_first_A.md",
+                    "section_header": "EU lawmakers bag late night deal on ‘global first’ AI rules",
+                    "page_number": 1,
+                    "chunk_index": 0,
+                    "content_type": "text",
+                    "has_table": false,
+                    "has_image_description": false,
+                    "continued_from_previous_page": false,
+                    "previous_page_number": null,
+                    "text": "After marathon ‘final’ talks which stretched to almost three days European Union lawmakers have tonight clinched a political deal on a risk-based framework for regulating artificial intelligence. The file was originally proposed back in April 2021 but it’s taken months of tricky three-way negotiations to get a deal over the line. The development means a pan-EU AI law is definitively on the way. \nGiving a triumphant but exhausted press conference in the small hours of Friday night/Saturday morning local time key representatives for the European Parliament, Council and the Commission — the bloc’s co-legislators — hailed the agreement as hard fought, a milestone achievement and historic, respectively. \nTaking to X to tweet the news, the EU’s president, Ursula von der Leyen — who made delivering a regulation to promote “trustworthy” AI a key priority of her term when she took up the post in late 2019 — also lauded the political agreement as a “global first”."
+                },
+                "score": 0.33333334
+            },
+            {
+                "text": "The deal agreed today also allows for a phased entry into force after the law is adopted — with six months allowed until rules on prohibited use cases kick in; 12 months for transparency and governance requirements; and 24 months for all other requirements. So the full force of the EU’s AI Act may not be felt until 2026. \nCarme Artigas, Spain’s secretary of state for digital and AI issues, who led the Council’s negotiations on the file as the country has held the rotating Council presidency since the summer, hailed the agreement on the heavily contested file as “the biggest milestone in the history of digital information in Europe”; both for the bloc’s single digital market — but also, she suggested, “for the world”. \n“We have achieved the first international regulation for artificial intelligence in the world,” she announced during a post-midnight press conference to confirm the political agreement, adding: “We feel very proud.” \nThe law will support European developers, startups and future scale-ups by giving them “legal certainty with technical certainty”, she predicted.",
+                "metadata": {
+                    "source_file": "EU_lawmakers_bag_late_night_deal_on_global_first_A.md",
+                    "section_header": "EU lawmakers bag late night deal on ‘global first’ AI rules",
+                    "page_number": 1,
+                    "chunk_index": 7,
+                    "content_type": "text",
+                    "has_table": false,
+                    "has_image_description": false,
+                    "continued_from_previous_page": false,
+                    "previous_page_number": null,
+                    "text": "The deal agreed today also allows for a phased entry into force after the law is adopted — with six months allowed until rules on prohibited use cases kick in; 12 months for transparency and governance requirements; and 24 months for all other requirements. So the full force of the EU’s AI Act may not be felt until 2026. \nCarme Artigas, Spain’s secretary of state for digital and AI issues, who led the Council’s negotiations on the file as the country has held the rotating Council presidency since the summer, hailed the agreement on the heavily contested file as “the biggest milestone in the history of digital information in Europe”; both for the bloc’s single digital market — but also, she suggested, “for the world”. \n“We have achieved the first international regulation for artificial intelligence in the world,” she announced during a post-midnight press conference to confirm the political agreement, adding: “We feel very proud.” \nThe law will support European developers, startups and future scale-ups by giving them “legal certainty with technical certainty”, she predicted."
+                },
+                "score": 0.2
+            },
+            {
+                "text": "Through the early aughts, The Epoch Times grew from an online effort to a weekly physical newspaper, with a home base in New York and a TV production company, New Tang Dynasty Television. It raised money from followers and was staffed by unpaid volunteers. It ran aggregated articles on international issues from Voice of America next to Thanksgiving Day explainers, dispatches from Falun Gong parades, and exposés on atrocities alleged to have been committed by the Chinese Communist Party. \nBy 2019, it had gone mostly digital and was spending millions of dollars on creating a network of Facebook pages and groups and running aggressive pro-Trump ad campaigns. The move toward explicit support of Republicans, despite Li’s teachings to stay away from U.S. politics, was foreshadowed by Li’s comments at a Falun Gong conference a year before. \nLi said that Falun Gong’s media ought to put a “constructive” spin on the news, to advance the group’s aims. It wasn’t wrong, he said, to favorably cover a politician who shared Falun Gong’s conservative values and whose goals aligned with their own.",
+                "metadata": {
+                    "source_file": "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md",
+                    "section_header": "How the conspiracy-fueled Epoch Times went mainstream and made millions",
+                    "page_number": 1,
+                    "chunk_index": 7,
+                    "content_type": "text",
+                    "has_table": false,
+                    "has_image_description": false,
+                    "continued_from_previous_page": false,
+                    "previous_page_number": null,
+                    "text": "Through the early aughts, The Epoch Times grew from an online effort to a weekly physical newspaper, with a home base in New York and a TV production company, New Tang Dynasty Television. It raised money from followers and was staffed by unpaid volunteers. It ran aggregated articles on international issues from Voice of America next to Thanksgiving Day explainers, dispatches from Falun Gong parades, and exposés on atrocities alleged to have been committed by the Chinese Communist Party. \nBy 2019, it had gone mostly digital and was spending millions of dollars on creating a network of Facebook pages and groups and running aggressive pro-Trump ad campaigns. The move toward explicit support of Republicans, despite Li’s teachings to stay away from U.S. politics, was foreshadowed by Li’s comments at a Falun Gong conference a year before. \nLi said that Falun Gong’s media ought to put a “constructive” spin on the news, to advance the group’s aims. It wasn’t wrong, he said, to favorably cover a politician who shared Falun Gong’s conservative values and whose goals aligned with their own."
+                },
+                "score": 0.16666667
+            },
+            {
+                "text": "Sam Bankman-Fried listens as Assistant U.S. Attorney Nicolas Roos questions Gary Wang during Bankman-Fried's fraud trial over the collapse of FTX, the bankrupt cryptocurrency exchange, at Federal Court in New York City, U.S., October 6, 2023, in this courtroom sketch. Jane Rosenberg | Reuters",
+                "metadata": {
+                    "source_file": "Sex_Signal_messages_and_sabotaging_FTXs_code_SBF_e.md",
+                    "section_header": "Sex, Signal messages, and sabotaging FTX's code: SBF execs and Bahamas roommates tell all in court",
+                    "page_number": 1,
+                    "chunk_index": 3,
+                    "content_type": "text",
+                    "has_table": false,
+                    "has_image_description": false,
+                    "continued_from_previous_page": false,
+                    "previous_page_number": null,
+                    "text": "Sam Bankman-Fried listens as Assistant U.S. Attorney Nicolas Roos questions Gary Wang during Bankman-Fried's fraud trial over the collapse of FTX, the bankrupt cryptocurrency exchange, at Federal Court in New York City, U.S., October 6, 2023, in this courtroom sketch. Jane Rosenberg | Reuters"
+                },
+                "score": 0.14285715
+            },
+            {
+                "text": "That said, Apple did manage to beat the system once. In 2013, then President Barack Obama vetoed an import ban on the iPhone. At the time, Samsung accused Apple of infringing on its cellular data patents. But in that case, according to Levi, Apple was able to make the argument that there were issues regarding fair, reasonable, and nondiscriminatory licensing (FRAND). The patents involved were considered standard and essential, and the Obama administration was concerned the import ban would give Samsung “undue leverage.” Plus, it only impacted the iPhone 4 and older models of the iPad. Newer iPhones didn’t use an infringing chipset. In the case of the Apple Watch, Apple doesn’t have any of these arguments. \n“In that case 10 years ago, Apple really rolled the dice and the pulled the rabbit out of the hat. It’s very unlikely for them to do that again,” says Levi. \nWhere does Apple go from here?",
+                "metadata": {
+                    "source_file": "Why_theApple_Watchis_being_banned__and_how_Apple_c.md",
+                    "section_header": "Why theApple Watchis being banned — and how Apple can avoid it",
+                    "page_number": 1,
+                    "chunk_index": 4,
+                    "content_type": "text",
+                    "has_table": false,
+                    "has_image_description": false,
+                    "continued_from_previous_page": false,
+                    "previous_page_number": null,
+                    "text": "That said, Apple did manage to beat the system once. In 2013, then President Barack Obama vetoed an import ban on the iPhone. At the time, Samsung accused Apple of infringing on its cellular data patents. But in that case, according to Levi, Apple was able to make the argument that there were issues regarding fair, reasonable, and nondiscriminatory licensing (FRAND). The patents involved were considered standard and essential, and the Obama administration was concerned the import ban would give Samsung “undue leverage.” Plus, it only impacted the iPhone 4 and older models of the iPad. Newer iPhones didn’t use an infringing chipset. In the case of the Apple Watch, Apple doesn’t have any of these arguments. \n“In that case 10 years ago, Apple really rolled the dice and the pulled the rabbit out of the hat. It’s very unlikely for them to do that again,” says Levi. \nWhere does Apple go from here?"
+                },
+                "score": 0.14285715
+            },
+            {
+                "text": "A “betrayal,” said Rep. Jim Banks, R-Ind. \nNext steps were highly uncertain as angry, frustrated Republicans predict the House could essentially stay closed for the foreseeable future — perhaps until the mid-November deadline for Congress to approve funding or risk a federal government shutdown. \n“We’re trying to figure out if there’s a way we can get back with a Republican-only solution,” said veteran legislator Rep. Tom Cole, R-Okla. \n“That’s what normal majorities do. What this majority has done is prove it’s not a normal majority.” \nWhat was clear was that Jordan was refusing to step aside, appearing determined to wait out his foes even as his path to become House speaker was all but collapsing. \nMany view Jordan, a founding member of the hard-right House Freedom Caucus, as too extreme for a central seat of U.S. power, second in line to the presidency. \n“One thing I cannot stomach or support is a bully,” said a statement from Rep. Mariannette Miller-Meeks, R-Iowa, who voted against Jordan on the second ballot and said she received “credible death threats.”",
+                "metadata": {
+                    "source_file": "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                    "section_header": "Republicans dump Jim Jordan as House Speaker nominee, leaving Congress in crisis yet again",
+                    "page_number": 1,
+                    "chunk_index": 3,
+                    "content_type": "text",
+                    "has_table": false,
+                    "has_image_description": false,
+                    "continued_from_previous_page": false,
+                    "previous_page_number": null,
+                    "text": "A “betrayal,” said Rep. Jim Banks, R-Ind. \nNext steps were highly uncertain as angry, frustrated Republicans predict the House could essentially stay closed for the foreseeable future — perhaps until the mid-November deadline for Congress to approve funding or risk a federal government shutdown. \n“We’re trying to figure out if there’s a way we can get back with a Republican-only solution,” said veteran legislator Rep. Tom Cole, R-Okla. \n“That’s what normal majorities do. What this majority has done is prove it’s not a normal majority.” \nWhat was clear was that Jordan was refusing to step aside, appearing determined to wait out his foes even as his path to become House speaker was all but collapsing. \nMany view Jordan, a founding member of the hard-right House Freedom Caucus, as too extreme for a central seat of U.S. power, second in line to the presidency. \n“One thing I cannot stomach or support is a bully,” said a statement from Rep. Mariannette Miller-Meeks, R-Iowa, who voted against Jordan on the second ballot and said she received “credible death threats.”"
+                },
+                "score": 0.125
+            },
+            {
+                "text": "7. Green Bay Packers (6-6), third place, NFC North. The Packers moved into the final playoff spot thanks to having the second-best conference record after the Vikings, to whom they already lost but face again in Minnesota in Week 17. The Packers also hold key wins over the Rams and Saints in the wild-card race. \nWho's in the hunt? \n8. Los Angeles Rams (6-6) \n9. Seattle Seahawks (6-6) \n10. Tampa Bay Buccaneers (5-7) \n11. New Orleans Saints (5-7) \n12. New York Giants (4-8) \n13. Chicago Bears (4-8) \n14. Washington Commanders (4-9) \nThe Rams and Seahawks are the best wild-card bets here now, while the Saints and Buccaneers will still have their sights on making the playoffs via still winning the weak South over the Falcons.",
+                "metadata": {
+                    "source_file": "NFL_standings_Updated_AFC_NFC_playoff_picture_for_.md",
+                    "section_header": "NFL standings: Updated AFC, NFC playoff picture for Week 13 of 2023 season",
+                    "page_number": 1,
+                    "chunk_index": 5,
+                    "content_type": "text",
+                    "has_table": false,
+                    "has_image_description": false,
+                    "continued_from_previous_page": false,
+                    "previous_page_number": null,
+                    "text": "7. Green Bay Packers (6-6), third place, NFC North. The Packers moved into the final playoff spot thanks to having the second-best conference record after the Vikings, to whom they already lost but face again in Minnesota in Week 17. The Packers also hold key wins over the Rams and Saints in the wild-card race. \nWho's in the hunt? \n8. Los Angeles Rams (6-6) \n9. Seattle Seahawks (6-6) \n10. Tampa Bay Buccaneers (5-7) \n11. New Orleans Saints (5-7) \n12. New York Giants (4-8) \n13. Chicago Bears (4-8) \n14. Washington Commanders (4-9) \nThe Rams and Seahawks are the best wild-card bets here now, while the Saints and Buccaneers will still have their sights on making the playoffs via still winning the weak South over the Falcons."
+                },
+                "score": 0.125
+            },
+            {
+                "text": "In recent years, Beijing’s sweeping tech crackdowns have introduced a new sense of uncertainty to investors. VCs fear that their portfolio companies might encounter a fate akin to that of Ant Group, whose colossal initial public offering was called off, and Didi, which weathered an extensive data security probe that eventually led to its delisting from New York. With China tightening its grip on overseas IPOs, investors who once relied on taking Chinese firms public in the U.S. are no longer assured of an exit channel. \nIn the meantime, Washington has stepped up restrictions on the flow of U.S. money into China amid an escalating tech war between the two superpowers. In August, President Joe Biden signed an executive order barring U.S. investments in three strategically critical sectors in China — artificial intelligence, quantum computing and semiconductors.",
+                "metadata": {
+                    "source_file": "The_fate_of_US_venture_capital_in_China_teeters_on.md",
+                    "section_header": "The fate of US venture capital in China teeters on uncertainty",
+                    "page_number": 1,
+                    "chunk_index": 2,
+                    "content_type": "text",
+                    "has_table": false,
+                    "has_image_description": false,
+                    "continued_from_previous_page": false,
+                    "previous_page_number": null,
+                    "text": "In recent years, Beijing’s sweeping tech crackdowns have introduced a new sense of uncertainty to investors. VCs fear that their portfolio companies might encounter a fate akin to that of Ant Group, whose colossal initial public offering was called off, and Didi, which weathered an extensive data security probe that eventually led to its delisting from New York. With China tightening its grip on overseas IPOs, investors who once relied on taking Chinese firms public in the U.S. are no longer assured of an exit channel. \nIn the meantime, Washington has stepped up restrictions on the flow of U.S. money into China amid an escalating tech war between the two superpowers. In August, President Joe Biden signed an executive order barring U.S. investments in three strategically critical sectors in China — artificial intelligence, quantum computing and semiconductors."
+                },
+                "score": 0.11111111
+            }
+        ],
+        "citations": [
+            {
+                "source_file": "U.S.-China_relations_are_now_more_about_crisis_pre.md",
+                "page_number": "1",
+                "section_header": "U.S.-China relations are now more about crisis prevention",
+                "excerpt": "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chinese tech. U.S. Commerce Secretary Gina Raimondo in a trip in August had \"said no\" to China's requests to reduce the controls and called the them \"matters of national security.\" Chinese Vice Premier He Lifeng also raised the issues during preparatory meetings with U.S. Treasury Secretary Janet Yellen in San Francisco on Nov. 10, according to state media. \"Aside from Taiwan, export controls are Beijing's top concern, but there is no political space in Washington roll back existing controls,\" Gabriel Wildau, managing director at consulting firm Teneo, said in a note. \"The immediate aftermath of the [Biden-Xi] meeting is likely to mark a cyclical high point for bilateral relations,\" he said. \"The key question is whether this high point extends into a plateau or whether political pressures trigger a new cycle of deterioration,\" he said",
+                "content_type": "text"
+            },
+            {
+                "source_file": "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                "page_number": "1",
+                "section_header": "Republicans dump Jim Jordan as House Speaker nominee, leaving Congress in crisis yet again",
+                "excerpt": "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his time in office. He also faces questions about his past. \nSome years ago, Jordan denied allegations from former wrestlers during his time as an assistant wrestling coach at Ohio State University who accused him of knowing about claims they were inappropriately groped by an Ohio State doctor. Jordan has said he was never aware of any abuse.",
+                "content_type": "text"
+            },
+            {
+                "source_file": "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                "page_number": "1",
+                "section_header": "Sweeping White House AI executive order takes aim at the technology's toughest challenges",
+                "excerpt": "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last week on Capitol Hill, while Vice President Kamala Harris is scheduled to speak at the UK Summit on AI Safety, hosted by Prime Minister Rishi Sunak on Tuesday. \nChip Somodevilla via Getty Images \nAt an event hosted by The Washington Post on Thursday, Senate Majority Leader Chuck Schumer (D-NY) was already arguing that the executive order did not go far enough and could not be considered an effective replacement for congressional action, which to date, has been slow in coming. \n“There’s probably a limit to what you can do by executive order,” Schumer told WaPo, “They [the Biden Administration] are concerned, and they’re doing a lot regulatorily, but everyone admits the only real answer is legislative.”",
+                "content_type": "text"
+            }
+        ],
+        "citation_support_rate": 0.0,
+        "verification_pass": false,
+        "verifier_decision": "FAIL",
+        "verifier_reason": "Insufficient information to identify the Secretary of Homeland Security under President Obama and a key speaker at a cybersecurity conference in 2019.",
+        "verification_result": {
+            "decision": "FAIL",
+            "reason": "Insufficient information to identify the Secretary of Homeland Security under President Obama and a key speaker at a cybersecurity conference in 2019.",
+            "verified_claims": [
+                {
+                    "claim_id": 1,
+                    "claim_text": "The Secretary of Homeland Security under President Obama was a key speaker at a cybersecurity conference in 2019.",
+                    "supported": false,
+                    "feedback": "No information about the Secretary of Homeland Security under President Obama or their involvement in a cybersecurity conference in 2019.",
+                    "supporting_doc_ids": [],
+                    "supporting_sources": []
+                }
+            ]
+        },
+        "unsupported_claims": [
+            "Insufficient information."
+        ],
+        "latency_seconds": 91.3114,
+        "latency_sec": 91.3114,
+        "num_steps": 9,
+        "num_llm_calls": 6,
+        "token_usage": 4038,
+        "trace": [
+            {
+                "step": 1,
+                "valid_agents": [
+                    "retriever"
+                ],
+                "agent_mask": [
+                    1,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "supervisor_selected_agent": "retriever",
+                "supervisor_agent_id": 0,
+                "supervisor_probability": 1.0,
+                "agent": "retriever",
+                "valid_actions": [
+                    "hybrid_rerank"
+                ],
+                "action_mask": [
+                    0,
+                    0,
+                    0,
+                    1,
+                    0
+                ],
+                "action": "hybrid_rerank",
+                "action_id": 3,
+                "action_probability": 1.0,
+                "reward": -0.0871,
+                "status": "pending",
+                "done": false,
+                "question": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "current_query": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "rewritten_query": "",
+                "retrieved_chunk_ids": [
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_0",
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_1",
+                    "ChatGPT_Everything_you_need_to_know_about_the_AI-p.md_p1_2",
+                    "Sam_Altman_ousted_as_OpenAIs_CEO.md_p1_3",
+                    "Republicans_just_dumped_Jim_Jordan_again._Theyre_l.md_p1_4",
+                    "U.S.-China_relations_are_now_more_about_crisis_pre.md_p1_5",
+                    "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md_p1_6",
+                    "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md_p1_7"
+                ],
+                "retrieved_chunk_preview": [
+                    "What's more, the EO will encourage the Departments of Energy and Homeland Security to address AI threats \"to critical infrastructure, as well as chemical, biological, radiological, nuclear, and cybersecurity risks,\" per the release. \"Agencies that fund life-science projects will establish these stan",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we",
+                    "ChatGPT and other AI chatbots are fueling an increase in phishing emails \nAccording to a new report by SlashNext, there’s been a 1,265% increase in malicious phishing emails since Q4 of 2022. The report alleges that AI tools like ChatGPT are being prominently used by cybercriminals to write compelli",
+                    "Sam Altman is a hero of mine. He built a company from nothing to $90 Billion in value, and changed our collective world forever. I can't wait to see what he does next. I, and billions of people, will benefit from his future work- it's going to be simply incredible. Thank you… — Eric Schmidt (@ericsc",
+                    "Flexing their independence, the holdouts are a mix of pragmatists — ranging from seasoned legislators and committee chairs worried about governing, to newer lawmakers from districts where voters back home prefer President Joe Biden to Trump. \nSome Republicans resent being pressured by Jordan’s allie",
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Anti-vaccine activist and presidential candidate Robert F. Kennedy Jr. calls The Epoch Times a daily read, among his most trusted news sources. “They have a real bias against China, but on other reporting, they’re very courageous and it’s real journalism,” Kennedy said in an interview with NBC News ",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim"
+                ],
+                "retrieval_scores": [
+                    0.25,
+                    0.33333334,
+                    0.25,
+                    0.16666667,
+                    0.2,
+                    0.5,
+                    0.16666667,
+                    0.5
+                ],
+                "selected_evidence_ids": [
+                    "0",
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7"
+                ],
+                "selected_evidence_preview": [
+                    "What's more, the EO will encourage the Departments of Energy and Homeland Security to address AI threats \"to critical infrastructure, as well as chemical, biological, radiological, nuclear, and cybersecurity risks,\" per the release. \"Agencies that fund life-science projects will establish these stan",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we",
+                    "ChatGPT and other AI chatbots are fueling an increase in phishing emails \nAccording to a new report by SlashNext, there’s been a 1,265% increase in malicious phishing emails since Q4 of 2022. The report alleges that AI tools like ChatGPT are being prominently used by cybercriminals to write compelli",
+                    "Sam Altman is a hero of mine. He built a company from nothing to $90 Billion in value, and changed our collective world forever. I can't wait to see what he does next. I, and billions of people, will benefit from his future work- it's going to be simply incredible. Thank you… — Eric Schmidt (@ericsc",
+                    "Flexing their independence, the holdouts are a mix of pragmatists — ranging from seasoned legislators and committee chairs worried about governing, to newer lawmakers from districts where voters back home prefer President Joe Biden to Trump. \nSome Republicans resent being pressured by Jordan’s allie",
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Anti-vaccine activist and presidential candidate Robert F. Kennedy Jr. calls The Epoch Times a daily read, among his most trusted news sources. “They have a real bias against China, but on other reporting, they’re very courageous and it’s real journalism,” Kennedy said in an interview with NBC News ",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim"
+                ],
+                "generated_answer_preview": "",
+                "generated_answer_length": 0,
+                "citations": [],
+                "verifier_decision": "N/A",
+                "verifier_reason": "",
+                "unsupported_claims": [],
+                "citation_support_rate": 0.0,
+                "final_status": "pending",
+                "grader_output": {}
+            },
+            {
+                "step": 2,
+                "valid_agents": [
+                    "grader"
+                ],
+                "agent_mask": [
+                    0,
+                    0,
+                    1,
+                    0,
+                    0
+                ],
+                "supervisor_selected_agent": "grader",
+                "supervisor_agent_id": 2,
+                "supervisor_probability": 1.0,
+                "agent": "grader",
+                "valid_actions": [
+                    "loose_filter",
+                    "medium_filter",
+                    "strict_filter",
+                    "rerank_only"
+                ],
+                "action_mask": [
+                    0,
+                    1,
+                    1,
+                    1,
+                    1
+                ],
+                "action": "loose_filter",
+                "action_id": 1,
+                "action_probability": 1.0,
+                "reward": -0.0871,
+                "status": "pending",
+                "done": false,
+                "question": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "current_query": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "rewritten_query": "",
+                "retrieved_chunk_ids": [
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_0",
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_1",
+                    "ChatGPT_Everything_you_need_to_know_about_the_AI-p.md_p1_2",
+                    "Sam_Altman_ousted_as_OpenAIs_CEO.md_p1_3",
+                    "Republicans_just_dumped_Jim_Jordan_again._Theyre_l.md_p1_4",
+                    "U.S.-China_relations_are_now_more_about_crisis_pre.md_p1_5",
+                    "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md_p1_6",
+                    "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md_p1_7"
+                ],
+                "retrieved_chunk_preview": [
+                    "What's more, the EO will encourage the Departments of Energy and Homeland Security to address AI threats \"to critical infrastructure, as well as chemical, biological, radiological, nuclear, and cybersecurity risks,\" per the release. \"Agencies that fund life-science projects will establish these stan",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we",
+                    "ChatGPT and other AI chatbots are fueling an increase in phishing emails \nAccording to a new report by SlashNext, there’s been a 1,265% increase in malicious phishing emails since Q4 of 2022. The report alleges that AI tools like ChatGPT are being prominently used by cybercriminals to write compelli",
+                    "Sam Altman is a hero of mine. He built a company from nothing to $90 Billion in value, and changed our collective world forever. I can't wait to see what he does next. I, and billions of people, will benefit from his future work- it's going to be simply incredible. Thank you… — Eric Schmidt (@ericsc",
+                    "Flexing their independence, the holdouts are a mix of pragmatists — ranging from seasoned legislators and committee chairs worried about governing, to newer lawmakers from districts where voters back home prefer President Joe Biden to Trump. \nSome Republicans resent being pressured by Jordan’s allie",
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Anti-vaccine activist and presidential candidate Robert F. Kennedy Jr. calls The Epoch Times a daily read, among his most trusted news sources. “They have a real bias against China, but on other reporting, they’re very courageous and it’s real journalism,” Kennedy said in an interview with NBC News ",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim"
+                ],
+                "retrieval_scores": [
+                    0.25,
+                    0.33333334,
+                    0.25,
+                    0.16666667,
+                    0.2,
+                    0.5,
+                    0.16666667,
+                    0.5
+                ],
+                "selected_evidence_ids": [
+                    "0",
+                    "1",
+                    "2"
+                ],
+                "selected_evidence_preview": [
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we"
+                ],
+                "generated_answer_preview": "",
+                "generated_answer_length": 0,
+                "citations": [],
+                "verifier_decision": "N/A",
+                "verifier_reason": "",
+                "unsupported_claims": [],
+                "citation_support_rate": 0.0,
+                "final_status": "pending",
+                "grader_output": {
+                    "grader_action": "loose_filter",
+                    "num_retrieved_before_grading": 8,
+                    "num_selected_after_grading": 3,
+                    "selected_chunk_scores": [
+                        0.5,
+                        0.5,
+                        0.33333334
+                    ],
+                    "selected_sources": [
+                        "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                        "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                        "U.S.-China_relations_are_now_more_about_crisis_pre.md"
+                    ],
+                    "filter_threshold": 0.0,
+                    "fallback_used": true
+                }
+            },
+            {
+                "step": 3,
+                "valid_agents": [
+                    "generator"
+                ],
+                "agent_mask": [
+                    0,
+                    0,
+                    0,
+                    1,
+                    0
+                ],
+                "supervisor_selected_agent": "generator",
+                "supervisor_agent_id": 3,
+                "supervisor_probability": 1.0,
+                "agent": "generator",
+                "valid_actions": [
+                    "generate_answer",
+                    "generate_with_strict_citations"
+                ],
+                "action_mask": [
+                    1,
+                    1,
+                    0,
+                    0,
+                    0
+                ],
+                "action": "generate_with_strict_citations",
+                "action_id": 1,
+                "action_probability": 1.0,
+                "reward": -0.1388,
+                "status": "pending",
+                "done": false,
+                "question": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "current_query": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "rewritten_query": "",
+                "retrieved_chunk_ids": [
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_0",
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_1",
+                    "ChatGPT_Everything_you_need_to_know_about_the_AI-p.md_p1_2",
+                    "Sam_Altman_ousted_as_OpenAIs_CEO.md_p1_3",
+                    "Republicans_just_dumped_Jim_Jordan_again._Theyre_l.md_p1_4",
+                    "U.S.-China_relations_are_now_more_about_crisis_pre.md_p1_5",
+                    "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md_p1_6",
+                    "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md_p1_7"
+                ],
+                "retrieved_chunk_preview": [
+                    "What's more, the EO will encourage the Departments of Energy and Homeland Security to address AI threats \"to critical infrastructure, as well as chemical, biological, radiological, nuclear, and cybersecurity risks,\" per the release. \"Agencies that fund life-science projects will establish these stan",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we",
+                    "ChatGPT and other AI chatbots are fueling an increase in phishing emails \nAccording to a new report by SlashNext, there’s been a 1,265% increase in malicious phishing emails since Q4 of 2022. The report alleges that AI tools like ChatGPT are being prominently used by cybercriminals to write compelli",
+                    "Sam Altman is a hero of mine. He built a company from nothing to $90 Billion in value, and changed our collective world forever. I can't wait to see what he does next. I, and billions of people, will benefit from his future work- it's going to be simply incredible. Thank you… — Eric Schmidt (@ericsc",
+                    "Flexing their independence, the holdouts are a mix of pragmatists — ranging from seasoned legislators and committee chairs worried about governing, to newer lawmakers from districts where voters back home prefer President Joe Biden to Trump. \nSome Republicans resent being pressured by Jordan’s allie",
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Anti-vaccine activist and presidential candidate Robert F. Kennedy Jr. calls The Epoch Times a daily read, among his most trusted news sources. “They have a real bias against China, but on other reporting, they’re very courageous and it’s real journalism,” Kennedy said in an interview with NBC News ",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim"
+                ],
+                "retrieval_scores": [
+                    0.25,
+                    0.33333334,
+                    0.25,
+                    0.16666667,
+                    0.2,
+                    0.5,
+                    0.16666667,
+                    0.5
+                ],
+                "selected_evidence_ids": [
+                    "0",
+                    "1",
+                    "2"
+                ],
+                "selected_evidence_preview": [
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we"
+                ],
+                "generated_answer_preview": "Insufficient information.",
+                "generated_answer_length": 25,
+                "citations": [
+                    {
+                        "source_file": "U.S.-China_relations_are_now_more_about_crisis_pre.md",
+                        "page_number": "1",
+                        "section_header": "U.S.-China relations are now more about crisis prevention",
+                        "excerpt": "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chinese tech. U.S. Commerce Secretary Gina Raimondo in a trip in August had \"said no\" to China's requests to reduce the controls and called the them \"matters of national security.\" Chinese Vice Premier He Lifeng also raised the issues during preparatory meetings with U.S. Treasury Secretary Janet Yellen in San Francisco on Nov. 10, according to state media. \"Aside from Taiwan, export controls are Beijing's top concern, but there is no political space in Washington roll back existing controls,\" Gabriel Wildau, managing director at consulting firm Teneo, said in a note. \"The immediate aftermath of the [Biden-Xi] meeting is likely to mark a cyclical high point for bilateral relations,\" he said. \"The key question is whether this high point extends into a plateau or whether political pressures trigger a new cycle of deterioration,\" he said",
+                        "content_type": "text"
+                    },
+                    {
+                        "source_file": "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                        "page_number": "1",
+                        "section_header": "Republicans dump Jim Jordan as House Speaker nominee, leaving Congress in crisis yet again",
+                        "excerpt": "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his time in office. He also faces questions about his past. \nSome years ago, Jordan denied allegations from former wrestlers during his time as an assistant wrestling coach at Ohio State University who accused him of knowing about claims they were inappropriately groped by an Ohio State doctor. Jordan has said he was never aware of any abuse.",
+                        "content_type": "text"
+                    },
+                    {
+                        "source_file": "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                        "page_number": "1",
+                        "section_header": "Sweeping White House AI executive order takes aim at the technology's toughest challenges",
+                        "excerpt": "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last week on Capitol Hill, while Vice President Kamala Harris is scheduled to speak at the UK Summit on AI Safety, hosted by Prime Minister Rishi Sunak on Tuesday. \nChip Somodevilla via Getty Images \nAt an event hosted by The Washington Post on Thursday, Senate Majority Leader Chuck Schumer (D-NY) was already arguing that the executive order did not go far enough and could not be considered an effective replacement for congressional action, which to date, has been slow in coming. \n“There’s probably a limit to what you can do by executive order,” Schumer told WaPo, “They [the Biden Administration] are concerned, and they’re doing a lot regulatorily, but everyone admits the only real answer is legislative.”",
+                        "content_type": "text"
+                    }
+                ],
+                "verifier_decision": "N/A",
+                "verifier_reason": "",
+                "unsupported_claims": [],
+                "citation_support_rate": 0.0,
+                "final_status": "pending",
+                "grader_output": {
+                    "grader_action": "loose_filter",
+                    "num_retrieved_before_grading": 8,
+                    "num_selected_after_grading": 3,
+                    "selected_chunk_scores": [
+                        0.5,
+                        0.5,
+                        0.33333334
+                    ],
+                    "selected_sources": [
+                        "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                        "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                        "U.S.-China_relations_are_now_more_about_crisis_pre.md"
+                    ],
+                    "filter_threshold": 0.0,
+                    "fallback_used": true
+                }
+            },
+            {
+                "step": 4,
+                "valid_agents": [
+                    "verifier"
+                ],
+                "agent_mask": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    1
+                ],
+                "supervisor_selected_agent": "verifier",
+                "supervisor_agent_id": 4,
+                "supervisor_probability": 1.0,
+                "agent": "verifier",
+                "valid_actions": [
+                    "verify_answer"
+                ],
+                "action_mask": [
+                    1,
+                    0,
+                    0,
+                    0
+                ],
+                "action": "verify_answer",
+                "action_id": 0,
+                "action_probability": 1.0,
+                "reward": -0.2821,
+                "status": "pending",
+                "done": false,
+                "question": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "current_query": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "rewritten_query": "",
+                "retrieved_chunk_ids": [
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_0",
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_1",
+                    "ChatGPT_Everything_you_need_to_know_about_the_AI-p.md_p1_2",
+                    "Sam_Altman_ousted_as_OpenAIs_CEO.md_p1_3",
+                    "Republicans_just_dumped_Jim_Jordan_again._Theyre_l.md_p1_4",
+                    "U.S.-China_relations_are_now_more_about_crisis_pre.md_p1_5",
+                    "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md_p1_6",
+                    "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md_p1_7"
+                ],
+                "retrieved_chunk_preview": [
+                    "What's more, the EO will encourage the Departments of Energy and Homeland Security to address AI threats \"to critical infrastructure, as well as chemical, biological, radiological, nuclear, and cybersecurity risks,\" per the release. \"Agencies that fund life-science projects will establish these stan",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we",
+                    "ChatGPT and other AI chatbots are fueling an increase in phishing emails \nAccording to a new report by SlashNext, there’s been a 1,265% increase in malicious phishing emails since Q4 of 2022. The report alleges that AI tools like ChatGPT are being prominently used by cybercriminals to write compelli",
+                    "Sam Altman is a hero of mine. He built a company from nothing to $90 Billion in value, and changed our collective world forever. I can't wait to see what he does next. I, and billions of people, will benefit from his future work- it's going to be simply incredible. Thank you… — Eric Schmidt (@ericsc",
+                    "Flexing their independence, the holdouts are a mix of pragmatists — ranging from seasoned legislators and committee chairs worried about governing, to newer lawmakers from districts where voters back home prefer President Joe Biden to Trump. \nSome Republicans resent being pressured by Jordan’s allie",
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Anti-vaccine activist and presidential candidate Robert F. Kennedy Jr. calls The Epoch Times a daily read, among his most trusted news sources. “They have a real bias against China, but on other reporting, they’re very courageous and it’s real journalism,” Kennedy said in an interview with NBC News ",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim"
+                ],
+                "retrieval_scores": [
+                    0.25,
+                    0.33333334,
+                    0.25,
+                    0.16666667,
+                    0.2,
+                    0.5,
+                    0.16666667,
+                    0.5
+                ],
+                "selected_evidence_ids": [
+                    "0",
+                    "1",
+                    "2"
+                ],
+                "selected_evidence_preview": [
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we"
+                ],
+                "generated_answer_preview": "Insufficient information.",
+                "generated_answer_length": 25,
+                "citations": [
+                    {
+                        "source_file": "U.S.-China_relations_are_now_more_about_crisis_pre.md",
+                        "page_number": "1",
+                        "section_header": "U.S.-China relations are now more about crisis prevention",
+                        "excerpt": "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chinese tech. U.S. Commerce Secretary Gina Raimondo in a trip in August had \"said no\" to China's requests to reduce the controls and called the them \"matters of national security.\" Chinese Vice Premier He Lifeng also raised the issues during preparatory meetings with U.S. Treasury Secretary Janet Yellen in San Francisco on Nov. 10, according to state media. \"Aside from Taiwan, export controls are Beijing's top concern, but there is no political space in Washington roll back existing controls,\" Gabriel Wildau, managing director at consulting firm Teneo, said in a note. \"The immediate aftermath of the [Biden-Xi] meeting is likely to mark a cyclical high point for bilateral relations,\" he said. \"The key question is whether this high point extends into a plateau or whether political pressures trigger a new cycle of deterioration,\" he said",
+                        "content_type": "text"
+                    },
+                    {
+                        "source_file": "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                        "page_number": "1",
+                        "section_header": "Republicans dump Jim Jordan as House Speaker nominee, leaving Congress in crisis yet again",
+                        "excerpt": "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his time in office. He also faces questions about his past. \nSome years ago, Jordan denied allegations from former wrestlers during his time as an assistant wrestling coach at Ohio State University who accused him of knowing about claims they were inappropriately groped by an Ohio State doctor. Jordan has said he was never aware of any abuse.",
+                        "content_type": "text"
+                    },
+                    {
+                        "source_file": "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                        "page_number": "1",
+                        "section_header": "Sweeping White House AI executive order takes aim at the technology's toughest challenges",
+                        "excerpt": "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last week on Capitol Hill, while Vice President Kamala Harris is scheduled to speak at the UK Summit on AI Safety, hosted by Prime Minister Rishi Sunak on Tuesday. \nChip Somodevilla via Getty Images \nAt an event hosted by The Washington Post on Thursday, Senate Majority Leader Chuck Schumer (D-NY) was already arguing that the executive order did not go far enough and could not be considered an effective replacement for congressional action, which to date, has been slow in coming. \n“There’s probably a limit to what you can do by executive order,” Schumer told WaPo, “They [the Biden Administration] are concerned, and they’re doing a lot regulatorily, but everyone admits the only real answer is legislative.”",
+                        "content_type": "text"
+                    }
+                ],
+                "verifier_decision": "FAIL",
+                "verifier_reason": "Insufficient information to identify the Secretary of Homeland Security under President Obama and a key speaker at a cybersecurity conference in 2019.",
+                "unsupported_claims": [
+                    "Insufficient information."
+                ],
+                "citation_support_rate": 0.0,
+                "final_status": "pending",
+                "grader_output": {
+                    "grader_action": "loose_filter",
+                    "num_retrieved_before_grading": 8,
+                    "num_selected_after_grading": 3,
+                    "selected_chunk_scores": [
+                        0.5,
+                        0.5,
+                        0.33333334
+                    ],
+                    "selected_sources": [
+                        "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                        "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                        "U.S.-China_relations_are_now_more_about_crisis_pre.md"
+                    ],
+                    "filter_threshold": 0.0,
+                    "fallback_used": true
+                }
+            },
+            {
+                "step": 5,
+                "valid_agents": [
+                    "verifier"
+                ],
+                "agent_mask": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    1
+                ],
+                "supervisor_selected_agent": "verifier",
+                "supervisor_agent_id": 4,
+                "supervisor_probability": 1.0,
+                "agent": "verifier",
+                "valid_actions": [
+                    "request_regeneration",
+                    "request_more_retrieval",
+                    "request_rewrite"
+                ],
+                "action_mask": [
+                    0,
+                    1,
+                    1,
+                    1
+                ],
+                "action": "request_more_retrieval",
+                "action_id": 2,
+                "action_probability": 1.0,
+                "reward": -0.3221,
+                "status": "pending",
+                "done": false,
+                "question": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "current_query": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "rewritten_query": "",
+                "retrieved_chunk_ids": [
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_0",
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_1",
+                    "ChatGPT_Everything_you_need_to_know_about_the_AI-p.md_p1_2",
+                    "Sam_Altman_ousted_as_OpenAIs_CEO.md_p1_3",
+                    "Republicans_just_dumped_Jim_Jordan_again._Theyre_l.md_p1_4",
+                    "U.S.-China_relations_are_now_more_about_crisis_pre.md_p1_5",
+                    "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md_p1_6",
+                    "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md_p1_7"
+                ],
+                "retrieved_chunk_preview": [
+                    "What's more, the EO will encourage the Departments of Energy and Homeland Security to address AI threats \"to critical infrastructure, as well as chemical, biological, radiological, nuclear, and cybersecurity risks,\" per the release. \"Agencies that fund life-science projects will establish these stan",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we",
+                    "ChatGPT and other AI chatbots are fueling an increase in phishing emails \nAccording to a new report by SlashNext, there’s been a 1,265% increase in malicious phishing emails since Q4 of 2022. The report alleges that AI tools like ChatGPT are being prominently used by cybercriminals to write compelli",
+                    "Sam Altman is a hero of mine. He built a company from nothing to $90 Billion in value, and changed our collective world forever. I can't wait to see what he does next. I, and billions of people, will benefit from his future work- it's going to be simply incredible. Thank you… — Eric Schmidt (@ericsc",
+                    "Flexing their independence, the holdouts are a mix of pragmatists — ranging from seasoned legislators and committee chairs worried about governing, to newer lawmakers from districts where voters back home prefer President Joe Biden to Trump. \nSome Republicans resent being pressured by Jordan’s allie",
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Anti-vaccine activist and presidential candidate Robert F. Kennedy Jr. calls The Epoch Times a daily read, among his most trusted news sources. “They have a real bias against China, but on other reporting, they’re very courageous and it’s real journalism,” Kennedy said in an interview with NBC News ",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim"
+                ],
+                "retrieval_scores": [
+                    0.25,
+                    0.33333334,
+                    0.25,
+                    0.16666667,
+                    0.2,
+                    0.5,
+                    0.16666667,
+                    0.5
+                ],
+                "selected_evidence_ids": [
+                    "0",
+                    "1",
+                    "2"
+                ],
+                "selected_evidence_preview": [
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we"
+                ],
+                "generated_answer_preview": "Insufficient information.",
+                "generated_answer_length": 25,
+                "citations": [
+                    {
+                        "source_file": "U.S.-China_relations_are_now_more_about_crisis_pre.md",
+                        "page_number": "1",
+                        "section_header": "U.S.-China relations are now more about crisis prevention",
+                        "excerpt": "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chinese tech. U.S. Commerce Secretary Gina Raimondo in a trip in August had \"said no\" to China's requests to reduce the controls and called the them \"matters of national security.\" Chinese Vice Premier He Lifeng also raised the issues during preparatory meetings with U.S. Treasury Secretary Janet Yellen in San Francisco on Nov. 10, according to state media. \"Aside from Taiwan, export controls are Beijing's top concern, but there is no political space in Washington roll back existing controls,\" Gabriel Wildau, managing director at consulting firm Teneo, said in a note. \"The immediate aftermath of the [Biden-Xi] meeting is likely to mark a cyclical high point for bilateral relations,\" he said. \"The key question is whether this high point extends into a plateau or whether political pressures trigger a new cycle of deterioration,\" he said",
+                        "content_type": "text"
+                    },
+                    {
+                        "source_file": "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                        "page_number": "1",
+                        "section_header": "Republicans dump Jim Jordan as House Speaker nominee, leaving Congress in crisis yet again",
+                        "excerpt": "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his time in office. He also faces questions about his past. \nSome years ago, Jordan denied allegations from former wrestlers during his time as an assistant wrestling coach at Ohio State University who accused him of knowing about claims they were inappropriately groped by an Ohio State doctor. Jordan has said he was never aware of any abuse.",
+                        "content_type": "text"
+                    },
+                    {
+                        "source_file": "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                        "page_number": "1",
+                        "section_header": "Sweeping White House AI executive order takes aim at the technology's toughest challenges",
+                        "excerpt": "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last week on Capitol Hill, while Vice President Kamala Harris is scheduled to speak at the UK Summit on AI Safety, hosted by Prime Minister Rishi Sunak on Tuesday. \nChip Somodevilla via Getty Images \nAt an event hosted by The Washington Post on Thursday, Senate Majority Leader Chuck Schumer (D-NY) was already arguing that the executive order did not go far enough and could not be considered an effective replacement for congressional action, which to date, has been slow in coming. \n“There’s probably a limit to what you can do by executive order,” Schumer told WaPo, “They [the Biden Administration] are concerned, and they’re doing a lot regulatorily, but everyone admits the only real answer is legislative.”",
+                        "content_type": "text"
+                    }
+                ],
+                "verifier_decision": "FAIL",
+                "verifier_reason": "Insufficient information to identify the Secretary of Homeland Security under President Obama and a key speaker at a cybersecurity conference in 2019.",
+                "unsupported_claims": [
+                    "Insufficient information."
+                ],
+                "citation_support_rate": 0.0,
+                "final_status": "pending",
+                "grader_output": {
+                    "grader_action": "loose_filter",
+                    "num_retrieved_before_grading": 8,
+                    "num_selected_after_grading": 3,
+                    "selected_chunk_scores": [
+                        0.5,
+                        0.5,
+                        0.33333334
+                    ],
+                    "selected_sources": [
+                        "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                        "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                        "U.S.-China_relations_are_now_more_about_crisis_pre.md"
+                    ],
+                    "filter_threshold": 0.0,
+                    "fallback_used": true
+                }
+            },
+            {
+                "step": 6,
+                "valid_agents": [
+                    "retriever"
+                ],
+                "agent_mask": [
+                    1,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "supervisor_selected_agent": "retriever",
+                "supervisor_agent_id": 0,
+                "supervisor_probability": 1.0,
+                "agent": "retriever",
+                "valid_actions": [
+                    "retrieve_more"
+                ],
+                "action_mask": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    1
+                ],
+                "action": "retrieve_more",
+                "action_id": 4,
+                "action_probability": 1.0,
+                "reward": -0.2871,
+                "status": "pending",
+                "done": false,
+                "question": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "current_query": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "rewritten_query": "",
+                "retrieved_chunk_ids": [
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_0",
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_1",
+                    "ChatGPT_Everything_you_need_to_know_about_the_AI-p.md_p1_2",
+                    "Sam_Altman_ousted_as_OpenAIs_CEO.md_p1_3",
+                    "Republicans_just_dumped_Jim_Jordan_again._Theyre_l.md_p1_4",
+                    "U.S.-China_relations_are_now_more_about_crisis_pre.md_p1_5",
+                    "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md_p1_6",
+                    "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md_p1_7",
+                    "EU_lawmakers_bag_late_night_deal_on_global_first_A.md_p1_8",
+                    "EU_lawmakers_bag_late_night_deal_on_global_first_A.md_p1_9",
+                    "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md_p1_10",
+                    "Sex_Signal_messages_and_sabotaging_FTXs_code_SBF_e.md_p1_11",
+                    "Why_theApple_Watchis_being_banned__and_how_Apple_c.md_p1_12",
+                    "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md_p1_13",
+                    "NFL_standings_Updated_AFC_NFC_playoff_picture_for_.md_p1_14",
+                    "The_fate_of_US_venture_capital_in_China_teeters_on.md_p1_15"
+                ],
+                "retrieved_chunk_preview": [
+                    "What's more, the EO will encourage the Departments of Energy and Homeland Security to address AI threats \"to critical infrastructure, as well as chemical, biological, radiological, nuclear, and cybersecurity risks,\" per the release. \"Agencies that fund life-science projects will establish these stan",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we",
+                    "ChatGPT and other AI chatbots are fueling an increase in phishing emails \nAccording to a new report by SlashNext, there’s been a 1,265% increase in malicious phishing emails since Q4 of 2022. The report alleges that AI tools like ChatGPT are being prominently used by cybercriminals to write compelli",
+                    "Sam Altman is a hero of mine. He built a company from nothing to $90 Billion in value, and changed our collective world forever. I can't wait to see what he does next. I, and billions of people, will benefit from his future work- it's going to be simply incredible. Thank you… — Eric Schmidt (@ericsc",
+                    "Flexing their independence, the holdouts are a mix of pragmatists — ranging from seasoned legislators and committee chairs worried about governing, to newer lawmakers from districts where voters back home prefer President Joe Biden to Trump. \nSome Republicans resent being pressured by Jordan’s allie",
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Anti-vaccine activist and presidential candidate Robert F. Kennedy Jr. calls The Epoch Times a daily read, among his most trusted news sources. “They have a real bias against China, but on other reporting, they’re very courageous and it’s real journalism,” Kennedy said in an interview with NBC News ",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim",
+                    "After marathon ‘final’ talks which stretched to almost three days European Union lawmakers have tonight clinched a political deal on a risk-based framework for regulating artificial intelligence. The file was originally proposed back in April 2021 but it’s taken months of tricky three-way negotiatio",
+                    "The deal agreed today also allows for a phased entry into force after the law is adopted — with six months allowed until rules on prohibited use cases kick in; 12 months for transparency and governance requirements; and 24 months for all other requirements. So the full force of the EU’s AI Act may n",
+                    "Through the early aughts, The Epoch Times grew from an online effort to a weekly physical newspaper, with a home base in New York and a TV production company, New Tang Dynasty Television. It raised money from followers and was staffed by unpaid volunteers. It ran aggregated articles on international",
+                    "Sam Bankman-Fried listens as Assistant U.S. Attorney Nicolas Roos questions Gary Wang during Bankman-Fried's fraud trial over the collapse of FTX, the bankrupt cryptocurrency exchange, at Federal Court in New York City, U.S., October 6, 2023, in this courtroom sketch. Jane Rosenberg | Reuters",
+                    "That said, Apple did manage to beat the system once. In 2013, then President Barack Obama vetoed an import ban on the iPhone. At the time, Samsung accused Apple of infringing on its cellular data patents. But in that case, according to Levi, Apple was able to make the argument that there were issues",
+                    "A “betrayal,” said Rep. Jim Banks, R-Ind. \nNext steps were highly uncertain as angry, frustrated Republicans predict the House could essentially stay closed for the foreseeable future — perhaps until the mid-November deadline for Congress to approve funding or risk a federal government shutdown. \n“W",
+                    "7. Green Bay Packers (6-6), third place, NFC North. The Packers moved into the final playoff spot thanks to having the second-best conference record after the Vikings, to whom they already lost but face again in Minnesota in Week 17. The Packers also hold key wins over the Rams and Saints in the wil",
+                    "In recent years, Beijing’s sweeping tech crackdowns have introduced a new sense of uncertainty to investors. VCs fear that their portfolio companies might encounter a fate akin to that of Ant Group, whose colossal initial public offering was called off, and Didi, which weathered an extensive data se"
+                ],
+                "retrieval_scores": [
+                    0.25,
+                    0.33333334,
+                    0.25,
+                    0.16666667,
+                    0.2,
+                    0.5,
+                    0.16666667,
+                    0.5,
+                    0.33333334,
+                    0.2,
+                    0.16666667,
+                    0.14285715,
+                    0.14285715,
+                    0.125,
+                    0.125,
+                    0.11111111
+                ],
+                "selected_evidence_ids": [
+                    "0",
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15"
+                ],
+                "selected_evidence_preview": [
+                    "What's more, the EO will encourage the Departments of Energy and Homeland Security to address AI threats \"to critical infrastructure, as well as chemical, biological, radiological, nuclear, and cybersecurity risks,\" per the release. \"Agencies that fund life-science projects will establish these stan",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we",
+                    "ChatGPT and other AI chatbots are fueling an increase in phishing emails \nAccording to a new report by SlashNext, there’s been a 1,265% increase in malicious phishing emails since Q4 of 2022. The report alleges that AI tools like ChatGPT are being prominently used by cybercriminals to write compelli",
+                    "Sam Altman is a hero of mine. He built a company from nothing to $90 Billion in value, and changed our collective world forever. I can't wait to see what he does next. I, and billions of people, will benefit from his future work- it's going to be simply incredible. Thank you… — Eric Schmidt (@ericsc",
+                    "Flexing their independence, the holdouts are a mix of pragmatists — ranging from seasoned legislators and committee chairs worried about governing, to newer lawmakers from districts where voters back home prefer President Joe Biden to Trump. \nSome Republicans resent being pressured by Jordan’s allie",
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Anti-vaccine activist and presidential candidate Robert F. Kennedy Jr. calls The Epoch Times a daily read, among his most trusted news sources. “They have a real bias against China, but on other reporting, they’re very courageous and it’s real journalism,” Kennedy said in an interview with NBC News ",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim",
+                    "After marathon ‘final’ talks which stretched to almost three days European Union lawmakers have tonight clinched a political deal on a risk-based framework for regulating artificial intelligence. The file was originally proposed back in April 2021 but it’s taken months of tricky three-way negotiatio",
+                    "The deal agreed today also allows for a phased entry into force after the law is adopted — with six months allowed until rules on prohibited use cases kick in; 12 months for transparency and governance requirements; and 24 months for all other requirements. So the full force of the EU’s AI Act may n",
+                    "Through the early aughts, The Epoch Times grew from an online effort to a weekly physical newspaper, with a home base in New York and a TV production company, New Tang Dynasty Television. It raised money from followers and was staffed by unpaid volunteers. It ran aggregated articles on international",
+                    "Sam Bankman-Fried listens as Assistant U.S. Attorney Nicolas Roos questions Gary Wang during Bankman-Fried's fraud trial over the collapse of FTX, the bankrupt cryptocurrency exchange, at Federal Court in New York City, U.S., October 6, 2023, in this courtroom sketch. Jane Rosenberg | Reuters",
+                    "That said, Apple did manage to beat the system once. In 2013, then President Barack Obama vetoed an import ban on the iPhone. At the time, Samsung accused Apple of infringing on its cellular data patents. But in that case, according to Levi, Apple was able to make the argument that there were issues",
+                    "A “betrayal,” said Rep. Jim Banks, R-Ind. \nNext steps were highly uncertain as angry, frustrated Republicans predict the House could essentially stay closed for the foreseeable future — perhaps until the mid-November deadline for Congress to approve funding or risk a federal government shutdown. \n“W",
+                    "7. Green Bay Packers (6-6), third place, NFC North. The Packers moved into the final playoff spot thanks to having the second-best conference record after the Vikings, to whom they already lost but face again in Minnesota in Week 17. The Packers also hold key wins over the Rams and Saints in the wil",
+                    "In recent years, Beijing’s sweeping tech crackdowns have introduced a new sense of uncertainty to investors. VCs fear that their portfolio companies might encounter a fate akin to that of Ant Group, whose colossal initial public offering was called off, and Didi, which weathered an extensive data se"
+                ],
+                "generated_answer_preview": "",
+                "generated_answer_length": 0,
+                "citations": [],
+                "verifier_decision": "N/A",
+                "verifier_reason": "",
+                "unsupported_claims": [],
+                "citation_support_rate": 0.0,
+                "final_status": "pending",
+                "grader_output": {}
+            },
+            {
+                "step": 7,
+                "valid_agents": [
+                    "grader"
+                ],
+                "agent_mask": [
+                    0,
+                    0,
+                    1,
+                    0,
+                    0
+                ],
+                "supervisor_selected_agent": "grader",
+                "supervisor_agent_id": 2,
+                "supervisor_probability": 1.0,
+                "agent": "grader",
+                "valid_actions": [
+                    "loose_filter",
+                    "medium_filter",
+                    "strict_filter",
+                    "rerank_only"
+                ],
+                "action_mask": [
+                    0,
+                    1,
+                    1,
+                    1,
+                    1
+                ],
+                "action": "loose_filter",
+                "action_id": 1,
+                "action_probability": 1.0,
+                "reward": -0.2871,
+                "status": "pending",
+                "done": false,
+                "question": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "current_query": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "rewritten_query": "",
+                "retrieved_chunk_ids": [
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_0",
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_1",
+                    "ChatGPT_Everything_you_need_to_know_about_the_AI-p.md_p1_2",
+                    "Sam_Altman_ousted_as_OpenAIs_CEO.md_p1_3",
+                    "Republicans_just_dumped_Jim_Jordan_again._Theyre_l.md_p1_4",
+                    "U.S.-China_relations_are_now_more_about_crisis_pre.md_p1_5",
+                    "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md_p1_6",
+                    "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md_p1_7",
+                    "EU_lawmakers_bag_late_night_deal_on_global_first_A.md_p1_8",
+                    "EU_lawmakers_bag_late_night_deal_on_global_first_A.md_p1_9",
+                    "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md_p1_10",
+                    "Sex_Signal_messages_and_sabotaging_FTXs_code_SBF_e.md_p1_11",
+                    "Why_theApple_Watchis_being_banned__and_how_Apple_c.md_p1_12",
+                    "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md_p1_13",
+                    "NFL_standings_Updated_AFC_NFC_playoff_picture_for_.md_p1_14",
+                    "The_fate_of_US_venture_capital_in_China_teeters_on.md_p1_15"
+                ],
+                "retrieved_chunk_preview": [
+                    "What's more, the EO will encourage the Departments of Energy and Homeland Security to address AI threats \"to critical infrastructure, as well as chemical, biological, radiological, nuclear, and cybersecurity risks,\" per the release. \"Agencies that fund life-science projects will establish these stan",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we",
+                    "ChatGPT and other AI chatbots are fueling an increase in phishing emails \nAccording to a new report by SlashNext, there’s been a 1,265% increase in malicious phishing emails since Q4 of 2022. The report alleges that AI tools like ChatGPT are being prominently used by cybercriminals to write compelli",
+                    "Sam Altman is a hero of mine. He built a company from nothing to $90 Billion in value, and changed our collective world forever. I can't wait to see what he does next. I, and billions of people, will benefit from his future work- it's going to be simply incredible. Thank you… — Eric Schmidt (@ericsc",
+                    "Flexing their independence, the holdouts are a mix of pragmatists — ranging from seasoned legislators and committee chairs worried about governing, to newer lawmakers from districts where voters back home prefer President Joe Biden to Trump. \nSome Republicans resent being pressured by Jordan’s allie",
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Anti-vaccine activist and presidential candidate Robert F. Kennedy Jr. calls The Epoch Times a daily read, among his most trusted news sources. “They have a real bias against China, but on other reporting, they’re very courageous and it’s real journalism,” Kennedy said in an interview with NBC News ",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim",
+                    "After marathon ‘final’ talks which stretched to almost three days European Union lawmakers have tonight clinched a political deal on a risk-based framework for regulating artificial intelligence. The file was originally proposed back in April 2021 but it’s taken months of tricky three-way negotiatio",
+                    "The deal agreed today also allows for a phased entry into force after the law is adopted — with six months allowed until rules on prohibited use cases kick in; 12 months for transparency and governance requirements; and 24 months for all other requirements. So the full force of the EU’s AI Act may n",
+                    "Through the early aughts, The Epoch Times grew from an online effort to a weekly physical newspaper, with a home base in New York and a TV production company, New Tang Dynasty Television. It raised money from followers and was staffed by unpaid volunteers. It ran aggregated articles on international",
+                    "Sam Bankman-Fried listens as Assistant U.S. Attorney Nicolas Roos questions Gary Wang during Bankman-Fried's fraud trial over the collapse of FTX, the bankrupt cryptocurrency exchange, at Federal Court in New York City, U.S., October 6, 2023, in this courtroom sketch. Jane Rosenberg | Reuters",
+                    "That said, Apple did manage to beat the system once. In 2013, then President Barack Obama vetoed an import ban on the iPhone. At the time, Samsung accused Apple of infringing on its cellular data patents. But in that case, according to Levi, Apple was able to make the argument that there were issues",
+                    "A “betrayal,” said Rep. Jim Banks, R-Ind. \nNext steps were highly uncertain as angry, frustrated Republicans predict the House could essentially stay closed for the foreseeable future — perhaps until the mid-November deadline for Congress to approve funding or risk a federal government shutdown. \n“W",
+                    "7. Green Bay Packers (6-6), third place, NFC North. The Packers moved into the final playoff spot thanks to having the second-best conference record after the Vikings, to whom they already lost but face again in Minnesota in Week 17. The Packers also hold key wins over the Rams and Saints in the wil",
+                    "In recent years, Beijing’s sweeping tech crackdowns have introduced a new sense of uncertainty to investors. VCs fear that their portfolio companies might encounter a fate akin to that of Ant Group, whose colossal initial public offering was called off, and Didi, which weathered an extensive data se"
+                ],
+                "retrieval_scores": [
+                    0.25,
+                    0.33333334,
+                    0.25,
+                    0.16666667,
+                    0.2,
+                    0.5,
+                    0.16666667,
+                    0.5,
+                    0.33333334,
+                    0.2,
+                    0.16666667,
+                    0.14285715,
+                    0.14285715,
+                    0.125,
+                    0.125,
+                    0.11111111
+                ],
+                "selected_evidence_ids": [
+                    "0",
+                    "1",
+                    "2"
+                ],
+                "selected_evidence_preview": [
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we"
+                ],
+                "generated_answer_preview": "",
+                "generated_answer_length": 0,
+                "citations": [],
+                "verifier_decision": "N/A",
+                "verifier_reason": "",
+                "unsupported_claims": [],
+                "citation_support_rate": 0.0,
+                "final_status": "pending",
+                "grader_output": {
+                    "grader_action": "loose_filter",
+                    "num_retrieved_before_grading": 16,
+                    "num_selected_after_grading": 3,
+                    "selected_chunk_scores": [
+                        0.5,
+                        0.5,
+                        0.33333334
+                    ],
+                    "selected_sources": [
+                        "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                        "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                        "U.S.-China_relations_are_now_more_about_crisis_pre.md"
+                    ],
+                    "filter_threshold": 0.0,
+                    "fallback_used": true
+                }
+            },
+            {
+                "step": 8,
+                "valid_agents": [
+                    "generator"
+                ],
+                "agent_mask": [
+                    0,
+                    0,
+                    0,
+                    1,
+                    0
+                ],
+                "supervisor_selected_agent": "generator",
+                "supervisor_agent_id": 3,
+                "supervisor_probability": 1.0,
+                "agent": "generator",
+                "valid_actions": [
+                    "generate_answer",
+                    "generate_with_strict_citations"
+                ],
+                "action_mask": [
+                    1,
+                    1,
+                    0,
+                    0,
+                    0
+                ],
+                "action": "generate_with_strict_citations",
+                "action_id": 1,
+                "action_probability": 1.0,
+                "reward": -0.3629,
+                "status": "pending",
+                "done": false,
+                "question": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "current_query": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "rewritten_query": "",
+                "retrieved_chunk_ids": [
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_0",
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_1",
+                    "ChatGPT_Everything_you_need_to_know_about_the_AI-p.md_p1_2",
+                    "Sam_Altman_ousted_as_OpenAIs_CEO.md_p1_3",
+                    "Republicans_just_dumped_Jim_Jordan_again._Theyre_l.md_p1_4",
+                    "U.S.-China_relations_are_now_more_about_crisis_pre.md_p1_5",
+                    "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md_p1_6",
+                    "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md_p1_7",
+                    "EU_lawmakers_bag_late_night_deal_on_global_first_A.md_p1_8",
+                    "EU_lawmakers_bag_late_night_deal_on_global_first_A.md_p1_9",
+                    "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md_p1_10",
+                    "Sex_Signal_messages_and_sabotaging_FTXs_code_SBF_e.md_p1_11",
+                    "Why_theApple_Watchis_being_banned__and_how_Apple_c.md_p1_12",
+                    "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md_p1_13",
+                    "NFL_standings_Updated_AFC_NFC_playoff_picture_for_.md_p1_14",
+                    "The_fate_of_US_venture_capital_in_China_teeters_on.md_p1_15"
+                ],
+                "retrieved_chunk_preview": [
+                    "What's more, the EO will encourage the Departments of Energy and Homeland Security to address AI threats \"to critical infrastructure, as well as chemical, biological, radiological, nuclear, and cybersecurity risks,\" per the release. \"Agencies that fund life-science projects will establish these stan",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we",
+                    "ChatGPT and other AI chatbots are fueling an increase in phishing emails \nAccording to a new report by SlashNext, there’s been a 1,265% increase in malicious phishing emails since Q4 of 2022. The report alleges that AI tools like ChatGPT are being prominently used by cybercriminals to write compelli",
+                    "Sam Altman is a hero of mine. He built a company from nothing to $90 Billion in value, and changed our collective world forever. I can't wait to see what he does next. I, and billions of people, will benefit from his future work- it's going to be simply incredible. Thank you… — Eric Schmidt (@ericsc",
+                    "Flexing their independence, the holdouts are a mix of pragmatists — ranging from seasoned legislators and committee chairs worried about governing, to newer lawmakers from districts where voters back home prefer President Joe Biden to Trump. \nSome Republicans resent being pressured by Jordan’s allie",
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Anti-vaccine activist and presidential candidate Robert F. Kennedy Jr. calls The Epoch Times a daily read, among his most trusted news sources. “They have a real bias against China, but on other reporting, they’re very courageous and it’s real journalism,” Kennedy said in an interview with NBC News ",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim",
+                    "After marathon ‘final’ talks which stretched to almost three days European Union lawmakers have tonight clinched a political deal on a risk-based framework for regulating artificial intelligence. The file was originally proposed back in April 2021 but it’s taken months of tricky three-way negotiatio",
+                    "The deal agreed today also allows for a phased entry into force after the law is adopted — with six months allowed until rules on prohibited use cases kick in; 12 months for transparency and governance requirements; and 24 months for all other requirements. So the full force of the EU’s AI Act may n",
+                    "Through the early aughts, The Epoch Times grew from an online effort to a weekly physical newspaper, with a home base in New York and a TV production company, New Tang Dynasty Television. It raised money from followers and was staffed by unpaid volunteers. It ran aggregated articles on international",
+                    "Sam Bankman-Fried listens as Assistant U.S. Attorney Nicolas Roos questions Gary Wang during Bankman-Fried's fraud trial over the collapse of FTX, the bankrupt cryptocurrency exchange, at Federal Court in New York City, U.S., October 6, 2023, in this courtroom sketch. Jane Rosenberg | Reuters",
+                    "That said, Apple did manage to beat the system once. In 2013, then President Barack Obama vetoed an import ban on the iPhone. At the time, Samsung accused Apple of infringing on its cellular data patents. But in that case, according to Levi, Apple was able to make the argument that there were issues",
+                    "A “betrayal,” said Rep. Jim Banks, R-Ind. \nNext steps were highly uncertain as angry, frustrated Republicans predict the House could essentially stay closed for the foreseeable future — perhaps until the mid-November deadline for Congress to approve funding or risk a federal government shutdown. \n“W",
+                    "7. Green Bay Packers (6-6), third place, NFC North. The Packers moved into the final playoff spot thanks to having the second-best conference record after the Vikings, to whom they already lost but face again in Minnesota in Week 17. The Packers also hold key wins over the Rams and Saints in the wil",
+                    "In recent years, Beijing’s sweeping tech crackdowns have introduced a new sense of uncertainty to investors. VCs fear that their portfolio companies might encounter a fate akin to that of Ant Group, whose colossal initial public offering was called off, and Didi, which weathered an extensive data se"
+                ],
+                "retrieval_scores": [
+                    0.25,
+                    0.33333334,
+                    0.25,
+                    0.16666667,
+                    0.2,
+                    0.5,
+                    0.16666667,
+                    0.5,
+                    0.33333334,
+                    0.2,
+                    0.16666667,
+                    0.14285715,
+                    0.14285715,
+                    0.125,
+                    0.125,
+                    0.11111111
+                ],
+                "selected_evidence_ids": [
+                    "0",
+                    "1",
+                    "2"
+                ],
+                "selected_evidence_preview": [
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we"
+                ],
+                "generated_answer_preview": "Insufficient information.",
+                "generated_answer_length": 25,
+                "citations": [
+                    {
+                        "source_file": "U.S.-China_relations_are_now_more_about_crisis_pre.md",
+                        "page_number": "1",
+                        "section_header": "U.S.-China relations are now more about crisis prevention",
+                        "excerpt": "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chinese tech. U.S. Commerce Secretary Gina Raimondo in a trip in August had \"said no\" to China's requests to reduce the controls and called the them \"matters of national security.\" Chinese Vice Premier He Lifeng also raised the issues during preparatory meetings with U.S. Treasury Secretary Janet Yellen in San Francisco on Nov. 10, according to state media. \"Aside from Taiwan, export controls are Beijing's top concern, but there is no political space in Washington roll back existing controls,\" Gabriel Wildau, managing director at consulting firm Teneo, said in a note. \"The immediate aftermath of the [Biden-Xi] meeting is likely to mark a cyclical high point for bilateral relations,\" he said. \"The key question is whether this high point extends into a plateau or whether political pressures trigger a new cycle of deterioration,\" he said",
+                        "content_type": "text"
+                    },
+                    {
+                        "source_file": "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                        "page_number": "1",
+                        "section_header": "Republicans dump Jim Jordan as House Speaker nominee, leaving Congress in crisis yet again",
+                        "excerpt": "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his time in office. He also faces questions about his past. \nSome years ago, Jordan denied allegations from former wrestlers during his time as an assistant wrestling coach at Ohio State University who accused him of knowing about claims they were inappropriately groped by an Ohio State doctor. Jordan has said he was never aware of any abuse.",
+                        "content_type": "text"
+                    },
+                    {
+                        "source_file": "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                        "page_number": "1",
+                        "section_header": "Sweeping White House AI executive order takes aim at the technology's toughest challenges",
+                        "excerpt": "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last week on Capitol Hill, while Vice President Kamala Harris is scheduled to speak at the UK Summit on AI Safety, hosted by Prime Minister Rishi Sunak on Tuesday. \nChip Somodevilla via Getty Images \nAt an event hosted by The Washington Post on Thursday, Senate Majority Leader Chuck Schumer (D-NY) was already arguing that the executive order did not go far enough and could not be considered an effective replacement for congressional action, which to date, has been slow in coming. \n“There’s probably a limit to what you can do by executive order,” Schumer told WaPo, “They [the Biden Administration] are concerned, and they’re doing a lot regulatorily, but everyone admits the only real answer is legislative.”",
+                        "content_type": "text"
+                    }
+                ],
+                "verifier_decision": "N/A",
+                "verifier_reason": "",
+                "unsupported_claims": [],
+                "citation_support_rate": 0.0,
+                "final_status": "pending",
+                "grader_output": {
+                    "grader_action": "loose_filter",
+                    "num_retrieved_before_grading": 16,
+                    "num_selected_after_grading": 3,
+                    "selected_chunk_scores": [
+                        0.5,
+                        0.5,
+                        0.33333334
+                    ],
+                    "selected_sources": [
+                        "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                        "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                        "U.S.-China_relations_are_now_more_about_crisis_pre.md"
+                    ],
+                    "filter_threshold": 0.0,
+                    "fallback_used": true
+                }
+            },
+            {
+                "step": 9,
+                "valid_agents": [
+                    "verifier"
+                ],
+                "agent_mask": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    1
+                ],
+                "supervisor_selected_agent": "verifier",
+                "supervisor_agent_id": 4,
+                "supervisor_probability": 1.0,
+                "agent": "verifier",
+                "valid_actions": [
+                    "verify_answer"
+                ],
+                "action_mask": [
+                    1,
+                    0,
+                    0,
+                    0
+                ],
+                "action": "verify_answer",
+                "action_id": 0,
+                "action_probability": 1.0,
+                "reward": -0.9566,
+                "status": "rejected",
+                "done": true,
+                "question": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "current_query": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+                "rewritten_query": "",
+                "retrieved_chunk_ids": [
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_0",
+                    "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_1",
+                    "ChatGPT_Everything_you_need_to_know_about_the_AI-p.md_p1_2",
+                    "Sam_Altman_ousted_as_OpenAIs_CEO.md_p1_3",
+                    "Republicans_just_dumped_Jim_Jordan_again._Theyre_l.md_p1_4",
+                    "U.S.-China_relations_are_now_more_about_crisis_pre.md_p1_5",
+                    "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md_p1_6",
+                    "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md_p1_7",
+                    "EU_lawmakers_bag_late_night_deal_on_global_first_A.md_p1_8",
+                    "EU_lawmakers_bag_late_night_deal_on_global_first_A.md_p1_9",
+                    "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md_p1_10",
+                    "Sex_Signal_messages_and_sabotaging_FTXs_code_SBF_e.md_p1_11",
+                    "Why_theApple_Watchis_being_banned__and_how_Apple_c.md_p1_12",
+                    "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md_p1_13",
+                    "NFL_standings_Updated_AFC_NFC_playoff_picture_for_.md_p1_14",
+                    "The_fate_of_US_venture_capital_in_China_teeters_on.md_p1_15"
+                ],
+                "retrieved_chunk_preview": [
+                    "What's more, the EO will encourage the Departments of Energy and Homeland Security to address AI threats \"to critical infrastructure, as well as chemical, biological, radiological, nuclear, and cybersecurity risks,\" per the release. \"Agencies that fund life-science projects will establish these stan",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we",
+                    "ChatGPT and other AI chatbots are fueling an increase in phishing emails \nAccording to a new report by SlashNext, there’s been a 1,265% increase in malicious phishing emails since Q4 of 2022. The report alleges that AI tools like ChatGPT are being prominently used by cybercriminals to write compelli",
+                    "Sam Altman is a hero of mine. He built a company from nothing to $90 Billion in value, and changed our collective world forever. I can't wait to see what he does next. I, and billions of people, will benefit from his future work- it's going to be simply incredible. Thank you… — Eric Schmidt (@ericsc",
+                    "Flexing their independence, the holdouts are a mix of pragmatists — ranging from seasoned legislators and committee chairs worried about governing, to newer lawmakers from districts where voters back home prefer President Joe Biden to Trump. \nSome Republicans resent being pressured by Jordan’s allie",
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Anti-vaccine activist and presidential candidate Robert F. Kennedy Jr. calls The Epoch Times a daily read, among his most trusted news sources. “They have a real bias against China, but on other reporting, they’re very courageous and it’s real journalism,” Kennedy said in an interview with NBC News ",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim",
+                    "After marathon ‘final’ talks which stretched to almost three days European Union lawmakers have tonight clinched a political deal on a risk-based framework for regulating artificial intelligence. The file was originally proposed back in April 2021 but it’s taken months of tricky three-way negotiatio",
+                    "The deal agreed today also allows for a phased entry into force after the law is adopted — with six months allowed until rules on prohibited use cases kick in; 12 months for transparency and governance requirements; and 24 months for all other requirements. So the full force of the EU’s AI Act may n",
+                    "Through the early aughts, The Epoch Times grew from an online effort to a weekly physical newspaper, with a home base in New York and a TV production company, New Tang Dynasty Television. It raised money from followers and was staffed by unpaid volunteers. It ran aggregated articles on international",
+                    "Sam Bankman-Fried listens as Assistant U.S. Attorney Nicolas Roos questions Gary Wang during Bankman-Fried's fraud trial over the collapse of FTX, the bankrupt cryptocurrency exchange, at Federal Court in New York City, U.S., October 6, 2023, in this courtroom sketch. Jane Rosenberg | Reuters",
+                    "That said, Apple did manage to beat the system once. In 2013, then President Barack Obama vetoed an import ban on the iPhone. At the time, Samsung accused Apple of infringing on its cellular data patents. But in that case, according to Levi, Apple was able to make the argument that there were issues",
+                    "A “betrayal,” said Rep. Jim Banks, R-Ind. \nNext steps were highly uncertain as angry, frustrated Republicans predict the House could essentially stay closed for the foreseeable future — perhaps until the mid-November deadline for Congress to approve funding or risk a federal government shutdown. \n“W",
+                    "7. Green Bay Packers (6-6), third place, NFC North. The Packers moved into the final playoff spot thanks to having the second-best conference record after the Vikings, to whom they already lost but face again in Minnesota in Week 17. The Packers also hold key wins over the Rams and Saints in the wil",
+                    "In recent years, Beijing’s sweeping tech crackdowns have introduced a new sense of uncertainty to investors. VCs fear that their portfolio companies might encounter a fate akin to that of Ant Group, whose colossal initial public offering was called off, and Didi, which weathered an extensive data se"
+                ],
+                "retrieval_scores": [
+                    0.25,
+                    0.33333334,
+                    0.25,
+                    0.16666667,
+                    0.2,
+                    0.5,
+                    0.16666667,
+                    0.5,
+                    0.33333334,
+                    0.2,
+                    0.16666667,
+                    0.14285715,
+                    0.14285715,
+                    0.125,
+                    0.125,
+                    0.11111111
+                ],
+                "selected_evidence_ids": [
+                    "0",
+                    "1",
+                    "2"
+                ],
+                "selected_evidence_preview": [
+                    "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+                    "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim",
+                    "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we"
+                ],
+                "generated_answer_preview": "Insufficient information.",
+                "generated_answer_length": 25,
+                "citations": [
+                    {
+                        "source_file": "U.S.-China_relations_are_now_more_about_crisis_pre.md",
+                        "page_number": "1",
+                        "section_header": "U.S.-China relations are now more about crisis prevention",
+                        "excerpt": "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chinese tech. U.S. Commerce Secretary Gina Raimondo in a trip in August had \"said no\" to China's requests to reduce the controls and called the them \"matters of national security.\" Chinese Vice Premier He Lifeng also raised the issues during preparatory meetings with U.S. Treasury Secretary Janet Yellen in San Francisco on Nov. 10, according to state media. \"Aside from Taiwan, export controls are Beijing's top concern, but there is no political space in Washington roll back existing controls,\" Gabriel Wildau, managing director at consulting firm Teneo, said in a note. \"The immediate aftermath of the [Biden-Xi] meeting is likely to mark a cyclical high point for bilateral relations,\" he said. \"The key question is whether this high point extends into a plateau or whether political pressures trigger a new cycle of deterioration,\" he said",
+                        "content_type": "text"
+                    },
+                    {
+                        "source_file": "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                        "page_number": "1",
+                        "section_header": "Republicans dump Jim Jordan as House Speaker nominee, leaving Congress in crisis yet again",
+                        "excerpt": "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his time in office. He also faces questions about his past. \nSome years ago, Jordan denied allegations from former wrestlers during his time as an assistant wrestling coach at Ohio State University who accused him of knowing about claims they were inappropriately groped by an Ohio State doctor. Jordan has said he was never aware of any abuse.",
+                        "content_type": "text"
+                    },
+                    {
+                        "source_file": "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                        "page_number": "1",
+                        "section_header": "Sweeping White House AI executive order takes aim at the technology's toughest challenges",
+                        "excerpt": "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last week on Capitol Hill, while Vice President Kamala Harris is scheduled to speak at the UK Summit on AI Safety, hosted by Prime Minister Rishi Sunak on Tuesday. \nChip Somodevilla via Getty Images \nAt an event hosted by The Washington Post on Thursday, Senate Majority Leader Chuck Schumer (D-NY) was already arguing that the executive order did not go far enough and could not be considered an effective replacement for congressional action, which to date, has been slow in coming. \n“There’s probably a limit to what you can do by executive order,” Schumer told WaPo, “They [the Biden Administration] are concerned, and they’re doing a lot regulatorily, but everyone admits the only real answer is legislative.”",
+                        "content_type": "text"
+                    }
+                ],
+                "verifier_decision": "FAIL",
+                "verifier_reason": "Insufficient information to identify the Secretary of Homeland Security under President Obama and a key speaker at a cybersecurity conference in 2019.",
+                "unsupported_claims": [
+                    "Insufficient information."
+                ],
+                "citation_support_rate": 0.0,
+                "final_status": "rejected",
+                "grader_output": {
+                    "grader_action": "loose_filter",
+                    "num_retrieved_before_grading": 16,
+                    "num_selected_after_grading": 3,
+                    "selected_chunk_scores": [
+                        0.5,
+                        0.5,
+                        0.33333334
+                    ],
+                    "selected_sources": [
+                        "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                        "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                        "U.S.-China_relations_are_now_more_about_crisis_pre.md"
+                    ],
+                    "filter_threshold": 0.0,
+                    "fallback_used": true
+                }
+            }
+        ],
+        "current_query": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+        "rewritten_query": "",
+        "retrieved_chunk_ids": [
+            "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_0",
+            "Sweeping_White_House_AI_executive_order_takes_aim_.md_p1_1",
+            "ChatGPT_Everything_you_need_to_know_about_the_AI-p.md_p1_2",
+            "Sam_Altman_ousted_as_OpenAIs_CEO.md_p1_3",
+            "Republicans_just_dumped_Jim_Jordan_again._Theyre_l.md_p1_4",
+            "U.S.-China_relations_are_now_more_about_crisis_pre.md_p1_5",
+            "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md_p1_6",
+            "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md_p1_7",
+            "EU_lawmakers_bag_late_night_deal_on_global_first_A.md_p1_8",
+            "EU_lawmakers_bag_late_night_deal_on_global_first_A.md_p1_9",
+            "How_the_conspiracy-fueled_Epoch_Times_went_mainstr.md_p1_10",
+            "Sex_Signal_messages_and_sabotaging_FTXs_code_SBF_e.md_p1_11",
+            "Why_theApple_Watchis_being_banned__and_how_Apple_c.md_p1_12",
+            "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md_p1_13",
+            "NFL_standings_Updated_AFC_NFC_playoff_picture_for_.md_p1_14",
+            "The_fate_of_US_venture_capital_in_China_teeters_on.md_p1_15"
+        ],
+        "retrieved_chunk_preview": [
+            "What's more, the EO will encourage the Departments of Energy and Homeland Security to address AI threats \"to critical infrastructure, as well as chemical, biological, radiological, nuclear, and cybersecurity risks,\" per the release. \"Agencies that fund life-science projects will establish these stan",
+            "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we",
+            "ChatGPT and other AI chatbots are fueling an increase in phishing emails \nAccording to a new report by SlashNext, there’s been a 1,265% increase in malicious phishing emails since Q4 of 2022. The report alleges that AI tools like ChatGPT are being prominently used by cybercriminals to write compelli",
+            "Sam Altman is a hero of mine. He built a company from nothing to $90 Billion in value, and changed our collective world forever. I can't wait to see what he does next. I, and billions of people, will benefit from his future work- it's going to be simply incredible. Thank you… — Eric Schmidt (@ericsc",
+            "Flexing their independence, the holdouts are a mix of pragmatists — ranging from seasoned legislators and committee chairs worried about governing, to newer lawmakers from districts where voters back home prefer President Joe Biden to Trump. \nSome Republicans resent being pressured by Jordan’s allie",
+            "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+            "Anti-vaccine activist and presidential candidate Robert F. Kennedy Jr. calls The Epoch Times a daily read, among his most trusted news sources. “They have a real bias against China, but on other reporting, they’re very courageous and it’s real journalism,” Kennedy said in an interview with NBC News ",
+            "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim",
+            "After marathon ‘final’ talks which stretched to almost three days European Union lawmakers have tonight clinched a political deal on a risk-based framework for regulating artificial intelligence. The file was originally proposed back in April 2021 but it’s taken months of tricky three-way negotiatio",
+            "The deal agreed today also allows for a phased entry into force after the law is adopted — with six months allowed until rules on prohibited use cases kick in; 12 months for transparency and governance requirements; and 24 months for all other requirements. So the full force of the EU’s AI Act may n",
+            "Through the early aughts, The Epoch Times grew from an online effort to a weekly physical newspaper, with a home base in New York and a TV production company, New Tang Dynasty Television. It raised money from followers and was staffed by unpaid volunteers. It ran aggregated articles on international",
+            "Sam Bankman-Fried listens as Assistant U.S. Attorney Nicolas Roos questions Gary Wang during Bankman-Fried's fraud trial over the collapse of FTX, the bankrupt cryptocurrency exchange, at Federal Court in New York City, U.S., October 6, 2023, in this courtroom sketch. Jane Rosenberg | Reuters",
+            "That said, Apple did manage to beat the system once. In 2013, then President Barack Obama vetoed an import ban on the iPhone. At the time, Samsung accused Apple of infringing on its cellular data patents. But in that case, according to Levi, Apple was able to make the argument that there were issues",
+            "A “betrayal,” said Rep. Jim Banks, R-Ind. \nNext steps were highly uncertain as angry, frustrated Republicans predict the House could essentially stay closed for the foreseeable future — perhaps until the mid-November deadline for Congress to approve funding or risk a federal government shutdown. \n“W",
+            "7. Green Bay Packers (6-6), third place, NFC North. The Packers moved into the final playoff spot thanks to having the second-best conference record after the Vikings, to whom they already lost but face again in Minnesota in Week 17. The Packers also hold key wins over the Rams and Saints in the wil",
+            "In recent years, Beijing’s sweeping tech crackdowns have introduced a new sense of uncertainty to investors. VCs fear that their portfolio companies might encounter a fate akin to that of Ant Group, whose colossal initial public offering was called off, and Didi, which weathered an extensive data se"
+        ],
+        "retrieval_scores": [
+            0.25,
+            0.33333334,
+            0.25,
+            0.16666667,
+            0.2,
+            0.5,
+            0.16666667,
+            0.5,
+            0.33333334,
+            0.2,
+            0.16666667,
+            0.14285715,
+            0.14285715,
+            0.125,
+            0.125,
+            0.11111111
+        ],
+        "selected_evidence_ids": [
+            "0",
+            "1",
+            "2"
+        ],
+        "selected_evidence_preview": [
+            "During this week's meeting, Shen expects the Chinese side to bring up U.S. export controls and investment restrictions. The Biden administration has restricted U.S. companies from selling high-end tech, primarily in semiconductors, to Chinese companies and sought to curb U.S. investments in such Chi",
+            "Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. \nFirst elected in 2006, Jordan has few bills to his name from his tim",
+            "The White House reportedly did not brief the industry on this particular swath of radical policy changes, though administration officials did note that they had already been collaborating extensively with AI companies on many of these issues. The Senate held its second AI Insight Forum event last we"
+        ],
+        "generated_answer_preview": "Insufficient information.",
+        "grader_output": {
+            "grader_action": "loose_filter",
+            "num_retrieved_before_grading": 16,
+            "num_selected_after_grading": 3,
+            "selected_chunk_scores": [
+                0.5,
+                0.5,
+                0.33333334
+            ],
+            "selected_sources": [
+                "Republicans_dump_Jim_Jordan_as_House_Speaker_nomin.md",
+                "Sweeping_White_House_AI_executive_order_takes_aim_.md",
+                "U.S.-China_relations_are_now_more_about_crisis_pre.md"
+            ],
+            "filter_threshold": 0.0,
+            "fallback_used": true
+        }
+    }
+]

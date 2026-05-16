@@ -95,8 +95,5 @@
       "count": 11,
       "avg_latency_sec": 8.474009090909092
     }
-  ],
-  "detail_csv": "evaluation_results_detailed.csv",
-  "category_csv": "evaluation_by_category.csv",
-  "difficulty_csv": "evaluation_by_difficulty.csv"
+  ]
 }

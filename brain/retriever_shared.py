@@ -58,11 +58,15 @@ def retrieve_docs(query: str) -> list[dict]:
 
     Returns the full ranked retrieval list in original order.
     """
+    # Dynamically resolve collection name to support benchmark switching
+    from qdrant_config import COLLECTION_NAME as DEFAULT_COLLECTION
+    collection_name = os.getenv("QDRANT_COLLECTION", DEFAULT_COLLECTION)
+
     dense_vec = _get_dense_query_embedding(query)
     sparse_vec = _get_sparse_query_embedding(query)
 
     results = client.query_points(
-        collection_name=COLLECTION_NAME,
+        collection_name=collection_name,
         prefetch=[
             models.Prefetch(
                 query=dense_vec,

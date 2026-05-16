@@ -1,0 +1,107 @@
+{
+  "overall": {
+    "exact_match": 0.5333333333333333,
+    "token_f1": 0.5411764705882353,
+    "rouge_l_f1": 0.5411764705882353,
+    "source_hit": 0.4666666666666667,
+    "source_precision": 0.2777777777777778,
+    "source_recall": 0.31666666666666665,
+    "source_mrr": 0.41333333333333333,
+    "architecture": "context_marl_ac",
+    "total_rows": 15,
+    "successful_rows": 15,
+    "failed_rows": 0,
+    "failure_rate": 0.0,
+    "avg_latency_sec": 98.70399333333332
+  },
+  "recommended_view": {
+    "retrieval_grounding_view": {
+      "count": 15,
+      "primary_metrics": [
+        "source_hit",
+        "source_precision",
+        "source_recall",
+        "source_mrr"
+      ],
+      "source_hit": 0.4666666666666667,
+      "source_precision": 0.2777777777777778,
+      "source_recall": 0.31666666666666665,
+      "source_mrr": 0.41333333333333333
+    }
+  },
+  "by_category_rows": [
+    {
+      "exact_match": 0.3333333333333333,
+      "token_f1": 0.3333333333333333,
+      "rouge_l_f1": 0.3333333333333333,
+      "source_hit": 0.3333333333333333,
+      "source_precision": 0.08333333333333333,
+      "source_recall": 0.16666666666666666,
+      "source_mrr": 0.06666666666666667,
+      "category": "comparison_query",
+      "count": 3,
+      "avg_latency_sec": 95.54313333333334,
+      "recommended_primary_metric_1": "token_f1",
+      "recommended_primary_metric_2": "rouge_l_f1"
+    },
+    {
+      "exact_match": 0.6666666666666666,
+      "token_f1": 0.7058823529411765,
+      "rouge_l_f1": 0.7058823529411765,
+      "source_hit": 1.0,
+      "source_precision": 0.6388888888888888,
+      "source_recall": 0.6388888888888888,
+      "source_mrr": 1.0,
+      "category": "inference_query",
+      "count": 3,
+      "avg_latency_sec": 97.36303333333335,
+      "recommended_primary_metric_1": "token_f1",
+      "recommended_primary_metric_2": "rouge_l_f1"
+    },
+    {
+      "exact_match": 0.5,
+      "token_f1": 0.5,
+      "rouge_l_f1": 0.5,
+      "source_hit": 0.0,
+      "source_precision": 0.0,
+      "source_recall": 0.0,
+      "source_mrr": 0.0,
+      "category": "null_query",
+      "count": 6,
+      "avg_latency_sec": 125.36130000000001,
+      "recommended_primary_metric_1": "token_f1",
+      "recommended_primary_metric_2": "rouge_l_f1"
+    },
+    {
+      "exact_match": 0.6666666666666666,
+      "token_f1": 0.6666666666666666,
+      "rouge_l_f1": 0.6666666666666666,
+      "source_hit": 1.0,
+      "source_precision": 0.6666666666666666,
+      "source_recall": 0.7777777777777777,
+      "source_mrr": 1.0,
+      "category": "temporal_query",
+      "count": 3,
+      "avg_latency_sec": 49.8912,
+      "recommended_primary_metric_1": "token_f1",
+      "recommended_primary_metric_2": "rouge_l_f1"
+    }
+  ],
+  "by_difficulty_rows": [
+    {
+      "exact_match": 0.5333333333333333,
+      "token_f1": 0.5411764705882353,
+      "rouge_l_f1": 0.5411764705882353,
+      "source_hit": 0.4666666666666667,
+      "source_precision": 0.2777777777777778,
+      "source_recall": 0.31666666666666665,
+      "source_mrr": 0.41333333333333333,
+      "difficulty": "hard",
+      "count": 15,
+      "avg_latency_sec": 98.70399333333332
+    }
+  ],
+  "detail_csv": "non_llm_metrics_v2_detailed.csv",
+  "category_csv": "non_llm_metrics_v2_by_category.csv",
+  "difficulty_csv": "non_llm_metrics_v2_by_difficulty.csv"
+}

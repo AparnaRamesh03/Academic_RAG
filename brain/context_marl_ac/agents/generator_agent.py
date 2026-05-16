@@ -24,7 +24,7 @@ class GeneratorAgent(BaseAgent):
             action_name = "abstain_request_more_evidence"
 
         if action_name == "abstain_request_more_evidence":
-            state.generated_answer = "I don't have enough information to answer this question."
+            state.generated_answer = "Insufficient information."
             state.final_status = "abstained"
             state.done = True
             self.log_action(state, action_name)
@@ -41,6 +41,7 @@ class GeneratorAgent(BaseAgent):
             state.user_query,
             state.selected_evidence,
             mode=action_name,
+            choices=state.choices,
         )
 
         state.token_usage += tokens
@@ -51,7 +52,24 @@ class GeneratorAgent(BaseAgent):
             state.final_status = "generation_failed"
             state.done = True
         else:
-            state.generated_answer = answer
+            # Simple post-processing to strip common introductory filler
+            cleaned_answer = answer.strip()
+            prefixes_to_strip = [
+                "The answer is:", "Answer:", "According to the documents,",
+                "Based on the documents,", "In accordance with the evidence,",
+                "The documents state that", "The provided information says"
+            ]
+            for prefix in prefixes_to_strip:
+                if cleaned_answer.lower().startswith(prefix.lower()):
+                    cleaned_answer = cleaned_answer[len(prefix):].strip()
+            
+            # If the answer is still quite long and starts with a common filler like "Yes, ..."
+            if cleaned_answer.lower().startswith("yes,"):
+                cleaned_answer = "Yes"
+            if cleaned_answer.lower().startswith("no,"):
+                cleaned_answer = "No"
+
+            state.generated_answer = cleaned_answer.strip().rstrip(".")
             state.final_status = "pending"
             state.done = False
 

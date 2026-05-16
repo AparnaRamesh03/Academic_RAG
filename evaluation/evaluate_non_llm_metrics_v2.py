@@ -8,6 +8,9 @@ import pandas as pd
 
 
 def load_json(path: Path):
+    if path.suffix == ".jsonl":
+        with path.open("r", encoding="utf-8") as f:
+            return [json.loads(line) for line in f if line.strip()]
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
 
@@ -174,15 +177,15 @@ def build_detail_rows(results):
                 "category": row.get("category"),
                 "difficulty": row.get("difficulty"),
                 "latency_sec": row.get("latency_sec"),
-                "status": row.get("status"),
+                "status": "ok" if row.get("status") == "ok" or row.get("final_status") in ["accepted", "rejected"] else "error",
                 "error": json.dumps(row.get("error"), ensure_ascii=False) if row.get("error") is not None else None,
-                "exact_match": exact_match(answer, ground_truth) if row.get("status") == "ok" else None,
-                "token_f1": token_f1(answer, ground_truth) if row.get("status") == "ok" else None,
-                "rouge_l_f1": rouge_l_f1(answer, ground_truth) if row.get("status") == "ok" else None,
-                "source_hit": src_metrics["source_hit"] if row.get("status") == "ok" else None,
-                "source_precision": src_metrics["source_precision"] if row.get("status") == "ok" else None,
-                "source_recall": src_metrics["source_recall"] if row.get("status") == "ok" else None,
-                "source_mrr": src_metrics["source_mrr"] if row.get("status") == "ok" else None,
+                "exact_match": exact_match(answer, ground_truth),
+                "token_f1": token_f1(answer, ground_truth),
+                "rouge_l_f1": rouge_l_f1(answer, ground_truth),
+                "source_hit": src_metrics["source_hit"],
+                "source_precision": src_metrics["source_precision"],
+                "source_recall": src_metrics["source_recall"],
+                "source_mrr": src_metrics["source_mrr"],
             }
         )
     return rows
@@ -284,7 +287,7 @@ def main():
     results = load_json(results_path)
 
     total_rows = len(results)
-    ok_rows = sum(1 for r in results if r.get("status") == "ok")
+    ok_rows = sum(1 for r in results if r.get("status") == "ok" or r.get("final_status") in ["accepted", "rejected"])
     failed_rows = total_rows - ok_rows
 
     detail_rows = build_detail_rows(results)

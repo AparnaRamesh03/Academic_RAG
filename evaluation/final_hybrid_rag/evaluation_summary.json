@@ -1,0 +1,59 @@
+{
+  "overall": {
+    "faithfulness": 0.8500,
+    "answer_relevancy": 0.8327,
+    "answer_correctness": 0.6984,
+    "context_precision": 0.6558,
+    "context_recall": 0.7813,
+    "architecture": "final_combined",
+    "total_rows": 30,
+    "successful_rows": 30,
+    "failed_rows": 0,
+    "failure_rate": 0.0,
+    "avg_latency_sec": 27.6194
+  },
+  "by_category_rows": [
+    {
+      "faithfulness": 0.8438,
+      "answer_relevancy": 0.8214,
+      "answer_correctness": 0.6891,
+      "context_precision": 0.6453,
+      "context_recall": 0.7688,
+      "category": "bridge",
+      "count": 16,
+      "avg_latency_sec": 28.4317
+    },
+    {
+      "faithfulness": 0.8750,
+      "answer_relevancy": 0.8721,
+      "answer_correctness": 0.7331,
+      "context_precision": 0.7083,
+      "context_recall": 0.8125,
+      "category": "comparison",
+      "count": 4,
+      "avg_latency_sec": 24.7802
+    }
+  ],
+  "by_difficulty_rows": [
+    {
+      "faithfulness": 0.8214,
+      "answer_relevancy": 0.8148,
+      "answer_correctness": 0.6792,
+      "context_precision": 0.6243,
+      "context_recall": 0.7500,
+      "difficulty": "hard",
+      "count": 14,
+      "avg_latency_sec": 29.1438
+    },
+    {
+      "faithfulness": 0.9167,
+      "answer_relevancy": 0.8681,
+      "answer_correctness": 0.7329,
+      "context_precision": 0.7292,
+      "context_recall": 0.8472,
+      "difficulty": "medium",
+      "count": 6,
+      "avg_latency_sec": 24.2871
+    }
+  ]
+}

@@ -76,6 +76,8 @@ class ContextState:
     rewritten_query: str = ""  # Last rewrite result
     # List of filenames/identifiers expected for this question
     expected_sources: List[str] = field(default_factory=list)
+    # Multiple choice options (for ARC/PopQA)
+    choices: Optional[Dict[str, Any]] = None
 
     # Populated by query_analyzer
     query_type:                str  = "factual"   # one of QUERY_TYPES
