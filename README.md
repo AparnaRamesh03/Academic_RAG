@@ -1,4 +1,5 @@
 Academic RAG with Entropy-Regularized MADDPG
+
 Built an advanced academic Retrieval-Augmented Generation (RAG) system for citation-aware question answering over research papers.
 The system combines hybrid retrieval (dense embeddings + BM25 sparse search), role-based RAG agents (retriever, rewriter, grader, generator, verifier),
 and a stage-constrained MADDPG-style multi-agent reinforcement learning controller to adaptively manage retrieval, evidence grading, answer generation,
